@@ -1,175 +1,208 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
- <head> 
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width" /> 
-  <meta name="format-detection" content="telephone=no" /> 
-  <title>( （Linux基础知识) Linux中学压缩与缩命令的方法</title> 
-  <meta name="robots" content="max-image-preview:large" /> 
-  <meta name="description" content="( （Linux基础知识) Linux中学压缩与缩命令的方法" /> 
-  <meta name="keywords" content="" /> 
-  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683807312595_0.webp" />
-  <meta name="twitter:description"content="( （Linux基础知识) Linux中学压缩与缩命令的方法">
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="">
-  <meta name="twitter:title" content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
-  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683807312595_0.webp" />
-  <meta property="og:description"content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
-  <meta property="og:keywords" content="" />
-  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683807312595_0.webp" />
-  <meta property="og:version" content="Hugo 0.113.0">
-  <meta property="og:title" content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
-  <meta property="og:url" content="https://wonima136.github.io/xxxxx/knowledge/ljczslzxysys/" />
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="Linux" />
-  <meta property="og:locale" content="en" />
-  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
-  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
-  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
-  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
-  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
-  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
-  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
-  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
-  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
-  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
-  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
-  <style type="text/css" id="wp-custom-css">
-		p {line-height: 200%}
-		.entry-content p { text-indent: 2em
- </style> 
- </head> 
- 
- <body class="home blog wp-embed-responsive"> 
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-dark-grayscale">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0 0.49803921568627" />
-      <fefuncg type="table" tablevalues="0 0.49803921568627" />
-      <fefuncb type="table" tablevalues="0 0.49803921568627" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-grayscale">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0 1" />
-      <fefuncg type="table" tablevalues="0 1" />
-      <fefuncb type="table" tablevalues="0 1" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-purple-yellow">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
-      <fefuncg type="table" tablevalues="0 1" />
-      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-blue-red">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0 1" />
-      <fefuncg type="table" tablevalues="0 0.27843137254902" />
-      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-midnight">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0 0" />
-      <fefuncg type="table" tablevalues="0 0.64705882352941" />
-      <fefuncb type="table" tablevalues="0 1" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-magenta-yellow">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0.78039215686275 1" />
-      <fefuncg type="table" tablevalues="0 0.94901960784314" />
-      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-purple-green">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
-      <fefuncg type="table" tablevalues="0 1" />
-      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg>
-  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-   <defs>
-    <filter id="wp-duotone-blue-orange">
-     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-     <fecomponenttransfer color-interpolation-filters="sRGB">
-      <fefuncr type="table" tablevalues="0.098039215686275 1" />
-      <fefuncg type="table" tablevalues="0 0.66274509803922" />
-      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
-      <fefunca type="table" tablevalues="1 1" />
-     </fecomponenttransfer>
-     <fecomposite in2="SourceGraphic" operator="in" />
-    </filter>
-   </defs>
-  </svg> 
-   
-  <div id="site-container" class="clearfix"> 
-    
-   <header id="site-header" class="clearfix" role="banner"> 
-    <div class="ht-container"> 
-      
-     <div id="logo"> 
-      <h1> <a title="( （Linux基础知识) Linux中学压缩与缩命令的方法" href="https://wonima136.github.io/xxxxx/">Linux</a> </h1> 
-     </div> 
-     <br /> 
-     <p> </p> 
-      
-    </div> 
-   </header> 
-    
 
+<head>
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width" />
+      <meta name="format-detection" content="telephone=no" />
+      <title>( （Linux基础知识) Linux中学压缩与缩命令的方法</title>
+      <meta name="robots" content="max-image-preview:large" />
+      <meta name="description"
+            content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
+      <meta name="keywords" content="" />
+      <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683807312595_0.webp" />
+      <meta name="twitter:description"
+            content="( （Linux基础知识) Linux中学压缩与缩命令的方法">
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="">
+      <meta name="twitter:title" content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
+      <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683807312595_0.webp" />
+      <meta property="og:description"
+            content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
+      <meta property="og:keywords" content="" />
+      <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683807312595_0.webp" />
+      <meta property="og:version" content="Hugo 0.113.0">
+      <meta property="og:title" content="( （Linux基础知识) Linux中学压缩与缩命令的方法" />
+      <meta property="og:url" content="https://wonima136.github.io/xxxxx/knowledge/ljczslzxysys/" />
+      <meta property="og:type" content="article">
+      <meta property="og:site_name" content="Linux" />
+      <meta property="og:locale" content="en" />
+      <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+      <link rel="stylesheet" id="wp-block-library-css" href="https://wonima136.github.io/xxxxx/css/style.min.css"
+            type="text/css" media="all" />
+      <link rel="stylesheet" id="htgb-style-css-css" href="https://wonima136.github.io/xxxxx/css/blocks.style.build.css"
+            type="text/css" media="all" />
+      <link rel="stylesheet" id="classic-theme-styles-css"
+            href="https://wonima136.github.io/xxxxx/css/classic-themes.min.css" type="text/css" media="all" />
+      <link rel="stylesheet" id="classic-theme-styles-css" href="https://wonima136.github.io/xxxxx/css/inline.css"
+            type="text/css" media="all" />
+      <link rel="stylesheet" id="shortcodes-css-css" href="https://wonima136.github.io/xxxxx/css/shortcodes.css"
+            type="text/css" media="all" />
+      <link rel="stylesheet" id="theme-style-css" href="https://wonima136.github.io/xxxxx/css/style.css" type="text/css"
+            media="all" />
+      <link rel="stylesheet" id="theme-font-css" href="https://wonima136.github.io/xxxxx/css/css.css" type="text/css"
+            media="all" />
+      <link rel="stylesheet" id="font-awesome-css" href="https://wonima136.github.io/xxxxx/css/font-awesome.min.css"
+            type="text/css" media="all" />
+      <script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/jquery.min.js"
+            id="jquery-core-js"></script>
+      <script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/jquery-migrate.min.js"
+            id="jquery-migrate-js"></script>
+      <style type="text/css" id="wp-custom-css">
+            p {
+                  line-height: 200%
+            }
+
+            .entry-content p {
+                  text-indent: 2em
+      </style>
+</head>
+
+<body class="home blog wp-embed-responsive">
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-dark-grayscale">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0 0.49803921568627" />
+                              <fefuncg type="table" tablevalues="0 0.49803921568627" />
+                              <fefuncb type="table" tablevalues="0 0.49803921568627" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-grayscale">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0 1" />
+                              <fefuncg type="table" tablevalues="0 1" />
+                              <fefuncb type="table" tablevalues="0 1" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-purple-yellow">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+                              <fefuncg type="table" tablevalues="0 1" />
+                              <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-blue-red">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0 1" />
+                              <fefuncg type="table" tablevalues="0 0.27843137254902" />
+                              <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-midnight">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0 0" />
+                              <fefuncg type="table" tablevalues="0 0.64705882352941" />
+                              <fefuncb type="table" tablevalues="0 1" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-magenta-yellow">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0.78039215686275 1" />
+                              <fefuncg type="table" tablevalues="0 0.94901960784314" />
+                              <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-purple-green">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+                              <fefuncg type="table" tablevalues="0 1" />
+                              <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none"
+            style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+            <defs>
+                  <filter id="wp-duotone-blue-orange">
+                        <fecolormatrix color-interpolation-filters="sRGB" type="matrix"
+                              values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+                        <fecomponenttransfer color-interpolation-filters="sRGB">
+                              <fefuncr type="table" tablevalues="0.098039215686275 1" />
+                              <fefuncg type="table" tablevalues="0 0.66274509803922" />
+                              <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+                              <fefunca type="table" tablevalues="1 1" />
+                        </fecomponenttransfer>
+                        <fecomposite in2="SourceGraphic" operator="in" />
+                  </filter>
+            </defs>
+      </svg>
+      
+      <div id="site-container" class="clearfix">
+            
+            <header id="site-header" class="clearfix" role="banner">
+                  <div class="ht-container">
+                        
+                        <div id="logo">
+                              <h1> <a title="( （Linux基础知识) Linux中学压缩与缩命令的方法" href="https://wonima136.github.io/xxxxx/">Linux</a> </h1>
+                        </div>
+                        <br />
+                        <p> </p>
+                        
+                  </div>
+            </header>
+            
 
 
 <div id="live-search">
@@ -333,49 +366,53 @@ testfile.bz2
                 </aside>
                 </div>
             </div>
-   <footer id="site-footer" class="clearfix" role="contentinfo"> 
-    <div class="ht-container"> 
-     <style>
-          .flink-class a {
-              line-height: 20px;
-          }
-      </style> 
-     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
-      <strong>友情链接：</strong> 
-	  
-      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
-	  
-      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
-	  
-      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
-	  
-     </div> 
-	 
-	 
-	 <ul>
+<footer id="site-footer" class="clearfix" role="contentinfo">
+    <div class="ht-container">
+        <style>
+            .flink-class a {
+                line-height: 20px;
+            }
+        </style>
+        <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+            <strong>友情链接：</strong>
+            
+            <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> |
+            
+            <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> |
+            
+            <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> |
+            
+        </div>
 
 
-	 
-	 
+        <ul>
 
-	 
-     <small id="copyright">
 
-	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
 
-	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
-	 </small> 
-    </div> 
-   </footer> 
-  </div> 
-  
-  <script src="/js/search.js"></script>
-  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
-  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
-  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
-  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
-  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
-  
+
+
+
+            <small id="copyright">
+
+                <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+                <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1"
+                        style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;"
+                        data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy"
+                        data-clipboard-target="#dididomian1"></a></p>
+            </small>
+    </div>
+</footer>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/ht-glossary-frontend.js"
+    id="htgb-custom-js-js"></script>
+<script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/script.min.js"
+    id="ht_toc-script-js-js"></script>
+<script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/shortcodes.js" id="shortcodes-js-js"></script>
+<script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/functions.js" id="st_theme_custom-js"></script>
+<script type="text/javascript" src="https://wonima136.github.io/xxxxx/js/livesearch.js" id="st_live_search-js"></script>
 </body>
 
 </html>
