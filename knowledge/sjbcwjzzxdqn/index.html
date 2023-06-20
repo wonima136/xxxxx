@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Shell脚本从文件中逐行读取内容的几种方法实例</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Shell脚本从文件中逐行读取内容的几种方法实例" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" />
+  <meta name="twitter:description"content="Shell脚本从文件中逐行读取内容的几种方法实例">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Shell脚本从文件中逐行读取内容的几种方法实例" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" />
+  <meta property="og:description"content="Shell脚本从文件中逐行读取内容的几种方法实例" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Shell脚本从文件中逐行读取内容的几种方法实例" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/sjbcwjzzxdqn/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Shell脚本从文件中逐行读取内容的几种方法实例" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Shell脚本从文件中逐行读取内容的几种方法实例</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell脚本从文件中逐行读取内容的几种方式实例</p>
+<p>明天小编就为你们分享一篇关于Shell脚本从文件中逐行读取内容的几种方式实例，小编认为内容挺不错的，如今分享给你们，具有挺好的参考价值，须要的同学一起追随小编来瞧瞧吧</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell脚本批量更改文件后缀名代码分享</p>
+<p>主要介绍了Shell脚本批量更改文件后缀名,问中搜集了2个示例,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell脚本实现复制文件到多台服务器的代码分享</p>
+<p>主要介绍了Shell脚本实现复制文件到多台服务器的代码分享,用在多机集群环境中十分便捷,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell脚本用for循环遍历参数的方式方法</p>
+<p>明天小编就为你们分享一篇关于Shell脚本用for循环遍历参数的方式方法，小编认为内容挺不错的，如今分享给你们，具有挺好的参考价值 <strong>linux查找文件夹命令</strong>，须要的同学一起追随小编来瞧瞧吧</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell脚本实现上传zip压缩文件到FTP服务器</p>
+<p>主要介绍了Shell脚本实现上传zip压缩文件到FTP服务器,本文直接给出实现代码,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell脚本中实现切换用户并执行命令操作</p>
+<p>主要介绍了Shell脚本中实现切换用户并执行命令操作,看了示例代码就秒懂了,原先这么简单,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell中判定字符串是否为数字的6种方式分享</p>
+<p>主要介绍了Shell中判定字符串是否为数字的6种方式分享,本文直接给出实现代码,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Shell定时删掉指定时间之前的文件</p>
+<p>主要介绍了Shell定时删掉指定时间之前的文件,本文拿来删掉一个月之前的备份文件,并加入到crontag定时删掉,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>一个监控LINUX目录和文件变化的Shell脚本分享</p>
+<p>主要介绍了一个监控LINUX目录和文件变化的Shell脚本分享,对服务器常常被提权的同学时分有用,须要的同学可以参考下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Java代码执行shell命令的实现</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_10.png" alt="linux查找文件夹命令_linux 中find查找在某两个范围之间的命令_linux查找目录命令"></p>
+<p>主要介绍了Java代码执行shell命令的实现 <strong>linux查找文件夹命令</strong> linux 安装，文中通过示例代码介绍的十分详尽，对你们的学习或则工作具有一定的参考学习价值，须要的同事们下边随着小编来一起学习学习吧</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>Linux中scp命令获取远程文件的方式</p>
+<p>scp用于在Linux下进行远程拷贝文件的命令，和它类似的命令有cp。接出来通过本文给你们介绍Linux中scp命令获取远程文件的方式，一起瞧瞧吧</p>
+<p>mac使用shell命令删掉当前文件下的所有文件及文件夹</p>
+<p>在Mac中使用Shell命令删掉当前文件夹下的所有文件和文件夹，可以使用以下命令：“<code>rm-rf*“</code>这个命令会删掉当前文件夹下的所有文件和文件夹，包括隐藏文件。请注意，这个命令不会提示确认，所以请慎重使用。假如你不想删掉隐藏文件，可以使用以下命令：“<code>rm-rf.[^.]**“</code>这个命令会删掉当前文件夹下的所有非隐藏文件和文件夹。另外，假如你只想删掉当前文件夹下的文件，不想删掉文件夹arm linux，可以使用以下命令：“<code>rm*“</code>这个命令会删掉当前文件夹下的所有文件，但不会删掉文件夹。注意：使用这种命令之前，请确保你早已在当前文件夹下，但是确认那些文件和文件夹的删掉不会导致重大损失。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>shell查找某字符串在某文件中出现行数的方式</p>
+<p>主要介绍了shell查找某字符串在某文件中出现行数的方式，小编认为挺不错的，如今分享给你们，也给你们做个参考。一起追随小编过来瞧瞧吧</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>解读Shell中的grep命令</p>
+<p>主要介绍了Shell中的grep命令，十分不错，具有参考借鉴价值，须要的同事参考下吧</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680638679943_0.png" alt="linux查找目录命令_linux 中find查找在某两个范围之间的命令_linux查找文件夹命令"></p>
+<p>hive-shell批量命令执行脚本的实现方式</p>
+<p>明天小编就为你们分享一篇hive-shell批量命令执行脚本的实现方式，具有挺好的参考价值，希望对你们有所帮助。一起追随小编过来瞧瞧吧</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

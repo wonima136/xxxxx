@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>四种常用的Linux用户通信命令是如何工作的？！</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="四种常用的Linux用户通信命令是如何工作的？！" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/06/1686140071730_0.png" />
+  <meta name="twitter:description"content="四种常用的Linux用户通信命令是如何工作的？！">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="四种常用的Linux用户通信命令是如何工作的？！" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/06/1686140071730_0.png" />
+  <meta property="og:description"content="四种常用的Linux用户通信命令是如何工作的？！" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/06/1686140071730_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="四种常用的Linux用户通信命令是如何工作的？！" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/szcydlyhtxml/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="四种常用的Linux用户通信命令是如何工作的？！" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">四种常用的Linux用户通信命令是如何工作的？！</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>你们好，我是良许</p>
+<p>在Linux命令行里向其他用户发送信息很简单，好多命令都可以做到这点，麻烦的是你须要从诸多命令中选购一个合适的命令来使用。为此RED HAT LINUX 9.0，我选购了四种常用的Linux用户通讯命令分享给你们并为大家讲解这四种命令是怎样工作的。</p>
+<p>wall</p>
+<p>(wall命令（意为writeall) 容许你向所有在系统已登入的用户发送信息。任何用户都可以使用wall命令linux ftp，但wall命令一般是系统管理员拿来向用户发送公告通知的（例如服务器将关掉维护）。</p>
+<p>一个系统管理员可能会发送如下信息：</p>
+<pre tabindex="0"><code>$ wall The system will be going down in 15 minutes to address a serious problem
+</code></pre><p>之后，所有已登入的用户都能见到类似这样的通知：</p>
+<pre tabindex="0"><code>Broadcast message from admin@dragonfly (pts/0) (Thu Mar  5 08:56:42 2020):
+The system is going down in 15 minutes to address a serious problem
+</code></pre><p>假如你要发送的信息里有单冒号，就须要用双冒号即将发送的信息括上去，如下所示：</p>
+<pre tabindex="0"><code>$ wall &#34;Don&#39;t forget to save your work before logging off&#34;
+</code></pre><p>上例所示的命令里，最内层的冒号在信息传送时不会显示下来，但若果没有最内层的破折号，这条命令执行时会仍然等待一个和句上单顿号配对的冒号以结束语句。</p>
+<p>mesg</p>
+<p>(假如由于个别缘由你想拒绝某位用户发送来的信息，就可以使用mesg命令。该命令使用时应携带参数n或则y，分别表示拒绝或接受某用户来信，其用例如下（alvin为用户名) ：</p>
+<pre tabindex="0"><code>$ mesg n alvin
+$ mesg y alvin
+</code></pre><p>值得注意的是，使用mesg命令屏蔽用户后，被屏蔽的用户并不会收到自己已被屏蔽的通知，也就是说，被屏蔽的用户并不会晓得自己早已被屏蔽了。</p>
+<p>你也可以使用这个命令来接受或屏蔽所有用户的通讯，只需把用户名参数省略掉即可：</p>
+<pre tabindex="0"><code>$ mesg y
+$ mesg n
+</code></pre><p>write</p>
+<p>另一个可以直接发送文本信息而不须要转换成邮件的命令是write。这个命令能被用于和特定用户的通讯中，例如你要向用户名为alvin的用户发送信息，可以用如下命令：</p>
+<pre tabindex="0"><code>$ write alvin
+Are you still at your desk?
+I need to talk with you right away.
+^C
+</code></pre><p>写完发送信息后按ctrl+C退出。这个命令准许你传送信息，但不是开启一个双工通道，它仅仅只能用于送出信息。假如接收用户在不止一个终端上登陆，你能选择一个你想传输的终端或则借助系统选择一个历时最少的终端传输，如下所示：</p>
+<pre tabindex="0"><code>$ write alvin#1
+</code></pre><p>假如你被用户alvin屏蔽了，你会看见如下提示：</p>
+<pre tabindex="0"><code>$ write alvin
+write: alvin has messages disabled
+</code></pre><p>talk/ytalk</p>
+<p>talk和ytalk命令让你可以和一个或多个用户构建交互通讯，其中talk命令只容许你和一个用户构建交互通讯。talk与ytalk命令就会启动一个双版面的窗口 <strong>linux用户相关命令</strong>，通讯的每一方都可以在窗口的下部版面输入信息并在上部版面听到回应信息。</p>
+<p>被恳求加入通讯的一方可以通过输入talk并在其后跟上通讯发起方的用户名即可回应通讯，如下所示：</p>
+<pre tabindex="0"><code>Message from Talk_Daemon@dragonfly at 10:10 ...
+talk: connection requested by alvin@127.0.0.1.
+talk: respond with:  talk alvin@127.0.0.1
+$ talk alvin
+</code></pre><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1686140071730_0.png" alt="linux用户命令_linux用户相关命令_linux 用户 相关指令"></p>
+<p>值得注意的是，当系统既安装了talk也安装了ytalk时，talk命令默认会与ytalk命令相关联，所以当你输入talkalvin后，系统实际上执行的是ytalkalvin。因为我的系统两个命令都安装了，所以执行以上命令后看见的输出实际上是ytalkalvin的：</p>
+<pre tabindex="0"><code>----------------------------= YTalk version 3.3.0 =--------------------------
+Is the report ready?
+-------------------------------= root@lxlinux =----------------------------
+Just finished it
+</code></pre><p>以上为用户alvin听到的窗口信息，而通讯另一方的root见到的窗口内容则是反过来的：</p>
+<pre tabindex="0"><code>----------------------------= YTalk version 3.3.0 =--------------------------
+Just finished it
+-------------------------------= alvin@lxlinux =----------------------------
+Is the report ready?
+</code></pre><p>同样，这个命令也用ctrl+C来中止。</p>
+<p>要用此命令和其他系统的用户通讯则须要加上-h的参数，参数值为主机名或IP地址。其用例如下：</p>
+<pre tabindex="0"><code>$ talk -h 192.168.0.11 alvin
+</code></pre><p>总结</p>
+<p>Linux系统有好多可用于向已登陆的用户发送信息的命令，这种命令在个别情境中是十分有用的，例如用wall广播信息，用talk进行两用户间的交互式会晤 <strong>linux用户相关命令</strong>，它们都可以让用户快速地交换信息，学会使用这种常用的命令可以让用户间通讯愈发便捷，提升了沟通的效率。</p>
+<p>最后希望本文的内容对你的工作有所帮助，假如你还对这种命令有任何疑惑，请留言告诉我呗！</p>
+<blockquote>
+<p>2020精选阿里/腾讯等一线大厂笔试、简历、进阶、电子书「<strong>良许Linux</strong>」后台回复「<strong>资料</strong>」免费获取</p>
+</blockquote>
+<p>####看完的都是真爱，点个赞再走呗？您的「三连」就是良许持续创作的最大动力！</p>
+<p>1.关注<strong>原创</strong>「<strong>良许Linux</strong>」，第一时间获取最新Linux干货！</p>
+<p>2.后台回复【资料】【面试】【简历】获取精选一线大厂笔试、自我提高、简历等资料。</p>
+<p>3.关注我的博客：<a href=""></a></p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

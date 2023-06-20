@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>6：网络通讯</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content=" " /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content=" " />
+  <meta name="twitter:description"content=" ">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content=" ">
+  <meta name="twitter:title" content="6：网络通讯" />
+  <meta name="twitter:image:src" content=" " />
+  <meta property="og:description"content=" " />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content=" " />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="6：网络通讯" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/network/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="6：网络通讯" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+
+
+
+<div id="primary" class="clearfix sidebar-right">
+    
+    <div class="ht-container">
+
+        
+        <section id="content" role="main">
+
+
+            
+            <header id="page-header">
+                <h1 class="page-title">Category: <span>6：网络通讯</span></h1>
+                <div id="breadcrumbs">
+                    <a href="https://wonima136.github.io/linux-cool/">
+                        <icon class="fa fa-home">
+                            </i>
+                    </a><span class="sep">/</span><a href="https://wonima136.github.io/linux-cool/network/">6：网络通讯</a> <span class="sep">/</span> </div>
+            </header>
+
+            
+
+            
+            
+
+
+
+            
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/apachectl/">apachectl命令 – Apache服务器前端控制工具</a></h2>
+                <div class="entry-content"><p>apachectl命令是Apache的Web服务器前端控制工具，用以启动、关闭和重新启动Web服务器进程。
+语法格式： apachectl [参数]
+常用参数：
+configtest检查设置文件中的语法是否正确fullstatus显示服务器完整的状态信息graceful重新启动Apache服务器，但 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/apachectl/" class="readmore" title="apachectl命令 – Apache服务器前端控制工具">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/arpaname/">arpaname命令 – IP地址转换为对应的ARPA名称</a></h2>
+                <div class="entry-content"><p>(arpaname命令的作用是可以转换IP地址（IPv4和IPv6) 到相应的IN-ADDR.ARPA或IP6.ARPA名称。
+由于在域名系统中，一个IP地址可以对应多个域名，因此从IP出发去找域名，理论上应该遍历整个域名树，但这在Internet上是不现实的。为了完成逆向域名解析，系统提供一个特别 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/arpaname/" class="readmore" title="arpaname命令 – IP地址转换为对应的ARPA名称">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/arping/">arping命令 – 发送ARP请求报文</a></h2>
+                <div class="entry-content"><p>arping命令来自英文词组“ARP ping”的缩写，其功能是用于发送ARP请求报文，ARP全称为“Address Resolution Protocol”，中文译为地址解析协议。arping命令是使用ARP报文数据包来测试网络状态，能够判断某个指定IP地址是否在网络上已被使用，并能够获取更多设备 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/arping/" class="readmore" title="arping命令 – 发送ARP请求报文">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/arptables/">arptables命令 – ARP包过滤管理工具</a></h2>
+                <div class="entry-content"><p>arptables命令用来设置、维护和检查Linux内核中的arp包过滤规则表。使用arptables命令可以定义多个不同的规则表，每个规则表包含多个内置的规则链或者用户自定义的规则链。
+arptables命令工作在ARP协议层，要掌握此命令必须理解ARP的原理。
+语法格式: arptables [ …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/arptables/" class="readmore" title="arptables命令 – ARP包过滤管理工具">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/arpwatch/">arpwatch命令 – 监听网络上ARP的记录</a></h2>
+                <div class="entry-content"><p>arpwatch命令用于监听网络上ARP的记录。
+ARPAddress Resolution Protocol)是用来解析IP与网络装置硬件地址的协议。 arpwatch可监听区域网络中的ARP数据包并记录，同时将监听到的变化通过E-mail来报告。
+语法格式： arpwatch [参数]
+常用参 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/arpwatch/" class="readmore" title="arpwatch命令 – 监听网络上ARP的记录">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/arp/">arp命令 – 管理系统arp缓存信息</a></h2>
+                <div class="entry-content"><p>arp命令来自英文词组“Address Resolution Protocol”的缩写，其功能是用于管理系统arp缓存信息。该命令用于管理Linux系统中arp缓存信息，能够显示、添加、删除指定的条目，或对IP地址及MAC地址进行绑定操作。
+语法格式： arp [参数] [IP地址]
+常用参数： …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/arp/" class="readmore" title="arp命令 – 管理系统arp缓存信息">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/ctlinnd/">ctlinnd命令 – 设置INN新闻组服务器</a></h2>
+                <div class="entry-content"><p>通过ctlinnd指令，可以对新闻组服务器这项常驻服务下达控制命令，直接设置相关数值。
+语法格式： ctlinnd [参数]
+常用参数：
+h在线帮助s不显示指令执行过程t设置等待服务器回报的时间，单位以秒计算，超过此一时间则为超时
+参考实例
+设置等待服务器回报的时间：
+[root@linuxcool …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/ctlinnd/" class="readmore" title="ctlinnd命令 – 设置INN新闻组服务器">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/cu/">cu命令 – 连接另一个系统主机</a></h2>
+                <div class="entry-content"><p>cu命令可连接另一台主机，并采用类似拨号终端机的接口工作，也可执行简易的文件传输作业。
+语法格式： cu [参数] [电话号码]
+常用参数：
+-p使用指定的通信端口进行连线-c拨打该电话号码-d进入排错模式-I指定要使用的配置文件-n拨号时等待用户输入电话号码 -s设置连线的速率-x …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/cu/" class="readmore" title="cu命令 – 连接另一个系统主机">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/dhclient/">dhclient命令 – 动态获取或释放IP地址</a></h2>
+                <div class="entry-content"><p>dhclient命令来自英文词组“DHCP client”的缩写，其功能是用于动态获取或释放IP地址。使用dhclient命令前需要将网卡模式设置成DHCP自动获取，否则静态模式的网卡是不会主动向服务器获取如IP地址等网卡信息的。
+语法格式： dhclient 参数 [网卡名]
+常用参数：
+-4基 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/dhclient/" class="readmore" title="dhclient命令 – 动态获取或释放IP地址">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/network/dhcpd/">dhcpd命令 – 管理DHCP服务程序</a></h2>
+                <div class="entry-content"><p>dhcpd命令来自英文词组“DHCP daemon”的缩写，其功能是用于管理DHCP服务程序。执行dhcpd命令会读取加载dhcpd.conf配置文件并启动服务器上的DHCP服务程序，随后用户便可以获取到如IP地址、子网掩码、网关地址等网卡信息了。
+语法格式： dhcpd [参数] [网络接口]
+常 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/network/dhcpd/" class="readmore" title="dhcpd命令 – 管理DHCP服务程序">Read More<span> &rarr;</span></a>
+            </article>
+            
+			
+			
+            <div class="page-navigation clearfix">
+
+
+
+
+
+
+  <ul class="pagination">
+  
+  <a href="/linux-cool/network/page/3/" class="pag-link">«</a>
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/network/page/2/" class="pag-link">2</a>
+	
+	
+	
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/network/page/3/" class="pag-link">3</a>
+	
+	
+	
+	
+	
+	
+	<a class="pag-item pag-current" href="/linux-cool/network/page/4/" class="pag-link">4</a>
+	
+	
+	
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/network/page/5/" class="pag-link">5</a>
+	
+	
+	
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/network/page/6/" class="pag-link">6</a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a class="pag-item pag-next" href="/linux-cool/network/page/5/" class="pag-link">»</a>
+    
+  </ul>
+
+            </div>
+        </section>
+        <aside id="sidebar" role="complementary">
+            <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                <h4 class="widget-title"><span>最热命令</span></h4>
+                <ul class="clearfix">
+                    
+                    
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+					
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+</div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>

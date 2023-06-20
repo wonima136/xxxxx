@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>轻松压缩文件！Linux中常用tar命令</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="轻松压缩文件！Linux中常用tar命令" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1678515145106_0.jpg" />
+  <meta name="twitter:description"content="轻松压缩文件！Linux中常用tar命令">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="轻松压缩文件！Linux中常用tar命令" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1678515145106_0.jpg" />
+  <meta property="og:description"content="轻松压缩文件！Linux中常用tar命令" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1678515145106_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="轻松压缩文件！Linux中常用tar命令" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/qsyswjlzcytm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="轻松压缩文件！Linux中常用tar命令" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">轻松压缩文件！Linux中常用tar命令</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>Linux 是一款开源操作系统 <strong>linux 常见文件打包压缩命令</strong>，因其稳定性和可靠性而备受欢迎。在 Linux 中，文件打包压缩是非常重要的一项功能。本文将介绍 Linux 常见的文件打包压缩命令，帮助读者更好地进行文件传输。</p>
+<p>一、tar 命令</p>
+<p>tar 命令是 Linux 中最常用的文件打包命令之一。它可以将多个文件或目录打包成一个 tar 文件，方便传输和备份。</p>
+<p>语法：</p>
+<p>tar [参数][打包后的文件名][需要打包的文件或目录]</p>
+<p>常用参数：</p>
+<p>-c：创建新的 tar 文件；</p>
+<p>-v：显示打包过程中的详细信息；</p>
+<p>-f：指定打包后的文件名；</p>
+<p>-x：解压 tar 文件；</p>
+<p>-z：对 tar 文件进行 gzip 压缩；</p>
+<p>-j：对 tar 文件进行 bzip2 压缩。</p>
+<p>示例：</p>
+<p>打包 file1.txt 和 file2.txt 文件：</p>
+<p>tar -cvf files.tar file1.txt file2.txt</p>
+<p>解压 files.tar 文件：</p>
+<p>tar -xvf files.tar</p>
+<p>二、gzip 命令</p>
+<p>gzip 是 Linux 中最常用的文件压缩命令之一。它可以将一个或多个文件进行 gzip 压缩红旗linux官网，从而减小文件大小，方便传输和存储。</p>
+<p>语法：</p>
+<p>gzip [参数][需要压缩的文件]</p>
+<p>常用参数：</p>
+<p>-r：对目录下所有文件进行 gzip 压缩；</p>
+<p>-v：显示压缩过程中的详细信息；</p>
+<p>-d：解压 gzip 压缩后的文件。</p>
+<p>示例：</p>
+<p>压缩 file1.txt 文件：</p>
+<p>gzip file1.txt</p>
+<p>解压 file1.txt.gz 文件：</p>
+<p>gzip -d file1.txt.gz</p>
+<p>三、bzip2 命令</p>
+<p>bzip2 是 Linux 中另一个常用的文件压缩命令。它可以将一个或多个文件进行 bzip2 压缩linux deepin，从而减小文件大小。</p>
+<p>语法：</p>
+<p>bzip2 [参数][需要压缩的文件]</p>
+<p>常用参数：</p>
+<p>-r：对目录下所有文件进行 bzip2 压缩；</p>
+<p>-v：显示压缩过程中的详细信息；</p>
+<p>-d：解压 bzip2 压缩后的文件。</p>
+<p>示例：</p>
+<p>压缩 file1.txt 文件：</p>
+<p>bzip2 file1.txt</p>
+<p>解压 file1.txt.bz2 文件：</p>
+<p>bzip2 -d file1.txt.bz2</p>
+<p>四、zip 命令</p>
+<p>zip 是 Linux 中另一个常用的文件打包命令。它可以将多个文件或目录打包成一个 zip 文件，方便传输和备份。</p>
+<p>语法：</p>
+<p>zip [参数][打包后的文件名][需要打包的文件或目录]</p>
+<p>常用参数：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1678515145106_0.jpg" alt="linux 常见文件打包压缩命令_linux压缩命令_linux 压缩命令"></p>
+<p>-r：对目录下所有文件进行 zip 打包；</p>
+<p>-v：显示打包过程中的详细信息；</p>
+<p>-e：加密 zip 文件。</p>
+<p>示例：</p>
+<p>打包 dir 目录下所有文件并加密 zip 包：</p>
+<p>zip -rv -e dir.zip dir/</p>
+<p>五、unzip 命令</p>
+<p>unzip 是 Linux 中用于解压 zip 包的命令。它可以将 zip 包中的多个文件或目录解压到当前目录下。</p>
+<p>语法：</p>
+<p>unzip [参数][需要解压的 zip 包]</p>
+<p>常用参数：</p>
+<p>-l：列出 zip 包中所有内容；</p>
+<p>-v：显示解压过程中的详细信息。</p>
+<p>示例：</p>
+<p>解压 dir.zip 包到当前目录下：</p>
+<p>unzip dir.zip</p>
+<p>六、rar 命令</p>
+<p>rar 是 Linux 中另一个常用的归档和数据分卷管理工具。它可以将多个大型数据分卷成多个小型归档，并支持密码保护和错误恢复功能。</p>
+<p>语法：</p>
+<p>rar [参数][需要归档/分卷管理/解档/测试错误恢复记录等操作的归档名称]</p>
+<p>常用参数：</p>
+<p>-a：创建自释放归档；</p>
+<p>-cm：删除存档后删除源件，并立即清空回收站。</p>
+<p>-kb/kB/mb/mB/gb/gB/tb/tB/pb/pB/yb/yB/zb/zB/eb/eB：</p>
+<p>设置存储单位为 KB/kB/MB/mB/GB/gB/TB/tB/PB/pB/YB/yB/ZB/zB/EB/eB</p>
+<p>-p[5f4dcc3b5aa765d61d8327deb882cf99]：设置密码保护。</p>
+<p>(-v[Size][k|K|m|M|g|G]分卷大小（例如 10m) 。</p>
+<p>(-x[d:path*.bak]:排除某些不想要被处理（add) 或不想要被提取（extract）等操作的路径和名称。</p>
+<p>-y:自动覆盖现有同名文档。</p>
+<p>-z[file.ext]:创建 SFX 自释放归档。</p>
+<p>-?:显示帮助信息。</p>
+<p>-t:测试错误恢复记录并尝试修复损坏区域。</p>
+<p>(-x[filename]:从存档中排除具有指定名称格式（支持通配符) 。</p>
+<p>(-inul:禁止所有消息输出（“无用户交互”) 模式。</p>
+<p>(-m[0..5]:设置良好性能和最佳适应性之间权衡（默认为4) 。</p>
+<p>示例：</p>
+<p>创建 test.rar 归档并设置密码保护：“123456”:</p>
+<p>rar a -p123456 test.rar test/</p>
+<p>七、unrar 命令</p>
+<p>unrar 是 Linux 中用于解压 rar 包的命令。它可以将 rar 包中的多个数据分卷全部合并为一个完整归档，并支持密码保护和错误恢复功能。</p>
+<p>语法：</p>
+<p>unrar e [-pPASSWORD ][-y] archive.rar destination_folder/</p>
+<p>常用参数：</p>
+<p>-e:解开RAR存档</p>
+<p>-pPASSWORD:提供密码</p>
+<p>-y:不提示确认</p>
+<p>-x:提取RAR存档时排除指定路径</p>
+<p>-t:测试RAR存档以检查完整性</p>
+<p>-v:显示RAR存档列表</p>
+<p>-lt:显示技术信息及RAR存档列表</p>
+<p>-p-:禁止密码提示</p>
+<p>-o+:覆盖旧版本存档及已存在于目标位置上同名文档</p>
+<p>-o-:不覆盖旧版本存档及已存在于目标位置上同名文档</p>
+<p>-c-:禁止读取指定字符集编码RAR存档注释以避免乱码问题</p>
+<p>-idp:忽略日期及时间误差导致“CRC 错误”的情况发生</p>
+<p>-ag[format]:将存储单位从字节转换为KB, MB, GB 或 TB (自动调整)</p>
+<p>-ai[rarfile]:对 RAR 存档执行自动提取操作(使用诸如*.rar 的通配符)</p>
+<p>-aot[fileext]:对特定扩展名类型自动提取(使用诸如*.txt 的通配符)</p>
+<p>示例:</p>
+<p>解开 test.rar 归档并输入密码“123456”:</p>
+<p>unrar e -p123456 test.rar /home/test/</p>
+<p>八、7z 命令</p>
+<p>7z 是一个开源且高效率算法实现强大、易于使用和高度可配置化文本和图形界面基础上构建起来极其强大且广泛流行7-Zip获得了许可证归纳组件。它支持类似 ZIP 和 RAR 的主流格式以及其自身格式 7z 。</p>
+<p>语法:</p>
+<p>7z a [-tformat] archive.7z [-mx=level][-mmt[N]][-md[N]][-ms[-|0|+|=]][-mhc[-|0|+|=]][-scs{UTF-8| WIN | DOS}][-ssw][-y][&ndash;suffix suffixes][&ndash;encrypt[-p{Password}]][&ndash;volume-size=SIZE][&ndash;5f4dcc3b5aa765d61d8327deb882cf99-file=filename][&ndash;exclude-dir=path][files…]</p>
+<p>7z x [-tformat] archive.7z [-oDir][-y][-scs{UTF-8| WIN | DOS}][&ndash;5f4dcc3b5aa765d61d8327deb882cf99-file=filename][files…]</p>
+<p>7z e [-tformat] archive.7z [-oDir][-y][-scs{UTF-8| WIN | DOS}][&ndash;5f4dcc3b5aa765d61d8327deb882cf99-file=filename][files…]</p>
+<p>示例:</p>
+<p>创建 archive.7z 归档并设置加密密码“123456”，最大化启用 LZMA 最佳性能模式:</p>
+<p>7z a -4027c58064b50a4f0ea1adde1b8e3d88-m0=lzma -mx=9-mfb=64 -md=32m -ms=on -p123456 archive.7z /home/test/*</p>
+<p>九、rpm 打包命令</p>
+<p>rpm 打包是在 Redhat 系统中经常使用到的一种方式，通过 rpm 打包 <strong>linux 常见文件打包压缩命令</strong>，我们可以把软件程序按照 rpm 格式来发布，同时也能够方便地安装软件程序。</p>
+<p>语法:</p>
+<p>rpm-build &ndash;rebuild source.rpm</p>
+<p>常用选项:</p>
+<p>&ndash;target ARCH 构建RPM时所需处理器架构</p>
+<p>&ndash;define ‘MACRO EXPR’ 在构建期间定义MACRO</p>
+<p>&ndash;clean 清除所有临时构建数据</p>
+<p>&ndash;rmsource 删除specfile所引述之source code</p>
+<p>&ndash;short-circuit 对于在.spec内部定义好了%install,%build,%prep步骤,则跳过在/rpm/BUILD内部运行这些步骤</p>
+<p>&ndash;noclean 构建完成之后,不要清除任何临时构建数据</p>
+<p>示例:</p>
+<p>在 CentOS 系统上使用 rpm-build 来构建软件程序 hello.rpm:</p>
+<p>rpm-build &ndash;rebuild hello.rpm</p>
+<p>十、dpkg 打包命令</p>
+<p>dpkg 是 Debian 系统中经常使用到的一种方式，通过 dpkg 打包，我们也能够方便地安装软件程序。</p>
+<p>语法:</p>
+<p>dpkg-buildpackage</p>
+<p>dpkg-buildpackage 会根据debian/control里面描述生成deb安装程序,并且会把源代码和deb都放到../rpms子目录里面去.</p>
+<p>示例:</p>
+<p>在 Debian 系统上使用 dpkg-buildpackage 来构建软件程序 hello.deb:</p>
+<p>dpkg-buildpackage</p>
+<p>总结与展望</p>
+<p>本文介绍了 Linux 中最常见和实用的几种文件打包和压缩命令，涉及到 tar、gzip、bzip2、zip、rar 等不同类型命令，并给出了每种命令对应实际应用场景下相应使用方法与实例说明。此外还介绍了 RPM 和 DPKG 打包方式来快速发布软件程序，这些知识点对于初学者而言是必须掌握好基础知识点，并且本文还简单概括了每种命令所涉及到相关选项，在日后跟进深入学习时可更容易理解各种选项含义与作用机制。希望读者能够通过本篇文章了解到更多关于 Linux 中有关于优化传输效率等技术点内容，并在实际工作生活中灵活运用。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

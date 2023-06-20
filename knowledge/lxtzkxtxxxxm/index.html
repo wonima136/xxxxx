@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674742135169_0.jpg" />
+  <meta name="twitter:description"content="linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674742135169_0.jpg" />
+  <meta property="og:description"content="linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674742135169_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxtzkxtxxxxm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>Linux系统如何查看系统信息 <strong>linux系统信息命令</strong> linux移植，下面IT备忘录小编就给大家收集分享下linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令。# uname -a # 查看内</p>
+<p>Linux系统如何查看系统信息，下面IT备忘录小编就给大家收集分享下linux系统查看系统详细信息命令大全，帮助对不熟悉Linux系统的用户学习熟悉常规操作命令。</p>
+<h1 id="uname--a--查看内核操作系统cpu信息">uname -a # 查看内核/操作系统/CPU信息</h1>
+<h1 id="head--n-1-etcissue--查看操作系统版本">head -n 1 /etc/issue # 查看操作系统版本</h1>
+<h1 id="cat-proccpuinfo--查看cpu信息">cat /proc/cpuinfo # 查看CPU信息</h1>
+<h1 id="hostname--查看计算机名">hostname # 查看计算机名</h1>
+<h1 id="lspci--tv--列出所有pci设备">lspci -tv # 列出所有PCI设备</h1>
+<h1 id="lsusb--tv--列出所有usb设备">lsusb -tv # 列出所有USB设备</h1>
+<h1 id="lsmod--列出加载的内核模块">lsmod # 列出加载的内核模块</h1>
+<h1 id="env--查看环境变量资源">env # 查看环境变量资源</h1>
+<h1 id="free--m--查看内存使用量和交换区使用量">free -m # 查看内存使用量和交换区使用量</h1>
+<h1 id="df--h--查看各分区使用情况">df -h # 查看各分区使用情况</h1>
+<h1 id="du--sh--查看指定目录的大小">du -sh # 查看指定目录的大小</h1>
+<h1 id="grep-memtotal-procmeminfo--查看内存总量">grep MemTotal /proc/meminfo # 查看内存总量</h1>
+<h1 id="grep-memfree-procmeminfo--查看空闲内存量">grep MemFree /proc/meminfo # 查看空闲内存量</h1>
+<h1 id="uptime--查看系统运行时间用户数负载">uptime # 查看系统运行时间、用户数、负载</h1>
+<h1 id="cat-procloadavg--查看系统负载磁盘和分区">cat /proc/loadavg # 查看系统负载磁盘和分区</h1>
+<h1 id="mount--column--t--查看挂接的分区状态">mount | column -t # 查看挂接的分区状态</h1>
+<h1 id="fdisk--l--查看所有分区">fdisk -l # 查看所有分区</h1>
+<h1 id="swapon--s--查看所有交换分区">swapon -s # 查看所有交换分区</h1>
+<h1 id="hdparm--i-devhda--查看磁盘参数仅适用于ide设备">hdparm -i /dev/hda # 查看磁盘参数(仅适用于IDE设备)</h1>
+<h1 id="dmesg--grep-ide--查看启动时ide设备检测状况网络">dmesg | grep IDE # 查看启动时IDE设备检测状况网络</h1>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674742135169_0.jpg" alt="linux系统重启命令_linux系统信息命令_linux查看硬盘信息命令"></p>
+<h1 id="ifconfig--查看所有网络接口的属性">ifconfig # 查看所有网络接口的属性</h1>
+<h1 id="iptables--l--查看防火墙设置">iptables -L # 查看防火墙设置</h1>
+<h1 id="route--n--查看路由表">route -n # 查看路由表</h1>
+<h1 id="netstat--lntp--查看所有监听端口">netstat -lntp # 查看所有监听端口</h1>
+<h1 id="netstat--antp--查看所有已经建立的连接">netstat -antp # 查看所有已经建立的连接</h1>
+<h1 id="netstat--s--查看网络统计信息进程">netstat -s # 查看网络统计信息进程</h1>
+<h1 id="ps--ef--查看所有进程">ps -ef # 查看所有进程</h1>
+<h1 id="top--实时显示进程状态用户">top # 实时显示进程状态用户</h1>
+<h1 id="w--查看活动用户">w # 查看活动用户</h1>
+<h1 id="id--查看指定用户信息">id # 查看指定用户信息</h1>
+<h1 id="last--查看用户登录日志">last # 查看用户登录日志</h1>
+<h1 id="cut--d--f1-etcpasswd--查看系统所有用户">cut -d: -f1 /etc/passwd # 查看系统所有用户</h1>
+<h1 id="cut--d--f1-etcgroup--查看系统所有组">cut -d: -f1 /etc/group # 查看系统所有组</h1>
+<h1 id="crontab--l--查看当前用户的计划任务服务">crontab -l # 查看当前用户的计划任务服务</h1>
+<h1 id="chkconfig-list--列出所有系统服务">chkconfig –list # 列出所有系统服务</h1>
+<h1 id="chkconfig-list--grep-on--列出所有启动的系统服务程序">chkconfig –list | grep on # 列出所有启动的系统服务程序</h1>
+<h1 id="rpm--qa--查看所有安装的软件包">rpm -qa # 查看所有安装的软件包</h1>
+<p>温馨提示：大家只需要输入 # 中间的命令即可，用法如下图所示：</p>
+<p>备注：命令适用于大部分类型的Linux内核系统 <strong>linux系统信息命令</strong>，包括国内的linux操作系统怎么样，深度Deepin Linux、统信UOS……</p>
+<p>相关内容标签</p>
+<p>linux</p>
+<p>)</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

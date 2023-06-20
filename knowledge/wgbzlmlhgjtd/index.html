@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>五个标准Linux命令行工具替代品的替代工具介绍</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="五个标准Linux命令行工具替代品的替代工具介绍" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_0.jpg" />
+  <meta name="twitter:description"content="五个标准Linux命令行工具替代品的替代工具介绍">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="五个标准Linux命令行工具替代品的替代工具介绍" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_0.jpg" />
+  <meta property="og:description"content="五个标准Linux命令行工具替代品的替代工具介绍" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="五个标准Linux命令行工具替代品的替代工具介绍" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/wgbzlmlhgjtd/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="五个标准Linux命令行工具替代品的替代工具介绍" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">五个标准Linux命令行工具替代品的替代工具介绍</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>原文链接：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_0.jpg" alt="linux grep 命令_linux命令grep用法_linux grep命令"></p>
+<p>在日常使用Linux/Unix系统时，我们会使用许多命令行工具来完成我们的工作，并理解和管理我们的系统，像du用于监视c盘借助率，top用于显示系统资源。其中一些工具早已存在很长时间了。诸如，top于1984年首次发布，而du的首次发布要溯源到1971年。</p>
+<p>多年来，这种工具早已被现代化并移植到不同的系统，并且，一般，它们依然延续着它们最初的思想和体验。</p>
+<p>这种都是挺好的工具，对于许多系统管理员的工作流来说都是必不可少的。但是，近来几年，开源社区早已开发出了可以带来额外益处的代替工具。似乎有些华而不实，但另外一些则极大地提升了可用性，使它们成为现代化系统上的最佳选择。这包括以下五个标准Linux命令行工具的取代品。</p>
+<p>1作为du代替品的ncdu</p>
+<p>(NCursesc盘借助率（ncdu) 工具提供了与du类似的结果，而且在一个基于curses的交互式界面中，它重点关注这些占用c盘空间比较多的目录。</p>
+<p>ncdu会花一些时间剖析c盘，之后按照你最常用的目录或文件显示结果，如下所示：</p>
+<p>ncdu1.14.2~Usethearrowkeystonavigate,press?forhelp—/home/rgerardi————————————————————96.7GiB[##########]/libvirt33.9GiB[###]/.crc7.0GiB[]/Projects.4.7GiB[]/Downloads.3.9GiB[]/.local2.5GiB[]/.minishift2.4GiB[]/.vagrant.d.1.9GiB[]/.config.1.8GiB[]/.cache1.7GiB[]/Videos1.1GiB[]/go692.6MiB[]/Documents.591.5MiB[]/tmp139.2MiB[]/.var104.4MiB[]/.oh-my-zsh82.0MiB[]/s55.8MiB[]/.mozilla54.6MiB[]/.kube41.8MiB[]/.vim31.5MiB[]/.ansible31.3MiB[]/.gem26.5MiB[]/.VIM_UNDO_FILES15.3MiB[]/Personal2.6MiB[].ansible_module_generated1.4MiB[]/backgrounds944.0KiB[]/Pictures644.0KiB[].zsh_history536.0KiB[]/.ansible_asyncTotaldiskusage:159.4GiBApparentsize:280.8GiBItems:561540</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_1.png" alt="linux命令grep用法_linux grep命令_linux grep 命令"></p>
+<p>使用方向键导航到每位条目。假如你在一个目录条目上按下Enter键，ncdu将显示该目录的内容：</p>
+<p>—/home/rgerardi/libvirt—————————————————-/..91.3GiB[##########]/images5.3GiB[]/media</p>
+<p>你可以使用它下钻目录并查找什么文件占用的c盘空间最多 <strong>linux命令grep用法</strong>，使用左箭头键可以返回上一级目录。在默认情况下，可以按下d键使用ncdu删掉文件，在删掉之前，它会跟你确认删掉恳求。假如你想禁用此行为以避免发生意外，请使用-r选项进行只读访问：ncdu-r。</p>
+<p>ncdu可用于许多平台和Linux发行版。诸如，你可以使用dnf直接从官方储存库把它安装到Fedora上：</p>
+<p>$sudodnfinstallncdu</p>
+<p>要了解关于这个工具的更多信息，请查看ncdu页面。</p>
+<p>2作为top取代品的htop</p>
+<p>htop是一个类似于top的交互式流程查看器，但它提供了更好的开箱即用的用户体验。默认情况下，htop会用令人愉快的彩色显示与top相同的指标。</p>
+<p>默认情况下，htop是这样的：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_2.jpg" alt="linux grep命令_linux命令grep用法_linux grep 命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_3.png" alt="linux grep命令_linux grep 命令_linux命令grep用法"></p>
+<p>相比之下，top默认是这样的：</p>
+<p>据悉，htop在底部提供了系统概览信息，在顶部提供了一个命令栏，可以使用功能键来触发命令，并且，你还可以按F2步入设置界面对它进行订制。你可以修改其颜色、添加或删掉指标，或修改概览栏的显示选项。</p>
+<p>尽管对于最新版本的top，你也可以通过配置实现类似的结果，但htop提供了更合理的默认配置，这促使它成为一个漂亮且便于使用的流程查看器。</p>
+<p>要了解关于这个项目的更多信息，请查看htop首页。</p>
+<p>3作为man取代品的tldr</p>
+<p>tldr命令行工具显示简化的命令用法信息，主要包括示例。它是作为社区项目tldrpages的顾客端。</p>
+<p>这个工具不能取代man。man页面依然是许多工具规范而完整的信息源。但是，在个别情况下，man提供的信息太多了。有时侯，你不须要一个命令的所有信息；你只是试着记住基本的选项。诸如，curl命令的man页面几乎有3000行。相反linux操作系统论文，curl的tldr页面只有40行，如下所示：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_4.jpg" alt="linux命令grep用法_linux grep命令_linux grep 命令"></p>
+<p>$tldrcurl#curlTransfersdatafromortoaserver.Supportsmostprotocols,includingHTTP,FTP,andPOP3.Moreinformation:.-DownloadthecontentsofanURLtoafile:curl-ofilename-Downloadafile,savingtheoutputunderthefilenameindicatedbytheURL:curl-O-Downloadafile,following[L]ocationredirects,andautomatically[C]ontinuing(resuming)apreviousfiletransfer:curl-O-L-C&ndash;Sendform-encodeddata(POSTrequestoftype<code>application/x-www-form-urlencoded</code>):curl-d’name=bob’-Sendarequestwithanextraheader,usingacustomHTTPmethod:curl-H’X-My-Header:123′-XPUT-SenddatainJSONformat,specifyingtheappropriatecontent-typeheader:curl-d&rsquo;{“name”:”bob”}’-H’Content-Type:application/json’…TRUNCATEDOUTPUT</p>
+<p>TLDR是网路俚语“toolong;didn’tread”的简写，指对一篇很长的文章进行总结。这个名称很适宜这个工具，由于man页面其实有用，但有时太长了。</p>
+<p>在Fedora中，tldr顾客端是用Python编撰的。你可以使用dnf安装它。要了解其他顾客端选项，请参阅tldrpages项目页面。</p>
+<p>通常来说，tldr工具须要访问互联网以查阅tldrpages。Fedora中的Python顾客端容许你下载并缓存这种页面以供脱机访问。</p>
+<p>要了解有关tldr的更多信息，可以使用tldrtldr。</p>
+<p>4作为sed/grep取代品的jq</p>
+<p>jq是一个命令行JSON处理器，类似于sed或grep，但专门设计用于处理JSON数据。假如你是在日常任务中会用到JSON的开发人员或系统管理员，这么这是你工具箱中必不可少的工具。</p>
+<p>与grep和sed等通用文本处理工具相比，jq的主要优点是它理解JSON的数据结构，容许使用单个表达式创建复杂的查询。</p>
+<p>举例来说，假定你企图在这个JSON文件中查找容器的名称：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685448792963_5.jpg" alt="linux grep命令_linux命令grep用法_linux grep 命令"></p>
+<p>{“apiVersion”:”v1″,”kind”:”Pod”,”metadata”:{“labels”:{“app”:”myapp”},”name”:”myapp”,”namespace”:”project1″},”spec”:{“containers”:[{“command”:[“sleep”,”3000″],”image”:”busybox”,”imagePullPolicy”:”IfNotPresent”,”name”:”busybox”},{“name”:”nginx”,”image”:”nginx”,”resources”:{},”imagePullPolicy”:”IfNotPresent”}],”restartPolicy”:”Never”}}</p>
+<p>假如你直接使用grep查找name，则写法如下：</p>
+<p>$grepnamek8s-pod.json”name”:”myapp”,”namespace”:”project1″”name”:”busybox””name”:”nginx”,</p>
+<p>grep返回包含词组name的所有行。你可以向grep添加更多选项来限制它，利用一些正则表达式操作来找到容器的名称。假如是使用jq获得你想要的结果，则可以使用一个表达式来模拟向上导航数据结构，如下所示：</p>
+<p>$jq’.spec.containers[].name’k8s-pod.json”busybox””nginx”</p>
+<p>这个命令提供这两个容器的名称。假如你只是在查找第二个容器的名称，则可以在表达式中添加字段元素索引：</p>
+<p>$jq’.spec.containers[1].name’k8s-pod.json”nginx”</p>
+<p>由于jq晓得数据结构，所以虽然文件格式稍有变化，它也能提供相同的结果。而只要格式稍有变化，grep和sed就可能提供不同的结果。</p>
+<p>jq有许多特点，要介绍所有那些特点的话linux命令大全，须要另写一篇文章。要了解更多信息，请参阅jq项目页、man页面或tldrjq。</p>
+<p>5作为find取代品的fd</p>
+<p>fd是find命令的一个简单而快速的取代品。它的目的不是替代find提供的全部功能；相反，它提供了一些合理的默认值，在个别情况下十分有用。</p>
+<p>比如，在包含Git储存库的目录中搜索源代码文件时，fd会手动排除隐藏的文件和目录，包括..git目录，并忽视.gitignore文件中的模式。通常来说，它的搜索速率更快 <strong>linux命令grep用法</strong>，但是第一次搜索时提供了更多相关的结果。</p>
+<p>(默认情况下，fd在当前目录中执行不分辨大小写的模式搜索，输出是彩色的。使用find进行相同的搜索须要你提供额外的命令行参数。诸如，在当前目录中搜索所有的markdown文件（.md或.MD) ，find命令如下：</p>
+<p>$find.-iname”*.md”</p>
+<p>使用fd进行同样的搜索：</p>
+<p>$fd.md</p>
+<p>在个别情况下，fd须要额外的选项；诸如，假如你想包含隐藏文件和目录，则必须使用选项-H，而这在find中是不须要的。</p>
+<p>fd可用于许多Linux发行版。执行以下命令，可以使用标准储存库在Fedora中安装：</p>
+<p>$sudodnfinstallfd-find</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

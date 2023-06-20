@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>3：系统管理</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content=" " /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content=" " />
+  <meta name="twitter:description"content=" ">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content=" ">
+  <meta name="twitter:title" content="3：系统管理" />
+  <meta name="twitter:image:src" content=" " />
+  <meta property="og:description"content=" " />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content=" " />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="3：系统管理" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/system/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="3：系统管理" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+
+
+
+<div id="primary" class="clearfix sidebar-right">
+    
+    <div class="ht-container">
+
+        
+        <section id="content" role="main">
+
+
+            
+            <header id="page-header">
+                <h1 class="page-title">Category: <span>3：系统管理</span></h1>
+                <div id="breadcrumbs">
+                    <a href="https://wonima136.github.io/linux-cool/">
+                        <icon class="fa fa-home">
+                            </i>
+                    </a><span class="sep">/</span><a href="https://wonima136.github.io/linux-cool/system/">3：系统管理</a> <span class="sep">/</span> </div>
+            </header>
+
+            
+
+            
+            
+
+
+
+            
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/journalctl-2/">[重]journalctl命令 – 检索systemd日志</a></h2>
+                <div class="entry-content"><p>journalctl命令可以用来查询 systemd-journald.service(8) 所写的 systemd(1) 日志的内容。如果调用时没有参数，则会显示日志的全部内容，从收集到的最早的条目开始。
+语法格式： journalctl [参数]
+常用参数：
+-a完整显示所有字段内容，即使其中包 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/journalctl-2/" class="readmore" title="[重]journalctl命令 – 检索systemd日志">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/auditstat/">auditstat命令 -显示内核审计统计</a></h2>
+                <div class="entry-content"><p>auditstat 命令用来显示内核审计统计信息，统计用户级审计所处理的审计记录数、已被删除的审计记录数、用户进程生成的审计记录数、队列阻塞而等待处理审计数据的总次数等。
+语法格式： auditstat [参数]
+常用参数：
+-c统计总共的信息并显示-n显示当前系统配置的内核审计数-i每隔一段时间显 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/auditstat/" class="readmore" title="auditstat命令 -显示内核审计统计">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/aulastlog/">aulastlog命令 – 打印最近登陆记录</a></h2>
+                <div class="entry-content"><p>aulastlog是一个程序，它打印出计算机的所有用户的最后一个登录名，并使用类似于lastlog命令的方式，将打印登录名、端口和上次登录时间。
+如果用户从未登录，将显示消息“从未登录”而不是端口和时间。
+语法格式： aulastlog [参数]
+常用参数：
+-u, &amp;ndash;user仅使用指定 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/aulastlog/" class="readmore" title="aulastlog命令 – 打印最近登陆记录">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/bootadm/">bootadm命令 – 管理引导配置</a></h2>
+                <div class="entry-content"><p>(bootadm 命令管理启动存档，对于 x86 的启动环境，管理 GRUB（GRand Unified Bootloader) 菜单。 对于x86来说，支持Legacy GRUB和GRUB2（但不是同时）。更新存档选项为用户提供了一种更新引导存档的方法，作为一种预防措施或作为恢复程序的一部分。
+语 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/bootadm/" class="readmore" title="bootadm命令 – 管理引导配置">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/chmem/">chmem命令 – 设置内存</a></h2>
+                <div class="entry-content"><p>chmem命令将特定大小或范围的内存设置为联机或离线。当设置内存联机时，chmem从最低内存块开始数字。当设置内存脱机时，chmem从最高内存块编号
+语法格式： chmem [参数]
+常用参数：
+-b, &amp;ndash;blocks为enable和&amp;ndash;disable选项使 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/chmem/" class="readmore" title="chmem命令 – 设置内存">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/chrt/">chrt命令 – 实时管理进程的优先级策略</a></h2>
+                <div class="entry-content"><p>chrt命令来自英文词组“Change real-time”的缩写，其功能是用于实时管理进程的优先级策略，策略值范围在0~99之间。
+语法格式： chrt [参数] [对象]
+常用参数：
+-h显示帮助信息-m显示最小和最大有效优先级-p对指定PID进程进行操作-V显示版本信息
+参考示例
+更改指定的进 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/chrt/" class="readmore" title="chrt命令 – 实时管理进程的优先级策略">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/cloud-init/">cloud-init命令 – 跨平台云实例初始化工具</a></h2>
+                <div class="entry-content"><p>cloud-init命令是用于跨平台云实例初始化的行业标准多分布式方法，所有主要的公共云提供商、私有云基础设施的供应系统和裸机安装都支持该方法。
+语法格式： cloud-init [参数]
+常用参数：
+init初始化cloud-init并执行初始化模块modules使用给定的配置键激活模 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/cloud-init/" class="readmore" title="cloud-init命令 – 跨平台云实例初始化工具">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/deluser/">deluser命令 – 删除用户账户</a></h2>
+                <div class="entry-content"><p>deluser命令来自英文词组“delete user”的缩写，其功能是用于删除用户账户。
+语法格式： deluser [参数] 用户名
+常用参数：
+&amp;ndash;backup删除前备份用户家目录和邮件数据&amp;ndash;backup-to设置指定目录进行备份&amp;ndash;group删除用户 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/deluser/" class="readmore" title="deluser命令 – 删除用户账户">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/fgconsole/">fgconsole命令 – 显示活动的虚拟终端数量</a></h2>
+                <div class="entry-content"><p>fgconsole命令的作用是可以显示活动的虚拟终端数量。
+如果活动的虚拟终端为/dev/ttyN，则在标准输出上显示N。 如果控制台是串行控制台，则打印“serial”。
+如果当前进程有控制终端的话，那么/dev/tty就是当前进程的控制终端的设备特殊文件。可以使用命令”ps –ax”来查看进程与 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/fgconsole/" class="readmore" title="fgconsole命令 – 显示活动的虚拟终端数量">Read More<span> &rarr;</span></a>
+            </article>
+            
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="https://wonima136.github.io/linux-cool/system/iperf3/">iperf3命令 – 进行网络吞吐量测试</a></h2>
+                <div class="entry-content"><p>iperf3是一款进行网络吞吐量测试的命令工具，由美国伊利诺伊大学研发和维护。在建立好客户端和服务器后，iperf3可以测试TCP和UDP的吞吐量。
+语法格式： iperf3 [参数] IP地址
+常用参数：
+(-B设置绑定的接口-d显示调试信息-f格式化带宽输出-F传输或接收指定文件-h显示帮助信 …</p></div>
+                <a href="https://wonima136.github.io/linux-cool/system/iperf3/" class="readmore" title="iperf3命令 – 进行网络吞吐量测试">Read More<span> &rarr;</span></a>
+            </article>
+            
+			
+			
+            <div class="page-navigation clearfix">
+
+
+
+
+
+
+  <ul class="pagination">
+  
+  <a href="/linux-cool/system/page/2/" class="pag-link">«</a>
+    
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/system/" class="pag-link">1</a>
+	
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/system/page/2/" class="pag-link">2</a>
+	
+	
+	
+	
+	<a class="pag-item pag-current" href="/linux-cool/system/page/3/" class="pag-link">3</a>
+	
+	
+	
+	
+	<a class="pag-item" href="/linux-cool/system/page/4/" class="pag-link">4</a>
+	
+	
+	
+	<a class="pag-item pag-next" href="/linux-cool/system/page/4/" class="pag-link">»</a>
+    
+  </ul>
+
+            </div>
+        </section>
+        <aside id="sidebar" role="complementary">
+            <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                <h4 class="widget-title"><span>最热命令</span></h4>
+                <ul class="clearfix">
+                    
+                    
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+					
+                    <li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+					
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+</div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>

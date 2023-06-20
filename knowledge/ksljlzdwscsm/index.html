@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>快速了解Linux中的网速测试命令！</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="快速了解Linux中的网速测试命令！" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680897950836_0.webp" />
+  <meta name="twitter:description"content="快速了解Linux中的网速测试命令！">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="快速了解Linux中的网速测试命令！" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680897950836_0.webp" />
+  <meta property="og:description"content="快速了解Linux中的网速测试命令！" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680897950836_0.webp" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="快速了解Linux中的网速测试命令！" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/ksljlzdwscsm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="快速了解Linux中的网速测试命令！" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">快速了解Linux中的网速测试命令！</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>Linux系统下的网速测试命令可以帮助你快速了解网络连接质量，以及找出网络瓶颈。本文将详细介绍Linux中常用的网速测试命令，并提供实用案例以帮助读者更好地理解和使用这些命令。</p>
+<p><strong>1. ping命令</strong></p>
+<p>ping命令是最常用的网络连通性测试命令，它可以检查目标IP地址是否可达，并测量响应时间。例如，我们可以使用以下命令测试谷歌的IP地址：</p>
+<pre tabindex="0"><code>ping -c 4 8.8.8.8
+</code></pre><p>上面的命令将发送4个ICMP包到8.8.8.8并显示结果。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>PING 8.8.8.8(8.8.8.8) 56(84)a47ef96832ddb21d02d81421874b53e0.
+64 bytes from 8.8.8.8:76ccd814ddc8aafe36192f6dd8785917_seq=1 ttl=116 time=10.7 ms
+64 bytes from 8.8.8.8:76ccd814ddc8aafe36192f6dd8785917_seq=2 ttl=116 time=11.2 ms
+64 bytes from 8.8.8.8:76ccd814ddc8aafe36192f6dd8785917_seq=3 ttl=116 time=10.9 ms
+64 bytes from 8.8.8.8:76ccd814ddc8aafe36192f6dd8785917_seq=4 ttl=116 time=11.0 ms
+---8.8.8.8 ping statistics ---
+4 packets transmitted,49756d163793558e231172bd7482ee53,0% packet loss, time 3003ms
+rtt min/avg/max/mdev = 10.710/11.008/11.213/0.201 ms
+</code></pre><p>其中，“64 bytes from 8.8.8.8”表示成功接收到来自目标IP的响应，07cc694b9b3fc636710fa08b6922c42b=10.d2e34bf1b254a921e8628168196a760e表示响应时间为10.7毫秒。</p>
+<p><strong>2. traceroute命令</strong></p>
+<p>traceroute命令可以追踪数据包在网络中的路由路径，并显示每个路由器的响应时间。例如，我们可以使用以下命令测试谷歌的IP地址：</p>
+<pre tabindex="0"><code>traceroute
+</code></pre><p>上面的命令将在网络中追踪到谷歌服务器，并显示每个路由器的响应时间。如果一切正常 <strong>linux中网速测试命令</strong>，你将看到类似以下输出：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680897950836_0.webp" alt="dos命令测试网速_linux中网速测试命令_测试网速命令"></p>
+<pre tabindex="0"><code>traceroute to  (216.58.a597e50502f5ff68e3e25b9114205d4a.174), 30 hops max,6d4e7891ad3f64afefd998da75e202f2_gateway (192.168.1.1)  2.522 ms  2.518 ms  2.521 ms
+2  ***
+3   (69.31.95.177)  12.064 ms  (69.31.95.fc221309746013ac554571fbd180e1c8)  12.050 ms  (69.31.95.
+177)  11.983 ms
+4  ae5-70g. (69.31.95.198)  12.489 ms ae1-70g. (69.31.95.202)  12.482 ms ae5-70g. (69.31.
+95.198)  12.468 ms
+5  ae0-90g. (69.22.142.190)  12.456 ms ae1-90g. (69.22.142.a597e50502f5ff68e3e25b9114205d4a)  12.446 ms ae0-90g. (69.
+22.142.190)  12.437 ms
+6   (63.125.50.94)  14.041 ms  (63.125.50.98)  14.020 ms  (63.
+125.50.94)  13.
+</code></pre><p>(其中，“***”表示无法接收到路由器的响应linux操作系统界面，而数字表示响应时间（单位为毫秒) 。</p>
+<p><strong>3. mtr命令</strong></p>
+<p>mtr命令可以同时执行ping和traceroute命令，并显示每个路由器的平均响应时间。例如，我们可以使用以下命令测试谷歌的IP地址：</p>
+<pre tabindex="0"><code></code></pre><p>上面的命令将在网络中追踪到谷歌服务器，并显示每个路由器的平均响应时间。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>Start: 2023-04-08T10:00:00+6d4bb55f830d6f14712142dc6193f11d: linuxcool.localdomain Loss% Snt Last Avg Best Wrst StDev
+1.|--_gateway 0.0% 10 2.5 2.5 2.4 2.6 0.5a44c1607c4cc56f2f2674d47858bb9e.|–??? 100.21258a2fc6ed39fd083f55d4182bf88826d32a81fb78000291726f8b46e19.0 0.0 0.0 0.0 0.
+3.|--  0.0% 10 12.1 12.1 11.9 12.3
+|–
+4.|-- ae5-70g. 0.0% 10 12.5 12.5 12.4 12.
+|– ae1-70g.cr1.sjc2.us.nlayer.7b3bf744cba9bcfc90d2217c385648a4.|-- ae0-90g. …
+6.|--  …
+</code></pre><p>其中，“Loss%”表示数据包丢失率，“Last”表示最后一个路由器的响应时间，“Avg”表示平均响应时间。</p>
+<p><strong>4. iperf命令</strong></p>
+<p>iperf命令可以测试网络带宽linux安全加固，用于测量TCP和UDP传输速度。例如，我们可以使用以下命令测试本地网络带宽：</p>
+<pre tabindex="0"><code>iperf -s
+</code></pre><p>上面的命令将启动一个iperf服务器。接下来 <strong>linux中网速测试命令</strong>，我们可以在另一台计算机上运行以下命令测试网络带宽：</p>
+<pre tabindex="0"><code>iperf -c&lt;server_ip&gt;-8b4a90ed9111a897f0ea7-t 10
+</code></pre><p>其中，是iperf服务器的IP地址。上面的命令将在10秒内测试网络带宽，并每秒显示一次结果。</p>
+<p><strong>5. speedtest-cli命令</strong></p>
+<p>1f1d9b70548b14347d8efc221309746013ac554571fbd180e1c8f1492a6a3-cli命令可以测试网络连接质量，包括下载速度、上传速度和延迟。例如，我们可以使用以下命令测试本地网络连接：</p>
+<pre tabindex="0"><code>speedtest-cli
+</code></pre><p>上面的命令将测试本地网络连接，并显示下载速度、上传速度和延迟。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>Retrieving  configuration...
+Testing from Example ISP (192.168.1.1)...
+Retrieving  server list...
+Selecting best server based on ping...
+Hosted by Example Host (City, State)[50.ef5d4a72e9418a950aef161c190eeda9]: 25.0 ms
+Testing download speed................................................................................1ef216c9a948e4d8dba8eb6ab91c6557: 100.00 Mbit/bd1f7177e4800375ba03ac01eba24d52......................................................................................................
+Upload: 20.00 Mbit/s
+</code></pre><p>(其中，“Download”表示下载速度，“Upload”表示上传速度，“ms”表示延迟（单位为毫秒) 。</p>
+<p><strong>6. netstat命令</strong></p>
+<p>netstat命令可以显示当前系统的网络连接状态，包括本地IP地址、远程IP地址、协议和状态等信息。例如，我们可以使用以下命令查看当前系统的网络连接：</p>
+<pre tabindex="0"><code>netstat -a| grep ESTABLISHED
+</code></pre><p>上面的命令将显示所有已建立的连接。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>tcp 0 0 linuxcool:59050 :http ESTABLISHED
+tcp 0 0 linuxcool:59052 :http ESTABLISHED
+tcp 0 0 linuxcool:59054 :http ESTABLISHED
+</code></pre><p>(其中，“linuxcool”表示本地IP地址，“”表示远程IP地址，“http”表示协议（TCP或UDP) ，“ESTABLISHED”表示连接状态。</p>
+<p><strong>7. iftop命令</strong></p>
+<p>iftop命令可以实时监测网络流量，包括本地IP地址、远程IP地址、协议和流量等信息。例如，我们可以使用以下命令查看当前系统的网络流量：</p>
+<pre tabindex="0"><code>iftop -P
+</code></pre><p>上面的命令将显示所有正在进行的网络连接，并实时更新流量信息。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>192.168.1.100 =&gt; 172.217.160.142     1.06Mb 1.18Mb 1.24Mb
+192.168.1.100 =&gt; 23.56.67.93        34.8Kb   11.5Kb   14.6Kb
+192.168.1.100 =&gt; 23.56.67.98        34.8Kb   11.5Kb   14.
+</code></pre><p>(其中，“192.168.1.100”表示本地IP地址，“172.217.160.142”表示远程IP地址，“Mb”表示流量（单位为兆字节) 。</p>
+<p><strong>8. nload命令</strong></p>
+<p>nload命令可以实时监测网络带宽，包括本地IP地址、远程IP地址、协议和带宽等信息。例如，我们可以使用以下命令查看当前系统的网络带宽：</p>
+<pre tabindex="0"><code>nload
+</code></pre><p>上面的命令将显示当前系统的网络带宽，并实时更新带宽信息。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>Curr:1.72 MBit/s
+Avg:1.75 MBit/s
+Min:0.00 Bit/8032066bd8db9a2a6e048e7710b987d8:2.4420227577255bf3cd4c000d97eec41a/s
+Ttl:1.79 GByte
+</code></pre><p>(其中，“MBit/s”表示带宽（单位为兆比特/秒) 。</p>
+<p><strong>9. tcpdump命令</strong></p>
+<p>tcpdump命令可以捕获网络数据包，并显示数据包的内容。例如，我们可以使用以下命令捕获本地网络数据包：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680897950836_3.jpg" alt="测试网速命令_linux中网速测试命令_dos命令测试网速"></p>
+<pre tabindex="0"><code>a814643b1d79b6d1772d0f07385579e9-i eth0
+</code></pre><p>上面的命令将在eth0接口上捕获所有网络数据包，并显示数据包的内容。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>6c6db3fa7f191bc53b87cf45275160c6:44:24.3b645938af2c6100e8cef3068ab9f267.168.1.100 &gt;8.8.8.8: ICMP echo request, id 16920, seq 1, length 64
+11:44:25.961104 IP 192.168.1.100 &gt;8.8.8.8: ICMP echo request, id 16920, seq 2, length 64
+11:44:26.961184 IP 192.168.1.100 &gt;8.8.8.8: ICMP echo request, id 16920,e51423699a0a1d91cd3f246cef28971c, length 64
+</code></pre><p>其中，“IP”表示协议类型，“192.168.1.100”表示源IP地址，“8.8.8.8”表示目标IP地址。</p>
+<p><strong>10. ss命令</strong></p>
+<p>ss命令可以显示当前系统的网络连接状态，包括本地IP地址、远程IP地址、协议和状态等信息。例如，我们可以使用以下命令查看当前系统的网络连接：</p>
+<pre tabindex="0"><code>ss -a| grep ESTAB
+</code></pre><p>上面的命令将显示所有已建立的连接。如果一切正常，你将看到类似以下输出：</p>
+<pre tabindex="0"><code>tcp ESTAB 0 0 linuxcool:59050 :http
+tcp ESTAB 0 0 linuxcool:59052 :http
+tcp ESTAB 0 0 linuxcool:59054 :http
+</code></pre><p>其中，“ESTAB”表示连接状态。</p>
+<p>通过上述介绍，相信大家对Linux中网速测试命令有了更深入的了解。这些命令可以帮助我们快速了解网络连接质量，以及找出网络瓶颈。在实际应用中，我们可以根据具体情况选择合适的命令进行测试，并结合其他工具进行分析和优化。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>基于脚本的运行环境</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="基于脚本的运行环境" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684930233889_2.png" />
+  <meta name="twitter:description"content="基于脚本的运行环境">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="基于脚本的运行环境" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684930233889_2.png" />
+  <meta property="og:description"content="基于脚本的运行环境" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684930233889_2.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="基于脚本的运行环境" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/jyjbdyxhj/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="基于脚本的运行环境" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">基于脚本的运行环境</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>文章目录</p>
+<p>1.功能简介</p>
+<p>set命令主要用于查看和更改Shell环境的运行参数，可以定做Shell脚本的运行环境。</p>
+<p>使用set修改Shell运行环境时，符号”+“和”-“的作用分别是打开和关掉指定的模式。</p>
+<p>注意，假若命令行下不带任何参数，直接运行set <strong>linux命令vi的退出查看</strong>，会显示所有的环境变量和Shell函数。</p>
+<p>2.命令格式</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>set <span style="color:#f92672">[</span>--abefhkmnptuvxBCEHPT<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-o option-name<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>arg ...<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>set <span style="color:#f92672">[</span>+abefhkmnptuvxBCEHPT<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>+o option-name<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>arg ...<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>3.选项说明</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-a
+</span></span><span style="display:flex;"><span>	标示已修改的变量，以供输出至环境变量。
+</span></span><span style="display:flex;"><span>-b
+</span></span><span style="display:flex;"><span>	使被中止的后台程序立刻回报执行状态。
+</span></span><span style="display:flex;"><span>-C
+</span></span><span style="display:flex;"><span>	转向所产生的文件无法覆盖已存在的文件。
+</span></span><span style="display:flex;"><span>-d
+</span></span><span style="display:flex;"><span>	Shell预设会用杂凑表记忆使用过的指令，以加速指令的执行。使用 -d 参数可取消。
+</span></span><span style="display:flex;"><span>-e
+</span></span><span style="display:flex;"><span>	若指令传回值不等于0，则立即退出 Shell。
+</span></span><span style="display:flex;"><span>-f
+</span></span><span style="display:flex;"><span>	取消使用通配符。
+</span></span><span style="display:flex;"><span>-h
+</span></span><span style="display:flex;"><span>	自动记录函数的所在位置。
+</span></span><span style="display:flex;"><span>-H
+</span></span><span style="display:flex;"><span>	Shell 可利用”!”加&lt;指令编号&gt;的方式来执行 history 中记录的指令。
+</span></span><span style="display:flex;"><span>-k
+</span></span><span style="display:flex;"><span>	指令所给的参数都会被视为此指令的环境变量。
+</span></span><span style="display:flex;"><span>-l
+</span></span><span style="display:flex;"><span>	记录for循环的变量名称。
+</span></span><span style="display:flex;"><span>-m
+</span></span><span style="display:flex;"><span>	使用监视模式。
+</span></span><span style="display:flex;"><span>-n
+</span></span><span style="display:flex;"><span>	只读取指令，而不实际执行。
+</span></span><span style="display:flex;"><span>-o <span style="color:#f92672">[</span>option-name<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>	通过选项名称完成对 Shell 执行环境的设置。如果未执行选项名称，则显示所有配置情况。
+</span></span><span style="display:flex;"><span>-p
+</span></span><span style="display:flex;"><span>	启动优先顺序模式。
+</span></span><span style="display:flex;"><span>-P
+</span></span><span style="display:flex;"><span>	启动 -P 参数后，执行指令时，会以实际的文件或目录来取代符号连接。
+</span></span><span style="display:flex;"><span>-t
+</span></span><span style="display:flex;"><span>	执行完随后的指令，即退出 Shell。
+</span></span><span style="display:flex;"><span>-u
+</span></span><span style="display:flex;"><span>	当执行时使用到未定义过的变量，则显示错误信息。
+</span></span><span style="display:flex;"><span>-v
+</span></span><span style="display:flex;"><span>	显示 Shell 所读取的输入值。
+</span></span><span style="display:flex;"><span>-x
+</span></span><span style="display:flex;"><span>	执行指令后，会先显示该指令及所下的参数。
+</span></span></code></pre></div><p>4.常用示例</p>
+<p>(（1) 无参执行set查看本地变量。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>foo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;foo&#34;</span>
+</span></span><span style="display:flex;"><span>set | grep foo
+</span></span><span style="display:flex;"><span>foo<span style="color:#f92672">=</span>foo
+</span></span></code></pre></div><p>(（2) 查看当前Shell执行环境的设置情况。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>set -o
+</span></span><span style="display:flex;"><span>allexport      	off
+</span></span><span style="display:flex;"><span>braceexpand    	on
+</span></span><span style="display:flex;"><span>emacs          	on
+</span></span><span style="display:flex;"><span>errexit        	off
+</span></span><span style="display:flex;"><span>errtrace       	off
+</span></span><span style="display:flex;"><span>functrace      	off
+</span></span><span style="display:flex;"><span>hashall        	on
+</span></span><span style="display:flex;"><span>histexpand     	on
+</span></span><span style="display:flex;"><span>history        	on
+</span></span><span style="display:flex;"><span>ignoreeof      	off
+</span></span><span style="display:flex;"><span>interactive-comments	on
+</span></span><span style="display:flex;"><span>keyword        	off
+</span></span><span style="display:flex;"><span>monitor        	on
+</span></span><span style="display:flex;"><span>noclobber      	off
+</span></span><span style="display:flex;"><span>noexec         	off
+</span></span><span style="display:flex;"><span>noglob         	off
+</span></span><span style="display:flex;"><span>nolog          	off
+</span></span><span style="display:flex;"><span>notify         	off
+</span></span><span style="display:flex;"><span>nounset        	off
+</span></span><span style="display:flex;"><span>onecmd         	off
+</span></span><span style="display:flex;"><span>physical       	off
+</span></span><span style="display:flex;"><span>pipefail       	off
+</span></span><span style="display:flex;"><span>posix          	off
+</span></span><span style="display:flex;"><span>privileged     	off
+</span></span><span style="display:flex;"><span>verbose        	off
+</span></span><span style="display:flex;"><span>vi             	off
+</span></span><span style="display:flex;"><span>xtrace         	off
+</span></span></code></pre></div><p>(（3) 当执行Shell脚本时使用到未定义过的变量，则显示错误信息。</p>
+<p>执行脚本的时侯，假如遇见不存在的变量，Bash默认忽视它。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo $a
+</span></span><span style="display:flex;"><span>echo bar
+</span></span></code></pre></div><p>里面代码中，$a是一个不存在的变量。执行结果如下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bash script.sh
+</span></span><span style="display:flex;"><span>bar
+</span></span></code></pre></div><p>可以看见，echo$a输出了一个空行，Bash忽视了不存在的$a，之后继续执行echobar。大多数情况下，这不是开发者想要的行为，遇见变量不存在，脚本应当报错，而不是一声不响地往下执行。</p>
+<p>set-u就拿来改变这些行为。脚本在腰部加上它，碰到不存在的变量都会报错，并停止执行。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set -u
+</span></span><span style="display:flex;"><span>echo $a
+</span></span><span style="display:flex;"><span>echo bar
+</span></span></code></pre></div><p>运行结果如下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bash script.sh
+</span></span><span style="display:flex;"><span>bash: script.sh:行4: a: 未绑定的变量
+</span></span></code></pre></div><p>可以看见，脚本报错了linux驱动下载，而且不再执行前面的句子。</p>
+<p>-u还有另一种写法-onounset <strong>linux命令vi的退出查看</strong>，二者是等价的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>set -o nounset
+</span></span></code></pre></div><p>(（4) 脚本执行时复印出命令。</p>
+<p>默认情况下，脚本执行后，屏幕只显示运行结果，没有其他内容。假如多个命令连续执行，它们的运行结果都会连续输出。有时会分不清，某一段内容是哪些命令形成的。</p>
+<p>set-x拿来在运行结果之前，先输出执行的那一行命令。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>set -x
+</span></span><span style="display:flex;"><span>echo bar
+</span></span></code></pre></div><p>运行结果如下。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bash script.sh
+</span></span><span style="display:flex;"><span>+ echo bar
+</span></span><span style="display:flex;"><span>bar
+</span></span></code></pre></div><p>可以看见，执行echobar之前，该命令会先复印下来，行首以+表示。这对于调试复杂的脚本是很有用的。</p>
+<p>-x还有另一种写法-oxtrace。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>set -o xtrace
+</span></span></code></pre></div><p>5.选项名</p>
+<p>执行环境的不同配置有对应的名称，通常与set选项也有对应的关系。</p>
+<p>选项名选项说明</p>
+<p>allexport</p>
+<p>-a</p>
+<p>从这个选项中被设置开始就手动标注要输出的新变量或更改过的变量，直到选项被复位</p>
+<p>braceexpand</p>
+<p>-B</p>
+<p>打开花括弧扩充，它是一个默认设置</p>
+<p>emacs</p>
+<p>N/A</p>
+<p>使用emacs外置编辑器进行命令行编辑linux 删除文件，是一个默认设置</p>
+<p>errexit</p>
+<p>-e</p>
+<p>(当命令返回一个非零退出状态（失败) 时退出。读取初始化文件时不设置</p>
+<p>histexpand</p>
+<p>-H</p>
+<p>执行历史替换时打开!和!!扩充，是一个默认设置</p>
+<p>history</p>
+<p>N/A</p>
+<p>打开命令行历史、默认为打开</p>
+<p>ignoreeof</p>
+<p>N/A</p>
+<p>严禁用EOF(Ctrl+D)键退出shell。必须键入exit能够退出。等价于设置shell变量IGNOREEOF=10</p>
+<p>keyword</p>
+<p>-k</p>
+<p>将关键字参数放在命令的环境中</p>
+<p>interactive-comments</p>
+<p>N/A</p>
+<p>对于交互式shell，把#符旁边的文本作为注释</p>
+<p>monitor</p>
+<p>-m</p>
+<p>设置作业控制</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1684930233889_2.png" alt="vi命令退出_linux命令vi的退出查看_退出vi编辑器命令"></p>
+<p>noclobber</p>
+<p>-C</p>
+<p>避免文件在重定向时被重画</p>
+<p>noexec</p>
+<p>-n</p>
+<p>读命令，但不执行。拿来检测脚本的句型。交互式运行时不开启</p>
+<p>noglob</p>
+<p>-d</p>
+<p>严禁用路径名扩充。即关掉键值</p>
+<p>notify</p>
+<p>-b</p>
+<p>后台作业完成时通知用户</p>
+<p>nounset</p>
+<p>-u</p>
+<p>扩充一个未设置的变量时显示一个错误信息</p>
+<p>onecmd</p>
+<p>-t</p>
+<p>在读取和执行命令后退出</p>
+<p>physical</p>
+<p>-P</p>
+<p>设置时，在键入cd或pwd严禁符号链接。用化学目录取代</p>
+<p>privileged</p>
+<p>-p</p>
+<p>设置后，shell不读取.profile或ENV文件，且不从环境承继shell函数，将手动为setuid脚本开启特权</p>
+<p>verbose</p>
+<p>-v</p>
+<p>为调试打开verbose模式</p>
+<p>vi</p>
+<p>N/A</p>
+<p>使用vi外置编辑器进行命令行编辑</p>
+<p>xtrace</p>
+<p>-x</p>
+<p>为调试打开echo模式</p>
+<p>参考文献</p>
+<p>set1)-Linuxmanualpage-</p>
+<p>Bash脚本set命令教程-阮一峰的网路日志</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

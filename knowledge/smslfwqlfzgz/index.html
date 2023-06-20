@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>什么是Linux服务器Load？负载高怎么办？负载</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="什么是Linux服务器Load？负载高怎么办？负载" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674829900876_0.png" />
+  <meta name="twitter:description"content="什么是Linux服务器Load？负载高怎么办？负载">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="什么是Linux服务器Load？负载高怎么办？负载" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674829900876_0.png" />
+  <meta property="og:description"content="什么是Linux服务器Load？负载高怎么办？负载" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674829900876_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="什么是Linux服务器Load？负载高怎么办？负载" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/smslfwqlfzgz/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="什么是Linux服务器Load？负载高怎么办？负载" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">什么是Linux服务器Load？负载高怎么办？负载</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>什么是 Linux 服务器 Load Average？</p>
+<p>Load 是用来度量服务器工作量的大小小型linux系统，即计算机 CPU 任务执行队列的长度，值越大，表明包括正在运行和待运行的进程数越多。</p>
+<p>如何查看 Linux 服务器负载？</p>
+<p>您可以通过执行 w，top，uptime，procinfo 命令，或者访问 /proc/loadavg 文件进行查看。</p>
+<p>procinfo 工具安装请参考 Linux 环境下安装软件的相关文档。</p>
+<p>服务器负载高怎么办？</p>
+<p>(服务器负载（Load/Load Average) 是根据进程队列的长度来显示的。当服务器出现负载高的现象时（建议以15分钟平均值为参考），可能由于 CPU 资源不足，I/O 读写瓶颈，内存资源不足，CPU 正在进行密集型计算等原因造成。建议使用 vmstat，iostat，top 命令判断负载过高的原因，并找到具体占用大量资源的进程进行优化处理。</p>
+<p>如何查看服务器内存使用率？</p>
+<p>(您可以通过执行 free，top（执行后可通过 shift+m 对内存排序) ，vmstat，procinfo 命令，或者访问 /proc/meminfo 文件进行查看。</p>
+<p>如何查看单个进程占用的内存大小？</p>
+<p>(您可以通过执行 top -p PID，pmap -x PID，ps aux|grep PID 命令，或者访问 /proc/$process_id（进程的 PID) /status 文件进行查看，例如 /proc/7159/status 文件。</p>
+<p>如何查看正在使用的服务和端口？</p>
+<p>您可以通过执行 netstat -tunlp，netstat -antup，lsof -i:PORT 命令进行查看。</p>
+<p>如何查看服务器进程信息？</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674829900876_0.png" alt="linux 查看pid命令_linux查看进程pid命令_linux命令查看密码"></p>
+<p>您可以通过执行 ps auxww|grep PID，ps -ef，lsof -p PID，top -p PID 命令进行查看。</p>
+<p>如何停止进程？</p>
+<p>(您可以通过执行 kill -9 PID（PID 表示进程号) ，killall 程序名（例如 killall cron）来停止进程。</p>
+<p>(如果需要停止僵尸进程，则需要杀掉进程的父进程，执行的命令为： kill -9 ppid（ppid 为父进程 ID 号，可以通过 ps -o ppid PID 命令进行查找，例如 ps -o ppid 32535) 。</p>
+<p>如何查找僵尸进程？</p>
+<p>(您可以通过执行 top 命令查看僵尸进程（zombie) 的总数，通过执行 ps -ef | grep defunct | grep -v grep 查找具体僵尸进程的信息。</p>
+<p>为什么启动不了服务器端口？</p>
+<p>服务器端口的启动监听，需要从操作系统本身以及应用程序查看。</p>
+<p>Linux 操作系统1024以下的端口只能由 root 用户启动，即需要先运行 sudo su – 获取 root 权限后再启用服务端口。</p>
+<p>(应用程序问题，建议通过应用程序启动日志来排查失败原因，例如端口冲突（腾讯服务器系统使用端口36000不能占用) ，配置问题等。</p>
+<p>常用的 Linux 服务器性能查看命令有哪些？命令名称 说明</p>
+<p>top</p>
+<p>进程监控命令，用来监控系统的整体性能。</p>
+<p>可以显示系统负载，进程，CPU，内存，分页等信息，常用 shift+m 和 shift+p 来按 memory 和 CPU 使用对进程进行排序。</p>
+<p>vmstat</p>
+<p>系统监控命令，重点侧重于虚拟内存，也可以监控 CPU，进程，内存分页以及 IO 的状态信息。</p>
+<p>例如，vmstat 3 10，每隔3秒输出结果，执行10次。</p>
+<p>iostat</p>
+<p>用于输出 CPU 状态和 IO 状态的工具，可以详细展示系统的 IO 信息。</p>
+<p>例如 iostat -dxmt 10，每10秒以 MB 的格式输出 IO 的详细信息。</p>
+<p>df</p>
+<p>用来检查系统的磁盘空间占用状况。</p>
+<p>例如：df -m，以 MB 为单位展现磁盘使用状况。</p>
+<p>lsof</p>
+<p>列举系统中被打开的文件，由于 Linux 是以文件系统为基础，此命令在系统管理中很有帮助。</p>
+<p>例如：</p>
+<p>lsof -i：36000，显示使用36000端口的进程</p>
+<p>lsof -u root，显示以 root 运行的程序</p>
+<p>lsof -c php-fpm，显示 php-fpm 进程打开的文件</p>
+<p>lsof php.ini，显示打开 php.ini 的进程。</p>
+<p>ps</p>
+<p>进程查看命令，可以用来显示进程的详细信息。</p>
+<p>常用命令参数组合为，ps -ef，ps aux，推荐使用 ps -A -o 来自定义输出字段。</p>
+<p>例如：</p>
+<p>ps -A -o pid,stat,uname,%cpu,%mem,rss,args,lstart,etime |sort -k6,6 -rn，按所列字段输出并以第六个字段进行排序</p>
+<p>ps -A -o comm |sort -k1 |uniq -c|sort -k1 -rn|headlinux怎么查看系统版本，列出运行实例最多的进程。</p>
+<p>其他常用的命令和文件：free -m，du，uptime，w，/proc/stat，/proc/cpuinfo，/proc/meminfo。</p>
+<p>Cron 不生效怎么办？</p>
+<p>排查步骤如下：</p>
+<p>确认 crontab 是否正常运行。执行 crontab -e 命令，添加如下测试条目。</p>
+<pre tabindex="0"><code> */1 * * * * /bin/date &gt;&gt; /tmp/crontest 2&gt;&amp;1 &amp;
+</code></pre><p>观察 /tmp/crontest 文件。</p>
+<p>如果有问题，建议使用 ps aux|grep cron 查找 cron 的 pid，kill -9 PID 结束 cron 进程 <strong>linux 查看pid命令</strong>，并通过执行 /etc/init.d/cron start 命令重新启动 cron。 确认 cron 条目中的脚本路径为绝对路径。查看运行 cron 的用户帐号是否正确，同时查看 /etc/cron.deny 中是否包含此帐号。检查脚本的执行权限，脚本目录以及日志的文件权限。建议通过后台方式运行脚本，在脚本条目后添加 “&amp;”。例如 */1 * * * * /bin/date &raquo; /tmp/crontest 2&gt;&amp;1 &amp; 。如何设置云服务器开机任务？</p>
+<p>Linux 内核启动顺序为：</p>
+<p>启动 /sbin/init 进程。依次执行 init 初始脚本。运行级别脚本 /etc/rc.d/rc*.d，*号值等于运行模式。您可以在 /etc/inittab 中查看。执行 /etc/rc.d/rc.local。</p>
+<p>说明</p>
+<p>如果需要配置开机任务，您可以在 /etc/rc.d/rc*.d 中的 S**rclocal 文件配置，也可以在 /etc/rc.d/rc.local 中配置。</p>
+<p>为什么服务器硬盘只读？</p>
+<p>硬盘只读的常见原因如下：</p>
+<p>如果 hosting 应用通过上述方式仍无法确认原因，请拨打咨询热线或通过 在线支持 协助定位。</p>
+<p>如何查看 Linux 系统日志？如何查找文件系统大文件？</p>
+<p>您可以通过执行以下步骤进行查找：</p>
+<p>执行 df 命令，查看磁盘分区使用情况，例如 df -m。执行 du 命令，查看具体文件夹的大小。例如 du -sh ./*，du -h &ndash;max-depth=1|head -10。执行 ls 命令，列出文件和文件大小，例如 ls -lSh。</p>
+<p>您也可以通过 find 命令直接查看特定目录下的文件大小，例如 find / -type f -size +10M -exec ls -lrt {} 。如何查看服务器操作系统版本？</p>
+<p>您可以通过执行以下命令查看系统版本：</p>
+<p>为什么 Linux 终端显示中文会出现乱码？</p>
+<p>(服务器本身不对显示语言进行限制，如果终端软件影响中文的显示，您可以尝试调整选项 &gt; 会话选项 &gt; 外观（secureCRT 设置，其他版本软件请查找相关设置) 。</p>
+<p>如果是纯 Linux shell 出现乱码，请使用 export 命令查看用户环境变量，LANG，LC_CTYPE 等环境变量设置。</p>
+<p>如何设置通过 SecureCRT 连接云服务器的超时时间？</p>
+<p>当 SecureCRT 连接云服务器时，您可以通过以下设置不断开连接：</p>
+<p>(打开 SecureCRT 选项（Options) 。选择会话选项（Session Opetions），单击终端（Terminal）。在右侧反空闲（Anti-idle）的框中，勾选“发送协议 NO-OP（Send protocol NO-OP）”，并将时间设置为每120秒(every 120 seconds)。 为什么删除 Linux 服务器上的文件，硬盘空间不释放？</p>
+<p>原因：</p>
+<p>登录 Linux 服务器并执行 rm 命令删除文件后，执行 df 命令查看硬盘空间，可能会发现删除文件后可用的硬盘空间没有增加。其原因为，当通过 rm 命令删除文件时，有其它进程正在访问该文件，若通过执行 df 命令进行查看，删除的文件占用的空间将为没有立即释放的状态。</p>
+<p>解决方法：</p>
+<p>使用 root 权限执行 lsof |grep deleted 命令，查看正在使用被删除文件的进程的 PID。通过命令 kill -9 PID 杀掉对应的进程即可。 如何删除 Linux 服务器上的文件？</p>
+<p>您可通过 rm 命令进行文件删除，但通过此命令删除的文件无法恢复 <strong>linux 查看pid命令</strong>，请谨慎使用。</p>
+<p>(rm 命令格式为 rm （选项) （参数）。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

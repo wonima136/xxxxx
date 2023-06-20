@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>进入vi的命令新开一行一行</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="进入vi的命令新开一行一行" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_1.png" />
+  <meta name="twitter:description"content="进入vi的命令新开一行一行">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="进入vi的命令新开一行一行" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_1.png" />
+  <meta property="og:description"content="进入vi的命令新开一行一行" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_1.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="进入vi的命令新开一行一行" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="进入vi的命令新开一行一行" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">进入vi的命令新开一行一行</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>步入vi的命令</p>
+<p>vifilename:打开或新建文件，并将光标放在第一行首</p>
+<p>vi+nfilename：打开文件，并将光标放在第n行首</p>
+<p>vi+filename：打开文件，并将光标放在最后一行首</p>
+<p>vi+/patternfilename：打开文件，并将光标放在第一个与pattern匹配的串处</p>
+<p>vi-rfilename：在先前正用vi编辑时发生系统崩溃，恢复filename</p>
+<p>vifilename….filename：打开多个文件，依次进行编辑</p>
+<p>联通光标类命令</p>
+<p>h：光标左移一个字符</p>
+<p>l：光标右移一个字符</p>
+<p>space：光标右移一个字符</p>
+<p>Backspace：光标左移一个字符</p>
+<p>k或Ctrl+p：光标上移一行</p>
+<p>j或Ctrl+n：光标下移一行</p>
+<p>Enter：光标下移一行</p>
+<p>w或W：光标右移一个字至字首</p>
+<p>b或B：光标左移一个字至字首</p>
+<p>e或E：光标右移一个字至字尾</p>
+<p>)：光标移至句尾</p>
+<p>：光标移至句首</p>
+<p>}：光标移至段落开头</p>
+<p>{：光标移至段落结尾</p>
+<p>nG：光标移至第n行首</p>
+<p>n+：光标下移n行</p>
+<p>n-：光标上移n行</p>
+<p>n$：光标移至第n行尾</p>
+<p>H：光标移至屏幕顶行</p>
+<p>M：光标移至屏幕中间行</p>
+<p>L：光标移至屏幕最后行</p>
+<p>(0：（注意是数字零) 光标移至当前行首</p>
+<p>$：光标移至当前行尾</p>
+<p>屏幕翻滚类命令</p>
+<p>Ctrl+u：向文件首翻半屏</p>
+<p>Ctrl+d：向文件尾翻半屏</p>
+<p>Ctrl+f：向文件尾翻一屏</p>
+<p>Ctrl＋b；向文件首翻一屏</p>
+<p>nz：将第n行滚至屏幕底部，不指定n时将当前行滚至屏幕底部。</p>
+<p>插入文本类命令</p>
+<p>i：在光标前</p>
+<p>I：在当前行首</p>
+<p>a：光标后</p>
+<p>A：在当前行尾</p>
+<p>o：在当前行之下新开一行</p>
+<p>O：在当前行之上新开一行</p>
+<p>r：替换当前字符</p>
+<p>R：替换当前字符及其后的字符，直到按ESC键</p>
+<p>s：从当前光标位置处开始，以输入的文本取代指定数量的字符</p>
+<p>S：删掉指定数量的行，并以所输入文本替代之</p>
+<p>ncw或nCW：更改指定数量的字</p>
+<p>nCC：更改指定数量的行</p>
+<p>删掉命令</p>
+<p>ndw或ndW：删掉光标处开始及其后的n-1个字</p>
+<p>do：删至行首</p>
+<p>d$：删至行尾</p>
+<p>ndd：删掉当前行及其后n-1行</p>
+<p>x或X：删掉一个字符，x删掉光标后的，而X删掉光标前的</p>
+<p>Ctrl+u：删掉输入方法下所输入的文本</p>
+<p>搜索及替换命令</p>
+<p>/pattern：从光标开始处向文件尾搜索pattern</p>
+<p>?pattern：从光标开始处向文件首搜索pattern</p>
+<p>n：在同一方向重复上一次搜索命令</p>
+<p>N：在反方向上重复上一次搜索命令</p>
+<p>：s/p1/p2/g：将当前行中所有p1均用p2取代</p>
+<p>：n1,n2s/p1/p2/g：将第n1至n2行中所有p1均用p2取代</p>
+<p>：g/p1/s//p2/g：将文件中所有p1均用p2替换</p>
+<p>选项设置</p>
+<p>all：列举所有选项设置情况</p>
+<p>term：设置终端类型</p>
+<p>ignorance：在搜索中忽视大小写</p>
+<p>list：显示制表位(Ctrl+I)和行尾标志（$)</p>
+<p>number：显示行号</p>
+<p>report：显示由面向行的命令更改过的数量</p>
+<p>terse：显示简略的警告信息</p>
+<p>warn：在转入别的文件时若没保存当前文件则显示NOwrite信息</p>
+<p>nomagic：准许在搜索模式中，使用上面不带“”的特殊字符</p>
+<p>nowrapscan：严禁vi在搜索抵达文件两端时，又从另一端开始</p>
+<p>mesg：准许vi显示其他用户用write讲到自己终端上的信息</p>
+<p>最后行形式命令</p>
+<p>：n1,n2con3：将n1行到n2行之间的内容拷贝到第n3行下</p>
+<p>：n1,n2mn3：将n1行到n2行之间的内容移至到第n3行下</p>
+<p>：n1,n2d：将n1行到n2行之间的内容删掉</p>
+<p>：w：保存当前文件</p>
+<p>：efilename：打开文件filename进行编辑</p>
+<p>：x：保存当前文件并退出</p>
+<p>：q：退出vi</p>
+<p>：q!：不保存文件并退出vi</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_1.png" alt="linux vi命令 文本替换_vi 查找替换命令_linux查看文本vi"></p>
+<p>：!command：执行shell命令command</p>
+<p>：n1,n2w!command：将文件中n1行至n2行的内容作为command的输入并执行之，若不指定n1嵌入式linux，n2，则表示将整个文件内容作为command的输入</p>
+<p>：r!command：将命令command的输出结果放在当前行</p>
+<p>寄存器操作</p>
+<p>“?nyy：将当前行及其下n行的内容保存到寄存器？中，其中?为一个字母，n为一个数字</p>
+<p>“?nyw：将当前行及其下n个字保存到寄存器？中，其中?为一个字母，n为一个数字</p>
+<p>“?nyl：将当前行及其下n个字符保存到寄存器？中，其中?为一个字母，n为一个数字</p>
+<p>“?p：取出寄存器？中的内容并将其放在光标位置处。这儿？可以是一个字母，也可以是一个数字</p>
+<p>ndd：将当前行及其下共n行文本删掉，并将所删内容放在1号删掉寄存器中。</p>
+<p>VI的使用</p>
+<p>——————————————————————————&ndash;</p>
+<p>一、插入文本</p>
+<p>┌──┬────────────┐</p>
+<p>│命令│描述│</p>
+<p>├──┼────────────┤</p>
+<p>│i│在当前字符前插入文本│</p>
+<p>├──┼────────────┤</p>
+<p>│I│在行首插入文本│</p>
+<p>├──┼────────────┤</p>
+<p>│a│在当前字符后添加文本│</p>
+<p>├──┼────────────┤</p>
+<p>│A│在行末添加文本│</p>
+<p>├──┼────────────┤</p>
+<p>│o│在当前行前面插入一空行│</p>
+<p>├──┼────────────┤</p>
+<p>│O│在当前行后面插入一空行│</p>
+<p>├──┼────────────┤</p>
+<p>│R│以改写形式输入文本│</p>
+<p>└──┴────────────┘</p>
+<p>二、移动光标</p>
+<p>┌─────┬───────────┐</p>
+<p>│命令│描述│</p>
+<p>├─────┼───────────┤</p>
+<p>│j或下箭头│向上联通一行│</p>
+<p>├─────┼───────────┤</p>
+<p>│k或上箭头│向下联通一行│</p>
+<p>├─────┼───────────┤</p>
+<p>│h或左箭头│左移一个字符│</p>
+<p>├─────┼───────────┤</p>
+<p>│l或右箭头│右移一个字符│</p>
+<p>├─────┼───────────┤</p>
+<p>│w│右移一个词│</p>
+<p>├─────┼───────────┤</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_2.png" alt="linux查看文本vi_linux vi命令 文本替换_vi 查找替换命令"></p>
+<p>│W│右移一个以空格分隔的词│</p>
+<p>├─────┼───────────┤</p>
+<p>│b│左移一个词│</p>
+<p>├─────┼───────────┤</p>
+<p>│B│左移一个以空格分隔的词│</p>
+<p>├─────┼───────────┤</p>
+<p>│0│移到行首│</p>
+<p>│Ctrl-F│往前翻页│</p>
+<p>├─────┼───────────┤</p>
+<p>│Ctrl-B│向后翻页│</p>
+<p>├─────┼───────────┤</p>
+<p>│nG│到第n行│</p>
+<p>├─────┼───────────┤</p>
+<p>│G│到最后一行│</p>
+<p>└─────┴───────────┘</p>
+<p>三、替换文本</p>
+<p>┌─────┬──────┐</p>
+<p>│命令│描述│</p>
+<p>├─────┼──────┤</p>
+<p>│$│到行尾│</p>
+<p>├─────┼──────┤</p>
+<p>││到语句的开头│</p>
+<p>├─────┼──────┤</p>
+<p>│)│到语句的末尾│</p>
+<p>├─────┼──────┤</p>
+<p>│{│到段落的开头│</p>
+<p>├─────┼──────┤</p>
+<p>│}│到段落的末尾│</p>
+<p>└─────┴──────┘</p>
+<p>四、删除文本</p>
+<p>┌───┬───────────┐</p>
+<p>│命令│描述│</p>
+<p>├───┼───────────┤</p>
+<p>│r│替换一个字符│</p>
+<p>├───┼───────────┤</p>
+<p>│c│更改文本直至按下Esc健│</p>
+<p>├───┼───────────┤</p>
+<p>│cw│更改下一个词│</p>
+<p>├───┼───────────┤</p>
+<p>│cnw│更改接出来的n个词│</p>
+<p>└───┴───────────┘</p>
+<p>五、文本编辑</p>
+<p>┌──┬──────────────────────┐</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_3.png" alt="vi 查找替换命令_linux查看文本vi_linux vi命令 文本替换"></p>
+<p>│命寺│描述│</p>
+<p>├──┼──────────────────────┤</p>
+<p>│yy│将一行文本移到缺省缓冲区中│</p>
+<p>├──┼──────────────────────┤</p>
+<p>│yn│将下一个词移到缺省缓冲区中│</p>
+<p>├──┼──────────────────────┤</p>
+<p>│ynw│将前面的n个词移到缺省缓冲区中│</p>
+<p>├──┼──────────────────────┤</p>
+<p>│p│假如缺省缓冲区中包含一行文本，则在当前│</p>
+<p>││行前面插入一个空行井将缺省缓冲区中的声│</p>
+<p>││容粘贴到这一行中；假如缺省缓冲区中包含│</p>
+<p>││多个词，把这种词粘贴到光标的一侧．│</p>
+<p>├──┼──────────────────────┤</p>
+<p>│P│假如缺省缓冲区中包含一行文本，则正当前│</p>
+<p>││行后面插入一个空行井将缺省缓冲区中的内│</p>
+<p>││容粘贴到这一行中；假如缺省缓冲区中包含│</p>
+<p>││多个词，把这种词粘贴到光标的右侧</p>
+<p>│</p>
+<p>└──┴──────────────────────┘</p>
+<p>六、保存退出</p>
+<p>┌───────────┬───────────────┐</p>
+<p>│命令│描述│</p>
+<p>├───────────┼───────────────┤</p>
+<p>│zz│保存并退出│</p>
+<p>├───────────┼───────────────┤</p>
+<p>│:wfilename│写入文件│</p>
+<p>├───────────┼───────────────┤</p>
+<p>│:W│写入文件│</p>
+<p>├───────────┼───────────────┤</p>
+<p>│:x│保存(假如当前文件更改过)并退出│</p>
+<p>├───────────┼───────────────┤</p>
+<p>│:q!│不保存文件，直接退出│</p>
+<p>├───────────┼───────────────┤</p>
+<p>│:q│退出vi│</p>
+<p>VI常用方法</p>
+<p>VI命令可以说是Unix/Linux世界里最常用的编辑文件的命令了，而且由于它的命令集诸多，好多人都不习惯使用它，虽然您只须要把握基本命令，之后加以灵活运用，都会发觉它的优势，并会渐渐喜欢使用这些技巧。本文致力介绍VI的一些最常用命令和中级应用方法。</p>
+<p>一、基本命令介绍</p>
+<p>—-1．光标命令</p>
+<p>k、j、h、l——上、下、左、右光标联通命令。即使您可以在Linux中使用鼠标一侧的4个光标键，并且记住这4个命令还是十分有用的。这4个键正是双手在按键上放置的基本位置。</p>
+<p>nG——跳转命令。n为行数，该命令立刻使光标跳到指定行。</p>
+<p>Ctrl+G——光标所在位置的行数和列数报告。</p>
+<p>w、b——使光标往前或向后跳过一个词组。</p>
+<p>—-2．编辑命令</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676469665652_4.png" alt="linux vi命令 文本替换_linux查看文本vi_vi 查找替换命令"></p>
+<p>i、a、r——在光标的前、后以及所在处插入字符命令(i=insert、a=append、r=replace)。</p>
+<p>cw、dw——改变(置换)/删掉光标所在处的词组的命令(c=change、d=delete)。</p>
+<p>x、d$、dd——删除一个字符、删除光标所在处到行尾的所有字符以及删掉整行的命令。</p>
+<p>—-3．查找命令</p>
+<p>—-/string、?string——从光标所在处向后或往前查找相应的字符串的命令。</p>
+<p>—-4．拷贝复制命令</p>
+<p>—-yy、p——拷贝一行到剪贴板或取出剪贴板中内容的命令。</p>
+<p>二、常见问题及应用方法</p>
+<p>—-1．在一个新文件中读/etc/passwd中的内容，取出用户名部份。</p>
+<p>—-vifile</p>
+<p>—-:r/etc/passwd在打开的文件file中光标所在处读入/etc/passwd</p>
+<p>—-:%s/:.*//g删掉/etc/passwd中用户名前面的从顿号开始直至行尾的所有部份。</p>
+<p>—-您也可以在指定的行号后读入文件内容，比如使用命令“:3r/etc/passwd”从新文件的第3行开始读入/etc/passwd的所有内容。</p>
+<p>—-我们还可以使用以下方式删除文件中所有的空行及以#开始的注释行。</p>
+<p>—-#catsquid.conf.default|grep-v^$|grep-v^#</p>
+<p>—-2．在打开一个文件编辑后才晓得登入的用户对该文件没有写的权限，不能镜象，须要将所做更改存入临时文件。</p>
+<p>—-vifile</p>
+<p>—-:w/tmp/1保存所做的所有更改，也可以将其中的某一部份更改保存到临时文件，比如仅仅把第20～59行之间的内容读档成文件/tmp/1，我们可以键入如下命令。</p>
+<p>—-vifile</p>
+<p>—-:20,59w/tmp/1</p>
+<p>—-3．用VI编辑一个文件，但须要删掉大段的内容。</p>
+<p>—-首先借助编辑命令“vifile”打开文件，之后将光标移到须要删掉的行处按Ctrl+G显示行号，再到结尾处再按Ctrl+G，显示文件结尾的行号。</p>
+<p>—-:23,1045d假设2次得到的行号为23和1045，则把这期间的内容全删掉，也可以在要删掉的开始行和结束行中用ma、mb命令标记，之后借助“:a,bd”命令删掉。</p>
+<p>—-4．在整个文件的各行或某几行的行首或行尾加一些字符串。</p>
+<p>—-vifile</p>
+<p>—-:3,$s/^/somestring/在文件的第一行至最后一行的行首插入“somestring”。</p>
+<p>—-:%s/$/somestring/g在整个文件每一行的行尾添加“somestring”。</p>
+<p>—-:%s/string1/string2/g在整个文件中替换“string1”成“string2”。</p>
+<p>—-:3,7s/string1/string2/仅替换文件中的第3行到第7行中的“string1”成“string2”。</p>
+<p>—-注意:其中s为substitute，%表示所有行，g表示global。</p>
+<p>—-5．同时编辑2个文件，拷贝一个文件中的文本并粘贴到另一个文件中。</p>
+<p>—-vifile1file2</p>
+<p>—-yy在文件1的光标处拷贝所在行</p>
+<p>—-:n切换到文件2(n=next)</p>
+<p>—-p在文件2的光标所在处粘贴所拷贝的行</p>
+<p>—-:n切换回文件1</p>
+<p>—-6．替换文件中的路径。</p>
+<p>—-使用命令“:%s#/usr/bin#/bin#g”可以把文件中所有路径/usr/bin换成/bin。也可以使用命令“:%s//usr/bin//bin/g”实现，其中“”是通配符字符，表明其后的“/”字符是具有实际意义的字符 <strong>linux vi命令 文本替换</strong>，不是分隔符。</p>
+<p>—&ndash;7.vi几种撤消形式</p>
+<p>———‘u’:撤消上一个编辑操作</p>
+<p>———‘ctrl+r’:恢复中文linux操作系统，即回退前一个命令</p>
+<p>———‘U’:行撤消 <strong>linux vi命令 文本替换</strong>，撤消所有在前一个编辑行上的操作</p>
+<p>———-使用u和CTRL+R命令可以恢复到任何编辑过的状态</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

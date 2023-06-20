@@ -1,0 +1,14 @@
+{
+  "title": "Categories",
+  "description": "",
+  "taxonomy": "taxonomy",
+  "terms": [{
+        "name": "Hugo",
+        "count": 10,
+        "url": "https://wonima136.github.io/linux-cool/categories/hugo/"
+      },{
+        "name": "Linux",
+        "count": 1346,
+        "url": "https://wonima136.github.io/linux-cool/categories/linux/"
+      }]
+}

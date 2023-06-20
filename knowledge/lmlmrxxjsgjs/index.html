@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>10.1Linuxps命令默认详细介绍，赶紧收藏吧！！</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="10.1Linuxps命令默认详细介绍，赶紧收藏吧！！" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_5.jpg" />
+  <meta name="twitter:description"content="10.1Linuxps命令默认详细介绍，赶紧收藏吧！！">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="10.1Linuxps命令默认详细介绍，赶紧收藏吧！！" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_5.jpg" />
+  <meta property="og:description"content="10.1Linuxps命令默认详细介绍，赶紧收藏吧！！" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_5.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="10.1Linuxps命令默认详细介绍，赶紧收藏吧！！" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lmlmrxxjsgjs/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="10.1Linuxps命令默认详细介绍，赶紧收藏吧！！" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">10.1Linuxps命令默认详细介绍，赶紧收藏吧！！</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>10.1</p>
+<p>Linux的生态系统由网络、硬件、负责分配资源的操作系统内核、接口模块、系统实用工具以及用户程序所组成的。</p>
+<p>10.2</p>
+<p>运行在计算机中的多个进程都被分配了一个被称为进程ID的唯一标识数字。进程属性包括拥有该进程的用户、进程使用的内存数量、进程占用的CPU时间。</p>
+<p>ps命令默认只显示从当前终端所启动的进程。第一列是PIDlinux版qq，第二列是TTY，第三列是进程的运行时长，最后一列是CMD。</p>
+<p>选项-f可以显示多列信息：</p>
+<p>选项-e和-ax能够输出系统中运行的所有进程信息：</p>
+<p>选项-o可以指定显示哪些数据：</p>
+<p>ps命令通常并不会显示进程的环境信息，输出修饰符e可以将其添加到命令尾部</p>
+<p>在ps命令的尾部加上f就可以创建进程的树状视图，显示出任务之间的父子关系</p>
+<p>ps命令的输出默认是没有经过排序的。选项&ndash;sort可以强制ps对输出排序，参数前的+表示升序，-表示降序。</p>
+<p>通过检查每一条输出是否属于参数列表中指定的有效用户或者真是用户，ps能够过滤输出。</p>
+<p>ps -u user：指定有效用户列表</p>
+<p>ps -U user：指定真实用户列表</p>
+<p>选项-t可以指定TTY列表</p>
+<p>(选项-L可以显示出线程的相关信息。该选项会在输出中添加一列LWP。如果再加上选项-f（-LF) ，就会多显示出两列：NLWP和LWP</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_5.jpg" alt="linux查看系统版本命令_linux系统信息命令_linux系统下建立用户命令是什么"></p>
+<p>如果在pid的后面加上=，这会去掉ps输出中PID一列的列名。</p>
+<p>选项-d可以用来指定其他的输出分隔符：</p>
+<p>选项-c可以返回匹配的进程数量：</p>
+<p>-u可以过滤用户：</p>
+<p>uptime和top命令都可以显示出平均负载。平均负载由3个值来指定 <strong>linux系统信息命令</strong>，第一个值指明了一分钟内的平均值，第二个值指明了五分钟内的平均值，第三个值指明了十五分钟内的平均值。</p>
+<p>10.3 which、whereis、whatis与file</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_9.png" alt="linux查看系统版本命令_linux系统下建立用户命令是什么_linux系统信息命令"></p>
+<p>10.4 杀死进程以及发送和响应信号</p>
+<p>作为一种进程间的通信机制，信号可以中断进程运行并强迫进程执行某些操作。</p>
+<p>信号能够中断正在运行的程序。当进程接收到一个信号时，它会执行对应的信号处理程序作为响应。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_10.png" alt="linux系统下建立用户命令是什么_linux查看系统版本命令_linux系统信息命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_11.png" alt="linux系统下建立用户命令是什么_linux查看系统版本命令_linux系统信息命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_12.png" alt="linux系统信息命令_linux系统下建立用户命令是什么_linux查看系统版本命令"></p>
+<p>kill命令以进程ID作为参数。killall命令可以通过名字来终止进程。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_13.png" alt="linux系统下建立用户命令是什么_linux系统信息命令_linux查看系统版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_14.png" alt="linux查看系统版本命令_linux系统下建立用户命令是什么_linux系统信息命令"></p>
+<p>10.5 向用户终端发送信息</p>
+<p>write命令可以向一个用户发送信息，talk命令可以让两个用户展开会话 <strong>linux系统信息命令</strong>，wall命令可以向所有用户发送消息。</p>
+<p>如果用户多次登录，你可能需要指定要将消息发送哪个终端。</p>
+<p>who命令可以确定用户的终端：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_17.png" alt="linux系统信息命令_linux查看系统版本命令_linux系统下建立用户命令是什么"></p>
+<p>第二列pts就是用户终端的名称。</p>
+<p>方式一：</p>
+<p>方式二：</p>
+<p>wall命令会向所有的用户及终端广播信息</p>
+<p>10.6 /proc文件系统</p>
+<p>/proc是一种存在于内存中的伪文件系统，其中包含了多个文件和目录。系统中每一个运行的进程在/proc中都有一个对应的目录linux 关机命令，目录名和进程ID相同。</p>
+<p>10.7 收集系统信息</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_21.png" alt="linux查看系统版本命令_linux系统信息命令_linux系统下建立用户命令是什么"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_22.png" alt="linux查看系统版本命令_linux系统下建立用户命令是什么_linux系统信息命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_23.png" alt="linux系统下建立用户命令是什么_linux查看系统版本命令_linux系统信息命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_24.png" alt="linux系统下建立用户命令是什么_linux查看系统版本命令_linux系统信息命令"></p>
+<p>10.8 使用cron进行调度</p>
+<p>Linux系统中包含了多种任务调度的工具，其中cron的应用最为广泛。它允许任务能够按照固定的时间间隔在系统后台自动运行。cron使用了一个表，表中保存了需要执行的一系列脚本或命令以及执行时间。</p>
+<p>每个用户都有自己的cron表，这其实是一个纯文本文件。crontab命令用于处理cron表。</p>
+<p>分钟0-59</p>
+<p>小时0-23</p>
+<p>天1-31</p>
+<p>月份1-12</p>
+<p>星期中的某天0-6</p>
+<p>(命令（在指定时间执行的脚本或命令)</p>
+<p>前五个字段指定了命令开始执行的时间。多个值之间用逗号分隔。信号表示任意时间段。除号表示调度的时间间隔。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_25.png" alt="linux系统信息命令_linux系统下建立用户命令是什么_linux查看系统版本命令"></p>
+<p>执行该脚本时需要提前给脚本文件授权。</p>
+<p>查看指定用户的cron表，必须以root用户的身份使用该选项</p>
+<p>删除当前用户的cron表</p>
+<p>删除指定用户的cron表</p>
+<p>10.12 用户管理脚本</p>
+<p>#!/bin/bash</p>
+<p>#Description: A user administration tool</p>
+<p>function usage()</p>
+<p>{</p>
+<p>echo Usage:</p>
+<p>echo Add a new user</p>
+<p>echo $0 -adduser username password</p>
+<p>echo</p>
+<p>echo Remove an existing user</p>
+<p>echo $0 -deluser username</p>
+<p>echo</p>
+<p>echo Set the default shell for the user</p>
+<p>echo $0 -shell username SHELL_PATH</p>
+<p>echo</p>
+<p>echo Suspend a user account</p>
+<p>echo $0 -disable username</p>
+<p>echo</p>
+<p>echo Enable a suspended user account</p>
+<p>echo $0 -enable username</p>
+<p>echo</p>
+<p>echo Set expiry date for user account</p>
+<p>echo $0 -expiry DATE</p>
+<p>echo</p>
+<p>echo Change password for user account</p>
+<p>echo $0 -passwd username</p>
+<p>echo</p>
+<p>echo Create a new user group</p>
+<p>echo $0 -newgroup groupname</p>
+<p>echo</p>
+<p>echo Remove an existing user group</p>
+<p>echo $0 -delgroup groupname</p>
+<p>echo</p>
+<p>echo Add a user to a group</p>
+<p>echo $0 -addgroup username groupname</p>
+<p>echo</p>
+<p>echo Show details about a user</p>
+<p>echo $0 -details username</p>
+<p>echo</p>
+<p>echo Show usage</p>
+<p>echo $0 -usage</p>
+<p>echo</p>
+<p>exit</p>
+<p>}</p>
+<p>if [ $UID -ne 0 ];</p>
+<p>then</p>
+<p>echo Run $0 as root.</p>
+<p>exit 2</p>
+<p>fi</p>
+<p>case $1 in</p>
+<p>-adduser) [ $# -ne 3 ] &amp;&amp; usage ; useradd $2 -p $3 -m ;;</p>
+<p>-deluser) [ $# -ne 2 ] &amp;&amp; usage ; deluser $2 &ndash;remove-all-files;;</p>
+<p>-shell) [ $# -ne 3 ] &amp;&amp; usage ; chsh $2 -s $3 ;;</p>
+<p>-disable) [ $# -ne 2 ] &amp;&amp; usage ; usermod -L $2 ;;</p>
+<p>-enable) [ $# -ne 2 ] &amp;&amp; usage ; usermod -U $2 ;;</p>
+<p>-expiry) [ $# -ne 3 ] &amp;&amp; usage ; chage $2 -E $3 ;;</p>
+<p>-passwd) [ $# -ne 2 ] &amp;&amp; usage ; passwd $2 ;;</p>
+<p>-newgroup) [ $# -ne 2 ] &amp;&amp; usage ; addgroup $2 ;;</p>
+<p>-delgroup) [ $# -ne 2 ] &amp;&amp; usage ; delgroup $2 ;;</p>
+<p>-addgroup) [ $# -ne 3 ] &amp;&amp; usage ; addgroup $2 $3 ;;</p>
+<p>-details) [ $# -ne 2 ] &amp;&amp; usage ; finger $2 ; chage -l $2 ;;</p>
+<p>-usage) usage ;;</p>
+<p>*) usage ;;</p>
+<p>esac</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674887889581_31.png" alt="linux系统信息命令_linux查看系统版本命令_linux系统下建立用户命令是什么"></p>
+<p>该脚本有效的命令选项包括：</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

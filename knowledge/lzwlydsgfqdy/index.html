@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux中无论有多少个分区都有一个根？</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux中无论有多少个分区都有一个根？" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="" />
+  <meta name="twitter:description"content="Linux中无论有多少个分区都有一个根？">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux中无论有多少个分区都有一个根？" />
+  <meta name="twitter:image:src" content="" />
+  <meta property="og:description"content="Linux中无论有多少个分区都有一个根？" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux中无论有多少个分区都有一个根？" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lzwlydsgfqdy/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux中无论有多少个分区都有一个根？" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux中无论有多少个分区都有一个根？</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>目录</p>
+<p>四：目录管理</p>
+<p>(Linux系统的目录组成类拟一个倒置的树型结构 <strong>linux压缩文件夹命令 t</strong>，它以一个名为根（“/”) 的目录开始向上延展。</p>
+<p>它不同与其它操作系统。诸如windows,在windows中，它有多少分区这么就有多少个根,而这种根之间是并列的，而在Linux中无论有多少个分区都有一个根。</p>
+<p>在Linux系统中对应的文件类型字符为“d”。</p>
+<p>目录是一种特殊的文件</p>
+<p>目录上的读写执行权限与普通文件有所不同。</p>
+<p>读：用户可以读取目录内的文件</p>
+<p>写：单独使用没有作用。它与读和执行权限连用可以在目录内添加与删掉任何文件。</p>
+<p>执行：用户可以步入目录，调用目录内的资料</p>
+<p>1、常见目录：</p>
+<p>/bin储存常用用户指令。</p>
+<p>/boot储存用于系统引导时使用的各类文件</p>
+<p>/dev储存设备文件</p>
+<p>/etc储存系统、服务的配置目录与文件</p>
+<p>/home储存用户家目录</p>
+<p>/lib储存库文件，如内核模块、共享库等</p>
+<p>/usr储存系统应用程序目录i</p>
+<p>(（1) setuid</p>
+<p>设置使文件在执行阶段具有文件所有者的权限(比如：/usr/bin/passwd);假如通常用户执行该文件,则在执行过程中,该文件可以获得root权</p>
+<p>句型：</p>
+<p>chmodu±s</p>
+<p>(（2) setgid</p>
+<p>该权限只对目录有效，目录被设置该位后,任何用户在此目录下创建的文件都具有和该目录所属的组相同的组</p>
+<p>句型：</p>
+<p>chmodg±s</p>
+<p>u+s实验：</p>
+<p>su-uos1</p>
+<p>touch/root/file#权限严禁</p>
+<p>chmodu+s/usr/bin/touch#给touch设置强制位setuid以后就可以以root身分去执行</p>
+<p>su-uos</p>
+<p>touch/root/file#权限容许</p>
+<p>切回root查看</p>
+<p>g+s实验：</p>
+<p>mkdiruos1//创建目录/uos并设置所属组为uos</p>
+<p>chown:uos/uos1/</p>
+<p>touch/uos1/1.txt//新创建文件、可以见到其属组还是属于创建者的</p>
+<p>chmodg+s/root/uos1///为属组添加强制位setgid</p>
+<p>touch/uos/2.txt//可以看见新建的文件会手动承继此前目录的属组</p>
+<p>o+t实验：</p>
+<p>useradd-m-s/bin/bashuos1</p>
+<p>mkdir/tx</p>
+<p>chmodo=rwx/tx/</p>
+<p>touch/tx/uos1</p>
+<p>su-uos1</p>
+<p>rm/tx/uos1//是可以删掉的</p>
+<p>exit注销</p>
+<p>chmodo+t/tx/</p>
+<p>touch/tx/uos2</p>
+<p>su-uos1</p>
+<p>rm/tx/uos2</p>
+<p>rm:难以删掉&rsquo;/tx/uos1&rsquo;:不容许的操作//加上t权限以后就不可以删掉其他人的文件</p>
+<p>2、umask：控制新建的文件或目录的权限</p>
+<p>umask值与新建文件、目录权限对照表</p>
+<p>umask值目录权限值文件权限值</p>
+<p>076</p>
+<p>166</p>
+<p>254</p>
+<p>344</p>
+<p>432</p>
+<p>522</p>
+<p>610</p>
+<p>700</p>
+<p>比如：umask值为0000，则目录权限值777，文件权限值666</p>
+<p>umask值为0022，则目录权限值755，文件权限值644</p>
+<p>(（1) 反例：</p>
+<p>umask</p>
+<p>0022//当前umask网段是0022，新创建文件的权限是644，目录的权限是755</p>
+<p>touchfile1</p>
+<p>mkdirdi1</p>
+<p>ls-l</p>
+<p>umask0027//将umask网段更改为0027以后，新建文件的权限是640，目录的权限是750</p>
+<p>touchfile2</p>
+<p>mkdirdi2</p>
+<p>ls-l</p>
+<p>五：系统交互工具与编辑器1、实验要求：</p>
+<p>除管理员root用户外linux教程下载，新建普通用户uos1</p>
+<p>使用tty1登陆root用户，tty2登陆uos1</p>
+<p>(（1) write命令指定一个在线用户发送短消息</p>
+<p>//使用root用户对uos1用户发送消息</p>
+<p>root@uos1-PC:~#writeuos1</p>
+<p>write:write:youhavewritepermissionturnedoff.</p>
+<p>aaaaaaaaaaa</p>
+<p>aaaaaaaaaaa</p>
+<p>ctrl+d结束</p>
+<p>//去uos1用户验证查看</p>
+<p>(（2) wall命令向所有在线用户广播</p>
+<p>//使用root用户对所有用户发送消息</p>
+<p>root@uos1-PC:~#wall123456789</p>
+<p>//顾客端验证接收</p>
+<p>2、vim编辑器：</p>
+<p>vi编辑器是所有Unix和Linux系统下标准的编辑器，相当于Windows的记事本一样，它工作在字符模式，因为不须要图形界面，所以效率高；vim是vi编辑器的升级版本，不仅兼容vi的所有指令以外，还添加了许多重要的特点，比如支持正则搜索，句型高亮，对C语言的手动缩进等；</p>
+<p>(（1) vim的三种模式：</p>
+<p>命令模式(其它模式-&gt;ESC)：</p>
+<p>控制光标联通，删掉字符，段落复制</p>
+<p>编辑/插入模式(命令模式-&gt;a、i、o、A、I、O)</p>
+<p>新增文字及更改文字</p>
+<p>末行模式(命令模式-&gt;:)</p>
+<p>保存文件，离开vi，以及其他设置</p>
+<p>(（2) vim基础操作</p>
+<p>vim&ndash;help查看帮助</p>
+<p>命令模式：</p>
+<p>yy复制当前行正行</p>
+<p>nyy复制从光标所在行开始的n行</p>
+<p>dd剪切当前光标所在行</p>
+<p>ndd剪切从光标所在行开始的n行</p>
+<p>p粘贴光标位置以后</p>
+<p>G跳转至尾行</p>
+<p>g跳转至首行</p>
+<p>dw删至辅音</p>
+<p>ndw删掉后n个词</p>
+<p>d$删至行尾</p>
+<p>(nd$删掉后n行（从光标当前处开始算起)</p>
+<p>u撤消上一次更改</p>
+<p>U撤消一行内的所有更改</p>
+<p>末行模式</p>
+<p>:r/etc/passwd读文件内容进vim</p>
+<p>:r!ls-l/读命令结果保存到文件中</p>
+<p>:setnumber行号</p>
+<p>:setnonumber消除行号</p>
+<p>:s/old/new/g在当前行中查找到的所有字符串old替换为new</p>
+<p>:2,6s/old/new/g2-6行替换</p>
+<p>:%s/old/new/g在整个文件范围内替换</p>
+<p>:X加入密码</p>
+<p>:q不保存退出</p>
+<p>:q!强制退出不保存</p>
+<p>:wq保存退出，同x</p>
+<p>:wq!强制保存退出</p>
+<p>步入编辑模式</p>
+<p>a光标后插入</p>
+<p>i当前光标前插入</p>
+<p>o在当前光标下插入空行</p>
+<p>A在光标所在行尾插入</p>
+<p>I在光标行首插入内容</p>
+<p>O在当前光标上插入空行</p>
+<p>(（3) 更改vim配置</p>
+<p>echo”:setnumber”&raquo;/etc/vim/vimrc</p>
+<p>vim/etc/passwd</p>
+<p>3、实验-非正常关掉vim的恢复</p>
+<p>vimuos直接关掉终端</p>
+<p>ls-la</p>
+<p>vimuos会有提示信息</p>
+<p>删掉同目录下边同名的隐藏文件即可</p>
+<p>六：系统文件查找与文件管理1、可执行文件的搜索</p>
+<p>which显示一个指令的完整路径与别称。</p>
+<p>whereis搜索一个指令的完整路径以及其帮助文件</p>
+<p>locate用于查找文件或目录，比find命令快，是由于不回家搜索目录，而是搜索一个数据库/var/lib/mlocate/mlocate.db，这个库有本地所有文件信息，Linux会手动创建这个数据库，每晚手动更新一次，因而，我们在用whereis和locate查找文件时，有时会找到早已被删掉的数据，或则刚才构建文件，却未能查找到，缘由就是由于数据库文件没有被更新。为了防止这些情况，可以在使用locate之前，先使用updatedb命令，自动更新数据库</p>
+<p>apt-getinstalllocate-y</p>
+<p>updatedb</p>
+<p>locatepasswd</p>
+<p>(2、find在指定目录下查找文件（1) 特性：</p>
+<p>从指定路径下递归向上搜索文件。</p>
+<p>支持根据各类条件形式搜索。</p>
+<p>支持对搜索得到的文件再进一步的使用指令操作(比如：删掉、统计大小、复制等)</p>
+<p>(（2) 常用选项：</p>
+<p>-name按照文件名找寻文件</p>
+<p>-user按照文件拥有者找寻文件</p>
+<p>-group按照文件所属组找寻文件</p>
+<p>-perm按照文件权限找寻文件</p>
+<p>-size按照文件大小找寻文件[±Sizek]</p>
+<p>(-type按照文件类型找寻文件，常见类型有：f(普通文件)、c(字符设备文件)、b(块设备文件)、l(联接文件)、d（目录)</p>
+<p>-o表达式或</p>
+<p>-a表达式与</p>
+<p>(（3) 示例：</p>
+<p>find/-nameuos1</p>
+<p>find/-userhehe</p>
+<p>find/-groupxiaolizi</p>
+<p>find/-perm644</p>
+<p>find/-size+10k</p>
+<p>find/etc-size-10k</p>
+<p>find/etc-typef/c/b/l/d</p>
+<p>(（4) 对文件进一步操作</p>
+<p>find[路径][参数][表达式]-exec指令{}；</p>
+<p>{}代表find找到的文件</p>
+<p>；命令结束标志linux手机软件，因为各个系统中的;会有不同的意义，所以上面加通配符</p>
+<p>(（5) 示例：</p>
+<p>find/tmp/-typef-execrm-rf{};用exec选项执行cp命令</p>
+<p>(3、grep查找文件里符合条件的字符串。（1) 常用选项：</p>
+<p>-c估算匹配关键字的行数</p>
+<p>-i忽视字符大小写的差异</p>
+<p>-n显示匹配的行及其行号</p>
+<p>-s不显示不存在或不匹配文本的错误信息</p>
+<p>-h查询多个文件时不显示文件名</p>
+<p>-l查询文件时只显示匹配字符所在的文件名</p>
+<p>-v取反</p>
+<p>&ndash;color=auto</p>
+<p>(（2) 示例：</p>
+<p>greproot/etc/passwd</p>
+<p>grep^root/etc/passwd</p>
+<p>grepbash$/etc/passwd</p>
+<p>grep-iROOT/etc/passwd</p>
+<p>(4、tar文件归档压缩（1) 功能说明：</p>
+<p>用于构建、还原备份文件的工具，它也可以加入或解开备份文件内的文件。有时亦称之为“打包”。</p>
+<p>(（2) 常用选项：</p>
+<p>c完善新的备份文件</p>
+<p>v显示指令执行过程</p>
+<p>x解包</p>
+<p>t显示tar文件的内容</p>
+<p>z用gzip压缩或解压文件，以.tar.gz或.tgz为后缀</p>
+<p>j用bzip压缩或解压文件，以.tar.bz2为后缀</p>
+<p>f指定要操作的文件</p>
+<p>-C指定解压目录</p>
+<p>(（3) 示例：</p>
+<p>tarczvf<code>date+%F</code>.log.tar.gz/var/log/#以时间为名称打包</p>
+<p>tarxzvf2016-03-09.log.tar.gz-C/tmp/#-C指定解压目录</p>
+<p>(（4) gzip压缩</p>
+<p>gunzip或gzip-d解压</p>
+<p>只能压缩文件，不能压缩目录；后缀名为.gz <strong>linux压缩文件夹命令 t</strong>，但是不保留原文件</p>
+<p>(（5) bzip2压缩</p>
+<p>bunzip2或bzip2-d解压</p>
+<p>压缩文件，-k参数可以保留原文件；后缀为.bz2</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

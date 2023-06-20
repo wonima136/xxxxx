@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>linux中df命令的使用实例及命令参数介绍</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="linux中df命令的使用实例及命令参数介绍" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1681993550749_0.png" />
+  <meta name="twitter:description"content="linux中df命令的使用实例及命令参数介绍">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="linux中df命令的使用实例及命令参数介绍" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1681993550749_0.png" />
+  <meta property="og:description"content="linux中df命令的使用实例及命令参数介绍" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1681993550749_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="linux中df命令的使用实例及命令参数介绍" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lzdmldsysljm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="linux中df命令的使用实例及命令参数介绍" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">linux中df命令的使用实例及命令参数介绍</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>↓推荐关注↓</p>
+<p>linux中df命令的功能是拿来检测linux服务器的文件系统的c盘空间占用情况系统以借助该命令来获取硬碟被占用了多少空间，目前还剩下多少空间等信息。</p>
+<p>1．命令格式：</p>
+<p>df[选项][文件]</p>
+<p>2．命令功能：</p>
+<p>显示指定c盘文件的可用空间。假如没有文件名被指定，则所有当前被挂载的文件系统的可用空间将被显示。默认情况下，c盘空间将以1KB为单位进行显示，除非环境变量POSIXLY_CORRECT被指定，那样将以512字节为单位进行显示</p>
+<p>3．命令参数：必要参数：</p>
+<p>-a全部文件系统列表</p>
+<p>-h便捷阅读方法显示</p>
+<p>-H等于“-h”，并且估算式，1K=1000，而不是1K=1024</p>
+<p>-i显示inode信息</p>
+<p>-k区块为1024字节</p>
+<p>-l只显示本地文件系统</p>
+<p>-m区块为1048576字节</p>
+<p>&ndash;no-sync忽视sync命令</p>
+<p>-P输出格式为POSIX</p>
+<p>&ndash;sync在取得c盘信息前，先执行sync命令</p>
+<p>-T文件系统类型</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1681993550749_0.png" alt="linux扫描磁盘命令_linux扫描新增磁盘命令_linux磁盘分区命令"></p>
+<p>选择参数：</p>
+<p>&ndash;block-size=指定区块大小</p>
+<p>-t只显示选取文件系统的c盘信息</p>
+<p>-x不显示选取文件系统的c盘信息</p>
+<p>&ndash;help显示帮助信息</p>
+<p>&ndash;version显示版本信息</p>
+<p>4．使用实例：实例1：显示c盘使用情况命令：</p>
+<pre tabindex="0"><code>df
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>[root@CT1190 log]# df
+
+文件系统               1K-块        已用     可用 已用% 挂载点
+
+/dev/sda7             19840892    890896  17925856   5% /
+/dev/sda9            203727156 112797500  80413912  59% /opt
+/dev/sda8              4956284    570080   4130372  13% /var
+/dev/sda6             19840892   1977568  16839184  11% /usr
+/dev/sda3               988116     23880    913232   3% /boot
+tmpfs                 16473212         0  16473212   0% /dev/shm
+</code></pre><p>说明：</p>
+<p>(linux中df命令的输出清单的第1列是代表文件系统对应的设备文件的路径名（通常是硬碟上的分区) ；第2列给出分区包含的数据块（1024字节）的数量；第3，4列分别表示已用的和可用的数据块数量。用户似乎会倍感奇怪的是，第3arch linux，4列块数之和不等于第2列中的块数。这是由于缺省的每位分区都留了少量空间供系统管理员使用。虽然遇见普通用户空间已满的情况，管理员仍能登入和留有解决问题所需的工作空间。清单中Use%列表示普通用户空间使用的比率，虽然这一数字达到100％，分区一直留有系统管理员使用的空间。最后 <strong>linux磁盘分区命令</strong>，Mountedon列表示文件系统的挂载点。</p>
+<p>实例2：以inode模式来显示c盘使用情况命令：</p>
+<pre tabindex="0"><code>df -i
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>[root@CT1190 log]# df -i
+
+文件系统               Inode (I) 已用 (I) 可用 (I) 已用% 挂载点
+
+/dev/sda7            5124480    5560 5118920    1% /
+/dev/sda9            52592640   50519 52542121    1% /opt
+/dev/sda8            1280000    8799 1271201    1% /var
+/dev/sda6            5124480   80163 5044317    2% /usr
+/dev/sda3             255232      34  255198    1% /boot
+tmpfs                4118303       1 4118302    1% /dev/shm
+</code></pre><p>实例3：显示指定类型c盘命令：</p>
+<pre tabindex="0"><code>df -t ext3
+</code></pre><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1681993550749_1.jpg" alt="linux扫描新增磁盘命令_linux扫描磁盘命令_linux磁盘分区命令"></p>
+<p>输出：</p>
+<pre tabindex="0"><code>[root@CT1190 log]# df -t ext3
+
+文件系统               1K-块        已用     可用 已用% 挂载点
+
+/dev/sda7             19840892    890896  17925856   5% /
+/dev/sda9            203727156  93089700 100121712  49% /opt
+/dev/sda8              4956284    570104   4130348  13% /var
+/dev/sda6             19840892   1977568  16839184  11% /usr
+/dev/sda3               988116     23880    913232   3% /boot
+</code></pre><p>实例4：列举各文件系统的i节点使用情况命令：</p>
+<pre tabindex="0"><code>df -ia
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>[root@CT1190 log]# df -ia
+
+文件系统               Inode (I) 已用 (I) 可用 (I) 已用% 挂载点
+
+/dev/sda7            5124480    5560 5118920    1%
+/proc                      0       0       0    -  /proc
+sysfs                      0       0       0    -  /sys
+devpts                     0       0       0    -  /dev/pts
+
+/dev/sda9            52592640   50519 52542121    1% /opt
+/dev/sda8            1280000    8799 1271201    1% /var
+/dev/sda6            5124480   80163 5044317    2% /usr
+/dev/sda3             255232      34  255198    1% /boot
+tmpfs                4118303       1 4118302    1% /dev/shm
+none                       0       0       0    -  /proc/sys/fs/binfmt_misc
+</code></pre><p>实例5：列举文件系统的类型命令：</p>
+<pre tabindex="0"><code>df -T
+</code></pre><p>输出：</p>
+<pre tabindex="0"><code>root@CT1190 log]# df -T
+
+文件系统      类型     1K-块        已用     可用 已用% 挂载点
+
+/dev/sda7     ext3    19840892    890896  17925856   5% /
+/dev/sda9     ext3   203727156  93175692 100035720  49% /opt
+/dev/sda8     ext3     4956284    570104   4130348  13% /var
+/dev/sda6     ext3    19840892   1977568  16839184  11% /usr
+/dev/sda3     ext3      988116     23880    913232   3% /boot
+tmpfs        tmpfs    16473212         0  16473212   0% /dev/shm
+</code></pre><p>实例6：以更易读的形式显示目前c盘空间和使用情况命令：输出：</p>
+<pre tabindex="0"><code>[root@CT1190 log]# df -h
+
+文件系统              容量  已用 可用 已用% 挂载点
+
+/dev/sda7              19G  871M   18G   5% /
+/dev/sda9             195G   89G   96G  49% /opt
+/dev/sda8             4.8G  557M  4.0G  13% /var
+/dev/sda6              19G  1.9G   17G  11% /usr
+/dev/sda3             965M   24M  892M   3% /boot
+tmpfs                  16G     0   16G   0% /dev/shm
+
+[root@CT1190 log]# df -H
+
+文件系统               容量   已用  可用 已用% 挂载点
+
+/dev/sda7               21G   913M    19G   5% /
+/dev/sda9              209G    96G   103G  49% /opt
+/dev/sda8              5.1G   584M   4.3G  13% /var
+/dev/sda6               21G   2.1G    18G  11% /usr
+/dev/sda3              1.1G    25M   936M   3% /boot
+tmpfs                   17G      0    17G   0% /dev/shm
+
+[root@CT1190 log]# df -lh
+
+文件系统              容量  已用 可用 已用% 挂载点
+
+/dev/sda7              19G  871M   18G   5% /
+/dev/sda9             195G   89G   96G  49% /opt
+/dev/sda8             4.8G  557M  4.0G  13% /var
+/dev/sda6              19G  1.9G   17G  11% /usr
+/dev/sda3             965M   24M  892M   3% /boot
+tmpfs                  16G     0   16G   0% /dev/shm
+
+[root@CT1190 log]# df -k
+
+文件系统               1K-块        已用     可用 已用% 挂载点
+
+/dev/sda7             19840892    890896  17925856   5% /
+/dev/sda9            203727156  93292572  99918840  49% /opt
+/dev/sda8              4956284    570188   4130264  13% /var
+/dev/sda6             19840892   1977568  16839184  11% /usr
+/dev/sda3               988116     23880    913232   3% /boot
+tmpfs                 16473212         0  16473212   0% /dev/shm
+</code></pre><p>说明：</p>
+<p>-h更具目前c盘空间和使用情况linux运维面试题，以更易读的形式显示</p>
+<p>-H根里面的-h参数相同，不过在根式化的时侯，采用1000而不是1024进行容量转换</p>
+<p>-k以单位显示c盘的使用情况</p>
+<p>-l显示本地的分区的c盘空间使用率 <strong>linux磁盘分区命令</strong>，假若服务器nfs了远程服务器的c盘，这么在df上加上-l后系统显示的是过滤nsf驱动器后的结果</p>
+<p>-i显示inode的使用情况。linux采用了类似表针的形式管理c盘空间影射。这也是一个比较关键应用</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

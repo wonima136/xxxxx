@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>如何增强Linux所有的安全问题或是使用sealert工具</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="如何增强Linux所有的安全问题或是使用sealert工具" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_0.png" />
+  <meta name="twitter:description"content="如何增强Linux所有的安全问题或是使用sealert工具">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="如何增强Linux所有的安全问题或是使用sealert工具" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_0.png" />
+  <meta property="og:description"content="如何增强Linux所有的安全问题或是使用sealert工具" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="如何增强Linux所有的安全问题或是使用sealert工具" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/rhzqlsydaqwt/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="如何增强Linux所有的安全问题或是使用sealert工具" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">如何增强Linux所有的安全问题或是使用sealert工具</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_0.png" alt="linux执行bin文件命令_linux 改文件名命令_linux编辑文件命令 vi"></p>
+<p>在最开始,我们须要问的一个问题是：Linux是早已足够被安全加固了吗?答案其实是否定的。这些高超的功击者所带来的危险是与日俱增的。每晚、甚至是每小时都有新的漏洞被发觉。对这种漏洞的借助方式一般构建在它们被发觉后的数小时之内。一些漏洞甚至直至有人将其借助到功击的主机上才被发觉。可见，安全应当是我们所有人须要关心的。为此，我想在本文中用一些实际的事例来展示怎样提高系统的安全性。</p>
+<p>没有一个贴子或是一本书才能回答Linux所有的安全问题或是涉及所有可能的恐吓。为此，本文理所其实地也不可能包括所有，并且我们希望你一定会发觉到其“用武之处”。</p>
+<p>我们的主要议程包括：</p>
+<p>控制台安全密码生命周期Sudo的通知SSH调优使用Tripwire进行入侵测量使用Firewalld回归iptable限制编译器不可更改文件太棒了用Aureport来管理SELinux使用sealert工具</p>
+<p>一、控制台安全</p>
+<p>你可以通过限制才能登入的一组特定终端来限制root用户的访问。为了实现该目的，请编辑/etc/下安全文件的内容。该文件列举的是容许root用户登入的所有设备。</p>
+<p>我建议你只容许root用户去登陆到一个终端之上，且强制所有其他用户都使用非root用户的身分进行登陆。而假如确实须要root用户权限的时侯，请使用su命令来获取。</p>
+<p>二、密码生命周期</p>
+<p>密码的生命周期就是容许你为密码指定一个有效的时间周期。时间到期后 <strong>linux 改文件名命令</strong>，系统将强制要求用户输入一个新的密码。这样有效地确保了密码的定期更换，以及密码在被抢劫、破解或为人所知的情况下才能迅速过期。</p>
+<p>有两种方式可以实现这个疗效。第一种方式是通过命令行使用如下的改变命令：</p>
+<p>$chage-M20likegeeks</p>
+<p>我们使用-M选项为likegeeks用户设置了有效时限为20天的密码。</p>
+<p>你也可以输入不带任何选项的chage命令，它会手动提示你选项：</p>
+<p>$chagelikegeeks</p>
+<p>第二种方式是在/etc/login.defs中为所有用户设置默认值。你可以参照下边，按需改变其数值：</p>
+<p>PASS_MAX_DAYS20PASS_MIN_DAYS0PASS_WARN_AGE5</p>
+<p>三、Sudo的通知</p>
+<p>Sudo命令其实可以促使你的“生活”更为轻松，而且它们也会由于Linux的安全问题而毁了你的“生活”。</p>
+<p>我们都晓得64位linux，sudo命令准许非root用户以root身分运行各类命令。你可以在/etc/sudoers文件中查到所有的sudo配置。</p>
+<p>你可以严禁用户去运行这些root能够运行的命令。</p>
+<p>当sudo命令被使用的时候，你可以通过在文件中添加如下一行句子，以配置其向外发送电子电邮。</p>
+<p>其实你也可以用如下句子改变sudo的发短信状态：</p>
+<p>mail_alwayson</p>
+<p>四、SSH调优</p>
+<p>只要说到Linux安全，我们必然会讨论到SSH服务。SSH应当是你系统中重要的一种服务，它使你还能轻松地联接到自己的系统。并且这可能是在出现各类状况的时侯，惟一能让你的系统“幸存”的途径。所以对SSH的调优是极其重要的。</p>
+<p>因为我们在本文所使用的是CentOS7，这么其SSH的配置文件就储存在：</p>
+<p>/etc/ssh/sshd_config</p>
+<p>让我们来深入了解一下吧。</p>
+<p>功击者所使用的扫描器或手动工具通常尝试运用默认端口22来联接SSH。因而一般情况下，你应当改变SSH的原有端口到另一个未使用的端口上，例如说5555。</p>
+<p>Port5555</p>
+<p>你也可以通过更新PermitRootLogin的值为no来限制root的登陆，比如：</p>
+<p>PermitRootLoginno</p>
+<p>并禁用无密码的通道，且改用私钥登入的形式。</p>
+<p>PasswordAuthenticationnoPermitEmptyPasswordsno</p>
+<p>虽然还有另外一种可能制止功击的调整，但它要求SSH通过正向和反向DNS查询远程的主机名，这将在系统日志文件中生成一些适当的警告。你只需启用UseDNS的值便可实现。</p>
+<p>UseDNSyes</p>
+<p>据悉，当GSSAPI服务器被要求验证相关用户的身分时，SSH会调用一个不常用的功能来实现GSSAPI的认证形式。为了防止这些情况可能会导致的某种麻烦，请根据如下将GSSAPIAuthentication设为no：</p>
+<p>GSSAPIAuthenticationno</p>
+<p>考虑到SSH一般会出现的超时问题，你可以通过正确地配置ServerAliveInterval、ServerAliveCountMax和TCPKeepAlive的值来进行管控。</p>
+<p>比如下边的规则就意味着每隔60秒就形成一个数据包。</p>
+<p>ServerAliveInterval15ServerAliveCountMax3TCPKeepAliveyes</p>
+<p>通过调整那些值，你可以提供一个更长的联接。</p>
+<p>ClientAliveInterval30ClientAliveCountMax5</p>
+<p>你可以通过指定这些被准许拿来使用SSH的用户名，因而促使SSH服务更为安全。</p>
+<p>AllowUsersuser1user2</p>
+<p>或则指定容许的组：</p>
+<p>AllowGroupgroup1group2</p>
+<p>除此之外，你还可以为SSH启用例如GoogleAuthenticator这样的双诱因认证方法：</p>
+<p>$yuminstallgoogle-authenticator</p>
+<p>之后运行之 <strong>linux 改文件名命令</strong>，以验证是否成功安装：</p>
+<p>$google-authenticator</p>
+<p>你的联通手机上应当早已安装了Googleauthenticator的应用，这么请将下边一行添加到/etc/pam.d/sshd之中。</p>
+<p>authrequiredpam_google_authenticator.so</p>
+<p>最后的事情就是通过添加下边一行到/etc/ssh/sshd_config中，以通知SSH</p>
+<p>ChallengeResponseAuthenticationyes</p>
+<p>之后重启你的SSH：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_1.png" alt="linux 改文件名命令_linux编辑文件命令 vi_linux执行bin文件命令"></p>
+<p>$systemctlrestartsshd</p>
+<p>然后，当你使用SSH登入的时侯，它将会寻问一个验证码。这便意味着你的SSH早已才能应对暴力破解的功击，且更为稳固了。</p>
+<p>五、使用Tripwire进行入侵检查</p>
+<p>Tripwire是Linux安全里的重要工具之一。这是一种基于主机的入侵检查系统(HIDS)。它通过搜集配置和文件系统的细节，并使用这种信息来提供系统原本与当前状态之间的参考点等方法进行工作。该过程检测文件或目录的属性包括：进去什么被添加或更改了、谁更改的、修改了哪些、何时更改的。因而它就是你文件系统的“看门狗”。</p>
+<p>你须要访问EPEL储存库来获取Tripwire。你可以按如下方式轻松地添加该库：</p>
+<p>wget$rpm-ivhepel-release-7-9.noarch.rpm</p>
+<p>一旦成功安装了EPEL库，你就可以安装Tripwire了：</p>
+<p>$sudoyuminstalltripwire</p>
+<p>在使用Tripwire之前，你须要用如下命令来创建本地和网站秘钥：</p>
+<p>$tripwire-setup-keyfiles</p>
+<p>它会提示你输入一个用于网站和本地秘钥文件的密码。Tripwire也会建议你使用小写字母、小写字母、数字和标点符号的组合。</p>
+<p>你可以通过修改如下文件来订制Tripwire：</p>
+<p>/etc/tripwire/twpol.txt</p>
+<p>由于每一行都有注释，且描述也很到位，因而该文件还是比较容易阅读和更改的。</p>
+<p>你可以用如下的形式更新自己的Tripwire策略。</p>
+<p>$tripwire&ndash;update-policy&ndash;secure-modelow/etc/tripwire/twpol.txt</p>
+<p>Tripwire将通过参考你的修改，在屏幕上持续刷新显示各个阶段的步骤。当那些完成以后，你就应当才能以如下形式初始化Tripwire数据库了：</p>
+<p>$tripwire&ndash;init</p>
+<p>之后Tripwire将开始扫描系统。它所须要的时长取决于系统的总体规模。</p>
+<p>任何对文件系统修改将被觉得是一种系统的入侵，因而管理员会被通知到，但是他须要使用受信任的文件给以系统恢复。正是出于这个缘由，Tripwire必须去验证任何的系统修改。你可以通过如下命令来验证你的现有的策略文件：</p>
+<p>$tripwire&ndash;check</p>
+<p>关于Tripwire，我的最后一点建议是：请额外去加固twpol.txt和twcfg.txt文件的安全。</p>
+<p>更多有关Tripwire的选项和设置，你可以通过mantripwire查阅到。</p>
+<p>六、使用Firewalld</p>
+<p>Firewalld取代了iptables，但是通过在不停止当前联接的情况下启用各类配置的修改，因而改善了Linux的安全管理。</p>
+<p>Firewalld作为守护进程方式运行着。它容许各类规则被即时地添加和修改，但是它使用各类网路区域来为任何以及所有与网路相关的联接定义一种信任级别。</p>
+<p>要想晓得Firewalld的当前运行状态，你可以输入如下命令：</p>
+<p>$firewall-cmd&ndash;state</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_2.png" alt="linux编辑文件命令 vi_linux执行bin文件命令_linux 改文件名命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_3.jpg" alt="linux执行bin文件命令_linux 改文件名命令_linux编辑文件命令 vi"></p>
+<p>你可以用如下命令罗列举预定义的区域：</p>
+<p>$firewall-cmd&ndash;get-zones</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_4.jpg" alt="linux 改文件名命令_linux执行bin文件命令_linux编辑文件命令 vi"></p>
+<p>其值也可以如下形式进行更新：</p>
+<p>$firewall-cmd&ndash;set-default-zone=</p>
+<p>你可以用以下命令获取任何特定区域的所有相关信息：</p>
+<p>$firewall-cmd&ndash;zone=&ndash;list-all</p>
+<p>你也能列举所有支持的服务：</p>
+<p>$firewall-cmd&ndash;get-services</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_5.jpg" alt="linux编辑文件命令 vi_linux执行bin文件命令_linux 改文件名命令"></p>
+<p>但是你可以添加或删掉额外的服务。</p>
+<p>$firewall-cmd&ndash;zone=&ndash;add-service=$firewall-cmd&ndash;zone=&ndash;remove-service=</p>
+<p>你能通过如下命令列举任何特定区域中所有开放的端口：</p>
+<p>$firewall-cmd&ndash;zone=&ndash;list-ports</p>
+<p>你可用如下形式管理TCP/UDP端口的降低与删掉：</p>
+<p>$firewall-cmd&ndash;zone=&ndash;add-port=$firewall-cmd&ndash;zone=&ndash;remove-port=</p>
+<p>你可以如下命令添加或删掉端口的转发：</p>
+<p>$firewall-cmd&ndash;zone=&ndash;add-forward-port=$firewall-cmd&ndash;zone=&ndash;remove-forward-port=</p>
+<p>Firewalld是十分全面的。其中Firewalld最棒的地方当数：你可以在不须要停止或重新启动防火墙服务的情况下，管理该防火墙的体系结构。而这正是运用IPtables所未能实现的。</p>
+<p>七、回归iptable</p>
+<p>有一些人依然还是喜欢IPtables胜于Firewalld。这么假如你刚好处于这些想舍弃Firewalld而回归IPtables的话，请首先禁用Firewalld：</p>
+<p>$systemctldisablefirewalld$systemctlstopfirewalld</p>
+<p>然后来安装IPtables：</p>
+<p>$yuminstalliptables-services$touch/etc/sysconfig/iptables$touch/etc/sysconfig/ip6tables</p>
+<p>如今你就可以启动IPtables的服务了：</p>
+<p>$systemctlstartiptables$systemctlstartip6tables$systemctlenableiptables$systemctlenableip6tables</p>
+<p>为了能让内核采用新的配置，你必须重新启动系统。</p>
+<p>八、限制编译器</p>
+<p>假如你的系统被黑掉了，这么功击者会对系统使用的是哪种编译器很感兴趣。为何呢?由于她们可以去下载一个简单的C文件(POC)，但是在你的系统上进行编译，因而在几秒钟之内就成为了root用户。假如编译器是开启的话，她们还可以在你的系统上做一些严重的破坏。</p>
+<p>首先，你须要检测单个的数据包以确定其包含有什么二补码文件。之后你须要限制这种二补码文件的权限。</p>
+<p>$rpm-q&ndash;filesbypkggcc|grep’bin’</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_6.jpg" alt="linux编辑文件命令 vi_linux执行bin文件命令_linux 改文件名命令"></p>
+<p>如今我们须要创建一个可以访问二补码文件的编译器的组名称了：</p>
+<p>$groupaddcompilerGroup</p>
+<p>之后，你可以赋于这个组才能改变任何二补码文件的所有权：</p>
+<p>$chownroot:compilerGroup/usr/bin/gcc</p>
+<p>最后重要的是：仅编译器组才有改变该二补码文件的权限：</p>
+<p>$chmod0750/usr/bin/gcc</p>
+<p>至此，任何企图使用gcc的用户将会看见权限被拒绝的信息了。</p>
+<p>我晓得有些人可能会说，假如功击者发觉编译器被关掉了的话，他会去下载编译器本身。这就是另外一个故事了，我们会在未来的文章中涉及到的。</p>
+<p>九、不可更改文件太棒了</p>
+<p>不可更改文件是Linux系统中一种最为强悍的安全特点。任何用户(虽然是root用户)，无论她们的文件权限是如何的，都未能对不可更改文件进行写入、删除、重命名甚至是创建硬链接等操作。这真是太棒了!</p>
+<p>它们是保护配置文件或避免你的文件被更改的理想选择。请使用chattr命令来将任何文件显得不更改：</p>
+<p>$chattr+i/myscript</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_7.jpg" alt="linux 改文件名命令_linux执行bin文件命令_linux编辑文件命令 vi"></p>
+<p>你也可以如下方式除去其不可更改属性：</p>
+<p>$chattr-i/myscript</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_8.jpg" alt="linux执行bin文件命令_linux编辑文件命令 vi_linux 改文件名命令"></p>
+<p>/sbin和/usr/lib两个目录内容能被设置为不可改变，以避免功击者替换关键的二补码文件或库文件成为恶意软件版本。我将其他有关使用不可改变文件的反例，留给你去想像。</p>
+<p>十、用Aureport来管理SELinux</p>
+<p>一般情况下，假如你使用的是主机控制面板，或则当有一个或多个特定的应用程序可能会遇到一些问题的时侯，她们是不会运行在SELinux已启用的模式下的，也就是说你会发觉SELinux是禁用掉的。</p>
+<p>并且禁用SELinux确实会将系统曝露于风险之中。我的观点是：因为SELinux有一定的复杂性，对于我们那些仍想受益于安全性的人来说linux vi，完全可以通过运行aureport的选项来促使工作轻松些。</p>
+<p>aureport工具被设计为创建一些基于列特点的报告，以显示在审计日志文件中所记录的这些风波。</p>
+<p>$aureport&ndash;avc</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_9.jpg" alt="linux编辑文件命令 vi_linux执行bin文件命令_linux 改文件名命令"></p>
+<p>你也可以运用同样的工具来创建一个可执行文件的列表：</p>
+<p>$aureport-x</p>
+<p>你也可以使用aureport来形成一个认证的全量报告：</p>
+<p>$aureport-au-i</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_10.jpg" alt="linux执行bin文件命令_linux编辑文件命令 vi_linux 改文件名命令"></p>
+<p>或则你还可以列举这些认证失败的风波：</p>
+<p>$aureport-au&ndash;summary-i&ndash;failed</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_11.jpg" alt="linux编辑文件命令 vi_linux 改文件名命令_linux执行bin文件命令"></p>
+<p>或则你也须要一个认证成功的风波的摘要：</p>
+<p>$aureport-au&ndash;summary-i&ndash;success</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_12.jpg" alt="linux执行bin文件命令_linux 改文件名命令_linux编辑文件命令 vi"></p>
+<p>可见，当你使用一个运行着SELinux的系统来进行系统的故障确诊的时候，你作为系统管理员首要考虑的应当就是使用aureport的各类用处了。</p>
+<p>十一、使用Sealert工具</p>
+<p>不仅aureport工具你也可以使用一个挺好的Linux安全工具—sealert。你可以用以下的命令来进行安装：</p>
+<p>$yuminstallsetools</p>
+<p>这么如今我们就有了一个工具，它将积极地从/var/log/audit/audit.log这一日志文件中返回各类警告，并将其转换得更为“人性化”且可读。</p>
+<p>这个称为sealert的工具，其目的是能报告出任何与SELinux有关联的问题。你可以这样来使用它：</p>
+<p>$sealert-a/var/log/audit/audit.log</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_13.jpg" alt="linux编辑文件命令 vi_linux执行bin文件命令_linux 改文件名命令"></p>
+<p>关于所生成的报告，其最好之处是：在每位被发觉的问题的警报末尾，系统就会给出怎样去解决该问题的相关解释。</p>
+<p>在这篇文章中，我们讨论了一些可以帮助你加固Linux系统的安全方法。其实，对于各类运行的服务而言，仍有许多值得加固的Linux安全方法有待开掘。我希望你能从本文中找到对你有用和有趣的内容。</p>
+<p>————————————————</p>
+<p>原文：</p>
+<p>END</p>
+<p>1</p>
+<p>捐书数目：1本</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1677737603114_14.png" alt="linux编辑文件命令 vi_linux执行bin文件命令_linux 改文件名命令"></p>
+<p>2</p>
+<p>捐书条件：</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>( Linux系统中最常用的归档（打包) 命令做打包操作</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="( Linux系统中最常用的归档（打包) 命令做打包操作" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683579030227_1.png" />
+  <meta name="twitter:description"content="( Linux系统中最常用的归档（打包) 命令做打包操作">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="( Linux系统中最常用的归档（打包) 命令做打包操作" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683579030227_1.png" />
+  <meta property="og:description"content="( Linux系统中最常用的归档（打包) 命令做打包操作" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683579030227_1.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="( Linux系统中最常用的归档（打包) 命令做打包操作" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxtzzcydgddb/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="( Linux系统中最常用的归档（打包) 命令做打包操作" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">( Linux系统中最常用的归档（打包) 命令做打包操作</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>(Linux系统中linux课程，最常用的归档（打包) 命令就是tar红旗linux下载，该命令可以将许多文件一起保存到一个单独的磁带或c盘中进行归档。除了这般，该命令还可以从归档文件中还原所需文件，也就是打包的反过程，称为解打包。使用tar命令归档的包一般称为tar包（tar包文件都是以“.tar”结尾的）。</p>
+<p>一、tar命令做打包操作1、命令的基本格式为：</p>
+<pre tabindex="0"><code>[root@localhost ~]#tar  [选项]  源文件或目录
+</code></pre><p>此命令常用的选项及各自的涵义如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-c    将多个文件或目录进行打包。
+</span></span><span style="display:flex;"><span>-A    追加 tar 文件到归档文件。
+</span></span><span style="display:flex;"><span>-f    包名指定包的文件名。包的扩展名是用来给管理员识别格式的，所以一定要正确指定扩展名；
+</span></span><span style="display:flex;"><span>-v    显示打包文件过程；
+</span></span></code></pre></div><p>须要注意的是，在使用tar命令指定选项时可以不在选项上面输入“-”。比如，使用“cvf”选项和“-cvf”起到的作用一样。</p>
+<p>2、实战举例【例1】打包文件和目录。</p>
+<pre tabindex="0"><code>[root@localhost ~]# tar -cvf anaconda-ks.cfg.tar anaconda-ks.cfg
+#把anacondehks.cfg打包为 anacondehks.cfg.tar文件
+</code></pre><p>选项”-cvf”通常是习惯用法，记住打包时须要指定打包以后的文件名，并且要用”.tar”作为扩充名。打包目录也是这么：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> ll <span style="color:#f92672">-</span>d test<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">2</span> root root <span style="color:#ae81ff">4096</span> <span style="color:#ae81ff">6</span><span style="color:#960050;background-color:#1e0010">月</span> <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> test<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#test是我们之前的测试目录
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>cvf test.tar test<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">/</span>test3
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">/</span>test2
+</span></span><span style="display:flex;"><span>test<span style="color:#f92672">/</span>test1
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#把目录打包为test.tar文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>tar<span style="color:#960050;background-color:#1e0010">命令也可以打包多个文件或目录，只要用空格分开即可。例如</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>cvf ana.tar anaconda<span style="color:#f92672">-</span>ks.cfg <span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#把anaconda-ks.cfg文件和/tmp目录打包成ana.tar文件包
+</span></span></span></code></pre></div><p>【例2】打包并压缩目录。</p>
+<p>首先声明一点，压缩命令不能直接压缩目录，必须先用tar命令将目录打包，之后才会用gzip命令或bzip2命令对打包文件进行压缩。诸如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span>ll <span style="color:#f92672">-</span>d test test.tar
+</span></span><span style="display:flex;"><span>drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">2</span> root root <span style="color:#ae81ff">4096</span> <span style="color:#ae81ff">6</span><span style="color:#960050;background-color:#1e0010">月</span> <span style="color:#ae81ff">17</span> <span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> test
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#960050;background-color:#1e0010">–</span>r<span style="color:#960050;background-color:#1e0010">–</span> <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">10240</span> <span style="color:#ae81ff">6</span><span style="color:#960050;background-color:#1e0010">月</span> <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">01</span><span style="color:#f92672">:</span><span style="color:#ae81ff">06</span> test.tar
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#我们之前已经把test目录打包成test.tar文件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> gzip test.tar
+</span></span><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> ll test.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#960050;background-color:#1e0010">–</span>r<span style="color:#960050;background-color:#1e0010">–</span> <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">176</span> <span style="color:#ae81ff">6</span><span style="color:#960050;background-color:#1e0010">月</span> <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">01</span><span style="color:#f92672">:</span><span style="color:#ae81ff">06</span> test.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#gzip命令会把test.tar压缩成test.tar.gz
+</span></span></span></code></pre></div><p>二、tar命令做解打包操作1、命令的基本格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span>tar [<span style="color:#960050;background-color:#1e0010">选项</span>] <span style="color:#960050;background-color:#1e0010">压缩包</span>
+</span></span></code></pre></div><p>选项及涵义</p>
+<pre tabindex="0"><code>-x    对 tar 包做解打包操作。
+-f    指定要解压的 tar 包的包名。
+-t    只查看 tar 包中有哪些文件或目录，不对 tar 包做解打包操作。
+-C    目录   指定解打包位置。
+-v    显示解打包的具体过程。
+</code></pre><p>虽然解打包和打包相比，只是把打包选项”-cvf”更换为”-xvf”。我们来试试：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>xvf anaconda<span style="color:#f92672">-</span>ks.cfg. tar   <span style="color:#960050;background-color:#1e0010">#解打包到当前目录下</span>
+</span></span></code></pre></div><p>假如使用”-xvf”选项，则会把包中的文件解压到当前目录下。假如想要指定解压位置，则须要使用”-C(小写)”选项。诸如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>xvf test.tar <span style="color:#f92672">-</span>C <span style="color:#f92672">/</span>tmp    <span style="color:#960050;background-color:#1e0010">#把文件包</span>test.tar<span style="color:#960050;background-color:#1e0010">解打包到</span><span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">目录下</span>
+</span></span></code></pre></div><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1683579030227_1.png" alt="linux 压缩命令_linux 常见文件打包压缩命令_linux 常见文件打包压缩命令"></p>
+<p>假如只想查看文件包中有什么文件，则可以把解打包选项”-x”更换为测试选项”-t”。诸如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>tvf test.tar
+</span></span><span style="display:flex;"><span>drwxr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x root<span style="color:#f92672">/</span>root <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#ae81ff">21</span><span style="color:#f92672">:</span><span style="color:#ae81ff">09</span> test<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span> root<span style="color:#f92672">/</span>root <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">51</span> test<span style="color:#f92672">/</span>test3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span> root<span style="color:#f92672">/</span>root <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">51</span> test<span style="color:#f92672">/</span>test2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rw<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span>r<span style="color:#f92672">-</span> root<span style="color:#f92672">/</span>root <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2016</span><span style="color:#f92672">-</span><span style="color:#ae81ff">06</span><span style="color:#f92672">-</span><span style="color:#ae81ff">17</span> <span style="color:#ae81ff">17</span><span style="color:#f92672">:</span><span style="color:#ae81ff">51</span> test<span style="color:#f92672">/</span>test1
+</span></span></code></pre></div><p>#会用长格式显示test.tar文件包中文件的详尽信息</p>
+<p>(tar命令做打包压缩（解压缩解打包) 操作</p>
+<p>你可能会认为Linux实在太不智能了，一个打包压缩 <strong>linux 常见文件打包压缩命令</strong>，竟然还要先打包成”.tar”格式 <strong>linux 常见文件打包压缩命令</strong>，再压缩成”.tar.gz”或”.tar.bz2″格式。虽然tar命令是可以同时打包压缩的，上面的讲解之所打包和压缩分开，是为了让你们了解在Linux中打包和压缩的不同。</p>
+<p>三、tar命令同时做打包压缩</p>
+<p>tar命令同时做打包压缩的操作时，</p>
+<p>1、基本格式如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span>tar [<span style="color:#960050;background-color:#1e0010">选项</span>] <span style="color:#960050;background-color:#1e0010">压缩包</span> <span style="color:#960050;background-color:#1e0010">源文件或目录</span>
+</span></span></code></pre></div><p>此处常用的选项有以下2个，分别是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#f92672">-</span>z<span style="color:#960050;background-color:#1e0010">：压缩和解压缩</span> <span style="color:#e6db74">&#34;.tar.gz&#34;</span> <span style="color:#960050;background-color:#1e0010">格式；</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>j<span style="color:#960050;background-color:#1e0010">：压缩和解压缩</span> <span style="color:#e6db74">&#34;.tar.bz2&#34;</span><span style="color:#960050;background-color:#1e0010">格式。</span>
+</span></span></code></pre></div><p>2、实战举例</p>
+<p>【例1】压缩与解压缩”.tar.gz”格式。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>zcvf tmp.tar.gz <span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#把/temp/目录直接打包压缩为&#34;.tar.gz&#34;格式，通过&#34;-z&#34;来识别格式，&#34;-cvf&#34;和打包选项一致
+</span></span></span></code></pre></div><p>解压缩也只是在解打包选项”-xvf”上面加了一个”-z”选项。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>zxvf tmp.tar.gz
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#解压缩与解打包&#34;.tar.gz&#34;格式
+</span></span></span></code></pre></div><p>后面讲的选项”-C”用于指定解压位置、”-t”用于查看压缩包内容，在这儿同样适用。</p>
+<p>【例2】压缩与解压缩”.tar.bz2″格式。</p>
+<p>和”.tar.gz”格式惟一的不同就是”-zcvf”选项换成了”-jcvf”，如下所示：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>jcvf tmp.tar.bz2 <span style="color:#f92672">/</span>tmp<span style="color:#f92672">/</span>  <span style="color:#960050;background-color:#1e0010">#打包压缩为</span><span style="color:#e6db74">&#34;.tar.bz2&#34;</span><span style="color:#960050;background-color:#1e0010">格式，注意压缩包文件名</span>
+</span></span><span style="display:flex;"><span>[root<span style="color:#960050;background-color:#1e0010">@</span>localhost <span style="color:#f92672">~</span>]<span style="color:#960050;background-color:#1e0010">#</span> tar <span style="color:#f92672">-</span>jxvf tmp.tar.bz2  <span style="color:#960050;background-color:#1e0010">#解压缩与解打包</span><span style="color:#e6db74">&#34;.tar.bz2&#34;</span><span style="color:#960050;background-color:#1e0010">格式</span>
+</span></span></code></pre></div><p>把文件直接压缩成”.tar.gz”和”.tar.bz2″格式，才是Linux中最常用的压缩方法，这是你们一定要把握的压缩和解压缩方式。</p>
+<p>tar命令最初被拿来在磁带上创建备份，如今可以在任何设备上创建备份。借助tar命令可以把一大堆的文件和目录打包成一个文件，这对于备份文件或是将几个文件组合成为一个文件进行网路传输是十分有用的。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

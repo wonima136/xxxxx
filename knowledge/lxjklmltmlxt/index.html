@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux下监控类命令top命令系统如何查看内存？</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux下监控类命令top命令系统如何查看内存？" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675692087997_0.png" />
+  <meta name="twitter:description"content="Linux下监控类命令top命令系统如何查看内存？">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux下监控类命令top命令系统如何查看内存？" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675692087997_0.png" />
+  <meta property="og:description"content="Linux下监控类命令top命令系统如何查看内存？" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675692087997_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux下监控类命令top命令系统如何查看内存？" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxjklmltmlxt/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux下监控类命令top命令系统如何查看内存？" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux下监控类命令top命令系统如何查看内存？</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>Linux下监控类命令</p>
+<p>top命令</p>
+<p>top命令，是Linux下常用的性能分析工具，能够实时显示系统中各个进程的资源占用状况，一般系统资源导致的崩溃问题可以使用top实时监控各进程，输出到日志文件分析某个进程是否假性释放… …</p>
+<p>top信息解释</p>
+<p>在这里引用之前文章的top命令截图 linux系统如何查看内存：文中第四项top命令。下面对图中所示信息逐行说明。</p>
+<p>第一行：任务队列信息，同uptime命令的执行结果</p>
+<p>16:29:14： 当前系统时间</p>
+<p>up 4min： 系统已经运行了4分钟</p>
+<p>3 user： 当前有3个用户登录系统</p>
+<p>load average: 0.01, 0.06, 0.03： 1分钟，5分钟，15分钟的平均负载情况</p>
+<p>(第二行：Tasks任务（进程) 信息</p>
+<p>(共有128个进程，处于运行状态的有2个，81个在休眠，stoped（停止) 状态0个，zombie（僵尸）状态有1个</p>
+<p>第三行：CPU状态信息</p>
+<p>us： 用户空间占用CPU的百分比</p>
+<p>sy： 内核空间占用cpu的百分比</p>
+<p>ni： 改变优先级的进程占用CPU的百分比</p>
+<p>id： 空闲CPU百分比</p>
+<p>wa： I/O等待只用CPU的百分比</p>
+<p>(hi： 硬中断（Hardware IRQ) 占用CPU的百分比</p>
+<p>(si： 软中断（Software Interrupts) 占用CPU的百分比</p>
+<p>st： 虚拟机占用CPU的百分比</p>
+<p>第四行：内存状态</p>
+<p>total： 物理内存总量</p>
+<p>used： 使用中的内存总量</p>
+<p>free： 空闲内存总量</p>
+<p>buffers： 缓冲的内存量</p>
+<p>第五行：swap交换分区信息</p>
+<p>total： 交换分区总量</p>
+<p>used： 使用的交换区总量</p>
+<p>free： 空闲交换区总量</p>
+<p>cached： 缓存的内存量</p>
+<p>第六行：空行</p>
+<p>(第七行：给出的各进程（任务) 的状态监控</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675692087997_0.png" alt="linux系统命令topfree的使用及参数详解_linux命令详解手册chm_linux命令详解之df命令"></p>
+<p>(PID（Process ID) ：进程标示号。</p>
+<p>USER：进程所有者的用户名。</p>
+<p>PR：进程的优先级别。</p>
+<p>NI：进程的优先级别数值。</p>
+<p>VIRT：进程占用的虚拟内存值。</p>
+<p>RES：进程占用的物理内存值。</p>
+<p>SHR：进程使用的共享内存值。</p>
+<p>S：进程的状态，其中S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值是负数。</p>
+<p>%CPU：该进程占用的CPU使用率。</p>
+<p>%MEM：该进程占用的物理内存和总内存的百分比。</p>
+<p>TIME＋：该进程启动后占用的总的CPU时间。</p>
+<p>Command：进程启动的启动命令名称，如果这一行显示不下，进程会有一个完整的命令行。</p>
+<p>top参数使用</p>
+<p>top [-d number] | top [-bnp]</p>
+<p>-a# 将进程按照使用内存排序</p>
+<p>-b# 批处理的模式显示进程信息，输出结果可以传递给其他程序或写入到文件中，配合-n使用，一直打到-n设置的阈值</p>
+<p>-c# 显示进程的整个命令路径，而不是只显示命令名称</p>
+<p>-d# number代表秒数，表示top命令显示的页面更新一次的间隔。默认是5秒。</p>
+<p>-H# 指定这个可以显示每个线程的情况，否则就是进程的总的状态</p>
+<p>-i# 不显示闲置或者僵死的进程状态</p>
+<p>-n# top输出信息更新的次数，完成后将退出top命令</p>
+<p>-p# 显示指定的进程信息</p>
+<p>(在top命令显示的页面还可以输入以下按键执行相应的功能（注意大小写区分的) ：</p>
+<p>?h)：显示在top当中可以输入的命令</p>
+<p>P：以CPU的使用资源排序显示</p>
+<p>M：以内存的使用资源排序显示</p>
+<p>N：以pid排序显示</p>
+<p>T：由进程使用的时间累计排序显示</p>
+<p>k：给某一个pid一个信号。可以用来杀死进程</p>
+<p>(r：给某个pid重新定制一个nice值（即优先级)</p>
+<p>(q：退出top（用ctrl+c也可以退出top)</p>
+<p>只是为了查看资源信息，一般的写法如：</p>
+<p>！！！</p>
+<p>top：显示进程信息</p>
+<p>top -n 1：显示1秒后终止更新显示</p>
+<p>top -d 3：表示更新时间为3秒</p>
+<p>top -p PID：显示进程号为PID的进程信息</p>
+<p>top -u userName：显示用户userName的进程信息</p>
+<p>top命令是一个功能十分强大的监控系统的工具，对于系统管理员而言尤其重要。但是，它的缺点是会消耗很多系统资源。</p>
+<p>使用top命令可以监视指定用户，缺省情况是监视所有用户的进程。如果想查看指定用户的情况，在终端中按“U”键，然后输入用户名 <strong>linux系统命令topfree的使用及参数详解</strong>，系统就会切换为指定用户的进程运行界面。</p>
+<p>ps命令</p>
+<p>ps命令是最基本的进程查看命令，格式为：ps [options]，通过执行man ps命令进行查看文档说明，使用ps可以看到有哪些进程正在运行，并且可以看到进程的运行状态、进程是否结束、进程有没有僵死、哪些进程占用了过多的资源等等。</p>
+<p>注意的是：ps是显示瞬间进程的状态，并不动态连续，如果想对进程进行实时监控应该用top命令。</p>
+<p>ps信息解释</p>
+<p>(以ps -aux为例（图片引自YoungerChina)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># USER：表示该进程属于哪个用户
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># PID：进程id
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># %CPU：该进程占用CPU资源的百分比
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># %MEM：该进程占用内存的百分比
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># VSZ：该进程使用掉的虚拟内存量 (Kbytes)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># RSS：该进程占用的固定的内存量 (Kbytes)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># TTY：该进程是在那个终端机上面运行，若与终端机无关，则显示?，另外，tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># STAT：代表该进程目前的状态，主要的状态有：
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>   R<span style="color:#960050;background-color:#1e0010">：该进程正在运行</span>
+</span></span><span style="display:flex;"><span>   S<span style="color:#960050;background-color:#1e0010">：该进程正在休眠，但可被某些信号</span>(signal)<span style="color:#960050;background-color:#1e0010">唤醒</span>
+</span></span><span style="display:flex;"><span>   D<span style="color:#960050;background-color:#1e0010">：无法中断的休眠状态</span>(<span style="color:#960050;background-color:#1e0010">通常为</span>IO<span style="color:#960050;background-color:#1e0010">进程</span>)
+</span></span><span style="display:flex;"><span>   T<span style="color:#960050;background-color:#1e0010">：该进程已经停止</span>
+</span></span><span style="display:flex;"><span>   Z<span style="color:#960050;background-color:#1e0010">：僵死状态，该进程应该已经终止，但是其父进程却无法正常的终止它，造成</span>zombie(<span style="color:#960050;background-color:#1e0010">疆尸</span>)<span style="color:#960050;background-color:#1e0010">程序的状态</span>
+</span></span><span style="display:flex;"><span>   W<span style="color:#960050;background-color:#1e0010">：等待状态，等待内存的分配</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">：高优先级的进程</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># N：低优先级的进程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># START：该进程被触发启动的时间
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># COMMAND：该进程的实际指令
+</span></span></span></code></pre></div><p>ps参数使用</p>
+<p>ps的参数组合种类非常多linux伊甸园论坛，但是常用的也就是几个，下面列出：</p>
+<p>常用组合：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># ps -aux：查看系统所有进程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">//ps -aux默认是无序的，可以通过--sort命令来排序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># ps -aux --sort -pcpu|less -N     #按照cpu占用来排序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># ps -aux --sort -pmem|less -N     #按照内存占用来排序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>(<span style="color:#960050;background-color:#1e0010">#</span> ps <span style="color:#f92672">-</span>aux <span style="color:#f92672">|</span> grep debug             <span style="color:#960050;background-color:#1e0010">#查看指定进程（此为查看名为</span>debug<span style="color:#960050;background-color:#1e0010">的进程</span>) 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ps -l                            #查看当前用户的进程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># ps -axjf                         #以进程树结构显示过程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># ps -efL                          #获取有关线程的信息
+</span></span></span></code></pre></div><p>常见使用场景一：找出电脑中的某一个进程 <strong>linux系统命令topfree的使用及参数详解</strong>，配合kill命令，结束该进程</p>
+<p>①使用ps和grep命令linux怎么读，查找出对应程序的进程号，比如查看找tail的进程号：ps -ef |grep “tail”</p>
+<p>②找出进程号，使用kill -9 进程号命令结束该进程</p>
+<p>常见使用场景二：用于确定某一个程序是否已经启用：ps -ef |grep “tail”</p>
+<p>du和df</p>
+<p>du显示每个文件和目录的磁盘使用空间，使用格式：du [选项] [文件]</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">-</span>a<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">-</span>all  <span style="color:#960050;background-color:#1e0010">列出所</span>you<span style="color:#960050;background-color:#1e0010">的文件与目录容量，因为默认仅统计目录下面的文件量</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>b<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">-</span>bytes  <span style="color:#960050;background-color:#1e0010">显示目录或文件大小时，以</span>byte<span style="color:#960050;background-color:#1e0010">为单位。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>c<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>total  <span style="color:#960050;background-color:#1e0010">除了显示个别目录或文件的大小外，同时也显示所有目录或文件的总和。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>k<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>kilobytes  <span style="color:#960050;background-color:#1e0010">以</span>KB(<span style="color:#ae81ff">1024</span>bytes)<span style="color:#960050;background-color:#1e0010">为单位输出。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>m<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>megabytes  <span style="color:#960050;background-color:#1e0010">以</span>MB<span style="color:#960050;background-color:#1e0010">为单位输出。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>s<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>summarize  <span style="color:#960050;background-color:#1e0010">仅显示总量，只列出最后加总的值，而不列出每个个别的目录占用容量。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>S<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>separate<span style="color:#f92672">-</span>dirs   <span style="color:#960050;background-color:#1e0010">不包括子目录下的总计，与</span> <span style="color:#f92672">-</span>s <span style="color:#960050;background-color:#1e0010">有点差别</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>h<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>human<span style="color:#f92672">-</span>readable  <span style="color:#960050;background-color:#1e0010">以</span>K<span style="color:#960050;background-color:#1e0010">，</span>M<span style="color:#960050;background-color:#1e0010">，</span>G<span style="color:#960050;background-color:#1e0010">为单位，提高信息的可读性。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>x<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>one<span style="color:#f92672">-</span>file<span style="color:#f92672">-</span>xystem  <span style="color:#960050;background-color:#1e0010">以一开始处理时的文件系统为准，若遇上其它不同的文件系统目录则略过。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>L<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">符号链接</span><span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>dereference<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">符号链接</span><span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">显示选项中所指定符号链接的源文件大小。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>X<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件</span><span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>exclude<span style="color:#f92672">-</span>from<span style="color:#f92672">=&lt;</span><span style="color:#960050;background-color:#1e0010">文件</span><span style="color:#f92672">&gt;</span>  <span style="color:#960050;background-color:#1e0010">在</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件</span><span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">指定目录或文件。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span>exclude<span style="color:#f92672">=&lt;</span><span style="color:#960050;background-color:#1e0010">目录或文件</span><span style="color:#f92672">&gt;</span>         <span style="color:#960050;background-color:#1e0010">略过指定的目录或文件。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>D<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>dereference<span style="color:#f92672">-</span>args   <span style="color:#960050;background-color:#1e0010">显示指定符号链接的源文件大小。</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>H<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>si  <span style="color:#960050;background-color:#1e0010">与</span><span style="color:#f92672">-</span>h<span style="color:#960050;background-color:#1e0010">参数相同，但是</span>K<span style="color:#960050;background-color:#1e0010">，</span>M<span style="color:#960050;background-color:#1e0010">，</span>G<span style="color:#960050;background-color:#1e0010">是以</span><span style="color:#ae81ff">1000</span><span style="color:#960050;background-color:#1e0010">为换算单位。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>l<span style="color:#960050;background-color:#1e0010">或</span><span style="color:#f92672">--</span>count<span style="color:#f92672">-</span>links   <span style="color:#960050;background-color:#1e0010">重复计算硬件链接的文件。</span>
+</span></span></code></pre></div><p>———————————————————————————-</p>
+<p>df 显示磁盘分区上可以使用的磁盘空间,使用格式：df [选项] [文件]</p>
+<p>显示指定磁盘文件的可用空间。如果没有文件名被指定，则所有当前被挂载的文件系统的可用空间将被显示。默认情况下，磁盘空间将以 1KB为单位进行显示，除非环境变量 POSIXLY_CORRECT 被指定，那样将以512字节为单位进行显示。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">-</span>a <span style="color:#960050;background-color:#1e0010">列出所有的文件系统，包括系统特有的</span> <span style="color:#f92672">/</span>proc <span style="color:#960050;background-color:#1e0010">等文件系统</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>k <span style="color:#960050;background-color:#1e0010">以</span> KBytes <span style="color:#960050;background-color:#1e0010">的容量显示各文件系统。命令</span> df <span style="color:#f92672">-</span>k <span style="color:#960050;background-color:#1e0010">同命令</span> df
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>m <span style="color:#960050;background-color:#1e0010">以</span> MBytes <span style="color:#960050;background-color:#1e0010">的容量显示各文件系统</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>h <span style="color:#960050;background-color:#1e0010">以人们较易阅读的</span> GBytes<span style="color:#960050;background-color:#1e0010">、</span>MBytes<span style="color:#960050;background-color:#1e0010">、</span>KBytes <span style="color:#960050;background-color:#1e0010">等格式自行显示</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>H <span style="color:#960050;background-color:#1e0010">等于“</span><span style="color:#f92672">-</span>h<span style="color:#960050;background-color:#1e0010">”，但是计算式，</span><span style="color:#ae81ff">1</span>K<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span><span style="color:#960050;background-color:#1e0010">，而不是</span><span style="color:#ae81ff">1</span>K<span style="color:#f92672">=</span><span style="color:#ae81ff">1024</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>i <span style="color:#960050;background-color:#1e0010">不用磁盘容量，而以</span> inode <span style="color:#960050;background-color:#1e0010">的数量来显示</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>l <span style="color:#960050;background-color:#1e0010">只显示本地文件系统。命令</span> df <span style="color:#f92672">-</span>l <span style="color:#960050;background-color:#1e0010">同命令</span> <span style="color:#a6e22e">df</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#f92672">-</span>T  <span style="color:#960050;background-color:#1e0010">连同该磁盘分区的文件系统名称（例如</span> xfs) <span style="color:#960050;background-color:#1e0010">也列出</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">--</span>block<span style="color:#f92672">-</span>size<span style="color:#f92672">=&lt;</span><span style="color:#960050;background-color:#1e0010">区块大小</span><span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">指定区块大小</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>t <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件系统类型</span><span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">只显示选定文件系统的磁盘信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>x <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">文件系统类型</span><span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">不显示选定文件系统的磁盘信息</span>
+</span></span></code></pre></div><p>du和df区别</p>
+<p>du 是通过搜索文件来计算每个文件的大小然后累加，du所计算的文件是当前存在为被删除的。而df 通过文件系统来快速获取空间大小的信息，当我们删除一个文件的时候，这个文件不是马上就在文件系统当中消失了，而是暂时消失了，当所有程序都不用时，才会根据OS的规则释放掉已经删除的文件，df计算的是通过文件系统获取到的文件的大小。严格意义上说df比du计算的更为精确，当文件系统也确定删除了该文件后，这时候du与df就一致了。</p>
+<p>以上引JMW1407</p>
+<p>free命令</p>
+<p>free指令会显示内存的使用情况，包括实体内存，虚拟的交换文件内存，共享内存区段，以及系统核心使用的缓冲区等，使用格式为：free [-bkmhotV][-s ]</p>
+<p>命令参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#f92672">-</span>b <span style="color:#960050;background-color:#1e0010">　以</span>Byte<span style="color:#960050;background-color:#1e0010">为单位显示内存使用情况。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>k <span style="color:#960050;background-color:#1e0010">　以</span>KB<span style="color:#960050;background-color:#1e0010">为单位显示内存使用情况。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>m <span style="color:#960050;background-color:#1e0010">　以</span>MB<span style="color:#960050;background-color:#1e0010">为单位显示内存使用情况。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>h <span style="color:#960050;background-color:#1e0010">　以合适的单位显示内存使用情况，最大为三位数，自动计算对应的单位值。单位有：</span>
+</span></span><span style="display:flex;"><span>	B <span style="color:#f92672">=</span> bytes
+</span></span><span style="display:flex;"><span>	K <span style="color:#f92672">=</span> kilos
+</span></span><span style="display:flex;"><span>	M <span style="color:#f92672">=</span> megas
+</span></span><span style="display:flex;"><span>	G <span style="color:#f92672">=</span> gigas
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	T <span style="color:#f92672">=</span> teras
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>o <span style="color:#960050;background-color:#1e0010">　不显示缓冲区调节列。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>s<span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">间隔秒数</span><span style="color:#f92672">&gt;</span> <span style="color:#960050;background-color:#1e0010">　持续观察内存使用状况。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>t <span style="color:#960050;background-color:#1e0010">　显示内存总和列。</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>V <span style="color:#960050;background-color:#1e0010">　显示版本信息。</span>
+</span></span></code></pre></div><p>参数含义：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Mem<span style="color:#960050;background-color:#1e0010">行（单位均为</span>M) <span style="color:#960050;background-color:#1e0010">：</span>
+</span></span><span style="display:flex;"><span>    total   <span style="color:#960050;background-color:#1e0010">系统总的可用物理内存大小</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    used    <span style="color:#960050;background-color:#1e0010">已被使用的物理内存大小</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    free    <span style="color:#960050;background-color:#1e0010">还有多少物理内存可用</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    shared  <span style="color:#960050;background-color:#1e0010">被共享使用的物理内存大小</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    buff<span style="color:#f92672">/</span>cache  <span style="color:#960050;background-color:#1e0010">被</span> buffer <span style="color:#960050;background-color:#1e0010">和</span> cache <span style="color:#960050;background-color:#1e0010">使用的物理内存大小</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    available   <span style="color:#960050;background-color:#1e0010">还可以被</span> <span style="color:#960050;background-color:#1e0010">应用程序</span> <span style="color:#960050;background-color:#1e0010">使用的物理内存大小</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">-/+</span> buffers<span style="color:#f92672">/</span>cache)<span style="color:#960050;background-color:#1e0010">行：</span>
+</span></span><span style="display:flex;"><span>(		<span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">-</span>buffers<span style="color:#f92672">/</span>cache) <span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">真正使用的内存数，指的是第一部分的</span> used <span style="color:#f92672">-</span> buffers <span style="color:#f92672">-</span> <span style="color:#a6e22e">cached</span>
+</span></span><span style="display:flex;"><span>(		<span style="color:#960050;background-color:#1e0010">（</span><span style="color:#f92672">+</span>buffers<span style="color:#f92672">/</span>cache) <span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">可用的内存数，指的是第一部分的</span> free <span style="color:#f92672">+</span> buffers <span style="color:#f92672">+</span> cached
+</span></span><span style="display:flex;"><span>Swap<span style="color:#960050;background-color:#1e0010">行指交换分区</span>
+</span></span></code></pre></div><p>该文为整合，有误请指正！</p>
+<p>参考列表：</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

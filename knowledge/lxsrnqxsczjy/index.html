@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux下输入nslookup，取显示command，直接yuminstallnslookup</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux下输入nslookup，取显示command，直接yuminstallnslookup" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_0.jpg" />
+  <meta name="twitter:description"content="Linux下输入nslookup，取显示command，直接yuminstallnslookup">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux下输入nslookup，取显示command，直接yuminstallnslookup" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_0.jpg" />
+  <meta property="og:description"content="Linux下输入nslookup，取显示command，直接yuminstallnslookup" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux下输入nslookup，取显示command，直接yuminstallnslookup" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxsrnqxsczjy/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux下输入nslookup，取显示command，直接yuminstallnslookup" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux下输入nslookup，取显示command，直接yuminstallnslookup</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<ol>
+<li>nslookup</li>
+</ol>
+<p>(做DNS的人都知道nslookup（name server lookup：域名查询) 命令是做什么用的，windows系统自带的。但在Linux下输入nslookup，取显示command not found。直接yum install nslookup，出错了。此时需要找到哪个软件包提供这个命令。利用yum provides */nslookup就可以找出所需要的软件包了。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_0.jpg" alt="linux创建root用户命令_ubuntu创建root用户_linux切换root用户命令"></p>
+<p>知道了软件包，则使用yum install -y bind-utils安装即可。</p>
+<p>查询 DNS 域的名称服务器信息：</p>
+<p>查询邮件交换器记录：</p>
+<p>查询域名服务器：</p>
+<p>查询DNS记录：</p>
+<p>查询起始授权机构：</p>
+<p>(查询端口号（此处没查到) ：</p>
+<p>更多使用请参考：8 Linux Nslookup Commands to Troubleshoot DNS(Domain Name Server)</p>
+<ol start="2">
+<li>ls</li>
+</ol>
+<p>(此命令是列出目录内容（List Directory Contents) ，可能是文件也可能是文件夹。</p>
+<p>(“ls -l” （long listing fashing) 命令表示以详情模式列出文件夹的内容。</p>
+<p>“ls -a”命令列出文件夹里的所有内容，包括以“.”开头的隐藏文件。</p>
+<p>“ls -l”</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_1.jpg" alt="linux创建root用户命令_ubuntu创建root用户_linux切换root用户命令"></p>
+<p>3、md5sum</p>
+<p>md5sum是计算和检验MD5信息签名。MD5 checksum使用匹配验证文件的完整性。</p>
+<p>4、uname</p>
+<p>此命令是Unix Name的简写linux下载，显示机器名、操作系统和内核的详细信息。</p>
+<p>5、history</p>
+<p>此命令记录历史记录。它显示在终端中所执行过的所有命令的历史。</p>
+<p>6、sudo</p>
+<p>(“sudo”（super user do) 命令允许授权用户执行超级管理用户或者其它用户的命令。</p>
+<p>注意：sudo允许用户借用超级用户的权限，而su命令实际上是允许用户以超级用户登录 <strong>linux创建root用户命令</strong>，所以sudo比su更安全。</p>
+<p>“To err is human, but to really foul up everything, you need root password.”</p>
+<p>“人非圣贤孰能无过，但是拥有root密码就真的万劫不复了。”</p>
+<p>7、su</p>
+<p>可以使用此命令切换用户，su是switch user的缩写。从普通用户切换到root用户需要输入root的密码，从root用户切换到普通用户不需要输入密码。</p>
+<p>su lee 表示切换到lee用户。</p>
+<p>su 表示切换到root用户。</p>
+<p>8、mkdir</p>
+<p>(mkdir（Make directory) 命令在命名路径下创建新的目录。如果目录已存在，则返回一个错误信息：cannot create folder, folder already exists.</p>
+<p>注：目录只能在用户拥有写权限的目录下才能创建。在linux中，文件、文件夹、驱动、命令、脚本都视为文件。</p>
+<p>9、mkpasswd</p>
+<p>(此命令根据指定长度，产生一个难猜的随机密码。其中-l表示长度（Length) 。如下图产生15位的随机密码。</p>
+<p>10、date</p>
+<p>此命令使用标准的输出打印当前的日期和时间。更多命令设置，可以使用date &ndash;help命令。</p>
+<p>11、cp</p>
+<p>“copy”复制，此命令把文件从一个地方复制到另外一个地方。</p>
+<p>(有时直接用此命令，则会出现omitting directory的提示，那是因为lee_dir下还有目录，不能直接进行拷贝。利用cp &ndash;help查看，有一个参数可以解决这个问题。-r(recursive)，copy directories recursively（递归复制目录) 。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_7.jpg" alt="ubuntu创建root用户_linux创建root用户命令_linux切换root用户命令"></p>
+<p>12、pwd</p>
+<p>此命令在终端显示当前工作目录的全路径。pwd表示print working directory。</p>
+<p>13、cd</p>
+<p>(此命令代表改变目录。它在终端中改变工作目录来执行复制、移动、读、写等。如”cd ~”会改变工作目录为用户的家目录，”cd ..”表示从当前目录切换到（当前工作目录的) 父目录。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_9.png" alt="ubuntu创建root用户_linux创建root用户命令_linux切换root用户命令"></p>
+<p>14、cal</p>
+<p>calCalender)，它用来显示当前月份或未来、过去任何年份中的月份。</p>
+<p>15、chmod</p>
+<p>(“chmod”命令是改变文件的模式位。它会根据要求来改变每个所给的文件、文件夹、脚本等等的文件模式（权限) 。在文件中，存在三种类型权限：</p>
+<p>Read(r) = 4</p>
+<p>Write(w) = 2</p>
+<p>Execute(x) = 1</p>
+<p>如果只想给文件只读权限，就设置为“4”；只写权限，设置为“2”；只执行权限，设置为“1”；读写权限，就是4+2=6，以此类推。</p>
+<p>现在需要设置三种用户和用户组权限。第一个是拥有者，然后是用户所在的组，最后是其他用户。</p>
+<p>rwxr-x&ndash;x abc.sh</p>
+<p>(这里root的权限是rwx（读写和执行权限)</p>
+<p>(所属用户组权限是r-x（读和执行权限)</p>
+<p>(其他用户权限是-x（只有执行权限)</p>
+<p>为了改变它的权限，为拥有者，用户所在组和其它用户提供读，写，执行权限：</p>
+<p>chmod 777 abc.sh</p>
+<p>三种都只有读写权限：</p>
+<p>chmod 666 abc.sh</p>
+<p>拥有者用户有读写和执行权限，用户所在的组和其它用户只有可执行权限:</p>
+<p>chmod 711 abc.sh</p>
+<p>16、useradd</p>
+<p>建立用户账号。账号建好后，再用password设定账号的密码，而可用userdel删除账号。使用useradd指令所建立的账号，实际上是保存在/etc/password文本文件中。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_12.jpg" alt="linux创建root用户命令_ubuntu创建root用户_linux切换root用户命令"></p>
+<p>“useradd xiaoliang -p 45678900”创建用户xiaoliang，密码为45678900</p>
+<p>17、chown</p>
+<p>此命令改变文件拥有者和所在用户组。每个文件都属于一个用户组和一个用户。使用“ls -l”命令，就可以看到如下所示的东西。</p>
+<p>文件leo.sh属于用户和用户组“root”linux删除文件夹，前一个root表示用户，后一个root表示用户组。</p>
+<p>chown lee:root leo.sh 把leo.sh文件所属用户改为lee，用户组为root。</p>
+<p>18、ifconfig</p>
+<p>此命令用来配置常驻内核的网络接口信息。</p>
+<p>19、netstat</p>
+<p>此命令显示各种网络相关信息，如网络连接、路由表、接口统计、伪装连接、组播成员身份等。</p>
+<p>netstat -a 列出所有网络端口</p>
+<p>netstat -at 显示所有TCP相关端口</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_16.jpg" alt="ubuntu创建root用户_linux创建root用户命令_linux切换root用户命令"></p>
+<p>netstat -s 显示所有连接的统计信息</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_17.jpg" alt="linux创建root用户命令_ubuntu创建root用户_linux切换root用户命令"></p>
+<p>20、uptime</p>
+<p>此命令是用来查询linux系统负载的。系统平均负载被定义在特定时间间隔内运行队列中的平均进程数。</p>
+<p>如果一个进程满足以下条件，则其就会位于运行队列中：</p>
+<p>1、当前时间 10:43:18</p>
+<p>2、系统已运行时间 6:45</p>
+<p>3、当前在线用户 1 user</p>
+<p>4、平均负载 0.00, 0.01, 0.05，分别表示1分钟、5分钟、15分钟系统的负载。</p>
+<p>(此外 <strong>linux创建root用户命令</strong>，此命令还有一个参数-V（大写) ，用来查询版本：</p>
+<p>21、wall</p>
+<p>此命令可以向所有登录系统的用户发送信息。</p>
+<p>如果向已登录系统的某个用户发送消息，可以利用write这个命令。</p>
+<p>22、service</p>
+<p>此命令控制服务的启动、停止和重启。此命令能够不重启整个系统就可以让配置生效，开启、停止或重启某个服务。</p>
+<p>如 service network restart, 重启网卡。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_22.png" alt="linux创建root用户命令_linux切换root用户命令_ubuntu创建root用户"></p>
+<p>23、rm</p>
+<p>移除命令。可以用来删除文件和目录。</p>
+<p>由于mm.txt是直接用 mkdir 命令创建的，所以是一个文件夹。rm 命令不能直接删除目录，需要加上参数 -rf 才可以。-r表示recursive，-f表示force。</p>
+<p>24、touch</p>
+<p>新建一个不存在的文件，或用来修改文件时间戳。</p>
+<p>25、显示所有用户</p>
+<pre tabindex="0"><code>getent passwd
+</code></pre><p>26、查看jdk</p>
+<pre tabindex="0"><code>yum list *jdk*
+</code></pre><p>27、安装jdk</p>
+<pre tabindex="0"><code>yum install *jdk*
+</code></pre><p>安装JRE和JDK</p>
+<pre tabindex="0"><code># yum install java-1.7.0-openjdk java-1.7.0-openjdk-devel
+</code></pre><p>28、查询安装哪个版本的git</p>
+<pre tabindex="0"><code>rpm -qa git
+</code></pre><p>29、出现这样的错误：syntax error near unexpected token `$&rsquo;{r”</p>
+<pre tabindex="0"><code>[root@leo platform_build]# sh envsetup.sh
+envsetup.sh: line 1: syntax error near unexpected token `$&#39;{r&#39;&#39;
+&#39;nvsetup.sh: line 1: `function hmm() {
+</code></pre><p>由于文件换行符是dos格式的”rn”</p>
+<p>可以使用cat -v 文件名 来查看换行符是否是，如果是上述的，则行结尾会是^m</p>
+<p>需要转换成linux/unix格式的”n”</p>
+<p>具体转换办法就是转换换行符</p>
+<p>可以用sed命令处理一下文件，命令如下：</p>
+<pre tabindex="0"><code>sed &#39;s/r//&#39; 原文件 &gt;转换后文件
+</code></pre><p>如</p>
+<pre tabindex="0"><code>sed &#39;s/r//&#39; envsetup.sh &gt;envsetup1.sh
+</code></pre><p>30、ubuntu下搜索适合的JDK版本并安装</p>
+<pre tabindex="0"><code>apt-cache search openjdk
+</code></pre><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_25.jpg" alt="linux切换root用户命令_ubuntu创建root用户_linux创建root用户命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_26.jpg" alt="ubuntu创建root用户_linux切换root用户命令_linux创建root用户命令"></p>
+<p>执行安装</p>
+<pre tabindex="0"><code>sudo apt-get install openjdk-7-jdk
+</code></pre><p>31、ubuntu下配置java_home变量</p>
+<p>直接运行</p>
+<pre tabindex="0"><code>echo $JAVA_HOME
+</code></pre><p>并不能看到输出。</p>
+<p>设置：</p>
+<pre tabindex="0"><code>echo export JAVA_HOME=&#34;/usr/lib/jvm/java-7-openjdk-amd64/&#34; &gt;&gt; ~/.bashrc
+</code></pre><p>然后重启terminal或通过使用以下命令</p>
+<pre tabindex="0"><code>source ~/.bashrc
+</code></pre><p>重新输出$JAVA_HOME</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/01/1674511273784_27.jpg" alt="ubuntu创建root用户_linux创建root用户命令_linux切换root用户命令"></p>
+<p>32、查看一个端口被哪个程序使用</p>
+<pre tabindex="0"><code>lsof -i:3306
+</code></pre><p>33、cat命令主要有三大功能</p>
+<p>1、一次显示整个文件</p>
+<p>2、从键盘创建一个文件</p>
+<p>3、将几个文件合并为一个文件</p>
+<pre tabindex="0"><code>cat filename
+</code></pre><pre tabindex="0"><code>cat &gt; filename
+</code></pre><pre tabindex="0"><code>cat file1 file2 &gt; file
+</code></pre><p>34、Ubuntu缺省下没有安装SSH Server</p>
+<pre tabindex="0"><code>sudo apt-get install openssh-server
+</code></pre><p>配置完成后重启</p>
+<pre tabindex="0"><code>sudo /etc/init.d/ssh restart
+</code></pre><p>35、解压tgz文件(使用tar打完包后再以gzip命令压缩的文件)</p>
+<pre tabindex="0"><code>tar zxf filename
+</code></pre><pre tabindex="0"><code>x : 从 tar 包中把文件提取出来
+z : 表示 tar 包是被 gzip 压缩过的，所以解压时需要用 gunzip 解压
+v : 显示详细信息
+f : f后面必须跟上要处理的文件名
+</code></pre><p>本文永久更新链接地址：</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

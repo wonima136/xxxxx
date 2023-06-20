@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux命令之netstat搜集命令包命令使用</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux命令之netstat搜集命令包命令使用" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1682626158610_2.png" />
+  <meta name="twitter:description"content="Linux命令之netstat搜集命令包命令使用">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux命令之netstat搜集命令包命令使用" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1682626158610_2.png" />
+  <meta property="og:description"content="Linux命令之netstat搜集命令包命令使用" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1682626158610_2.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux命令之netstat搜集命令包命令使用" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lmlznsjmlbml/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux命令之netstat搜集命令包命令使用" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux命令之netstat搜集命令包命令使用</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>linux查看安装包命令</p>
+<p>在Linux中查看安装包的命令是“rpm-q”，可以使用该命令来查询已安装的软件包信息。比如red hat linux，要查看已安装的Apache软件包信息，可以使用命令“rpm-qhttpd”。假如要查看未安装的软件包信息，可以使用“rpm-qip”命令linux操作系统版本，比如“rpm-qippackage.rpm”。</p>
+<p>linux下载安装包命令</p>
+<p>在Linux系统中，下载和安装软件包的命令一般是：1.使用wget命令下载软件包，诸如：wget2.解压缩下载的软件包，诸如：tar-zxvfpackage.tar.gz3.步入解压后的目录，比如：cdpackage4.执行安装命令，比如：./configuremakemakeinstall以上是通常的安装步骤，不同的软件包可能有不同的安装方法和命令。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1682626158610_2.png" alt="linux ftp命令安装_linux 安装rar 命令_linux安装命令"></p>
+<p>Linux命令之netstat</p>
+<p>Linux命令之netstat命令收集，在Linux命令中，netstat无疑是很重要的一点。因而本人特意收集了主要的netstat命令的使用</p>
+<p>linux查找安装包</p>
+<p>在Linux中查找安装包可以使用以下命令：1.使用apt-cachesearch命令查找Debian或Ubuntu系统的安装包，诸如：sudoapt-cachesearchpackage_name2.使用yumsearch命令查找RedHat或CentOS系统的安装包，诸如：sudoyumsearchpackage_name3.使用dnfsearch命令查找Fedora系统的安装包，诸如：sudodnfsearchpackage_name4.使用zyppersearch命令查找openSUSE系统的安装包，诸如：sudozyppersearchpackage_name5.使用find命令在文件系统中查找安装包，诸如：sudofind/-namepackage_name*.rpm以上是常用的Linux查找安装包的方式，具体使用哪种方式取决于你所使用的Linux发行版。</p>
+<p>linux卸载安装包</p>
+<p>要在Linux上卸载安装包，可以使用以下命令：1.假如安装包是通过包管理器安装的，可以使用包管理器来卸载。诸如，假如使用apt-get安装了软件包，可以使用以下命令卸载：sudoapt-getremove</p>
+<p>2.假如安装包是通过源代码安装的，可以使用makeuninstall命令来卸载。步入安装包的源代码目录，之后运行以下命令：sudomakeuninstall3.假如安装包是通过二补码文件安装的，可以使用卸载脚本来卸载。步入安装包的安装目录，之后运行以下命令：sudo./uninstall.sh以上是Linux卸载安装包的几种方式，具体方式按照安装包的类型而定。</p>
+<p>linux上传安装包</p>
+<p>要在Linux上上传安装包，您可以使用以下步骤：1.打开终端并登陆到您的Linux服务器。2.使用scp命令将安装包从本地计算机上传到服务器。诸如，倘若您的安装包在本地计算机的/home/user/目录中，您可以使用以下命令将其上传到服务器的/home/user/目录中：scp/home/user/installation_package.tar.gzuser@server_ip:/home/user/其中，user是您的用户名，server_ip是您的服务器IP地址。3.在服务器上解压安装包。您可以使用以下命令：tar-zxvfinstallation_package.tar.gz其中，installation_package.tar.gz是您上传的安装包的名称。4.步入解压后的安装包目录，并根据安装说明进行安装。希望这可以帮助您上传和安装Linux安装包。</p>
+<p>linux下载安装包</p>
+<p>Linux下载安装包的步骤如下：1.打开终端，输入命令sudoapt-getupdate，更新软件源列表。2.输入命令sudoapt-getinstallwget，安装wget下载工具。3.在终端中输入wget下载链接，比如wget，下载安装包。4.下载完成后，输入tar-zxvffilename.tar.gz解压安装包。5.步入解压后的文件夹，输入./configure命令进行配置。6.输入make命令进行编译。7.输入sudomakeinstall命令进行安装。8.安装完成后，输入命令whichprogramname，查看程序是否安装成功。</p>
+<p>linux解压安装包</p>
+<p>Linux解压安装包的步骤如下：1.打开终端 <strong>linux安装命令</strong>，步入安装包所在的目录。2.使用以下命令解压安装包：tar-zxvf安装包名称.tar.gz或tar-jxvf安装包名称.tar.bz23.步入解压后的目录，查看是否有README或INSTALL等文件，阅读其中的安装说明。4.按照安装说明进行安装，一般包括以下步骤：a.运行configure命令，生成Makefile文件。b.运行make命令，编译源代码。c.运行makeinstall命令，安装程序。5.安装完成后，可以在终端中输入程序名称，查看是否成功安装。</p>
+<p>linux如何删掉安装包</p>
+<p>在Linux中，可以使用以下命令删掉安装包：1.假如使用apt-get安装的软件包，可以使用以下命令删掉：sudoapt-getremove软件包名称2.假如使用yum安装的软件包，可以使用以下命令删掉：sudoyumremove软件包名称3.假如使用源码编译安装的软件包，可以使用以下命令删掉：sudomakeuninstall注意：以上命令须要使用管理员权限执行。</p>
+<p>linux常用安装包</p>
+<p>Linux常用安装包包括：1.RPM包：RedHatPackageManager，适用于RedHat、Fedora、CentOS等基于RPM的Linux发行版。2.DEB包：DebianPackage，适用于Debian、Ubuntu等基于DEB的Linux发行版。3.Tar包：一般是源代码压缩包，须要自动编译安装。4.Snap包：一种新型的应用打包格式，适用于多个Linux发行版。5.Flatpak包：另一种新型的应用打包格式，适用于多个Linux发行版。6.AppImage包：一种独立的应用打包格式，无需安装即可运行，适用于多个Linux发行版。以上是Linux常用的安装包类型，不同的发行版和应用程序可能须要不同的安装包。</p>
+<p>linux虚拟机安装包</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1682626158610_11.png" alt="linux 安装rar 命令_linux安装命令_linux ftp命令安装"></p>
+<p>Linux虚拟机安装包是一种用于安装Linux虚拟机的软件包。它包含了虚拟机的配置文件、操作系统镜像、虚拟硬件设备等必要的组件，用户可以通过安装包来快速搭建自己的Linux虚拟机环境。常见的Linux虚拟机安装包有VMware、VirtualBox等。</p>
+<p>linuxmysql安装包</p>
+<p>LinuxMySQL安装包是用于在Linux操作系统上安装MySQL数据库的软件包。它包含了MySQL数据库的所有必要组件和文件 <strong>linux安装命令</strong>，可以通过下载和安装来在Linux系统上运行MySQL数据库。MySQL是一种流行的关系型数据库管理系统，广泛用于Web应用程序和企业级应用程序中。</p>
+<p>linux查看安装包</p>
+<p>可以使用以下命令来查看Linux系统中已安装的软件包：1.使用dpkg命令查看Debian或Ubuntu系统中已安装的软件包：dpkg-l2.使用rpm命令查看RedHat或CentOS系统中已安装的软件包：rpm-qa3.使用yum命令查看RedHat或CentOS系统中已安装的软件包：yumlistinstalled4.使用apt命令查看Debian或Ubuntu系统中已安装的软件包：aptlist&ndash;installed以上命令可以列举系统中已安装的所有软件包，可以按照须要进行筛选和搜索。</p>
+<p>linuxjdk安装包下载</p>
+<p>你好，您可以在以下网站下载LinuxJDK安装包：1.Oracle官网：2.OpenJDK官网：3.AdoptOpenJDK官网：希望能对您有所帮助。</p>
+<p>linuxtelnet安装包下载</p>
+<p>您可以在终端中使用以下命令来安装telnet顾客端：-Ubuntu/Debian:<code>sudoapt-getinstalltelnet</code>-CentOS/RHEL:<code>yuminstalltelnet</code>-Fedora:<code>dnfinstalltelnet</code>注意：在新版本的linux系统中，telnet顾客端可能早已不再被安装了。倘若您的系统中没有telnet顾客端，您可以使用ssh顾客端取代telnet。</p>
+<p>linux软件安装包的制做</p>
+<p>可以使用命令行工具或则图形化界面来制做Linux软件安装包，具体方式可以按照不同的发行版和软件包格式进行选择。常见的软件包格式有RPM、DEB、Tarball等，制做过程须要注意软件包的依赖关系和版本兼容性等问题。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

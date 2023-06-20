@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux系统进程监控top—命令格式常用的用法</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux系统进程监控top—命令格式常用的用法" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_0.png" />
+  <meta name="twitter:description"content="Linux系统进程监控top—命令格式常用的用法">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux系统进程监控top—命令格式常用的用法" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_0.png" />
+  <meta property="og:description"content="Linux系统进程监控top—命令格式常用的用法" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux系统进程监控top—命令格式常用的用法" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxtjcjktmlgs/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux系统进程监控top—命令格式常用的用法" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux系统进程监控top—命令格式常用的用法</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>译文：Linuxstory-FOREST</p>
+<p>英语：Tecmint.Com-RaviSaive</p>
+<p>对于每位系统管理员或网路管理员来说，每晚要监控和调试Linux系统性能问题都是十分困难的工作。我早已有5年Linux管理员的工作经历，晓得怎样监控系统使其保持正常运行。因此，我们编撰了对于Linux/Unix系统管理员特别有用的而且最常用的20个命令行系统监视工具。这种命令可以在所有版本的Linux下使用去监控和查找系统性能的实际缘由。这种监控命令足够你选择适宜你的监控场景。</p>
+<p>1.top—Linux系统进程监控</p>
+<p>top命令是性能监控程序，它可以在好多Linux/Unix版本下使用，而且它也是Linux系统管理员常常使用的监控系统性能的工具。Top命令可以定期显示所有正在运行和实际运行而且更新到列表中adobe air linux，它显示出CPU的使用、内存的使用、交换显存、缓存大小、缓冲区大小、过程控制、用户和更多命令。它也会显示显存和CPU使用率偏低的正在运行的进程。当我们对Linux系统须要去监控和采取正确的行动时，top命令对于系统管理员是十分有用的。让我们看下top命令的实际操作。</p>
+<p>#top</p>
+<p>2.vmstat—虚拟显存统计</p>
+<p>vmstat命令是用于显示虚拟显存、内核线程、磁盘、系统进程、I/O模块、中断、CPU活跃状态等更多信息。在默认的情况下，Linux系统是没有vmstat这个命令的linux操作系统原理，假如你要使用它，必须安装一个包名叫sysstat的程序包。命令格式常用用法如下：</p>
+<p>#vmstat</p>
+<p>procs———&ndash;memory————-swap——-io——system——-cpu—&ndash;</p>
+<p>rbswpdfreeinactactivesisobiboincsussyidwast</p>
+<p>10081042097380706280011548979169030</p>
+<p>3.lsof—打开文件列表</p>
+<p>lsof命令对于好多Linux/Unix系统都可以使用，主要以列表的方式显示打开的文件和进程。</p>
+<p>打开的文件主要包括c盘文件、网络套接字、管道、设备和进程。使用这个命令的主要诱因是一个一个盘不能卸载而且显示文件正在使用或则打开的错误信息。这个命令很容易看出什么文件正在使用。这个命令最常用的格式：</p>
+<p>#lsof</p>
+<p>COMMANDPIDUSERFDTYPEDEVICESIZENODENAME</p>
+<p>init1rootcwdDIR104,240962/</p>
+<p>init1rootrtdDIR104,240962/</p>
+<p>init1roottxtREG104,23865217710339/sbin/init</p>
+<p>init1rootmemREG104,2129900196453/lib/ld-2.5.so</p>
+<p>init1rootmemREG104,254/lib/libc-2.5.so</p>
+<p>init1rootmemREG104,220668196479/lib/libdl-2.5.so</p>
+<p>init1rootmemREG104,2245376196419/lib/libsepol.so.1</p>
+<p>init1rootmemREG104,293508196431/lib/libselinux.so.1</p>
+<p>init1root10uFIFO0,17953/dev/initctl</p>
+<p>4.tcpdump—网络数据包剖析器</p>
+<p>tcpdump是一种使用最广泛的命令行网路数据包剖析器或数据包嗅探程序，主要用于捕获和过滤TCP/IP包收到或则转移在一个网路的特定托词信息。它也提供了一个选项参数去保存将捕获的包在一个文件中用于之后剖析使用，tcpdump几乎在所有的Linux版本中都是可用的。</p>
+<p>#tcpdump-ieth0</p>
+<p>tcpdump:verboseoutputsuppressed,use-vor-vvforfullprotocoldecode</p>
+<p>listeningoneth0,link-typeEN10MB(Ethernet),capturesize96bytes</p>
+<p>22:08:59.617628IP.ssh&gt;115.113..in.28472:P2532133365:2532133481(116)ack3561562349win9648</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_0.png" alt="linux 命令行参数_linux mv命令 参数_linux at命令参数"></p>
+<p>22:09:07.653466IP.ssh&gt;115.113..in.28472:P116:232(116)ack1win9648</p>
+<p>22:08:59.617916IP115.113..in.28472&gt;.ssh:.ack116win64347</p>
+<p>5.netstat—网络统计</p>
+<p>netstat命令是一个监控网路数据包传入和传出的统计界面的命令行工具。它对于许多系统管理员去监控网路性能和解决网路相关问题是一个十分有用的工具。</p>
+<p>#tcpdump-ieth0</p>
+<p>tcpdump:verboseoutputsuppressed,use-vor-vvforfullprotocoldecode</p>
+<p>listeningoneth0,link-typeEN10MB(Ethernet),capturesize96bytes</p>
+<p>22:08:59.617628IP.ssh&gt;115.113..in.28472:P2532133365:2532133481(116)ack3561562349win9648</p>
+<p>22:09:07.653466IP.ssh&gt;115.113..in.28472:P116:232(116)ack1win9648</p>
+<p>22:08:59.617916IP115.113..in.28472&gt;.ssh:.ack116win64347</p>
+<p>6.htop—进程监控</p>
+<p>htop是一个愈发先进的交互式的实时监控工具。htop与top命令十分相像，而且他有一些特别丰富的功能，如用户友好界面管理进程、快捷键、横向和横向进程等更多的。htop是一个第三方工具并不包括在Linux系统中，你须要使用包管理工具进行安装。</p>
+<p>#htop</p>
+<p>7.iotop—监控Linuxc盘I/O</p>
+<p>iotop也是和top和htop命令相像，而且它会有一个报告功能去监控和显示实时的c盘I/O输入和输出和程序进程。这个工具对于查找精确的高的c盘读/写过程是十分有用的。</p>
+<p>#iotop</p>
+<p>8.iostat—输入/输出统计</p>
+<p>iostat是搜集和展示系统输入和输出储存设备统计的简单工具。这个工具一般用于查找储存设备性能问题，包括设备、本地c盘、例如NFS远程c盘。</p>
+<p>#iostat</p>
+<p>Linux2.6.18-238.9.1.el5()09/13/2012</p>
+<p>avg-cpu:%user%nice%system%iowait%steal%idle</p>
+<p>2.603.651.044.290.0088.42</p>
+<p>Device:tpsBlk_read/sBlk_wrtn/sBlk_readBlk_wrtn</p>
+<p>cciss/c0d017.79545.80256.52855159769401914750</p>
+<p>cciss/c0d0p10.000.000.0054593518</p>
+<p>cciss/c0d0p216.45533.97245.18836631746384153384</p>
+<p>cciss/c0d0p30.635.583.9787376506215544</p>
+<p>cciss/c0d0p40.000.000.0080</p>
+<p>cciss/c0d0p50.633.795.0359367787882528</p>
+<p>cciss/c0d0p60.082.462.3438477713659776</p>
+<p>9.IPTraf—实时IP局域网监控</p>
+<p>(IPTraf是一个基于开源的Linux系统实时网路（IP网路) 检测的工具。它能搜集到各类各样的信息，如通过网路对IP流量检测，包括TCP标志信息、ICMP详尽细节、TCP/UDP流量故障、TCP联接的数据包和拜恩计数。而且它还搜集TCP，UDP，ICMP，IP，非IP，IP校准错误，界面活性等通常信息和详尽信息的插口统计数据。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_2.jpg" alt="linux at命令参数_linux mv命令 参数_linux 命令行参数"></p>
+<p>10.Psacct或则Acct—监视用户活动</p>
+<p>Psacct或则Acct是用于检测每位用户对系统的活跃状态的一个特别有用的工具。在后台有两个守护进程在运行 <strong>linux 命令行参数 linux 命令行参数</strong>，一个是密切关注系统上每位用户的整体活动，另一个进程关注有什么资源被它们消耗。</p>
+<p>这个工具对于系统管理员是十分有用的去跟踪每位用户的活动，可以晓得用户正在做哪些，发出了哪些样的命令，占用了多少资源，多长时间活跃在系统上。</p>
+<p>11.Monit—程序和服务检测</p>
+<p>这是一个免费的开源的基于web程序的手动监控和管理系统进程、程序、文件、目录、权限、校验文件系统。它监控的服务包括Apache、MYSQL、Mail、FTP、Nginx等等。系统状态是可以从命令行或则自己的网路插口来查看。</p>
+<p>12.NetHogs—监视每位进程的网路带宽</p>
+<p>(NetHogs是一个开源的漂亮的小程序（类似于Linux里面的top命令) ，在您的系统上保持每位进程的网路活动状态。它也保持了一个程序或则应用实时的网路流量带宽使用情况。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_3.jpg" alt="linux mv命令 参数_linux 命令行参数_linux at命令参数"></p>
+<p>13.iftop—网络带宽监控</p>
+<p>(iftop是另一个基于终端的开源的系统检测工具，主要功能是通过你自己系统上的网路插口显示一个常常更新的网路带宽借助率的列表（即源主机和目的主机) 。iftop监控的是网路的使用情况，而top监控的是CPU的使用情况。iftop监视一个选取的插口而且显示两台主机之间当前宽带的使用情况。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_4.png" alt="linux mv命令 参数_linux 命令行参数_linux at命令参数"></p>
+<p>14.Monitorix—系统和网路监控</p>
+<p>(Monitorix是一个尽可能多的在Linux/Unix上一个轻量级监控工具，主要设计是监控正在运行的系统和网路资源。它有一个外置的HTTPweb服务去定期搜集系统和网路信息并显示成图片。它可以监视系统的平均负载使用、内存的分配、磁盘驱动器、系统服务、网络端口、邮件统计（Sendmail、Postfix、Dovecot等等) 、MYSQL数据库等等更多的服务。它的主要目的是监控整个系统的性能，但是有助于检测故障、瓶颈、异常活动等状况。</p>
+<p>15.Arpwatch—以太网活动监控器</p>
+<p>(Arpwatch是一种拿来监视Linux网路的以太网的网路流量的地址解析（网路地址转换) 的一个程序。它仍然随着网路时间戳的变化监视以太网流量和形成日志的IP和MAC地址对。当一个IP地址或MAC地址对发生变化的时侯，它会发送电子电邮通知管理员。</p>
+<p>但是它在检查ARP功击是十分有用的。</p>
+<p>16.Suricata—网络安全监控</p>
+<p>(Suricata是一个高性能的开源的网路安全与入侵检查与防治Linux、FreeBSD、Windows等操作系统的监控工具。它是一个非营利基金OISF（OpenInformationSecurityFoundation) 拥有的。</p>
+<p>17.VnStatPHP—监测网路带宽</p>
+<p>VnStatPHP是一个web后端应用最流行的社交工具叫“vnstat”。VnStatPHP使用了挺好的图形模式监控网路流量的使用情况。它显示了每时、每天、每月的总结报告中的网路流量使用情况。</p>
+<p>18.Nagios—网络/服务器监控</p>
+<p>Nagios是一个领先的开源的强悍的监控系统，网路/系统管理员在她们影响主要业务流程之前辨识和解决服务器相关的问题。Nagios可以监控远程Linux、Windows、开关、单窗口的路由器和复印机。它能显示你的网路和服务器关键的告警，有利于在错误反生之前帮助你解决问题。</p>
+<p>19.Nmon—监控Linux系统性能</p>
+<p>(Nmon（即奈吉尔性能监视器) 工具拿来监视Linux系统的所有资源包括：CPU、内存、磁盘使用率、网络上的进程、NFS、内核等等。这个工具有两个模式：即在线模式和捕捉模式。在线模式适用于实时监控，捕捉模式用于储存输出为CSV格式后的处理。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680437647695_5.jpg" alt="linux at命令参数_linux mv命令 参数_linux 命令行参数"></p>
+<p>20.Collectl—一体化性能测量工具</p>
+<p>Collectl是另一个功能强悍的基于命令行的监控工具，它可用于搜集有关系统资源的信息，包括CPU使用率、内存、网络、节点、进程、NFS、TCP套接等等。</p>
+<p>我们想晓得你使用哪些样的监控程序来监控你的服务器性能？假如我们错过你想要的任何工具，请通过评论告知我们，而且不要忘掉分享他。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>如何用Linux命令查看已安装的软件版本？xxx</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="如何用Linux命令查看已安装的软件版本？xxx" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="" />
+  <meta name="twitter:description"content="如何用Linux命令查看已安装的软件版本？xxx">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="如何用Linux命令查看已安装的软件版本？xxx" />
+  <meta name="twitter:image:src" content="" />
+  <meta property="og:description"content="如何用Linux命令查看已安装的软件版本？xxx" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="如何用Linux命令查看已安装的软件版本？xxx" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/rhylmlzkyazd/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="如何用Linux命令查看已安装的软件版本？xxx" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">如何用Linux命令查看已安装的软件版本？xxx</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>如何在Linux中查看软件的版本号</p>
+<p>这个是极其简单的，请直接使用命令查看。</p>
+<p>具体是：rpm-qa|grepxxx。</p>
+<p>其中xxx就是你要看的软件的名称。</p>
+<p>举个事例，我使用命令：rpm-qa|grepsamba查看samba的版本linux设置环境变量，结果是：samba-winbind-3.0.26a-3yast2-samba-server-2.15.7-57yast2-samba-client-2.15.11-33samba-client-3.0.26a-3samba-3.0.26a-3可以看见和samba相关的软件的版本，旁边的那种数字就是版本号了。</p>
+<p>怎样用Linux命令查看已安装的软件版本？</p>
+<p>大多数命令加上-V选项或则&ndash;version选项，都会返回软件的版本信息。</p>
+<p>用法示例：查看Python软件的版本$python-V或则python&ndash;version对于Debian及其衍生系统 <strong>查看linux版本的命令</strong>，可以使用aptitude命令查看软件的详尽信息，包含软件的版本号、依赖、项目主页等信息。</p>
+<p>用法示例：$aptitudepython</p>
+<p>怎么查看Linux内核版本和发行版版本,怎么查看Linux版本号</p>
+<p>查看Linux发行版的内核版本信息，一种方法是使用uname-a命令，这个命令会列举内核的版本，以及系统是i68632位还是x86_6464位的。</p>
+<p>另外一种查看内核版本的方法是用cat显示/proc/version文件的内容：cat/proc/version。</p>
+<p>/proc/version文件的内容就是内核版本信息。</p>
+<p>查看你的Linux系统是那个发行版，可以使用lsb_release-a命令，lsb_release-a命令可以列举是那个发行版，以及是哪个发行版的具体第几个版本。</p>
+<p>linux如何查看软件面向的系统平台</p>
+<p>Linux下查看显存与cpu的命令查看显存的命令：free查看显存详尽信息可以用cat/proc/meminfo查看cpu使用情况可以用：ps-加参数还可以用top查看cpu机型信息可以用cat/proc/cpuinfo远程桌面可以用Xmanger来链接..但首先你须要在linux上做相关配置才行。</p>
+<p>怎么查看linux已安装的编译器及其版本</p>
+<p>(在Linux环境下，新建一个终端，然后在终端直接输入命令：arm-linux-gcc-v回车以后，即可出现如下的一些信息：（此处安装的是交叉编译器gcc，版本4.2.2) Usingbuilt-inspecs.Target:arm-unknown-linux-gnueabiConfiguredwith:/home/scsuh/workplace/coffee/buildroot-20071011/toolchain_build_arm/gcc-4.2.2/configure&ndash;prefix=/usr&ndash;build=i386-pc-linux-gnu&ndash;host=i386-pc-linux-gnu&ndash;target=arm-unknown-linux-gnueabi&ndash;enable-languages=c,c++&ndash;with-sysroot=/usr/local/arm/4.2.2-eabi/&ndash;with-build-time-tools=/usr/local/arm/4.2.2-eabi//usr/arm-unknown-linux-gnueabi/bin&ndash;disable-__cxa_atexit&ndash;enable-target-optspace&ndash;with-gnu-ld&ndash;enable-shared&ndash;with-gmp=/usr/local/arm/4.2.2-eabi//gmp&ndash;with-mpfr=/usr/local/arm/4.2.2-eabi//mpfr&ndash;disable-nls&ndash;enable-threads&ndash;disable-multilib&ndash;disable-largefile&ndash;with-arch=armv4t&ndash;with-float=soft&ndash;enable-cxx-flags=-msoft-floatThreadmodel:posixgccversion4.2.2倘若能出现以上的一些编译器的信息和编译器的版本（最后一行表示编译器的版本），这么说明已安装了编译器；否则，编译器没有安装或没有安装成功。</p>
+<p>Linux怎么查看早已安装好的所有软件包</p>
+<p>(file/sbin/init或则file/bin/ls/sbin/init:ELF64-bitLSBexecutable,x86-64,version1(SYSV),dynamicallylinked(usessharedlibs),forGNU/Linux2.6.18,stripped假如显示64-bit则为64位；file/sbin/init/sbin/init:ELF32-bitLSBexecutable,Intel80386,version1(SYSV),forGNU/Linux2.2.5,dynamicallylinked(usessharedlibs),stripped假如显示为32bit则为32bit;uname-a:uname-aLinuxpmx002**.<strong>.<strong>2.6.32-71.el6.x86_64#1SMPWedSep101:33:01EDT2010x86_64x86_64x86_64GNU/Linuxx86_64表示64位机器uname-aLinuxpmx0</strong>.</strong>.**2.6.9-5.ELsmp#1SMPWedJan519:30:39EST2005i686i686i386GNU/Linuxi686表示32位机器i686只是i386的一个子集，支持的cpu从Pentium2(686)开始，之前的机型不支持.备注：1.i386适用于intel和AMD所有32位的cpu.以及via采用X86构架的32的cpu.intel平台包括8086,80286,80386,80486，奔腾系列（1.2.3.4) 、赛扬系列，PentiumD系列以及centrinoP-M,coreduo等.2.X86_64适用于intel的Core2Duo,CentrinoCore2Duo,andXeon和AMDAthlon64/x2,Sempron64/x2,Duron64等采用X86构架的64位cpu.3.PPC适用于AppleMacintoshG3,G4,G5,PowerBook,andothernon-Intelmodels安装DVD包括的软件要比安装光碟多一些，安装DVD也包括了两种图形界面（KDE和gnome）.4.Jigdo也可以通过Jigdo下载Fedora发行版。</p>
+<p>Jigdo可以加速下载安装盘的ISO镜像。</p>
+<p>(同BT下载等待任务完全完成所不同，Jidgo手动定位最快的镜像服务器（通过Fedora镜像管理器) ，但是从中下载所须要的文件。</p>
+<p>为了降低所需的网路流量，可以让Jigdo扫描现存的DVD或CD介质。</p>
+<p>这个功能对于以下用户非常有用。</p>
+<p>getconfLONG_BIT在32位和64位机器上运行如下命令，结果如下：</p>
+<p>有关linux下文件查看的问题</p>
+<p>Linux下的的命名不像win下那样规矩.比较随便.你用的是桌面系统吧，有一个哪些应用程序首选项在上面可以设置哪些后缀用哪些文件查看器查看，你那儿TXT肯定被设置好了设置成了gedit了.你用vi查看的是win下的文件吧，编码格式不一样.可以设置的不过我会不太会设置vi的属性只能简单的使用.你去etc上面找找vim的配置文件吧.你在纯命令行上面不能查看图片，假如你有桌面程序就打上图片查看的软件名子才能启动了.</p>
+<p>kalilinux如何看系统版本</p>
+<p>展开全部查看linux机器是32位还是64位的方式：方式一：file/sbin/init或则file/bin/ls结果如下：/sbin/init:ELF64-bitLSBexecutable,x86-64,version1(SYSV),dynamicallylinked(usessharedlibs),forGNU/Linux2.6.18,stripped假如显…</p>
+<p>LINUX最好的版本是哪些,那里有下载。</p>
+<p>没最好之说，只有你看用者习惯不算不上高深，只是现今的WINDOWS多是盗版，盗版的通常又是被牛人改过的 <strong>查看linux版本的命令</strong>，都可以不用输入哪些就可以无人监守，手动完成LINUX好多须要选，例如你显示器的牌子等我看你都问这问题了linux 关机命令，我建议你还是不用LINUX的好虽然也没多大意思，主要是网上说LINUX比WINDOWS好的人多而已，虽然等你用了，你就晓得她们所说的好，虽然并没这么好，但是对与你来说有可能还是糟糕</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

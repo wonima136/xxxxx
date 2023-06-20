@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>ftp传输文件telnet登录到远程计算机上r-使用各种远程命令</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="ftp传输文件telnet登录到远程计算机上r-使用各种远程命令" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684671083918_0.jpg" />
+  <meta name="twitter:description"content="ftp传输文件telnet登录到远程计算机上r-使用各种远程命令">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="ftp传输文件telnet登录到远程计算机上r-使用各种远程命令" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684671083918_0.jpg" />
+  <meta property="og:description"content="ftp传输文件telnet登录到远程计算机上r-使用各种远程命令" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684671083918_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="ftp传输文件telnet登录到远程计算机上r-使用各种远程命令" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/fcswjtdldycj/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="ftp传输文件telnet登录到远程计算机上r-使用各种远程命令" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">ftp传输文件telnet登录到远程计算机上r-使用各种远程命令</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>计算机网路的主要优点是能否实现资源和信息的共享，但是用户可以远程访问信息。Linux提供了一组强有力的网路命令来为用户服务 <strong>linux的ftp命令不存在</strong>，这种工具就能帮助用户登入到远程计算机上、传输文件和执行远程命令等。接出来是小编为你们搜集的Linux的常用网路命令，希望能帮到你们。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1684671083918_0.jpg" alt="Linux的常用网络命令"></p>
+<p>Linux的常用网路命令</p>
+<p>ftp传输文件</p>
+<p>telnet登陆到远程计算机上</p>
+<p>r-使用各类远程命令</p>
+<p>netstat查看网路的状况</p>
+<p>nslookup查询域名和IP地址的对应</p>
+<p>finger查询某个使用者的信息</p>
+<p>ping查询某个机器是否在工作</p>
+<p>使用ftp命令进行远程文件传输</p>
+<p>ftp命令是标准的文件传输合同的用户插口。ftp是在TCP/IP网路上的计算机之间传输文件的简单有效的方式。它容许用户传输ASCII文件和二补码文件。</p>
+<p>在ftp会话过程中，用户可以通过使用ftp顾客程序联接到另一台计算机上。自此，用户可以在目录中上下联通、列出目录内容、把文件从远程机拷贝到本地机上、把文件从本地机传输到远程系统中。须要注意的是，假如用户没有哪个文件的存取权限，就不能从远程系统中获得文件或向远程系统传输文件。</p>
+<p>为了使用ftp来传输文件，用户必须晓得远程计算机上的合法用户名和口令。这个用户名/口令的组合拿来确认ftp会话，并拿来确定用户对要传输的文件可以进行哪些样的访问。另外，用户或许须要晓得对其进行ftp会话的计算机的名子或IP地址。</p>
+<p>Ftp命令的功能是在本地机和远程机之间传送文件。该命令的通常格式如下：</p>
+<p>$ftp主机名/IP</p>
+<p>以上内容来自互联网，请自行判别内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>其中“主机名/IP”是所要联接的远程机的主机名或IP地址。在命令行中，主机名属于选项，倘若指定主机名，ftp将企图与远程机的ftp服务程序进行联接;若果没有指定主机名，ftp将给出提示符，等待用户输入命令：</p>
+<p>$ftp</p>
+<p>ftp&gt;</p>
+<p>此时在ftp&gt;提示符前面输入open命令加主机名或IP地址，将企图联接指定的主机。</p>
+<p>不管使用哪一种方式，假如联接成功，须要在远程机上登陆。用户假如在远程机上有账号，就可以通过ftp使用这一账号并须要提供口令。在远程机上的用户账号的读写权限决定该用户在远程机上能下载哪些文件和将上载文件放在那个目录中。</p>
+<p>假如没有远程机的专用登陆账号，许多ftp站点设有可以使用的特殊账号。这个账号的登陆名为anonymous(俗称为匿名ftp)，当使用这一账号时，要求输入email地址作为口令。</p>
+<p>假如远程系统提供匿名ftp服务，用户使用这项服务可以登入到特殊的，供公开使用的目录。通常专门提供两个目录：pub目录和incoming目录。pub目录包含该站点供公众使用的所有文件，incoming目录储存上载到该站点的文件。</p>
+<p>一旦用户使用ftp在远程站点上登陆成功，将得到“ftp&gt;”提示符。如今可以自由使用ftp提供的命令，可以用help命令取得可供使用的命令清单，也可以在help命令前面指定具体的命令名称，获得这条命令的说明。</p>
+<p>最常用的命令有：</p>
+<p>ls列举远程机的当前目录</p>
+<p>cd在远程机上改变工作目录</p>
+<p>lcd在本地机上改变工作目录</p>
+<p>ascii设置文件传输方法为ASCII模式</p>
+<p>binary设置文件传输方法为二补码模式</p>
+<p>close中止当前的ftp会话</p>
+<p>hash每次传输完数据缓冲区中的数据后就显示一个#号</p>
+<p>以上内容来自互联网，请自行判定内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>getmget)从远程机传送指定文件到本地机</p>
+<p>putmput)从本地机传送指定文件到远程机</p>
+<p>open联接远程ftp站点</p>
+<p>quit断掉与远程机的联接并退出ftp</p>
+<p>?显示本地帮助信息</p>
+<p>!转入Shell中</p>
+<p>下边简单将ftp常用命令作一简介。</p>
+<p>启动ftp会话</p>
+<p>open命令用于打开一个与远程主机的会话。该命令的通常格式是：</p>
+<p>open主机名/IP</p>
+<p>假如在ftp会话期间要与一个以上的站点联接，一般只用不带参数的ftp命令。假如在会话期间只想与一台计算机联接，这么在命令行上指定远程主机名或IP地址作为ftp命令的参数。</p>
+<p>中止ftp会话</p>
+<p>close、disconnect、quit和bye命令用于中止与远程机的会话。close和disronnect命令关掉与远程机的联接，并且使用户留在本地计算机的ftp程序中。quit和bye命令都关掉用户与远程机的联接，之后退出用户机上的ftp程序。</p>
+<p>改变目录</p>
+<p>“cd[目录]”命令用于在ftp会话期间改变远程机上的目录linux系统下载，lcd命令改变本地目录，使用户能指定查找或放置本地文件的位置。</p>
+<p>远程目录列表</p>
+<p>ls命令列举远程目录的内容，如同使用一个交互shell中的ls命令一样。ls命令的通常格式是：</p>
+<p>ls[目录][本地文件]</p>
+<p>倘若指定了目录作为参数，这么ls就列举该目录的内容。假如给出一个本地文件的名子，这么这个目录列表被装入本地机上您指定的这个文件中。</p>
+<p>从远程系统获取文件</p>
+<p>get和mget命令用于从远程机上获取文件。get命令的通常格式为：</p>
+<p>get文件名</p>
+<p>您还可以给出本地文件名，这个文件名是这个要获取的文件在您的本地机上创建时的文件名。倘若您不给出一个本地文件名，这么就使用远程文件原先的名子。</p>
+<p>以上内容来自互联网，请自行判别内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>mget命令一次获取多个远程文件。mget命令的通常格式为：</p>
+<p>mget文件名列表</p>
+<p>使用用空格分隔的或带键值的文件名列表来指定要获取的文件，对其中的每位文件都要求用户确认是否传送。</p>
+<p>向远程系统发送文件</p>
+<p>put和mput命令用于向远程机发送文件。Put命令的通常格式为：</p>
+<p>put文件名</p>
+<p>mput命令一次发送多个本地文件，mput命令的通常格式为：</p>
+<p>mput文件名列表</p>
+<p>使用用空格分隔的或带键值的文件名列表来指定要发送的文件。对其中的每位文件都要求用户确认是否发送。</p>
+<p>改变文件传输模式</p>
+<p>默认情况下，ftp按ASCII模式传输文件，用户也可以指定其他模式。ascii和brinary命令的功能是设置传输的模式。用ASCII模式传输文件对纯文本是特别好的，但为防止对二补码文件的破坏，用户可以以二补码模式传输文件。</p>
+<p>检测传输状态</p>
+<p>传输小型文件时，可能会发觉让ftp提供关于传输情况的反馈信息是十分有用的。hash命令使ftp在每次传输完数据缓冲区中的数据后，就在屏幕上复印一个#字符。本命令在发送和接收文件时都可以使用。</p>
+<p>ftp中的本地命令</p>
+<p>当您使用ftp时，字符“!”用于向本地机上的命令shell传送一个命令。假如用户处在ftp会话中，须要shell做个别事，就很有用。诸如用户要构建一个目录来保存接收到的文件。倘若输入!mkdirnew_dir，这么Linux就在用户当前的本地目录中创建一个名为new_dir的目录。</p>
+<p>从远程机grunthos下载二补码数据文件的典型对话过程如下：</p>
+<p>$ftpgrunthos</p>
+<p>Connectedtogrunthos</p>
+<p>220grunthosftpserver</p>
+<p>Name(grunthos:pc):anonymous</p>
+<p>33lGuestloginok,sendyourcompletee-mailaddressaspassword.</p>
+<p>以上内容来自互联网，请自行判别内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>Password:</p>
+<p>230Guest1oginok,accessrestrictionsapply.</p>
+<p>RemotesystemtypeisUNIX.</p>
+<p>ftp&gt;cdpub</p>
+<p>250CWDcommandsuccessful.</p>
+<p>ftp&gt;ls</p>
+<p>200PORTcommandsuccessful.</p>
+<p>l50openingASCIImodedataconnectionfor/bin/1s.</p>
+<p>totalll4</p>
+<p>rog1</p>
+<p>rog2</p>
+<p>226Transfercomp1ete.</p>
+<p>ftp&gt;binary</p>
+<p>200typesettoI.</p>
+<p>ftp&gt;hash</p>
+<p>Hashmarkprintingon(1024bytes/hashmark).</p>
+<p>ftp&gt;getrog1</p>
+<p>200PORTcommandsuccessfu1.</p>
+<p>150openingBINARYmodedataconnectionforrogl(l4684bytes).</p>
+<p>#############</p>
+<p>226Transfercomplete.</p>
+<p>14684bytesreceivedin0.0473secs(3e+02Kbytes/sec)</p>
+<p>ftp&gt;quit</p>
+<p>22lGoodbye.</p>
+<p>使用telnet命令访问远程计算机</p>
+<p>用户使用telnet命令进行远程登陆。该命令容许用户使用telnet合同在远程计算机之间进行通讯，用户可以通过网路在远程计算机上登陆，如同登陆到本地机上执行命令一样。</p>
+<p>为了通过telnet登陆到远程计算机上，必须晓得远程机上的合法用户名和口令。似乎有些系统确实为远程用户提供登入功能，但出于对安全的考虑，要限制来宾的操作权限，因而，这些情况下能使用的功能是极少的。当容许远程用户登入时，系统一般把那些用户放到一个受限制的shell中，以防系统被怀有恶意的或不留神的用户破坏。</p>
+<p>用户还可以使用telnet从远程站点登陆到自己的计算机上，检测电子电邮、编辑文件和运行程序，如同在本地登陆一样。而且，用户只能使用基于终端的环境而不是XWndows环境，telnet只为普通终端提供终端仿真 <strong>linux的ftp命令不存在</strong>，而不支持XWndow等图形环境。</p>
+<p>telnet命令的通常方式为：</p>
+<p>以上内容来自互联网，请自行判别内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>telnet主机名/IP</p>
+<p>其中“主机名/IP”是要联接的远程机的主机名或IP地址。倘若这一命令执行成功，将从远程机上得到login：提示符。</p>
+<p>使用telnet命令登陆的过程如下：</p>
+<p>$telnet主机名/IP</p>
+<p>启动telnet会话。</p>
+<p>一旦telnet成功地联接到远程系统上，就显示登陆信息并提示用户输人用户名和口令。假如用户名和口令输入正确，才能成功登陆并在远程系统上工作。</p>
+<p>在telnet提示符前面可以输入好多命令，拿来控制telnet会话过程，在telnet联机帮助指南中对这种命令有详尽的说明。</p>
+<p>下边是一台Linux计算机上的telnet会话举例：</p>
+<p>$telnetserver.somewhere.com</p>
+<p>Trying127.0.0.1…</p>
+<p>Connectedtoserve.somewhere.com.</p>
+<p>Escapecharacteris&rsquo;?]'.</p>
+<p>“TurboLinuxrelease4.0(Colgate)</p>
+<p>kernel2.0.18onanI486</p>
+<p>login:bubba</p>
+<p>password:</p>
+<p>Lastlogin:MonNovl520:50:43forlinuxcool</p>
+<p>Linux2.0.6.(Posix).</p>
+<p>server:~$</p>
+<p>server:~$logout</p>
+<p>Connectionclosedbyforeignhost</p>
+<p>$</p>
+<p>用户结束了远程会话后，一定要确保使用logout命令退出远程系统。之后telnet报告远程会话被关掉，并返回到用户的本地机的Shell提示符下。</p>
+<p>r-系列命令</p>
+<p>除ftp和telnet以外，还可以使用r-系列命令访问远程计算机和在网路上交换文件。</p>
+<p>使用r-系列命令须要非常注意，由于假如用户不留神，都会导致严重的安全漏洞。用户发出一个r-系列命令后，远程系统检测名为/etc/hosts.equiv的文件，以查看用户的主机是否列在这个文件中。假如它没有找到用户的主机，就检测远程机上同名用户的主目录中名为.rhosts的文件，看是否包括该用户的主机。假如该用户的主机包括在这两个文件中的任何一个之中，该用户执行r-系列命令就不用提供口令。</p>
+<p>以上内容来自互联网，请自行判别内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>尽管用户每次访问远程机时不用键入口令可能是十分便捷的，而且它也可能会带来严重的安全问题。我们建议用户在完善/etc/hosts.equiv和.rhosts文件之前，仔细考虑r-命令蕴涵的安全问题。</p>
+<p>rlogin命令</p>
+<p>rlogin是“remotelogin”(远程登陆)的简写。该命令与telnet命令很相像，容许用户启动远程系统上的交互命令会话。rlogin的通常格式是：</p>
+<p>rlogin[-8EKLdx][-echar][-krealm][-lusername]host</p>
+<p>通常最常用的格式是：</p>
+<p>rloginhost</p>
+<p>该命令中各选项的含意为：</p>
+<p>-8此选项一直容许8位输入数据通道。该选项容许发送低格的ANSI字符和其他的特殊代码。假如不用这个选项，除非远端的中止和启动字符不是或，否则就除去奇偶校准位。</p>
+<p>-E停止把任何字符当成通配符字符。当和-8选项一起使用时，它提供一个完全的透明联接。</p>
+<p>-K关掉所有的Kerberos确认。只有与使用Kerberos确认合同的主机联接时才使用这个选项。</p>
+<p>-L容许rlogin会话在litout模式中运行。要了解更多信息，请查阅tty联机帮助。</p>
+<p>-d打开与远程主机进行通讯的TCPsockets的socket调试。要了解更多信息，请查阅setsockopt的联机帮助。</p>
+<p>-e为rlogin会话设置通配符字符，默认的通配符字符是“~”，用户可以指定一个文字字符或一个nnn方式的八补码数。</p>
+<p>-k恳求rlogin获得在指定区域内的远程主机的Kerberos许可，而不是获得由krb_realmofhost(3)确定的远程主机区域内的远程主机的Kerberos许可。</p>
+<p>-x为所有通过rlogin会话传送的数据打开DES加密。这会影响响应时间和CPU借助率，并且可以提升安全性。</p>
+<p>rsh命令</p>
+<p>rsh是“remoteshell”(远程shell)的简写。该命令在指定的远程主机上启动一个shell并执行用户在rsh命令行手指定的命令。假如用户没有给出要执行的命令，rsh就用rlogin命令使用户登陆到远程机上。</p>
+<p>以上内容来自互联网，请自行判定内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>rsh命令的通常格式是：</p>
+<p>rsh[-Kdnx][-krealm][-lusername]host[command]</p>
+<p>通常常用的格式是：</p>
+<p>rshhost[command]</p>
+<p>command可以是从shell提示符下键人的任何Linux命令。</p>
+<p>rsh命令中各选项的含意如下：</p>
+<p>-K关掉所有的Kerbero确认。该选项只在与使用Kerbero确认的主机联接时才使用。</p>
+<p>-d打开与远程主机进行通讯的TCPsockets的socket调试。要了解更多的信息，请查阅setsockopt的联机帮助。</p>
+<p>-k恳求rsh获得在指定区域内的远程主机的Kerberos许可，而不是获得由krb_relmofhost(3)确定的远程主机区域内的远程主机的Kerberos许可。</p>
+<p>-l缺省情况下，远程用户名与本地用户名相同。本选项容许指定远程用户名，倘若指定了远程用户名，则使用Kerberos确认，与在rlogin命令中一样。</p>
+<p>-n重定向来自特殊设备/dev/null的输入。</p>
+<p>-x为传送的所有数据打开DES加密。这会影响响应时间和CPU借助率linux更改ip地址，并且可以提升安全性。</p>
+<p>Linux把标准输入装入rsh命令中,并把它拷贝到要远程执行的命令的标准输入中。它把远程命令的标准输出拷贝到rsh的标准输出中。它还把远程标准错误拷贝到本地标准错误文件中。任何退出、中止和中断讯号都被送到远程命令中。当远程命令中止了，rsh也就中止了。</p>
+<p>rcp命令</p>
+<p>rcp代表“remotefilecopy”(远程文件拷贝)。该命令用于在计算机之间拷贝文件。</p>
+<p>rcp命令有两种格式。第一种格式用于文件到文件的拷贝;第二种格式用于把文件或目录拷贝到另一个目录中。rcp命令的通常格式是：</p>
+<p>rcp[-px][-krealm]file1file2</p>
+<p>rcp[-px][-r][-krealm]filedirectory</p>
+<p>每位文件或目录参数既可以是远程文件名也可以是本地文件名。远程文件名具有如下方式：rname@rhost：path，其中rname是远程用户名，rhost是远程计算机名，path是这个文件的路径。</p>
+<p>以上内容来自互联网，请自行判定内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+<p>rcp命令的各选项含意如下：</p>
+<p>-r递归地把源目录中的所有内容拷贝到目的目录中。要使用这个选项，目的必须是一个目录。</p>
+<p>-p企图保留源文件的更改时间和模式，忽视umask。</p>
+<p>-k恳求rcp获得在指定区域内的远程主机的Kerberos许可，而不是获得由krb_relmofhost(3)确定的远程主机区域内的远程主机的Kerberos许可。</p>
+<p>-x为传送的所有数据打开DES加密。这会影响响应时间和CPU借助率，并且可以提升安全性。</p>
+<p>假如在文件名手指定的路径不是完整的路径名，这么这个路径被解释为相对远程机上同名用户的主目录。假如没有给出远程用户名，就使用当前用户名。假如远程机上的路径包含特殊shell字符，须要用反斜线()、双冒号(”)或单冒号(’)括上去，使所有的shell元字符都能被远程地解释。</p>
+<p>须要说明的是，rcp不提示输入口令，它通过rsh命令来执行拷贝。</p>
+<p>看了“Linux的常用网路命令”还想看：</p>
+<p>1.最常用的网路精典命令大全</p>
+<p>2.网路常用命令大全</p>
+<p>3.Windows最常用的几个网路CMD命令是哪些</p>
+<p>4.常用的网路配置命令</p>
+<p>以上内容来自互联网，请自行判定内容的正确性。若本站收录的信息无意侵害了贵司版权，请给我们来信()，我们会及时处理和回复，感谢.</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

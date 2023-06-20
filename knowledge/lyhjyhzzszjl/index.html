@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux用户及用户组知识总结(Linux系统的权限管理)</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux用户及用户组知识总结(Linux系统的权限管理)" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_0.jpg" />
+  <meta name="twitter:description"content="Linux用户及用户组知识总结(Linux系统的权限管理)">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux用户及用户组知识总结(Linux系统的权限管理)" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_0.jpg" />
+  <meta property="og:description"content="Linux用户及用户组知识总结(Linux系统的权限管理)" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux用户及用户组知识总结(Linux系统的权限管理)" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lyhjyhzzszjl/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux用户及用户组知识总结(Linux系统的权限管理)" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux用户及用户组知识总结(Linux系统的权限管理)</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>✨特色专栏：国学周更-心性养成之路</p>
+<p>本文内容：Linux用户及用户组知识总结</p>
+<p>文章目录</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_0.jpg" alt="在这里插入图片描述"></p>
+<p>Linux用户权限和文件权限基础</p>
+<p>Linux系统的权限管理可以分为两个方面，针对用户与针对文件，而通常所说的权限管理通常是针对文件。</p>
+<p>Linux用户权限</p>
+<p>Linux是一个多用户多任务的分时操作系统，要想进入系统，必须有一个账号。用户的账号一方面可以帮助系统管理员对使用系统的用户进行跟踪，并控制他们对系统资源的访问；另一方面也可以帮助用户组织文件，并未用户提供安全性保护。</p>
+<p>在Linux操作系统中linux获取当前时间，root拥有至高无上的权限，也被称为超级权限的拥有者、超级管理员，很多普通用户无法执行的操作root用户都可以完成。</p>
+<p>(在Linux系统中，每个文件、目录和进程，都归属与某个用户，没有用户许可其他普通用户是无法操作的，但对root除外。Root用户的特权性还表现在root可以超越任何用户和用户组来对文件或目录进行读取、修改或删除（在系统正常的许可范围内) ；对可执行程序的执行、终止；对硬件设备的添加、创建和移除等；也可以对文件和目录的所属用户、权限进行修改 <strong>linux系统命令topfree的使用及参数详解</strong>，以适合系统管理的需要（因为root是系统中权限最高的特权用户）。</p>
+<p>正是因为Linux系统中root具有如此大的权限，所以实际生产的Linux管理中，一般不要使用root账户进行系统管理，因为这个账户的权限实在太大了，如果操作不当可能导致不可挽回的结果。</p>
+<p>Linux文件权限基础</p>
+<p>在Linux系统中，每个文件、目录和进程，都归属于某一个用户，同时每个文件也都具有非常多的属性和权限。Linux文件的权限管理，就是要搞清楚你我他的关系，搞清文件是自己的、朋友的还是其他人的。</p>
+<p>文件所有者</p>
+<p>Linux是真正的多用户、多任务操作系统，也就是经常会出现多个人同时使用一台机器工作的情况。多个人同时使用一台计算机虽然可以提高计算机的利用率，但是也带来很多的问题，比如：如何保障个人隐私文件的安全，如何设置文件的信息共享等。Linux为了解决上述问题引入了所有者的概念，即一个文件只能属于一个用户，该用户可以设置它的权限与属性，来达到保护个人隐私与文件安全的目的。</p>
+<p>文件所属组</p>
+<p>Linux系统中的组一般值的是在一台计算机上的组，Linux中支持一个账户同时属于多个组。</p>
+<p>其他人</p>
+<p>除了文件的所有者和文件的所属组之外的用户，通过文件权限设置可以控制其他人对文件的相关操作。</p>
+<p>Linux用户身份切换</p>
+<p>大部分Linux发行版的默认账户是普通用户，而更改系统文件或者执行某些命令，需要root身份才能进行，这就需要从当前用户切换到root用户。</p>
+<p>Linux中切换用户的命令有su和sudo两种。</p>
+<p>su</p>
+<p>su命令的全称就是 switch user ，顾名思义就是切换用户身份，使得用户可以在Shell中以其他身份运行程序。除非该用户自己是超级用户root，不然切换用户身份时都需要密码。</p>
+<p>名称：su</p>
+<p>使用权限：所有账户</p>
+<p>使用方式：su [参数] [用户名]</p>
+<p>说明：使用root账户切换到任何账户都不需要密码，普通账户之间切换和普通账户切换到root账户，都需要知道被切用户的密码。</p>
+<p>参数说明</p>
+<p>&ndash;</p>
+<p>直接使用-，代表使用login-shell的变量文件读取方式来登录系统。</p>
+<p>-f <strong>linux系统命令topfree的使用及参数详解</strong>，-fast</p>
+<p>不必读启动文件，仅用于csh或tcsh两种Shell。</p>
+<p>-l，login</p>
+<p>(加了这个参数之后，就好像是重新登录一样，大部分环境变量（例如HOME、SHELL和USER等) 都是以该使用者（USER）为主，并且工作目录也会改变。如果没有指定USER，默认情况是root。</p>
+<p>-m，-preserve-environment</p>
+<p>执行su时不改变环境变数。</p>
+<p>-p</p>
+<p>功能与-m完全一致。</p>
+<p>-c command</p>
+<p>(变更账号为USER的使用者，并执行命令（command) 后再变回原来的使用者。</p>
+<p>-help</p>
+<p>显示说明文件。</p>
+<p>-version</p>
+<p>显示版本资讯。</p>
+<p>su命令与su –命令切换root账户的最大区别：</p>
+<p>su命令只是切换了root身份，但是Shell环境仍然是普通用户的Shell；</p>
+<p>su –命令连用户和Shell环境一起切换成root身份了。</p>
+<p>只有切换了Shell环境才不会出现PATH环境变量错误。</p>
+<p>在root身份下切换到seashorewang身份。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_1.png" alt="在这里插入图片描述"></p>
+<p>说明：使用su seashorewang切换到seashorewang账户后去查看环境变量的时候发现环境变量仍然是root的环境变量；退出后使用su – seashorewang切换用户发现环境变量完全切换成了seashorewang用户的环境变量。</p>
+<p>在seashorewang身份下切换到root身份。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_2.png" alt="在这里插入图片描述"></p>
+<p>说明：使用su root切换到root账户后去查看环境变量的时候发现环境变量仍然是seashorewang的环境变量；退出后使用su – root切换用户发现环境变量完全切换成了root用户的环境变量。</p>
+<p>在seashorewang身份下以 non-login shell 方式切换到root身份，并验证。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_3.png" alt="在这里插入图片描述"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_4.png" alt="在这里插入图片描述"></p>
+<p>说明1：查看环境变量发现，环境变量没有发生改变。但是使用ID查看的时候发现确实是root身份。虽然切换到了root身份，但是查看环境变量和赋值情况的时候，还有很多环境变量中存在seashorewang。</p>
+<p>说明2：env 用来查看环境变量及其赋值信心。</p>
+<p>在seashorewang身份下以 login shell 方式切换到root身份，并验证。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_5.png" alt="在这里插入图片描述"></p>
+<p>说明：查看环境变量发现，环境变量没有发生改变。但是使用ID查看的时候发现确实是root身份。虽然切换到了root身份，但是查看环境变量和赋值情况的时候，环境变量中的信息也都换成了root。。</p>
+<p>在seashorewang身份下切换到test账户。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_6.png" alt="在这里插入图片描述"></p>
+<p>说明：在进行账户切换的过程中出现了权限不够的情况，切换到root账户下，然后使用chmod命令给予test的根目录其他用户的访问权限，继续切换，切换成功。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_8.jpg" alt="linux命令详解手册chm_linux系统命令topfree的使用及参数详解_linux命令详解词典"></p>
+<p>sudo</p>
+<p>使用su切换到某个用户或者以某个用户的权限来运行某条命令，都必须使用相应用户的口令。比如某个普通账户想执行一个只有root用户才具有权限的指令，则需要直接拥有root的权限，这似乎不太可能，因此还需要有其他的解决方式。</p>
+<p>su 主要用来以某个用户的身份运行某条指令。相对于su命令需要知道新切换用户的密码，sudo 命令的执行仅需要自己的密码即可，甚至可以设置不需要密码即可执行。</p>
+<p>不是所有人都能够执行sudo，而是仅有/etc/sudoers内的用户才能够执行sudo这个命令。必须使用visudo命令才能编辑/etc/sudoers配置文件。</p>
+<p>名称：sudo</p>
+<p>使用权限：普通账户与root</p>
+<p>使用方式：sudo [参数] [命令] [用户名]</p>
+<p>说明：默认情况下只有root账户可以执行sudo命令，其他账户如果想执行该命令需要得到root的授权才可以。</p>
+<p>参数说明</p>
+<p>-V</p>
+<p>显示版本编号。</p>
+<p>-h</p>
+<p>显示版本编号及指令的使用方式说明。</p>
+<p>-l</p>
+<p>(显示出自己（执行sudo的使用者) 的权限。</p>
+<p>-v</p>
+<p>(因为sudo在第一次执行时或是在N分钟内没有执行（N预设为五) 会问密码，这个参数是重新做一次确认，如果超过N分钟，也会问密码。</p>
+<p>-k</p>
+<p>(将会强迫使用者在下一次执行sudo时问密码（不论有没有超过N分钟) 。</p>
+<p>-b</p>
+<p>将要执行的指令放在背景执行。</p>
+<p>-p</p>
+<p>prompt可以更改问密码的提示语，其中%u会代换为使用者的账号名称，%h会显示主机名称。</p>
+<p>-u</p>
+<p>(username/ # uid不加此参数linux手机软件，代表要以root的身份执行指令，而加了此参数，可以以username的身份执行指令（# id为该username的使用者号码) 。</p>
+<p>-s</p>
+<p>执行环境变数中的SHELL所指定的shell，或是/etc/passwd里所指定的shell。</p>
+<p>-H</p>
+<p>(将环境变数中的HOME（家目录) 指定为要变更身份的使用者家目录（如不加-u参数就是系统管理者root）。</p>
+<p>command</p>
+<p>(要以系统管理者身份（或以-u更改为其他人) 执行的指令。</p>
+<p>1、 sudo的执行过程</p>
+<p>(（1)  当用户执行sudo时，系统于/etc/sudoers文件中查找该用户是否有执行sudo的权限。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_9.png" alt="linux系统命令topfree的使用及参数详解_linux命令详解手册chm_linux命令详解词典"></p>
+<p>(（2)  若用户具有可执行sudo的权限后，便让用户输入自己的密码来确认，也可以设置为不需要密码。</p>
+<p>(（3)  若密码输入成功，便开始执行sudo后续的命令，root执行sudo时不需要输入密码。</p>
+<p>(（4)  若欲切换的身份与执行身份相同，那也不需要密码。</p>
+<p>2、 使用sudo的好处</p>
+<p>不需要知道root的密码也可以使用root的权限来运行命令，而使用su则必须要知道root的密码。</p>
+<p>在seashorewang用户下，使用sudo命令查看/etc/passwd文件的前三行。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_10.png" alt="在这里插入图片描述"></p>
+<p>说明：使用sudo命令时提醒该用户没有在sudoer文件中。</p>
+<p>以sshd身份在/tmp/下建立一个名称为myweb的文件。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_11.png" alt="在这里插入图片描述"></p>
+<p>说明：对比发现sudo对应root的用法，就是可以让sudo以任何其他身份在系统内管理文件。</p>
+<p>列出sudo目前的权限。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_12.png" alt="在这里插入图片描述"></p>
+<p>查看sudo的版本信息。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_14.png" alt="在这里插入图片描述"></p>
+<p>visudo</p>
+<p>root用户可以使用visudo命令来设置/etc/sudoers。将visudo拆开看就是使用vi命令打开sudo的配置文件。</p>
+<p>visudo打开的/etc/sudoers文件中需要修改的一共有四个部分。</p>
+<p>① 用户账号，系统的哪个账号可以使用sudo命令，默认为root。</p>
+<p>② 登录者来源主机名，这个账号由哪台主机连接到本主机。</p>
+<p>③ 可切换的身份，这个账户可切换成什么身份来执行后面的命令。</p>
+<p>④ 可以执行的命令，这个命令写绝对路径。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_16.png" alt="在这里插入图片描述"></p>
+<p>让seashorewang账户具有查看/etc/passwd文件的权限。</p>
+<p>(（1)  使用root修改sudoers文件</p>
+<p>说明：最后这句话的意思是让seashorewang账户在/etc/passwd这个文件上拥有和root一样的权限。</p>
+<p>(（2)  切换回seashorewang，查看/etc/shadow文件。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_18.png" alt="在这里插入图片描述"></p>
+<p>说明：经过授权后seashorewang账户可以访问/etc/shadow文件。</p>
+<p>让test用户具有帮助root修改其他账号的密码。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_19.jpg" alt="linux命令详解手册chm_linux系统命令topfree的使用及参数详解_linux命令详解词典"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_20.png" alt="在这里插入图片描述"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_21.png" alt="在这里插入图片描述"></p>
+<p>新建账号test2，为其设置密码，设置sudoers文件，让该账号具有可以创建账号的权限。</p>
+<p>(（1)  使用root修改sudoers文件。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_22.png" alt="在这里插入图片描述"></p>
+<p>(（2) 切换到test2，执行相关操作。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_23.png" alt="在这里插入图片描述"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_24.png" alt="在这里插入图片描述"></p>
+<p>说明：可以看到test2账号具有了增加账号的权限。</p>
+<p>Linux用户组管理 有效组与初始组</p>
+<p>/etc/passwd里面的第4栏被称为GID。这个GID所对应的组被称为初识组initial group。即当用户登录系统，立刻就拥有这个群组的相关权限。</p>
+<p>用groups命令查看用户所隶属的组。</p>
+<p>说明1：在不同的账户 下使用groups命令都会得到相应用户所隶属的组。</p>
+<p>说明2：再root账户使用groups查看的时候发现用户组有两个，其中root组就是其有效组，也就是第一个组是有效组。一个用户可以属于多个组，但在某一时刻只能隶属于一个组。</p>
+<p>将root用户的有效组调整为seashorewang。</p>
+<p>说明：newgrp 用来切换用户的有效群群组。</p>
+<p>新建用户组</p>
+<p>用户组的操作主要是增删改。用户的增删改涉及/etc/group和/etc/gshadow两个文件。</p>
+<p>名称：groupadd</p>
+<p>使用权限：root</p>
+<p>使用方式：groupadd [参数] [用户组名]</p>
+<p>参数说明</p>
+<p>-g</p>
+<p>后面跟GID，直接指定某个GID。</p>
+<p>-r</p>
+<p>新建系统用户组，与/etc/login.defs内的GID_MIN有关。</p>
+<p>-o</p>
+<p>允许设置相同id的群组。</p>
+<p>-f</p>
+<p>强制执行，默认是不允许创建相同ID的组的，使用此参数就可以，而且不用-o选项。</p>
+<p>新建一个用户组，名称为group1。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675347965138_27.png" alt="linux命令详解词典_linux命令详解手册chm_linux系统命令topfree的使用及参数详解"></p>
+<p>说明：group1的GID为505，每次新建一个组，GID会自动加1.</p>
+<p>新建一个系统用户组，名称为system1。</p>
+<p>说明：之前说过500以内的GID为系统预留，这里建立的就是系统用户组。</p>
+<p>新建一个用户组，名称为group5，指定其GID为600。</p>
+<p>说明：加上-g后按照指定的GID生成新的组，但前提是这个GID没有被使用过。</p>
+<p>修改用户组</p>
+<p>名称：groupmod</p>
+<p>使用权限：root</p>
+<p>使用方式：groupmod [参数] [用户组名]</p>
+<p>参数说明</p>
+<p>-g gid</p>
+<p>指定id。</p>
+<p>-o</p>
+<p>允许设置相同组id的群组。</p>
+<p>-n group_name</p>
+<p>修改用户组名为group_name。</p>
+<p>将用户组group1的名称改为grp1。</p>
+<p>将用户组group3的GID修改为999.</p>
+<p>删除用户组</p>
+<p>名称：groupdel</p>
+<p>使用权限：root</p>
+<p>使用方式：groupdel [用户组名]</p>
+<p>删除组grp1。</p>
+<p>说明：删除后，发现配置文件中已经没有了该组的信息。</p>
+<p>删除组seashorewang。</p>
+<p>(说明：seashorewang用户组提示不能删除，原因是已经被某个用户（这里是root账户) 使用为有效组。</p>
+<p>码文不易，本篇文章就介绍到这里，如果想要学习更多Java系列知识，点击关注博主，博主带你零基础学习Java知识。与此同时，对于日常生活有困扰的朋友，欢迎阅读我的第四栏目：《国学周更—心性养成之路》，学习技术的同时，我们也注重了心性的养成。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

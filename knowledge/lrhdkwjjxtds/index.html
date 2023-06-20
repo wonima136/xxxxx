@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux如何打开文件夹？系统的设置显示当前目录？</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux如何打开文件夹？系统的设置显示当前目录？" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680379673398_1.png" />
+  <meta name="twitter:description"content="Linux如何打开文件夹？系统的设置显示当前目录？">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux如何打开文件夹？系统的设置显示当前目录？" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680379673398_1.png" />
+  <meta property="og:description"content="Linux如何打开文件夹？系统的设置显示当前目录？" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/04/1680379673398_1.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux如何打开文件夹？系统的设置显示当前目录？" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lrhdkwjjxtds/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux如何打开文件夹？系统的设置显示当前目录？" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux如何打开文件夹？系统的设置显示当前目录？</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>Linux怎样打开文件夹？</p>
+<p>1、进入到系统以后，双击箭头所指的符号，就可以步入系统根目录了，相当于Windows上面的“我的笔记本”。</p>
+<p>2、点击“Computer”，就可以看到根目录下的文件和文件夹了。</p>
+<p>3、窗口上方显示的是当前所在的目录位置，可以随时查看自己处于那个目录中。</p>
+<p>4、如果使用的是Linux系统的命令行，则方式又会不一样了。首先要明晰自己须要步入那个位置，例如我如今想要到/usr/local/nginx/conf这个目录中去。这时使用Linux命令cd/usr/local/nginx/conf就可以了linux怎么查看系统版本，注意cd前面要加空格。</p>
+<p>5、此时我早已步入到我想去的目录下边了，命令ls查看当前目录下有什么文件和文件夹。</p>
+<p>6、由于是命令行界面，操作者在多次cd以后不清楚自己此时在那个目录下，这时你须要使用pwd这个命令来查看你当前所处的目录位置，</p>
+<p>7、如果要查看文件内容的话，就须要使用Linux系统的文件编辑器vi或则vim，建议使用vim <strong>linux查找文件夹命令</strong>，可读性会更好一些。此时我须要查看fastcgi.conf这个文件的内容，就使用命令vimfastcgi.conf，注意vim旁边也有个空格。</p>
+<p>8、这样就可以查看文件的具体内容了，</p>
+<p>使用哪些命令步入Linux的/user目录，打开终端时是在用户目录下，怎样进行切换？</p>
+<p>须要使用cd命令步入指定目录，步骤如下：</p>
+<p>1、首先，联接上相应的linux主机，步入到等待输入shell指令的linux命令行状态下。</p>
+<p>2、其次，在命令行中输入：cd/user。</p>
+<p>3、键盘按“回车键”运行shell指令，此时会听到成功步入到了linux系统的user目录下。</p>
+<p>怎么设置linux显示当前目录？</p>
+<p>pwd命令拿来显示当前工作路径，命令是presentworkingdirectory当前工作路径的简写。</p>
+<p>结合basename命令可以返回当前目录的名称。用法示例：返回当前工作路径$pwd返回当前所在目录$basename<code>pwd</code>注意：pwd左侧为反顿号`，作用是运行两个反顿号之间的命令，而且将命令运行的结果返回。</p>
+<p>怎么查看软件安装目录linux？</p>
+<p>1.which</p>
+<p>which命令查找出相关命令是否早已在搜索路径中，反例如下：</p>
+<p>$whichgcc//显示出GNC的C编译器安装在那个目录</p>
+<p>返回结果为：</p>
+<p>/usr/bin/gcc</p>
+<p>注意：假如which没有找到要找的命令，可以试试whereis,该命令搜索更大的范围的系统目录。有些系统上的which命令不显示用户没有执行权限的文件。诸如</p>
+<p>$whichipppd</p>
+<p>/usr/bin/which:noipppdin(/bin:/usr/bin:/sbin:/usr/sbin)</p>
+<p>$whereisipppd</p>
+<p>ipppd:/usr/sbin/ipppd</p>
+<p>$ls-l/usr/sbin/ipppd</p>
+<p>-rwx——1rootroot124924Feb32000/usr/sbin/ipppd</p>
+<p>2.locate</p>
+<p>(locate命令用于查找文件，它比find命令的搜索速率快，它须要一个数据库，这个数据库由每晚的例行工作（crontab) 程序来构建。当我们构建好这个数据库后，就可以便捷地来搜救所需文件了。</p>
+<p>(即先运行：updatedb（无论在哪个目录中均可，可以置于crontab中) 后在/var/lib/slocate/下生成slocate.db数据库即可快速查找。在命令提示符下直接执行#updatedb命令即可。</p>
+<p>$locatesignal.h</p>
+<p>/usr/include/asm/signal.h</p>
+<p>/usr/include/linux/signal.h</p>
+<p>/usr/include/signal.h</p>
+<p>/usr/include/sys/signal.h</p>
+<p>3.rpm</p>
+<p>假如用户晓得自己要查找到软件包的名子，可以直接使用下边的命令。这个命令只在支持rpm的linux版本上有效，如redhat，centos，fedora和suse等。</p>
+<p>$rpm-qpython//查找检测系统是否安装了python</p>
+<p>python-1.5.2-27</p>
+<p>或则：$rpm-qa|greppython//这是两个命令的结合</p>
+<p>rpm的其他用法：</p>
+<p>rpm-qa(列举所有安装了的包)</p>
+<p>rpm-epackage(删掉某个包)</p>
+<p>rpm-qipackage(查询某个包)</p>
+<p>rpm-qfcommand(按照程序查询包的名子)</p>
+<p>rpm-qlpackage(查询某个包所有的安装文件)</p>
+<p>4.yum</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680379673398_1.png" alt="linux查找替换命令_linux查找文件夹命令_linux 查找目录命令"></p>
+<p>yum的参数好多，以下是用于查找软件包的命令。并且也只支持特定的短发版本，centos下最常用的命令</p>
+<p>$yumlist//列举所指定的软件包,后可以加上你想查找的软件包的名子</p>
+<p>$yumlistinstalled//列举所有已安装的软件包</p>
+<p>$yuminfoinstalled//列举所有已安裝的软件包信息</p>
+<p>5.whereis</p>
+<p>whereis是查找文件或则命令的所在目录</p>
+<p>#whereispwd//查找pwd命令所在的目录</p>
+<p>6.find</p>
+<p>这个命令可拿来查找系统是否安装了指定的软件包，更重要的是也可以查找自己对软件包名称记忆不是很清晰的软件包。并且我想是这是所有linux和unix都支持的。find的查找范围很广，功能强悍，再搭配用正则抒发，疗效挺好，不过建议尽量缩小搜索范围，降低系统压力linux 安装，虽然，当系统文件多了，搜索花费时间和资源的。</p>
+<p>$find/-name”python”//从根目录开始查找包含”python“这个字符的文件和文件夹。</p>
+<p>find的详尽使用有如下反例：</p>
+<p>#find.-maxdepth1-name*.jpg-print-execconvert在当前目录下查找，查找深度为一，查找以.jpg结尾文件，并将其转化</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/04/1680379673398_2.png" alt="linux查找文件夹命令_linux查找替换命令_linux 查找目录命令"></p>
+<p>#find/-name*.rpm-execchmod755′{}’;搜索以’.rpm’结尾的文件并定义其权限</p>
+<p>#find/-namefile1从’/’开始步入根文件系统搜索文件和目录</p>
+<p>#find/-perm-u+s列举一个系统中所有使用了SUID控制的文件</p>
+<p>#find/-useruser1搜索属于用户’user1’的文件和目录</p>
+<p>#find/-xdev-name*.rpm搜索以’.rpm’结尾的文件，忽视硬盘、捷盘等可联通设备</p>
+<p>#find/home/user1-name’*.txt’|xargscp-av&ndash;target-directory=/home/backup/&ndash;parents从一个目录查找并复制所有以’.txt’结尾的文件到另一个目录</p>
+<p>#find/home/user1-name*.bin在目录’/home/user1’中搜索带有’.bin’结尾的文件</p>
+<p>#find/usr/bin-typef-atime+100搜索在过去100天内未被使用过的执行文件</p>
+<p>#find/usr/bin-typef-mtime-10搜索在10天内被创建或则更改过的文件</p>
+<p>#find/var/log-name’*.log’|tarcv&ndash;files-from=-|bzip2&gt;log.tar.bz2查找所有以’.log’结尾的文件并弄成一个bzip包</p>
+<p>linux如何存入文件到文件夹？</p>
+<p>使用命令:x文件夹/文件名来存入文件到文件夹。</p>
+<p>总结</p>
+<p>(以上是真正的笔记本专家为你搜集整理的linux步入文件夹命令（linux步入文件夹) 的全部内容，希望文章才能帮你解决所遇见的问题。</p>
+<p>假如认为真正的笔记本专家网站内容还不错 <strong>linux查找文件夹命令</strong>，欢迎将真正的笔记本专家推荐给好友。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

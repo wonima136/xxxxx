@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675663437430_0.jpg" />
+  <meta name="twitter:description"content="linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675663437430_0.jpg" />
+  <meta property="og:description"content="linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1675663437430_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lyswjmltkfbb/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">linux压缩文件命令tgz Linux开发必备的技能–AndrewAndrewLinux介绍</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>一、引言 1.1 开发环境</p>
+<p>平时你们多是在Windows或Mac操作系统下进行代码开发，在开发环境中安装大量软件，同时这样也减少环境的安全和稳定性。</p>
+<p>1.2 生产环境</p>
+<p>是将程序运行在此环境中，供用户使用。这个环境是有专业的人员的去维护，一般人是没有权限去操作生产环境的</p>
+<p>1.3 测试环境</p>
+<p>一般克隆一份生产环境，会将开发好的程序布署到测试环境，主要目的是去程序进程监测 <strong>linux压缩文件命令tgz</strong>，收集各类问题，并交给开发人员更改</p>
+<p>1.4 操作系统的选择</p>
+<p>生产环境中，常用的OS有Windows 2003 service。Linux,Unix等，Linux在生产环境中抢占抢占大量的市场份额。Linux主要以稳定，可靠，免费这种特征成为全球使用最多的操作系统。所以，Linux成为了前端开发必备的技能。</p>
+<p>二、 Linux介绍 2.1 Linux起源</p>
+<p>在Linux系统未出现之前，还有一个操作系统叫Minix，它是由Anderew的大学教授研制下来的，当时大学教授是为了给中学生上课，买了一套Unix操作系统，参考Unix自己编撰了一个操作系统，即就是Minix。同时开源供中学内部的研究和教学。到2000年，才将该系统完全对外开源。</p>
+<p>由于Minix完全对外开源后，在互联网上迅速传播 <strong>linux压缩文件命令tgz</strong>，后来经过你们使用发觉了内部存在各种各样的问题。用户将问题解决后，编写了一个补丁并以电邮的形式发给Andrew院士，但是院长最初的目的只是为了研究和教学。并不准备维护。所以这个时侯，一位英国的大学生出现了，叫Linus，也就是Linux的创始人。在Minix系统基础上， 自己添加一些补丁和插件并将其命名为Linux操作系统。并完全对外开源且开始维护Linux操作系统。</p>
+<p>2.2 Linux的版本</p>
+<p>分为两种，一是Linus团队正在维护的开源内核版本。另一种是一些厂商基于内核版本封装的发行版本。</p>
+<p>一些常见的发行版本如下：</p>
+<p>2.3 Linux和Windows区别 三、Linux安装</p>
+<p>安装步骤网上有教程，这里不再赘言.</p>
+<p>四、Linux的目录结构</p>
+<p>如图:</p>
+<p>目录说明:</p>
+<p>五、Linux常用操作指令 5.1 Linux系统指令句型及一些基本命令</p>
+<p>指令 [选项] [参数]</p>
+<p>参数，指令正常执行所需的数据</p>
+<p>基本命令</p>
+<p>ip a 或 ip address查看ip地址</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675663437430_0.jpg" alt="linux压缩文件命令tgz_linux 压缩 命令_linux下tgz解压命令"></p>
+<p>clear</p>
+<p>清屏</p>
+<p>ping 地址</p>
+<p>ping 域名 或 ip(ctrl + c 强制停止)</p>
+<p>5.2 Linux系统操作目录常用命令 5.2.1 进入文件夹及退出文件夹</p>
+<p>(#进入指定的目录（当我们输入目录名称的时侯，可以通过Tab进行手动补全)</p>
+<p>cd 目录名称</p>
+<pre tabindex="0"><code>  # 进入到Linux系统跟路径
+  cd /
+  # 进入到当前用户的目录
+  cd ~
+</code></pre><p>(5.2.2 显示当前目录下的文件列表 5.2.3 目录的创建和删掉 rmdir 目录名 只能删掉非空目录 5.2.4 复制和联通、重命名目录 mv 目录名 新目录名 | 路径 六、Linux的文件命令 6.1 创建和更改文件 vi （visual)  文件编辑vim （visual improved） 增强文件编辑</p>
+<h1 id="打开目标文件如果此文件不存在则表示先创建此文件再打开-vi-atxt-vi文件时常用的快捷键方便操作">打开目标文件；如果此文件不存在，则表示先创建此文件再打开 vi a.txt vi文件时，常用的快捷键，方便操作</h1>
+<p>在vi文件时，在底行命令模式下可以输入以下常用内容:</p>
+<p>行号操作</p>
+<p>6.2 阅读文件</p>
+<p>// 阅读文件内容,直接展示到最后一行linux 关机命令，(适合阅读小文件)</p>
+<p>cat 文件名</p>
+<p>// 从第一行开始查看文件内容，展示全部</p>
+<p>tac 文件名</p>
+<p>// 从最后一行开始展示</p>
+<p>nl 文件名</p>
+<p>// 只查看前几行</p>
+<p>head 文件名</p>
+<p>// 只查看后几行</p>
+<p>tail 文件名</p>
+<p>tail -f 日志 (// 监控日志)</p>
+<p>(// 阅读文件，带有翻页（一次往下一行linux 常用命令，不支持向下翻页,显示文件时还展示行号) 按space向上翻页，退出时按q</p>
+<p>more 文件名</p>
+<p>(// 阅读文件，适合阅读打文件；可以上下翻页（PgDn/PgUp) ，退出less阅读模式点击q</p>
+<p>less 文件名</p>
+<p>// 在less阅读模式下，输入“?查询内容”可以向下查询数据；输入“/查询内容”可以实现向上查询内容</p>
+<p>6.3 查询文件和查询内容 6.4 管道命令 6.5 删除文件 6.6复制和联通 七、Linux的压缩包命令</p>
+<p>windows系统下压缩文件一般是zip、rar等格式；Linux系统压缩文件一般为.tar，.tar.gz，tgz</p>
+<p>7.1 tar 指令 完成linux系统的文件压缩和解压 7.2 zip文件压缩和解压</p>
+<p>Linux默认不支持zip压缩包格式的。需要安装两个软件:</p>
+<p>安装方式：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e"># 解压</span>
+</span></span><span style="display:flex;"><span>unzip <span style="color:#960050;background-color:#1e0010">压缩包名称</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 打包</span>
+</span></span><span style="display:flex;"><span>zip <span style="color:#960050;background-color:#1e0010">压缩包名称</span> <span style="color:#960050;background-color:#1e0010">文件</span><span style="color:#ae81ff">1</span> <span style="color:#960050;background-color:#1e0010">文件</span><span style="color:#ae81ff">2</span> <span style="color:#960050;background-color:#1e0010">目录</span><span style="color:#ae81ff">1</span> <span style="color:#960050;background-color:#1e0010">目录</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>八、用户&amp;用户组的操作 8.1 用户的常用操作命令</p>
+<p>Linux是一个多用户的操作系统，任何一个用户想要操作Linux，必须向系统管理员申请一个帐号才可以，并且以这个帐号的身分去操作Linux。</p>
+<p>用户的帐号一方面可以帮助系统管理员追踪当前用户的操作。另一方面可以控制当前用户对系统资源访问。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 1. 创建用户</span>
+</span></span><span style="display:flex;"><span>useradd <span style="color:#f92672">[</span>-cgd<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>选项指定的具体内容<span style="color:#f92672">]</span> 用户名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -c：代表comment,给用户添加一段注释</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -g：代表group,可以修改用户的所在组</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -d：代表指定用户的HOME目录</span>
+</span></span></code></pre></div><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1675663437430_1.png" alt="linux压缩文件命令tgz_linux 压缩 命令_linux下tgz解压命令"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 2. 设置用户密码</span>
+</span></span><span style="display:flex;"><span>passwd 用户名
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 3. 切换yoghurt</span>
+</span></span><span style="display:flex;"><span>su 用户名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [root@localhost ~]#  --&gt; root 用户在本地登录，并且当前在~目录下，#代表是超级管理员</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># [xty@localhost ~]$  --&gt; xty用户在本地登录，并且当前在~目录下，$代表是普通用户</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 4. 删除用户</span>
+</span></span><span style="display:flex;"><span>userdel <span style="color:#f92672">[</span>-r<span style="color:#f92672">]</span> 用户名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -r : 代表删除用户的同时，删除该用户的HOME目录</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 5. 修改用户</span>
+</span></span><span style="display:flex;"><span>usermod <span style="color:#f92672">[</span>-cgd<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>选项指定的具体内容<span style="color:#f92672">]</span> 用户名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -c：代表comment,给用户添加一段注释</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -g：代表group,可以修改用户的所在组</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -d：代表指定用户的HOME目录</span>
+</span></span></code></pre></div><p>8.2 用户组的操作</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 1. 创建用户组</span>
+</span></span><span style="display:flex;"><span>groupadd 用户组名
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 2. 修改用户组</span>
+</span></span><span style="display:flex;"><span>groupmod <span style="color:#f92672">[</span>-n<span style="color:#f92672">]</span>  <span style="color:#f92672">[</span>选项指定的具体内容<span style="color:#f92672">]</span>   用户组名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -n 修改用户组名称</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 3. 删除用户组</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>groupdel  用户组名
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 只能删除不存在用户的用户组</span>
+</span></span></code></pre></div><p>九、 文件权限的更改</p>
+<p>首先我们要清楚Linux文件的权限信息</p>
+<p>在Linux中输入ls -l 或 ll查看文件和目录的详尽信息</p>
+<pre tabindex="0"><code>				    文件详情
+</code></pre><p>9.2 修改文件权限</p>
+<p>使用chmod对文件的权限进行更改，一种使用数字，一种使用符号。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 1. 数字方式</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#f92672">[</span>-R<span style="color:#f92672">]</span> <span style="color:#ae81ff">775</span> 文件名 | 目录
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># rwx这三个权限中r: 4, w: 2, x: 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -R：当修改一个目录权限时，可以添加-R，将目录下的全部内容，都修改权限。</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 2. 符号方式</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># user: u,group: g, other: o, all: a</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># read：r，write：w，execute：x</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 赋予权限的方式</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 添加：+，减掉：-，设定：=</span>
+</span></span><span style="display:flex;"><span>chmod <span style="color:#f92672">[</span>-R<span style="color:#f92672">]</span>  a<span style="color:#f92672">=</span>rw  文件|目录
+</span></span></code></pre></div><p>9.2 对文件的拥有者和所属组更改</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 修改文件的拥有者和所属组</span>
+</span></span><span style="display:flex;"><span>chown <span style="color:#f92672">[</span>-R<span style="color:#f92672">]</span>  拥有者： 所属组 文件|目录
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改文件的拥有者</span>
+</span></span><span style="display:flex;"><span>chown <span style="color:#f92672">[</span>-R<span style="color:#f92672">]</span>  拥有者  文件|目录
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 修改文件的所属组</span>
+</span></span><span style="display:flex;"><span>chgrp <span style="color:#f92672">[</span>-R<span style="color:#f92672">]</span>  所属组  文件|目录
+</span></span></code></pre></div><p>十、Linux的其他操作命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 1. 进程的操作</span>
+</span></span><span style="display:flex;"><span>ps -ef
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看全部正在运行的进程</span>
+</span></span><span style="display:flex;"><span>ps -ef | grep 搜索的内容
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 搜索对应的进程</span>
+</span></span><span style="display:flex;"><span>kill -9 pid
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 杀死进程</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 2. 服务的操作</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 针对服务的启动、停止、重启、开机自动启动、禁止开机自动启动。查看服务状态</span>
+</span></span><span style="display:flex;"><span>systemctl  start|stop|restart|enable|disable|status 服务名称
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 3. 查看端口号占用情况</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 想使用指定的命令需要实现下载netstat</span>
+</span></span><span style="display:flex;"><span>yum -y install net-tools
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看端口号占用情况</span>
+</span></span><span style="display:flex;"><span>netstat -naop | grep 端口号
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#75715e"># 4. 访问地址</span>
+</span></span><span style="display:flex;"><span>curl 访问地址
+</span></span></code></pre></div>
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>deb包的简介、安装及卸载步骤、执行步骤简介</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="deb包的简介、安装及卸载步骤、执行步骤简介" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1679493953737_2.jpg" />
+  <meta name="twitter:description"content="deb包的简介、安装及卸载步骤、执行步骤简介">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="deb包的简介、安装及卸载步骤、执行步骤简介" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1679493953737_2.jpg" />
+  <meta property="og:description"content="deb包的简介、安装及卸载步骤、执行步骤简介" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1679493953737_2.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="deb包的简介、安装及卸载步骤、执行步骤简介" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/dbdjjazjxzbz/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="deb包的简介、安装及卸载步骤、执行步骤简介" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">deb包的简介、安装及卸载步骤、执行步骤简介</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>Linux安装软件命令解读</p>
+<p>目录</p>
+<p>一、deb包的简介、安装及卸载步骤</p>
+<p>简介：</p>
+<p>deb文件是linux发行版debian系统的安装包格式，还有像基于debian系统的发行版ubuntu等系统也使用deb格式安装包，我们可以使用dpkg命令进行安装管理这种deb安装包文件。包的管理工具为apt-get。</p>
+<p>Debian软件包命名遵照下述约定:-.deb</p>
+<p>比如nano_1.3.10-2_i386.deb</p>
+<p>安装步骤：</p>
+<p>1、找到相应的软件包，例如xx.deb，下载到本机某个目录；</p>
+<p>2、cdxx.deb所在的目录；</p>
+<p>3、sudodpkg-ixx.deb。</p>
+<p>卸载步骤:</p>
+<p>1、sudodpkg-rxxSoftName。</p>
+<p>二、rpm包的简介、安装及卸载步骤</p>
+<p>简介：</p>
+<p>rpm的全名为”RedHatPackageManager”，是RedHat公司研制的程序包管理器。主要用在CentOS系统，而CentOS是一个基于RedHatLinux的可自由使用的企业级发行版本。包的管理工具为YUM。</p>
+<p>rpm软件包命名遵照下述约定:-.rpm</p>
+<p>比如openssl-1.0.1c-1.i686.rpm</p>
+<p>安装步骤：</p>
+<p>1、找到相应的软件包，例如xx.rpm，下载到本机某个目录；</p>
+<p>2、cdxx.rpm所在的目录；</p>
+<p>(3、sudorpm-ivhxx.rpm。（安装并显示正在安装的文件信息及安装进度)</p>
+<p>卸载步骤:</p>
+<p>(1、sudorpm-exxSoftName。（-e可以用&ndash;earse取代)</p>
+<p>三、AppImage包的简介、执行步骤</p>
+<p>简介：</p>
+<p>多年以来，我们仍然使用deb来管理Debian/Ubuntu的软件包，使用rpm管理Fedora/SUSE的软件包。这两种方法安装linux软件将会在不同的目录生成多个文件，而且须要root权限来对系统进行更改。</p>
+<p>AppImage不须要如此做。事实上，AppImage并不须要安装。AppImage是一个压缩的镜像文件，它包含所有运行所须要的依赖和库文件，而且几乎可以在所有的linux发行版本中使用。</p>
+<p>你可以直接执行AppImage文件不须要安装。当你把AppImage文件删掉，整个软件也被删掉了。你可以把它当作windows系统中的这些免安装的exe文件。</p>
+<p>执行步骤：</p>
+<p>1、找到相应的软件包，例如xx.AppImage，下载到本机某个目录；</p>
+<p>2、cdxx.AppImage所在的目录；</p>
+<p>3、添加可执行权限：sudochmoda+xxx.AppImage;</p>
+<p>4、执行它：./xx.AppImage。</p>
+<p>四、tar.gz、tar.bz2源代码包的简介、安装及卸载步骤</p>
+<p>简介：</p>
+<p>首先要说的是tar.gz、tar.bz2不是软件包格式，而是压缩档格式，你可以把任何格式的东西压缩成tar.gz和tar.bz2文件，如同.7z,.zip和.rar一样。</p>
+<p>你下载的tar.gz包装的软件很可能是源码，但也有的地方把二补码码打包成tar.gz的。源代码包和二补码包是软件包的两种方式。</p>
+<p>(二补码包上面包括了早已经过编译，可以马上运行的程序。你只须要下载和解包（安装) 它们之后，就马上可以使用。</p>
+<p>源代码包上面包括了程序原始的程序代码，须要在你的计算机上进行编译之后才可以形成可以运行程序,所以从源代码安装的时间会比较长。</p>
+<p>源代码包的编译安装步骤：</p>
+<p>1、找到相应的软件包，例如xx.tar.gz，下载到本机某个目录；</p>
+<p>2、cdxx.tar.gz所在的目录；</p>
+<p>3、解压缩：tar-xvfxx.tar.gz；</p>
+<p>4、cd进解压后的文件及：cdxx；</p>
+<p>5、配置文件：./configure；</p>
+<p>6、开始编译：make；</p>
+<p>7、安装生成的二补码文件：makeinstall。</p>
+<p>注意：具体安装方式以软件源代码中的README等帮助文件为准。</p>
+<p>卸载步骤:</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1679493953737_2.jpg" alt="deb安装命令_linux的deb包怎么安装_linux安装deb包命令"></p>
+<p>1、在源代码包目录中,终端执行：makeuninstall。</p>
+<p>五、apt-get解读</p>
+<p>简介：</p>
+<p>(apt-get（AdvancedPackageTool) ，是一条linux命令 <strong>linux安装deb包命令</strong>，适用于deb包管理式的操作系统，主要用于手动从互联网的软件库房（repositories）中搜索、安装、升级、卸载软件或操作系统。</p>
+<p>(最初于1998年发布，用于检索应用程序并将其加载到DebianLinux系统。Apt-get成名的诱因之一在于其出众的解决软件依赖关系的能力。其一般使用.deb-formatted文件，但经过更改后可以使用apt-rpm处理红帽的PackageManager（RPM) 文件。</p>
+<p>使用apt-get的主流Linux系统包括Debian和Ubuntu变异版本。大多数情况下，从命令行运行该工具。桌面上有几个图形后端可以使用，包括SynapticPackageManager、UbuntuSoftwareCenter、Aptitude和Kpackage。RaspberryPi和BeagleboneBlacknanoLinux版用户可以很容易地使用apt-get加载程序，由于这种系统一般来自Ubuntu或Debian代码。是debian，ubuntu发行版的包管理工具 <strong>linux安装deb包命令</strong>，与红帽中的yum工具十分类似。</p>
+<p>apt-get命令通常须要root权限执行，所以通常跟随sudo命令。apt-get命令只能用于在repositories中的包，不能用于处理自己下载的deb包，要想处理自己下载的deb包，只能用dpkg命令。</p>
+<p>常用命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>apt-get install packagename  <span style="color:#75715e">#安装一个新软件包</span>
+</span></span><span style="display:flex;"><span>(apt-get remove packagename <span style="color:#75715e">#卸载一个已安装的软件包（保留配置文档) </span>
+</span></span><span style="display:flex;"><span>(apt-get remove --purge packagename <span style="color:#75715e">#卸载一个已安装的软件包（删除配置文档) </span>
+</span></span><span style="display:flex;"><span>apt-get autoremove packagename <span style="color:#75715e">#删除包及其依赖的软件包</span>
+</span></span><span style="display:flex;"><span>apt-get autoremove --purge packagname <span style="color:#75715e">#删除包及其依赖的软件包+配置文件，比上面的要删除的彻底一点</span>
+</span></span><span style="display:flex;"><span>dpkg --force-all --purge packagename <span style="color:#75715e">#有些软件很难卸载，而且还阻止了别的软件的应用，就能够用这个，但是有点冒险。</span>
+</span></span><span style="display:flex;"><span>apt-get update <span style="color:#75715e">#扫描每一个软件源服务器，并为该服务器所具有软件包资源建立索引文件，存放在本地的/var/lib/apt/lists/目录中。</span>
+</span></span><span style="display:flex;"><span>apt-get upgrade <span style="color:#75715e">#将系统中的所有软件包一次性升级到最新版本，可以很方便的完成在相同版本号的发行版中更新软件包。</span>
+</span></span></code></pre></div><p>几个和apt-get相关的目录：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e">#文件的内容是软件包的描述信息, 该软件包括当前系统所使用的 ubunt 安装源中的所有软件包,其中包括当前系统中已安装的和未安装的软件包.</span>
+</span></span><span style="display:flex;"><span>/var/lib/dpkg/available
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#目录是在用 apt-get install 安装软件时，软件包的临时存放路径</span>
+</span></span><span style="display:flex;"><span>/var/cache/apt/archives
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#存放的是软件源站点</span>
+</span></span><span style="display:flex;"><span>/etc/apt/sources.list
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#使用apt-get update命令会从/etc/apt/sources.list中下载软件列表，并保存到该目录</span>
+</span></span><span style="display:flex;"><span>/var/lib/apt/lists
+</span></span></code></pre></div><p>APT工作原理：</p>
+<p>(Ubuntu采用集中式的软件库房机制linux社区，将各色各样的软件包分门别类地储存在软件库房中，进行有效地组织和管理。之后，将软件库房放在许许多多的镜像服务器中，并保持基本一致。这样，所有的Ubuntu用户随时都能获得最新版本的安装软件包。因而，对于用户，这种镜像服务器就是她们的软件源（Reposity) 。但是，因为每个用户所处的网路环境不同，不可能随便地访问各镜像站点。为了才能有选择地访问，在Ubuntu系统中，使用软件源配置文件/etc/apt/sources.list列举最合适访问的镜像站点地址。</p>
+<p>六、yum解读</p>
+<p>简介：</p>
+<p>yum是一个在Fedora和RedHat以及SUSE中的Shell后端软件包管理器。基于RPM包管理，才能从指定的服务器手动下载RPM包而且安装，可以手动处理依赖性关系，而且一次安装所有依赖的软体包，无须冗长地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，并且命令简练而又好记。</p>
+<p>yum的命令方式通常是如下：yum[options][command][package…]</p>
+<p>(其中的[options]是可选的，选项包括-h（帮助) ，-y（当安装过程提示选择全部为”yes”），-q（不显示安装的过程）等等。[command]为所要进行的操作linux内核，[package…]是操作的对象。</p>
+<p>常用命令：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span><span style="color:#75715e">#安装命令</span>
+</span></span><span style="display:flex;"><span>yum install <span style="color:#75715e">#全部安装</span>
+</span></span><span style="display:flex;"><span>yum install  <span style="color:#75715e">#安装指定的软件</span>
+</span></span><span style="display:flex;"><span>yum groupinsall  <span style="color:#75715e">#安装程序组</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#更新和升级</span>
+</span></span><span style="display:flex;"><span>yum update <span style="color:#75715e">#全部更新</span>
+</span></span><span style="display:flex;"><span>yum update  <span style="color:#75715e">#更新指定程序包</span>
+</span></span><span style="display:flex;"><span>yum check-update <span style="color:#75715e">#检查可更新的程序</span>
+</span></span><span style="display:flex;"><span>yum upgrade  <span style="color:#75715e">#升级指定程序包</span>
+</span></span><span style="display:flex;"><span>yum groupupdate  <span style="color:#75715e">#升级程序组</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查找和显示</span>
+</span></span><span style="display:flex;"><span>yum list <span style="color:#75715e">#显示所有已安装和可以安装的程序包</span>
+</span></span><span style="display:flex;"><span>yum list  <span style="color:#75715e">#显示指定程序包的安装情况</span>
+</span></span><span style="display:flex;"><span>yum info  <span style="color:#75715e">#显示程序包信息</span>
+</span></span><span style="display:flex;"><span>yum groupinfo  <span style="color:#75715e">#显示程序组信息</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#删除命令</span>
+</span></span><span style="display:flex;"><span>yum remove  <span style="color:#75715e">#删除程序包</span>
+</span></span><span style="display:flex;"><span>yum groupremove  <span style="color:#75715e">#删除程序组</span>
+</span></span><span style="display:flex;"><span>yum deplist  <span style="color:#75715e">#查看程序包的依赖情况</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#清除缓存</span>
+</span></span><span style="display:flex;"><span>yum clean packages <span style="color:#75715e">#清除缓存目录下的软件包</span>
+</span></span><span style="display:flex;"><span>yum clean headers <span style="color:#75715e">#清除缓存目录下的heades</span>
+</span></span></code></pre></div><p>七、.run文件的简介、安装及卸载步骤</p>
+<p>简介：</p>
+<p>.run文件是运行在Linux里面的软件，类似windows里面的.exe文件。</p>
+<p>安装步骤：</p>
+<p>1、找到相应的软件包，例如xx.run，下载到本机某个目录；</p>
+<p>2、cdxx.run所在的目录；</p>
+<p>3、添加可执行权限：sudochmoda+xxx.run;</p>
+<p>4、执行它：./xx.run。</p>
+<p>卸载步骤:</p>
+<p>1、找到安装目录下的uninstall文件：locatevirtualbox|grepuninstall；</p>
+<p>2、执行uninstall文件：./uninstall。</p>
+<p>八、bin包的简介、安装及卸载步骤</p>
+<p>简介：</p>
+<p>扩充名为.bin文件是二补码的，它也是源程序经编译后得到的机器语言。有一些软件可以发布为以.bin为后缀的安装包，诸如，jdk-1_5_0-linux-i586.bin。</p>
+<p>安装步骤：</p>
+<p>1、找到相应的软件包，例如xx.bin，下载到本机某个目录；</p>
+<p>2、cdxx.bin所在的目录；</p>
+<p>3、添加可执行权限：sudochmoda+xxx.bin;</p>
+<p>(4、执行它：./xx.bin。（执行安装过程中可以指定安装目录)</p>
+<p>卸载步骤:</p>
+<p>把安装时中选择的安装目录删掉就行。</p>
+<p>扩充：</p>
+<p>1、安装包的平台指的是硬件平台，包括了：i386、i486、i586、i686、x86_64、ppc、sparc、alpha。若平台是noarch，说明这样的软件包可以在任何平台上安装饥和运行，不须要特定的硬件平台。</p>
+<p>2、包管理命令使用的特定参数既可以使用全称，也可以使用简称，以deb命令为例：</p>
+<p>3、tar.gz源代码包中的配置一步可以制订安装目录，即在./configure命令前面加参数–prefix=/**，如：./configure–prefix=/usr/local/aaa，即把软件装在/usr/local/路径的aaaa这个目录里。通常的软件的默认安装目录是/usr/local或则/opt。</p>
+<p>4、为什么不把软件全部转换成deb包，点击安装多便捷啊？</p>
+<p>程序源码是不依赖软件和硬件平台的，所以写程序的人通常只维护源代码。一个好的程序可以在各类操作系统上运行。而deb包这类的二补码包是依赖硬件和软件平台的。例如说给深度操作系统用的deb包就是x86的ubuntu下才会用，其他系统不行。同时源码发行的话也同时给了用户自己很高的权限，他可以制做一个自己的二补码包，例如使用dpkg来制做，详情请见dpkg的帮助指南。</p>
+<p>wget命令</p>
+<p>wget命令拿来从指定的URL下载文件。wget十分稳定，它在带宽很窄的情况下和不稳定网路中有很强的适应性，假如是因为网路的诱因下载失败，wget会不断的尝试，直至整个文件下载完毕。假如是服务器打断下载过程，它会再度联到服务器上从停止的地方继续下载。这对从这些限定了链接时间的服务器上下载大文件特别有用。</p>
+<pre tabindex="0"><code>wget http://test.com/testfile.zip -&gt;下载指定文件到当前文件夹
+wget -O wordpress.zip http://test.com/download -&gt;指定保存名字
+wget --limit-rate=300k http://www.linuxde.net/testfile.zip -&gt;限制下载速度
+wget -c http://www.linuxde.net/testfile.zip -&gt;断点续传
+wget -b http://www.linuxde.net/testfile.zip -&gt;后台下载
+
+(# 设置使用指定浏览器下载（伪装下载) 
+wget --user-agent=&#34;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16&#34; http://www.linuxde.net/testfile.zip
+wget --spider url -&gt;测试下载
+wget --tries=40 URL -&gt;设置重试次数为40
+wget -i filelist.txt -&gt;从filelist.txt获取下载地址
+# 镜像网站
+# --miror开户镜像下载。
+# -p下载所有为了html页面显示正常的文件。
+# --convert-links下载后，转换成本地的链接。
+# -P ./LOCAL保存所有文件和目录到本地指定目录
+wget --mirror -p --convert-links -P ./LOCAL URL
+wget --reject=gif ur -&gt;下载一个网站，但你不希望下载图片，可以使用这条命令
+wget -o download.log URL -&gt;把下载信息存入日志文件
+wget -Q5m -i filelist.txt -&gt;限制总下载文件大小
+wget -r -A.pdf url -&gt;下载指定格式文件
+# FTP下载
+wget ftp-url
+wget --ftp-user=USERNAME --ftp-password=PASSWORD url
+</code></pre><p>选项描述-a在指定的日志文件中记录资料的执行过程；-A指定要下载文件的后缀名，多个后缀名之间使用冒号进行分隔；-b进行后台的形式运行wget；-B设置参考的连接地址的基地地址；-c继续执行先前终端的任务；-C设置服务器数据块功能标志on为激活，off为关掉，默认值为on；-d调试模式运行指令；-D设置沿着的域名列表，域名之间用“，”分隔；-e作为文件“.wgetrc”中的一部份执行指定的指令；-h显示指令帮助信息；-i从指定文件获取要下载的URL地址；-l设置沿着的目录列表，多个目录用“，”分隔；-L仅沿着关联的联接；-r递归下载形式；-nc文件存在时，下载文件不覆盖原有文件；-nv下载时只显示更新和出错信息，不显示指令的详尽执行过程；-q不显示指令执行过程；-nh不查询主机名称；-v显示详尽执行过程；-V显示版本信息；–passive-ftp使用被动模式PASV联接FTP服务器；–follow-ftp从HTML文件中下载FTP联接文件。————————————————版权申明：本文为CSDN博主「书香泼彩」的原创文章，遵守CC4.0BY-SA版权合同，转载请附上原文出处链接及本申明。原文链接：</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

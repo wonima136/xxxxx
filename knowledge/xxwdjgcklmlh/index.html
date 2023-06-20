@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>( 学习文档仅供参考Linux命令行技术大全（PDF电子书)</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="( 学习文档仅供参考Linux命令行技术大全（PDF电子书)" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="" />
+  <meta name="twitter:description"content="( 学习文档仅供参考Linux命令行技术大全（PDF电子书)">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="( 学习文档仅供参考Linux命令行技术大全（PDF电子书)" />
+  <meta name="twitter:image:src" content="" />
+  <meta property="og:description"content="( 学习文档仅供参考Linux命令行技术大全（PDF电子书)" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="( 学习文档仅供参考Linux命令行技术大全（PDF电子书)" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/xxwdjgcklmlh/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="( 学习文档仅供参考Linux命令行技术大全（PDF电子书)" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">( 学习文档仅供参考Linux命令行技术大全（PDF电子书)</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>学习文档仅供参考Linux命令行技术大全PDF电子书内容简介本书的编撰基于FedoraCore6操作系统 <strong>linux 命令行参数</strong>，内核，集聚了绝大部份命令的功能介绍、参数说明和注意事项，并针对具体应用罗列了大量诸如，分别详尽地介绍了c盘管理命令、文件管理、系统管理命令、网络配置命令、网络服务命令、系统应用命令、系统安全命令及其他命令linux服务器搭建linux软件工程师培训，以及Shell和Shell编程，使读者真正做到学因而用。本书内容全面、语言简洁、深入浅出、通俗易懂，既可作为即查即用的工具指南，也可作为了解Linux系统的参考书目。本书同样适用于其他Linux发行版，是Linux用户必备的参考用书。本书适宜系统管理员、开发人员和中级用户阅读。目录第1章c盘管理命令1.1目录管理命令切换工作目录——cd显示工作目录——pwd列举目录内容——ls树形目录列表——tree构建目录——mkdir删掉目录——rmdir链接目录内容——lndir列举目录栈内容——dirs目录入栈——pushd目录出栈——popd1.2MS-DOS文件系统c盘管理命令切换目录——mcd目录列表——mdir显示目录大小——mdu构建目录——mmd删掉目录——mrd删掉目录及内容——mdeltree显示mtools支持命令——mtools测试mtools相关设置——mtoolstest加载MS-DOS文件系统——mmount设置MS-DOSc盘卷标——mlabelc盘低格——mformat显示文件系统信息——minfo显示FAT记录——mshowfatZip/Jazc盘控制命令——mzip1.3c盘空间限制管理命令检验c盘使用空间与限制——quotacheck开启c盘空间限制——quotaon关掉c盘空间限制——quotaoff编辑c盘空间限制——edquota显示使用空间与限制——quota报告c盘空间限制状态——repquota1.4文件系统管理命令创建MS-DOS文件系统——mkdosfs创建ext2/ext3文件系统——mke2fs创建文件系统——mkfs创建ISO9660文件系统——mkisofs创建ext2/ext3文件系统——mkfs.ext2创建ext2/ext3文件系统——mkfs.ext3创建MS-DOS文件系统——mkfs.msdos创建vfat文件系统——mkfs.vfat加载文件系统——mount卸载文件系统——umount创建交换区——mkswap关掉交换区——swapoff开启交换区——swapon1.5c盘分区命令c盘分区——fdiskc盘分区——sfdisk管理c盘分区——parted1.6其他c盘管理命令报告文件系统c盘使用信息——df显示c盘空间使用信息——du读取或设置硬碟参数——hdparm设置循环设备——losetup弹出设备——eject显示inode内容——stat远程磁带传输合同——rmt刷新c盘缓冲区——sync第2章文件管理2.1文件的构建、移动、删除构建文件——cat构建文件——touch构建链接文件——ln联通以及重命名文件——mv删掉文件——rm2.2查看文件的内容查看文件的内容——cat查看文件的内容——more查看文件的内容——less查看文件颈部的内容——head查看文件尾部的内容——tail查看文件部份内容——cut以八补码或其他方式显示文件的内容——od2.3查看、修改文件的属性查看文件的类型——file查看文件的属性——ll查看文件的属性——stat改变文件的属主或属组——chown改变文件的属组——chgrp改变文件的访问权限——chmod改变文件的时间戳——touch设置文件的默认权限网段——umask更改文件的其他中级属性——chattr查看由chattr设置的文件属性——lsattr2.4文件的比较比较文件——cmp比较文件——cmm比较文件——diff比较文件并合并——sdiff比较3个文件——diff32.5文件的备份、归档、恢复文件的备份——cp文件的归档——tar文件的备份——cpio文件或文件系统的备份——dump文件或文件系统的恢复——restore文件的整理——ar2.6文件的压缩、解压缩以及相关命令文件的压缩——bzip2文件的解压缩——bunzip2解压缩文件到屏幕——bzcat文件的压缩——gzip文件的解压缩——gunzip压缩/解压缩可执行文件——gexe解压缩文件到屏幕——zcat压缩文件的修补——bzip2recover归档压缩文件——zip解压缩文件——unzip显示zip压缩文件的信息——zipinfo2.7文件的查找和定位查找文件——find查找文件——whereis查找文件——locate查找文件——which2.8文件内容的查询搜索文件中的字符串——grep搜索文件中的字符串——egrep搜索文件中的字符串——fgrep2.9其他关于文件管理的命令创建一个文件保存多个副本——tee合并显示多个文件的内容——paste文件升级——patch文件排序——sort文件切割——split文本处理——sed文件内容惟一化——uniq文件统计——wc手动删掉临时文件——tmpwatch标准C程序——inden2.10MS_DOS文件系统管理命令显示文件的属性——mattrib复制文件——mcopy删掉文件——mdel联通、重命名文件——mmove文件的重命名——mren显示文件的内容——mtype第3章系统管理命令3.1用户管理命令显示用户在线时间的统计信息——ac新建用户帐户——adduser改变查询信息——chfn消除屏幕——clear查找用户信息——finger管理组信息——gpasswd降低一个新组——groupadd删掉组——groupdel更改组的相关信息——groupmod显示用户所在组的成员——groups校准组文件——grpck启动组的影子密码——grpconv关掉组的影子密码——grpunconv显示用户及其所属组的ID号——id显示当前和过去登陆用户的相关信息——last显示登陆系统失败用户的相关信息——lastb显示近来登陆用户的用户名、登录端口和登陆时间——lastlog用户登入系统——login显示当前用户的名称——logname退出系统——logout管理日志文件——logrotate修改用户所属的组——newgrp设置密码——passwd将用户密码转换成影子密码——pwconv关掉影子密码功能——pwunconv变更用户身分——su以其他身分执行命令——sudo删掉指定的用户帐户——userdel更改用户帐户信息——usermod显示当前登入到系统的用户——users显示当前登入系统用户的信息——w显示当前登入系统的用户信息——who显示登陆用户名称——whoami3.2Shell命令SH类的命令类库——bash更换登陆系统时使用的Shell——chsh申明Shell变量——declare显示文字——echo启动/关掉Shell内部命令——enable将参数组合为一个新的命令，之后交给Shell执行——evalShell执行指定的命令后交出控制权——exec退出当前Shell环境——exit批处理执行选取的历史命令——fc将程序或则命令切换到前台执行——fg显示Shell内部命令的帮助信息——help显示命令使用的历史——history设置Shell——set暂停执行Shell——suspend控制Shell程序使用的资源——ulimit删掉变量或函数——unset3.3作业进程管理命令打开/关掉进程记录——accton按指定的以天为单位的周期周期性运行指定命令，而不管笔记本是否24小时开机——anacron在指定的时间执行命令——at显示近来的作业队列信息——atd显示目前使用at命令后待执行的命令队列——atq删掉at命令中待执行的命令队列——atrm显示近来的作业队列信息——atrun将命令放置在后台运行——bg显示后台执行的作业——jobs处理控制初始化——init终止正在执行的程序或作业——kill命令优先级设置——nice不停止执行程序——nohup显示进程状态树——pstree重新分配优先权——renice暂停执行程序——sleep3.4系统设置命令设置命令的别称——alias中级电源管理BIOS守护进程——apmd设置音质设备——aumix显示或设置按键键盘及其组合键的有关功能——bind检测、设置系统的各类服务——chkconfig配置X字体路径——chkfontpath改变根目录——chroot调整RTC(RealTimeClock)时间——clock设置计时器——crontab模块依赖性及其检测——depmod设置目录显示时的颜色——dircolors显示开机设备信息——dmesg输出或显示环境变量——export设置帧缓冲区——fbset显示显存使用情况——freeGrubShell——grub安装Grub——grub-install对Grub采用MD5加密——grub-md5-crypt显示与设定硬件时钟——hwclock载入模块——insmod配置鼠标——kbdconfig显示已载入系统的模块——lsmod维护和编译软件或软件包——make显示模块的信息——modinfo手动处理可载入模块——modprobe设置系统的各类服务——ntsysv显示系统状态——procinfo重新启动系统——reboot设置终端机窗口大小——resize删掉模块——rmmod管理软件包——rpm设置公用程序——setup关掉笔记本——shutdown设置时区——timeconfig显示系统负载——tload取消别称——unalias3.5系统确诊及故障恢复检测c盘中受损的磁道——badblocks修补破损的.bz2文件——bzip2recover检测文件的CRC(循环冗余码校准)位是否正确——cksum备份文件系统——dump检测文件系统并尝试修补错误——fsck检测ext2文件系统并尝试修补错误——fsck.ext2MD5函数值估算和检测——md5sum第4章网路配置命令4.1常用网路配置命令查看或设置网路插口——ifconfig查看或设置主机名——hostname查看或设置路由表——route查看或配置arp缓存——arp查看网路状态——nestat检查网路主机——ping转存网路传送数据——tcpdump溯源路由——traceroute域信息搜索器——digIP估算器——ipcalc监视网路状态——netreport4.2PPP链接管理命令管理PPP链接——pppd显示PPP状态——pppstats转换PPP记录文件——pppdump串行口通讯程序——minicom设置或显示并口——setserial4.3PPPoE链接管理命令4.3.1PPPoE顾客端——pppoe4.3.2PPPoE服务器——pppoe-server4.3.3PPPoE中继代理——pppoe-relay4.3.4PPPoE侦测器——pppoe-sniff配置PPPoE顾客端——adsl-setup管理PPPoE链接——adsl-connect启动PPPoE链接——adsl-start关掉PPPoE链接——adsl-stop显示PPPoE链接状态——adsl-status第5章网路服务命令5.1基本网路命令检查主机的连通性——ping查看网路状态——netstat数据包所经过的路由器——traceroute网路下载器——wget5.2网路通讯命令向单个用户发送信息——write公布消息——wall聊天命令——talk5.3远程登陆主机远程登陆——telnet远程登陆——rlogin登陆远程Shell——rsh安全的远程登陆——ssh5.4文件传输命令文件传输——ftp强悍的ftp顾客端程序——ncftp简单文件传输命令——tftp安全的文件传输——sftp主机间传输文件——rcp安全的主机间复制文件——scp5.5Web服务器有关的命令5.5.1Apache服务器控制插口——apachectl5.5.2Apache超文本传输合同服务器——d5.6Samb服务器相关的命令测试Samb服务器配置文件——testparm查看Samb服务器的状况——smbstatusSamb服务顾客端命令——smbclient第6章系统应用命令6.1文档编辑命令文本行编辑器——ed文本编辑器——ex查找文件里符合条件的字符串——grep调整C源程序文件的格式——indent文本文件编辑器——jed文本编辑器——pico文本流编辑器——sed字符转换——tr对文件中的行作惟一性检测——uniq全屏幕文本编辑器——vi提高的vi编辑器——vim6.2复印操作命令将文本文件转为PostScript格式——enscript复印机控制——lpc显示复印队列——lpq复印文件——lpr删掉复印作业——lprm在一页上复印多个页面——mpage打要复印的文件进行低格编排——pr调整复印机设置——tunelp6.3文件格式转换命令将cmu格式文件转换为位图文件——cmuwmtopbm将GEM格式文件转换为PBM格式——gemtopbm将GIF格式图形文件转换为PNM格式——giftopnm扫描输入转换为PPM格式文件——gouldtoppm将Lisp格式的图形文件转换为PortableGraymap格式——lispmtopgm将PostScrip1字体的二补码文件转换为ASCII码文件——pfbtops将PICT格式的图形文件转换为PPM格式——picttoppm将pil格式的图形文件转换为ppm格式的图形文件——piltoppm将复印机形成的影像文件转换为PPM格式的图形文件——pjtoppmqrttoppm——将qrt格式文件转换为ppm格式将raster格式的图形文件转换为pnm格式的图形文件——rasttopnm将targa位图文件转换为ppm格式文件——tgatoppm将TIFF格式的图形文件转换为PNM格式的文件——tifftopnm执行uuencode的反向操作 <strong>linux 命令行参数</strong>，将要由uuencode编码生成的文件转换回原先的格式——uudecode将文件转换为ASCII码文件——uuencode将yuv文件转换为PPM文件——yuvsplittoppm将YUV格式的图象转换为PPM格式——yuvtoppm6.4实用性小程序新闻组文件备份——archive显示日历——cal播放音乐CD——cdpCD播放工具——cdplay进行一次性刻录CD——cdrdao6.CShell，类似于C语言的壳体命令解释程序——csh设置INN新闻组服务器——ctlinnd台式估算器——dc显示数字的因子——factor下载新闻组清单——getlist检测INN相关配置文件的句型是否正确——inncheck显示帮助信息——man显示帮助文件的搜索路径——manpath第7章系统安全命令7.1SELinux配置命令设置SELinux模式——setenforce查看SELinux模式——getenforce设置SELinux布尔值——setsebool查看SELinux布尔值——getsebool翻转SELinux布尔值——toggleseboolSELinux状态工具——sestatus显示AVC统计信息——avcstat转换审计消息——audit2why生成策略容许规则——audit2allow装载策略——load_policy管理SELinux策略——semanage管理策略模块——semodule创建策略模块包——semodule_package编译策略模块——checkmodule改变语境类别——chcat修补文件安全语境——fixfiles恢复文件安全语境——restorecon改变文件安全语境——chcon设置文件安全语境——setfiles7.2iptables相关命令IP包过滤器管理——iptables保存IP表——iptables-save恢复IP表——iptables-restore第8章其他命令8.1关于X-Window系统的命令启动X-Windows系统——startx显示设置工具——system-config-display估算显示设备VESA驱动GTF模式命令行工具——gtf显示顾客端程序——xlsclients显示Xserver使用的字体——xlsfonts显示X服务器的基本定义——xlsatoms控制访问XServer的主机——xhost设置X-Window系统使用偏好——xset8.2其他杂项回应字符串——yes显示man的搜索路径——manpath从标准输入执行命令——xargs显示文件的校准和、文件块数——sum显示待执行的作业——atq删掉队列中待执行的作业——atrm第9章Shell和Shell编程9.1Shell基本知识命令行和Shell提示重定向键值方法和注意事项9.2Shell登陆环境Shell登陆环境环境和Shell变量Shell中破折号的使用9.3Shell编程Shell编程基础流程控制循环</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

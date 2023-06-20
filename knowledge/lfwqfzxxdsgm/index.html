@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux服务器负载信息的手工命令收集方式-上海怡健医学</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux服务器负载信息的手工命令收集方式-上海怡健医学" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_0.jpg" />
+  <meta name="twitter:description"content="Linux服务器负载信息的手工命令收集方式-上海怡健医学">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux服务器负载信息的手工命令收集方式-上海怡健医学" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_0.jpg" />
+  <meta property="og:description"content="Linux服务器负载信息的手工命令收集方式-上海怡健医学" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux服务器负载信息的手工命令收集方式-上海怡健医学" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lfwqfzxxdsgm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux服务器负载信息的手工命令收集方式-上海怡健医学" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux服务器负载信息的手工命令收集方式-上海怡健医学</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>【应用场景】</p>
+<p>鉴于部份顾客对业务系统服务器有安全保护要求，不容许植入工具对其进行性能剖析和搜集，故列举Linux服务器负载信息的手工命令搜集方法。</p>
+<p>【注意事项】</p>
+<p>命令查看Linux当前负载状态linux操作系统介绍，只能记录瞬时值，难以搜集平均值。</p>
+<p>一、top命令解读</p>
+<p>1、第一行loadaverage:行，可以看出当前系统的负载情况。</p>
+<p>08:10:00—当前系统时间。</p>
+<p>(304days,8:55—系统早已运行了304天8小时55分钟（在这期间没有重启过) 。</p>
+<p>1users—当前有1个用户登入系统。</p>
+<p>loadaverage:0.92,1.23,1.50—loadaverage前面的三个数分别是1分钟、</p>
+<p>5分钟、15分钟的负载情况。</p>
+<p>【注释】</p>
+<p>loadaverage数据是每隔5秒钟检测一次活跃的进程数 <strong>linux文件传输命令</strong>，之后按特定算法估算出的数值。倘若这</p>
+<p>个数减去逻辑CPU的数目，结果低于5的时侯就表明系统在超负荷运转了。</p>
+<p>2、第二行Tasks行，可以看出系统进程运行情况。</p>
+<p>(Tasks—任务（进程) ，系统现今共有334个进程，其中处于运行中的有2个，</p>
+<p>(332个在休眠（sleep)  <strong>linux文件传输命令</strong>，stoped状态的有0个，zombie状态（僵尸）的有0个。</p>
+<p>3、第三行CPU(s):行，可以看出当前CPU状态。</p>
+<p>4.2%us—用户空间占用CPU的比率。</p>
+<p>2.0%sy—内核空间占用CPU的比率。</p>
+<p>0.0%ni—改变过优先级的进程占用CPU的比率。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_0.jpg" alt="linux系统中怎么搜索文件命令大全_linux 下载文件命令_linux文件传输命令"></p>
+<p>93.4%id—空闲CPU比率。</p>
+<p>0.1%wa—IO等待占用CPU的比率。</p>
+<p>4、第四行显存状态行，可以看出服务器当前显存的使用情况。</p>
+<p>(65789208ktotal—物理显存总数（62.74GB) 。</p>
+<p>(24213288kused—使用中的显存总数（23GB) 。</p>
+<p>(19098200kfree—空闲显存总数（18.2GB) 。</p>
+<p>(22477720kbuff—缓存的显存量（21.44GB) 。</p>
+<p>5、第五行，交换分区使用状态行，可以看出交换分区使用情况。</p>
+<p>(67104764ktotal—交换区总数（64GB) 。</p>
+<p>(1320448kused—使用的交换区总数（1.26GB) 。</p>
+<p>(65784316kfree—空闲交换区总数（62.74GB) 。</p>
+<p>(40749692kcached—缓冲的交换区总数（4GB) 。</p>
+<p>【注意】</p>
+<p>(第四行中使用中的显存总数（used) 指的是现今系统内核控制的显存数，空闲显存总数</p>
+<p>(（free) 是内核还未列入其管控范围的数目。列入内核管理的显存不见得都在使用中，还包括过去</p>
+<p>使用过的现今可以被重复借助的显存，内核并不把那些可被重新使用的显存交还到free中去，因</p>
+<p>此在Linux上free显存会越来越少，但不用因此担忧。这儿有个近似的估算公式：第四行的free</p>
+<p>+第四行的buffers+第五行的cached，按这个公式可估算此台服务器的可用显存：</p>
+<p>19098200KB+22477720KB+40749692KB=43.6GB。</p>
+<p>二、free命令解读</p>
+<p>Linux的显存使用情况，不仅上述的用top命令获取之外，也可以借助以下形式进行估算。通常常</p>
+<p>(见的用法是free-m（以MB为单位显示显存使用情况) 。</p>
+<p>【注意】</p>
+<p>显存剩余量为free+buffers+cached，按这个公式可估算此台服务器的可用显存：8.85G</p>
+<p>+193M+4.6GB=13.6GB。</p>
+<p>(15953Mtotal—物理显存总数（16GB) 。</p>
+<p>(6885Mused—使用中的显存总数（6.7GB) 。</p>
+<p>(9067Mfree—空闲显存总数（8.85G) 。</p>
+<p>(193Mbuffers—缓存的显存量（193M) 。</p>
+<p>(4695Mcached—缓冲的交换区总数（4.6GB) 。</p>
+<p>三、iostat命令解读</p>
+<p>Iostat命令常用于Linux系统查看当前c盘的IO状态。包括c盘IOPS、吞吐量、响应时间、磁盘繁</p>
+<p>忙度等指标。常用的命令为iostat-x-m5。</p>
+<p>参数解释：</p>
+<p>(-x参数，iostat一个比较常用的选项，该选项将用于显示和io相关的扩充（详尽) 数据。</p>
+<p>-m参数，iostat以MB为单位显示c盘读写吞吐。</p>
+<p>5代表，每五秒搜集一次信息。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_1.jpg" alt="linux系统中怎么搜索文件命令大全_linux 下载文件命令_linux文件传输命令"></p>
+<p>输出项解释：</p>
+<p>Device,设备列linux查看进程，看到当前所有的c盘。</p>
+<p>r/s,每秒IO读的次数。</p>
+<p>w/s,每秒IO写的次数。</p>
+<p>rMB/s,每秒IO读的吞吐量，单位MB。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_2.gif" alt="linux文件传输命令_linux系统中怎么搜索文件命令大全_linux 下载文件命令"></p>
+<p>wMB/s,每秒IO写的吞吐量，单位MB。</p>
+<p>await，c盘的相应时间，单位ms,通常地系统IO响应时间应当高于5ms，假如小于10ms就比</p>
+<p>较大了。</p>
+<p>%unil，c盘的忙碌度，单位%，通常地，假若该参数是100%表示该c盘早已接近满负荷运行了</p>
+<p>。</p>
+<p>四、netstat命令解读</p>
+<p>netstat命令是一个监控TCP/IP网路的特别有用的工具，它可以显示路由表、实际的网路联接以及</p>
+<p>每一个网路插口设备的状态信息。</p>
+<p>参数解释：</p>
+<p>-a或&ndash;all：显示所有连线中的Socket。</p>
+<p>-h或&ndash;help：在线帮助。</p>
+<p>-l或&ndash;listening：显示监控中的服务器的Socket。</p>
+<p>-n或&ndash;numeric：直接使用IP地址，而不通过域名服务器。</p>
+<p>-p或&ndash;programs：显示正在使用Socket的程序辨识码和程序名称。</p>
+<p>-t或&ndash;tcp：显示TCP传输合同的连线状况。</p>
+<p>-u或&ndash;udp：显示UDP传输合同的连线状况。</p>
+<p>-v或&ndash;verbose：显示指令执行过程。</p>
+<p>-V或&ndash;version：显示版本信息。用法举例：</p>
+<p>[root@HFOA~]#netstat-a#列举所有端口</p>
+<p>[root@HFOA~]#netstat-at#列举所有TCP端口</p>
+<p>[root@HFOA~]#netstat-au#列举所有UDP端口</p>
+<p>[root@HFOA~]#netstat-l#只显示窃听端口</p>
+<p>[root@HFOA~]#netstat-lt#显示窃听TCP端口</p>
+<p>[root@HFOA~]#netstat-lu#显示窃听UDP端口</p>
+<p>[root@HFOA~]#netstat-s#显示所有端口的统计信息</p>
+<p>root@HFOA~]#netstat-st#显示所有TCP的统计信息</p>
+<p>[root@HFOA~]#netstat-su#显示所有UDP的统计信息</p>
+<p>root@HFOA~]#netstat-p#显示PID和进程名称</p>
+<p>[root@HFOA~]#netstat-antp|grepssh#查看所有的SSH服务网路联接</p>
+<p>[root@HFOA~]#netstat-nltp|grep1521#查看窃听端口是1521的TCP网路联接。</p>
+<p>[root@HFOA~]#netstat-natp|grep192.200.244.180.#查看所有的与</p>
+<p>192.200.244.180有关的TCP网路联接</p>
+<p>[root@HFOA~]#netstat-natp|grepjava#查看所有的java程序TCP网路联接输出项解释：</p>
+<p>Proto合同列，该行显示网路联接所用到的合同。</p>
+<p>Recv-Q表示网路接收队列，表示收到的数据早已在本地接收缓冲，并且还有多少没有被进程拿走</p>
+<p>。</p>
+<p>Send-Q表示网络发送队列，对方没有收到的数据或则说没有Ack的,还在本地缓冲区。假如发送</p>
+<p>队列Send-Q不能很快的清零，可能是有应用向外发送数据包过快，或则是对方接收数据包不够快</p>
+<p>。</p>
+<p>LocalAddress本地地址和端口。</p>
+<p>ForeignAddress远程地址和端口。</p>
+<p>State网路联接状态。</p>
+<p>PID/ProgramnamePID及程序名称。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_4.jpg" alt="linux 下载文件命令_linux系统中怎么搜索文件命令大全_linux文件传输命令"></p>
+<p>【注意事项】</p>
+<p>Recv-Q，Send-Q这两个值一般应当为0，假如不为0可能是有问题的。packets在两个队列里</p>
+<p>都不应当有堆积状态。可接受短暂的非0情况。</p>
+<p>五、df命令解读</p>
+<p>Linux中df命令的功能是拿来检测Linux服务器的文件系统的c盘空间占用情况。可以借助该命令</p>
+<p>来获取硬碟被占用了多少空间，目前还剩下多少空间等信息。</p>
+<p>参数解释：</p>
+<p>-a,&ndash;all包含所有的具有0Blocks的文件系统。</p>
+<p>&ndash;block-size={SIZE}使用{SIZE}大小的Blocks。</p>
+<p>(-h,&ndash;human-readable使用人类可读的格式（常用) 。</p>
+<p>-H,&ndash;si很像-h,并且用1000为单位而不是用1024。</p>
+<p>-k,&ndash;kilobytes如同是&ndash;block-size=1024。</p>
+<p>-m,&ndash;megabytes如同&ndash;block-size=1048576。</p>
+<p>&ndash;no-sync获取信息前不sync(预设值)。</p>
+<p>&ndash;sync在获取信息前sync。</p>
+<p>-P,&ndash;portability使用POSIX输出格式。</p>
+<p>-t,&ndash;type=TYPE限制列举文件系统的TYPE。</p>
+<p>-T,&ndash;print-type显示文件系统的方式。</p>
+<p>-x,&ndash;exclude-type=TYPE限制列举文件系统不要显示TYPE。</p>
+<p>&ndash;help显示帮助。</p>
+<p>&ndash;version输出版本。用法举例：</p>
+<p>df-h；查看当前服务器的c盘容量及使用率。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1677161428647_5.jpg" alt="linux 下载文件命令_linux系统中怎么搜索文件命令大全_linux文件传输命令"></p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

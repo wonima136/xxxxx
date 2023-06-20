@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Oracle数据库及RAC配置清单(二)介绍及介绍</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Oracle数据库及RAC配置清单(二)介绍及介绍" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_0.jpg" />
+  <meta name="twitter:description"content="Oracle数据库及RAC配置清单(二)介绍及介绍">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Oracle数据库及RAC配置清单(二)介绍及介绍" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_0.jpg" />
+  <meta property="og:description"content="Oracle数据库及RAC配置清单(二)介绍及介绍" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Oracle数据库及RAC配置清单(二)介绍及介绍" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/osjkjrpzqdej/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Oracle数据库及RAC配置清单(二)介绍及介绍" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Oracle数据库及RAC配置清单(二)介绍及介绍</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>目录</p>
+<p>一、基础知识介绍</p>
+<p>1.RAC是哪些</p>
+<p>2.RAC的异同点</p>
+<p>3.OracleRAC原理</p>
+<p>二、RAID储存技术介绍</p>
+<p>三、RAC系统结构设计</p>
+<p>1.RAC系统拓扑结构基本如右图所示：</p>
+<p>2.主机操作系统系统</p>
+<p>1)用户组规划</p>
+<p>2)用户规划</p>
+<p>3)主机文件系统规划</p>
+<p>3.储存规划</p>
+<p>4.数据库RAC环境数据库规划</p>
+<p>1)RAC环境信息</p>
+<p>2)OracleRAC软件组件</p>
+<p>3)OracleRAC网路规划</p>
+<p>4)Oracle用户组信息</p>
+<p>5)表空间规划</p>
+<p>6)数据库备份规划</p>
+<p>四、Oracle数据库及RAC配置清单</p>
+<p>1.硬件清单</p>
+<p>2.软件清单</p>
+<p>3.网路硬件需求</p>
+<p>4.网路规划</p>
+<p>5.系统安装规划</p>
+<p>6.系统环境需求</p>
+<p>7.查所需软件包</p>
+<p>五、安装工作</p>
+<p>1.更改主机名称，在所有节点执行；</p>
+<p>2.创建用户和组</p>
+<p>3.更改用户密码</p>
+<p>4.更改gird用户的环境变量</p>
+<p>5.更改oracle用户的环境变量</p>
+<p>6.创建软件目录</p>
+<p>7.更改系统参数</p>
+<p>8.配置用户等效性</p>
+<p>9.配置NTPD服务</p>
+<p>10.安装并配置ASM驱动</p>
+<p>11.安装cvuqdisk软件包</p>
+<p>12.安装Grid前检测</p>
+<p>13.安装GridInfrastructure</p>
+<p>14.确认群集安装成功</p>
+<p>15.创建asmc盘组</p>
+<p>16.安装oracle软件</p>
+<p>17.创建数据库</p>
+<p>18.数据库管理工作</p>
+<p>一、基础知识介绍</p>
+<p>1.RAC是哪些</p>
+<p>RAC，全称realapplicationclusters，译为“实时应用集群”，是Oracle新版数据库中采用的一项新技术，是高可用性的一种，也是Oracle数据库支持网格估算环境的核心技术。</p>
+<p>2.RAC的异同点</p>
+<p>OracleRAC主要支持Oracle9i、10g、11g版本，可以支持24×7有效的数据库应用系统，在低成本服务器上建立高可用性数据库系统，但是自由布署应用，无需更改代码。在OracleRAC环境下，Oracle集成提供了集群软件和储存管理软件，为用户增加了应用成本。当应用规模须要扩展时，用户可以按需扩充系统，以保证系统的性能。</p>
+<p>1)多节点负载均衡;</p>
+<p>2)提供高可用：故障容错和无缝切换功能，将硬件和软件错误导致的影响最小化;</p>
+<p>3)通过并行执行技术提升事务响应时间—-一般用于数据剖析系统;</p>
+<p>4)通过纵向扩充提升每秒交易数和联接数—-一般对于联机事务系统;</p>
+<p>5)节省硬件成本 <strong>查linux高可用软件版本命令</strong>，可以用多个廉价PC服务器取代高昂的大型机或小型机，同时节省相应维护成本;</p>
+<p>6)可扩充性好，可以便捷添加删掉节点，扩充硬件资源。</p>
+<p>1)相对单机，管理更复杂，要求更高;</p>
+<p>2)可能会降低软件成本(假如使用高配置的pc服务器，Oracle通常根据CPU个数收费)。</p>
+<p>3.OracleRAC原理</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_0.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>在一个应用环境当中，所有的服务器使用和管理同一个数据库，目的是为了分散每一台服务器的工作量，硬件上起码须要两台以上的服务器，并且还须要一个共享储存设备。同时所有服务器上的OS都应当是同一类OS,按照负载均衡的配置策略，当一个顾客端发送恳求到某一台服务的listener后，这台服务器按照我们的负载均衡策略linux系统编程，会把恳求发送给本机的RAC组件处理也可能会发送给另外一台服务器的RAC组件处理，处理完恳求后，RAC会通过集群软件来访问共享储存设备.逻辑结构上看：</p>
+<p>三类Resource：</p>
+<p>二、RAID储存技术介绍</p>
+<p>(独立冗余c盘阵列（RedundantArrayofIndependentDisk，RAID) 是一种把多块独立的硬碟（化学硬碟）按不同的形式组合上去产生一个硬碟组（逻辑硬碟），因而提供比单个硬碟更高的储存性能与数据备份能力的技术。RAID特色是N块硬碟同时读取速率推进及提供容错性。可以将RAID分为不同级别，级别并不代表技术高低，选择哪一种RAID产品纯视用户的操作环境及应用而定，与级别高低没有必然关系。</p>
+<p>RAID0：无差错控制的带区组</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_1.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>(要实现RAID0必需要有两个以上硬碟驱动器，数据并不是保存在一个硬碟上，而是分成数据块保存在不同驱动器上。由于将数据分布在不同驱动器上，所以数据吞吐率大大提升，驱动器的负载也比较平衡。它的缺点是它没有数据差错控制，假如一个驱动器中的数据发生错误，虽然其它盘上的数据正确也无济于事了。不应当将它用于对数据稳定性高的场合。在所有的级别中，RAID0的速率是最快的。并且RAID0没有冗余功能的，假如一个c盘（化学) 毁坏，则所有的数据都未能使用。</p>
+<p>RAID1：存盘结构</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_2.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>对于使用这些RAID1结构的设备来说，RAID控制器必须才能同时对两个盘进行读操作和对两个存盘盘进行写操作。存盘结构是在一组盘出现问题时，可以使用存盘c盘，提升系统的容错能力。每读一次盘只能读出一块数据，也就是说数据块传送速度与单独的盘的读取速度相同。当您的系统须要极高的可靠性时，如进行数据统计，这么使用RAID1比较合适。并且RAID1技术支持“热替换”，即不断电的情况下对故障c盘进行更换，更换完毕只要从镜像盘上恢复数据即可。当主硬碟损毁时，镜像硬碟就可以取代主硬碟工作。镜像硬碟相当于一个备份盘，这些硬碟模式的安全性是极其高的，RAID1的数据安全性在所有的RAID级别上来说是最好的。并且其c盘的借助率却只有50%，是所有RAID级别中最低的。</p>
+<p>RAID5：分布式奇偶校准的独立c盘结构</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_3.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>(RAID5将数据分散储存于多个硬碟里面，同时使用一定的编码技术形成奇偶校准码来提供错误检测及恢复能力，数据段的校准位交互储存于各个硬碟上。由于奇偶校准码在不同的c盘上，所以增强了可靠性，容许单个c盘出错。任何一个硬碟受损，都可以按照其它硬碟上的校准位来重建受损的数据。硬碟的借助率为n-1。优点是提供了冗余性（支持一块盘死机后依然正常运行) ，c盘空间借助率较高（N-1/N），读写速率较快（N-1倍）。RAID5是RAID级别中最常见的一个类型。</p>
+<p>RAID10：高可靠性与高效c盘结构</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_4.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>这些结构是一个带区结构加一个存盘结构，由于两种结构各有利弊点，因而可以互相补充，达到既高效又高速还可以互为镜像的目的。你们可以结合两种结构的优点和缺点来理解这些新结构。这些新结构的价钱高，可扩展性不好。主要用于容量不大，但要求速率和差错控制的数据库中。</p>
+<p>RAID10是先镜射再分区数据。是将所有硬碟分为两组，之后将这两组各自视为RAID1运作。RAID10有着不错的读取速率，但是拥有比RAID0更高的数据保护性。</p>
+<p>三、RAC系统结构设计</p>
+<p>1.RAC系统拓扑结构基本如右图所示：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_5.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>2.主机操作系统系统</p>
+<p>RAC支持常用的linux、AIX、windows、solaris等操作系统，本文以linux操作为例。</p>
+<p>1)用户组规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_6.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>2)用户规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_7.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>3)主机文件系统规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_8.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>3.储存规划</p>
+<p>储存通常采用RAID5储存方法。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_9.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>4.数据库RAC环境数据库规划</p>
+<p>1)RAC环境信息</p>
+<p>2)OracleRAC软件组件</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_11.png" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>3)OracleRAC网路规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_12.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>4)Oracle用户组信息</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_13.png" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>5)表空间规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_14.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>6)数据库备份规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_15.png" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>按照平台业务特点及考虑到节省硬件成本，建议每周作一次完全备份，每晚做一次增量备份。恢复时，首先恢复近来一次完全备份的数据，之后再依次恢复服务器硬碟上增量备份的数据，最后通过归档的日志文件将数据恢复到故障点处。</p>
+<p>四、Oracle数据库及及RAC配置清单</p>
+<p>1.硬件清单</p>
+<p>2.软件清单</p>
+<p>3.网路硬件需求</p>
+<p>4.网路规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_16.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_17.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>5.系统安装规划</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_18.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>注意：服务器的主机名必须全部都是大写,但是不要有顿号。</p>
+<p>6.系统环境需求</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_19.png" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>7.查所需软件包</p>
+<p>假如是64bit,须要检测以下的Packages。以下重复包名称的部份是64bit,标明32bit的是32bitpackages。假如是32bitOS,这么重复包名的只须要32bit部份的包。注意不同版本Linux系统前面的版本不太一样。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_20.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_21.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>检测方式：</p>
+<p>之后输入：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_23.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>结果如下：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_25.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>查询一些文档，pdksh这个包可以不用安装。</p>
+<p>五、安装工作</p>
+<p>1.更改主机名称，在所有节点执行</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_26.png" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>2.创建用户和组</p>
+<p>创建RAC相关用户和组，在所有节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_27.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>3.更改用户密码</p>
+<p>4.更改gird用户的环境变量</p>
+<p>切换到grid用户，打算安装gridInfrastructure.首先须要更改所有节点grid用户的环境变量.bash_profile</p>
+<p>以下grid的bash_profile,仅供参考，还有一些参数可以自行加入。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_30.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>使配置文件生效，同样在其他节点的Grid用户.bash_profile中加入，并注意更改ORACLE_SID=+ASM2</p>
+<p>5.更改oracle用户的环境变量</p>
+<p>Oracle用户也须要设置.bash_profile</p>
+<p>以下Oracle的bash_profile,仅供参考</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_32.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>使配置文件生效,同样在其他节点的Oracle用户.bash_profile中加入，并注意更改ORACLE_SID=orcl2</p>
+<p>6.创建软件目录</p>
+<p>创建OracleRAC所使用的目录，并更改相应的权限，在所有节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_33.png" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>7.更改系统参数</p>
+<p>更改操作系统相关参数，在所有节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_34.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_35.png" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>更改/etc/hosts文件，在所有节点添加以下内容</p>
+<p>8.配置用户等效性</p>
+<p>使用Oracle用户，配置Oracle用户等效性，在所有节点执行；</p>
+<p>使用Oracle用户，配置Oracle用户等效性，在节点1执行</p>
+<p>验证oracle用户等效性，在所有节点执行；</p>
+<p>使用Grid用户，配置Grid用户等效性，在所有节点执行；</p>
+<p>配置Grid用户等效性，在节点1执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_41.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>验证Grid用户等效性，在所有节点执行；</p>
+<p>9.配置NTPD服务</p>
+<p>各个节点时间同步(所有节点设置，两个节点互相同步，不设置时间服务器)</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_43.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_44.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_45.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>10.安装并配置ASM驱动</p>
+<p>检测操作系统版本，确认安装与操作系统相匹配的asmlib，在所有节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_46.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>OracleASMlib下载地址：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_48.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_49.png" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>初始化asmlib，在所有节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_51.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>ASMlib加载到内核，在所有节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_52.png" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>c盘分区</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_53.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_54.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_55.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>创建asmc盘，在节点1执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_56.png" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_57.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>在节点二执行扫描，辨识asm盘</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_58.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>11.安装cvuqdisk软件包</p>
+<p>cvuqdisk软件包用于发觉共享储存，在grid安装软件的rpm目录中，在所有</p>
+<p>节点执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_59.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>12.安装Grid前检测</p>
+<p>在所有节点执行，但是检测通过；</p>
+<p>检测参数：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_60.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_61.png" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_62.png" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_63.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_64.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_65.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_66.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_67.png" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>13.安装GridInfrastructure</p>
+<p>登录到grid用户，执行安装文件，在节点1执行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_68.png" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>选择安装并配置一个集群</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_69.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>选择中级安装</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_70.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>将英文添加到右边边框，添加英文可防止在使用em时乱码</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_71.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>填写集群名称和scan的解析名称及端口，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_72.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>在弹出的界面中，点击add填写节点二的信息</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_73.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>添加完成后显示如下：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_74.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>在右图界面中选择各个网卡的用途</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_75.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>为OCR和表决盘选择ASM储存方法</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_76.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>选择crsvol，并填写c盘组名称，点击下一步</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_77.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>配置ASMSystem口令</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_78.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_79.png" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>不配置IPMI</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_80.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>为asm的各类角色分配属组</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_81.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>默认grid的目录，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_82.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_83.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>接出来，软件进行安装检查</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_84.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>检查通过后，点击install，开始安装</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_85.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>安装进行中。。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_86.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>安装完成，弹出窗口，提示须要以root依次在两个节点执行脚本</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_87.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>脚本执行如下：</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_88.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_89.png" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>执行完毕后，点击ok，弹出如下界面，点击close，grid安装完成</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_90.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>出现以下错误时，是由于在Hosts配置文件里配置了SCAN，未启用DNS解析，不影响RAC正常运行；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_91.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>点关掉完成安装</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_92.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>14.确认群集安装成功</p>
+<p>15.创建asmc盘组</p>
+<p>本次任务将创建3个asmc盘组，分别为：ARCH,DATA,FLASH。其中DATA将储存数据库文件；FLASH储存闪回文件；ARCHc盘组将创建ACFS文件系统百度网盘LINUX，分别挂载到两个节点，拿来储存归档日志。</p>
+<p>在grid用户下，执行asmca，启动asmc盘组创建向导</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_93.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>点击create按键，在弹出的创建界面中填写c盘组名称，选择外面储存方，并勾选成员，选择完毕后点击ok；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_94.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>以同样的方式创建BACKUPc盘组，创建完毕后如下</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_95.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>16.安装oracle软件</p>
+<p>以oracle用户登入到节点一，切换到软件安装目录，执行安装</p>
+<p>在弹出的安装界面中，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_96.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>选择“installsoftwareonly”<strong>查linux高可用软件版本命令</strong>，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_97.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>选择两个节点，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_98.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>将繁体英文添加到安装选项</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_99.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>选择企业版，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_100.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>保持默认的目录，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_101.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>保持默认的属组信息，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_102.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>安装过程手动进行安装检测</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_103.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>检测通过后，点击install</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_104.jpg" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p>开始安装</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_105.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>安装完成，跳出一个界面，提示须要以root在两个节点上执行脚本</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_106.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_107.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>以root用户，在两个节点上执行脚本</p>
+<p>执行完毕后，点击ok，返回如下界面</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_109.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>至此，oracle数据库软件安装完毕。</p>
+<p>17.创建数据库</p>
+<p>本节操作在节点1执行；</p>
+<p>以oracle用户登入，执行dbca命令，选择rac数据库点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_110.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>选择通用类型，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_111.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>填写数据库名称，选择两个节点，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_112.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>默认，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_113.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>为所有用户设置统一密码，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_114.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>选择ASM储存方法，并选择相应的c盘组，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_115.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>注：假如此处未能找到“ASMDISKGROUP”，使用root用户，则执行以下操作，之后再度执行“dbca”；</p>
+<p>弹出ASM用户密码窗口，输入在安装grid时设置的密码</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_117.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>选择闪回c盘组，勾选归档</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_118.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>点击编辑归档模式参数，在归档路径出输入：+BACK/archive</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_119.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>下一步</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_120.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>使用手动显存管理</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_121.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+<p>点击字符集选项，选择ZHS16GBK类型</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_122.jpg" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p>显示概览，默认不变，点击next</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_123.jpg" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p>点击finish</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_124.jpg" alt="linux 查版本命令_linux高可用集群_查linux高可用软件版本命令"></p>
+<p>出现安装概要</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_125.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>点击ok，开始安装过程</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_126.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p>等待一段时间后，安装结束，弹出如下界面</p>
+<p>至此，数据库创建完毕。</p>
+<p>18.数据库管理工作</p>
+<p>oraclerac默认会开机自启动，如需维护时可使用以下命令：</p>
+<p>注：以上命令需以root用户执行</p>
+<p>以grid用户运行</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_129.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_131.jpg" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_132.png" alt="linux高可用集群_查linux高可用软件版本命令_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_134.png" alt="查linux高可用软件版本命令_linux高可用集群_linux 查版本命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_135.png" alt="查linux高可用软件版本命令_linux 查版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_136.png" alt="linux 查版本命令_查linux高可用软件版本命令_linux高可用集群"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676354746701_138.jpg" alt="linux高可用集群_linux 查版本命令_查linux高可用软件版本命令"></p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

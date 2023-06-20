@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux系统中的route命令，文中一起命令</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux系统中的route命令，文中一起命令" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1680120456407_0.jpg" />
+  <meta name="twitter:description"content="Linux系统中的route命令，文中一起命令">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux系统中的route命令，文中一起命令" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1680120456407_0.jpg" />
+  <meta property="og:description"content="Linux系统中的route命令，文中一起命令" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1680120456407_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux系统中的route命令，文中一起命令" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxtzdrmlwzyq/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux系统中的route命令，文中一起命令" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux系统中的route命令，文中一起命令</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>解读CentOS中的route命令</p>
+<p>更新时间：2016年12月14日08:37:32投稿：daisy</p>
+<p>这篇文章给你们主要介绍了关于CentOS中的route命令，文中介绍的很详尽美国linux主机，相信对你们的理解和学习具有一定的参考价值，有须要的同事们下边来跟随小编一起学习学习吧。</p>
+<p>介绍</p>
+<p>Linux系统中的route命令才能用于IP路由表的显示和操作。它的主要作用是创建一个静态路由让指定一个主机或则一个网路通过一个网路插口，如eth0。当使用”add”或者”del”参数时，路由表被更改，假如没有参数，则显示路由表当前的内容。在一个网路中，须要一个路由器来转发不同广播域之间的数据，或是转发lan和internet之间的数据。有时我们须要设定这个路由器作为linux系统的默认路由，这么就可以通过route命令来操作。甚至我们也可以用我们的linux系统来充当路由器。</p>
+<p>要注意的是：直接在命令行下执行route命令来添加路由，不会永久保存，当网卡重启或则机器重启以后，该路由就失效了；可以在/etc/rc.local中添加route命令来保证该路由设置永久有效。其实倘若加上了-p参数的话那都会永久的生效了。</p>
+<p>命令格式</p>
+<pre tabindex="0"><code>route [-f] [-p] [Command [Destination] [mask Netmask] [Gateway][metric Metric]] [if Interface]]
+</code></pre><p>命令参数</p>
+<p>-c显示更多信息</p>
+<p>-n不解析名子</p>
+<p>-v显示详尽的处理信息</p>
+<p>-F显示发送信息</p>
+<p>-C显示路由缓存</p>
+<p>-f消除所有网段入口的路由表。</p>
+<p>-p与add命令一起使用时使路由具有永久性。</p>
+<p>add：添加一条新路由。</p>
+<p>del：删掉一条路由。</p>
+<p>-net：目标地址是一个网路。</p>
+<p>-host：目标地址是一个主机。</p>
+<p>netmask：当添加一个网路路由时，须要使用网路网段。</p>
+<p>gw：路由数据包通过网段。注意，你指定的网段必须才能达到。</p>
+<p>metric：设置路由跳数。</p>
+<p>1、Command指定您想运行的命令(Add/Change/Delete/Print)。</p>
+<p>2、Destination指定该路由的网路目标。</p>
+<p>(3、maskNetmask指定与网路目标相关的网路网段（也被叫做子网网段) 。</p>
+<p>4、Gateway指定网路目标定义的地址集和子网网段可以抵达的前进或下一跃点IP地址。</p>
+<p>(5、metricMetric为路由指定一个整数成本值标（从1至9999) ，当在路由表(与转发的数据包目标地址最匹配)的多个路由中进行选择时可以使用。</p>
+<p>6、ifInterface为可以访问目标的插口指定插口索引。若要获得一个插口列表和它们相应的插口索引，使用routeprint命令的显示功能。可以使用十补码或十六进</p>
+<p>实例</p>
+<p>1显示路由信息</p>
+<pre tabindex="0"><code>[root@localhost~]# route
+</code></pre><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1680120456407_0.jpg" alt="ip route 命令linux_思科ip route命令详解_ip route ipv6命令详解"></p>
+<pre tabindex="0"><code>Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default 192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><p>Flags标志说明</p>
+<p>UUp表示此路由当前为启动状态HHost，表示此网段为一主机GGatewaylinux手机软件，表示此网段为一路由器RReinstateRoute，使用动态路由重新初始化的路由DDynamically,此路由是动态性地写入–》什么时侯就会有动态的路由信息呢？MModified，此路由是由路由守护程序或导向器动态更改</p>
+<p>2添加一条指向某个网路的路由</p>
+<pre tabindex="0"><code>[root@localhost~]# route add -net 10.0.0.0 netmask 255.255.255.0 dev eth0
+</code></pre><p>这儿是指定这条路由的出口在那里。-net10.0.0.0netmask255.255.255.0为指定目标网路的参数，须要ip地址或地址范围、子网网段用于确定网路范围。</p>
+<pre tabindex="0"><code>[root@localhost~]# route
+</code></pre><pre tabindex="0"><code>Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+10.0.0.0 *  255.255.255.0 U 0 0 0 eth0
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default 192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><p>route添加路由都是须要指定目标网路，及路由出口这两个参数。记住加上-p选项能永久添加。</p>
+<p>3添加到某一个ip的路由</p>
+<pre tabindex="0"><code>[root@localhost~]# route add -host 192.168.40.1dev eth0
+[root@localhost ~]# route
+</code></pre><p>可以发觉添加的是主机的话，默认是会帮我们添加一个全255的子网网段，表示子网范围就只有一个而已，那就是这台主机啦。</p>
+<pre tabindex="0"><code>Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.1 *  255.255.255.255 UH 0 0 0 eth0
+</code></pre><p>4屏蔽某一路由</p>
+<p>当我们不让系统抵达某个子网范围或则某个主机是就可以自动的来进行屏蔽。</p>
+<pre tabindex="0"><code>[root@localhost~]# route add -net 10.10.10.128 netmask 255.255.255.128 reject
+</code></pre><p>(后面部份是一样的，由于我们都是自动来添加一个路由嘛。只是在命令的最后不一样 <strong>ip route 命令linux</strong>，我们指定的出口去而是reject（拒绝) ，也就是拒绝出口。达到屏蔽的疗效。还有看下flags会显示一个！</p>
+<pre tabindex="0"><code>[root@localhost~]# route
+</code></pre><pre tabindex="0"><code>Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.1 *  255.255.255.255 UH 0 0 0 eth0
+10.10.10.128 -  255.255.255.128 ! 0 - 0 -
+10.0.0.0 *  255.255.255.0 U 0 0 0 eth0
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default 192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><p>5删掉路由</p>
+<pre tabindex="0"><code>[root@localhost~]# route
+</code></pre><pre tabindex="0"><code>Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.1 *  255.255.255.255UH 0 0 0 eth0
+10.10.10.128 -  255.255.255.128 ! 0 - 0 -
+10.0.0.0 *  255.255.255.0 U 0 0 0 eth0
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default 192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><pre tabindex="0"><code>[root@localhost~]# route del -net 10.10.10.128netmask 255.255.255.128 reject
+</code></pre><pre tabindex="0"><code>[root@localhost~]# route
+Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.1 *  255.255.255.255UH 0 0 0 eth0
+10.0.0.0 *  255.255.255.0 U 0 0 0 eth0
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default 192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><p>说明：删掉路由时 <strong>ip route 命令linux</strong>，最好是看着路由表上的照样打进去，这样比较不会删错的。</p>
+<p>添加删掉默认网段</p>
+<pre tabindex="0"><code>[root@localhost ~]# route add default gw 192.168.40.2
+[root@localhost~]# route
+Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.1 *  255.255.255.255UH 0 0 0 eth0
+10.0.0.0 *  255.255.255.0 U 0 0 0 eth0
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default  192.168.40.2 0.0.0.0  UG 0 0 0 eth0
+default  192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><p>可以见到此处有两个默认网段，那究竟路由会走那个呢？</p>
+<pre tabindex="0"><code>[root@localhost~]# route del default gw192.168.40.2
+</code></pre><pre tabindex="0"><code>[root@localhost~]# route
+Kernel IP routing table
+Destination Gateway  Genmask  Flags Metric Ref Use Iface
+192.168.40.1 *  255.255.255.255UH 0 0 0 eth0
+10.0.0.0 *  255.255.255.0 U 0 0 0 eth0
+192.168.40.0 *  255.255.252.0 U 0 0 0 eth0
+169.254.0.0 *  255.255.0.0 U 0 0 0 eth0
+default 192.168.40.1 0.0.0.0  UG 0 0 0 eth0
+</code></pre><p>总结</p>
+<p>以上就是这篇文章的全部内容了，希望本文的内容对你们的学习或则工作能有所帮助，假如有疑惑你们可以留言交流。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

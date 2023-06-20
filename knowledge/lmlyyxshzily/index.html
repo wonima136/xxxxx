@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>linuxroute命令用于显示和*作IP路由表的通信</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="linuxroute命令用于显示和*作IP路由表的通信" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1685131643667_0.jpg" />
+  <meta name="twitter:description"content="linuxroute命令用于显示和*作IP路由表的通信">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="linuxroute命令用于显示和*作IP路由表的通信" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1685131643667_0.jpg" />
+  <meta property="og:description"content="linuxroute命令用于显示和*作IP路由表的通信" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1685131643667_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="linuxroute命令用于显示和*作IP路由表的通信" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lmlyyxshzily/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="linuxroute命令用于显示和*作IP路由表的通信" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">linuxroute命令用于显示和*作IP路由表的通信</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1685131643667_0.jpg" alt="Linux下Route 路由指令使用详解,第1张"></p>
+<p>linuxroute命令用于显示和***作IP路由表。</p>
+<p>要实现两个不同子网之间的通讯，须要一台联接两个网路的路由器，或则同时坐落两个网路的网段来实现。</p>
+<p>在Linux系统中，设置路由一般是为了解决以下问题：该Linux系统在一个局域网中，局域网中有一个网段，才能让机器访问Internet，这么就须要将这台机器的IP地址设置为Linux机器的默认路由。</p>
+<p>格式：</p>
+<p>[root@linux~]#route[-nee]</p>
+<p>[root@linux~]#routeadd[-net|-host][网域或主机]netmask[mask][gw|dev]</p>
+<p>[root@linux~]#routedel[-net|-host][网域或主机]netmask[mask][gw|dev]</p>
+<p>1、查看相关参数：</p>
+<p>-n：不要使用通信协定或主机名称，直接使用IP或portnumber；</p>
+<p>-ee：使用更详尽的资讯来显示</p>
+<p>2、增加(add)、删除(del)路由的相关参数：</p>
+<p>-net：表示前面接的路由为一个网域；</p>
+<p>-host：表示前面接的为联接到单部主机的路由；</p>
+<p>netmask：与网域有关，可以设定netmask决定网域的大小；</p>
+<p>gw：gateway的缩写linux内存管理，后续接的是IP的数值喔，与dev不同；</p>
+<p>dev：假如只是要指定由那一块网卡连线出去，则使用这个设定，前面接eth0等</p>
+<p>设置默认路由</p>
+<p>格式：routeadddefaultgw{IP-ADDRESS}{INTERFACE-NAME}</p>
+<p>其中，</p>
+<p>(参数{IP-ADDRESS):用于指定路由器（网段) 的IP地址；</p>
+<p>参数{INTERFACE-NAME}:用于指定插口名称，如eth0。使用/sbin/ifconfig-a可以显示所有插口信息。</p>
+<p>例:</p>
+<p>添加到指定网路的路由规则</p>
+<p>格式：routeadd-net{NETWORK-ADDRESS}netmask{NETMASK}dev{INTERFACE-NAME}</p>
+<p>其中</p>
+<p>参数{NETWORK-ADDRESS}:用于指定网路地址</p>
+<p>参数{NETMASK}:用于指定子网网段</p>
+<p>参数{INTERFACE-NAME}:用于指定插口名称，如eth0。</p>
+<p>例:</p>
+<p>屏蔽一条路由，设置到指定网路为不可达，防止在联接到这个网路的地址时程序过长时间的等待</p>
+<p>格式：routeadd-net{NETWORK-ADDRESS}netmask{NETMASK}reject</p>
+<p>例:</p>
+<p>删掉路由设置linux apache 虚拟主机，参数指定的形式与routeadd相像。</p>
+<p>格式：routedel-net{NETWORK-ADDRESS}netmask{NETMASK}dev{INTERFACE-NAME}</p>
+<p>格式：routedel-net{NETWORK-ADDRESS}netmask{NETMASK}reject</p>
+<p>例:</p>
+<p>注意的是，直接在命令行下执行route命令来添加路由，不会永久保存，当网卡重启或则机器重启以后，该路由就失效了；要想永久保存，有如下方式：</p>
+<p>1.在/etc/rc.local里添加</p>
+<p>2.在/etc/sysconfig/network里添加到末尾</p>
+<p>3./etc/sysconfig/static-router:</p>
+<p>anynetx.x.x.x/24gwy.y.y.y</p>
+<p>Linux系统中traceroute命令可以追踪到网路数据包的路由途径。下边由我为你们整理了linux系统中traceroute命令使用解读，希望对你们有帮助!</p>
+<p>Linux系统中traceroute命令使用解读</p>
+<p>1.命令格式：</p>
+<p>traceroute[参数][主机]</p>
+<p>2.命令功能：</p>
+<p>traceroute指令让你追踪网路数据包的路由途径，预设数据包大小是40Bytes,用户可另行设置。</p>
+<p>具体参数格式：traceroute[-dFlnrvx][-f&amp;lt存活数值&amp;gt][-g&amp;lt网段&amp;gt][-i&amp;lt网路界面&amp;gt][-m&amp;lt存活数值&amp;gt][-p&amp;lt通讯端口&amp;gt][-s&amp;lt来源地址&amp;gt][-t&amp;lt服务类型&amp;gt][-w&amp;lt超时秒数&amp;gt][主机名称或IP地址][数据包大小]</p>
+<p>3.命令参数</p>
+<p>-d使用socket层级的排错功能</p>
+<p>-f设置第一个测量数据包的存活数值TTL的大小</p>
+<p>-F设置勿离段位—-我也不晓得啥是勿离段位，查了下没查到哪些信息^^</p>
+<p>-g设置来源路由网段，最多可设置8个</p>
+<p>-i使用指定的网路界面送出数据包</p>
+<p>-I使用ICMP回应代替UDP资料信息</p>
+<p>-m设置检查数据包的最大存活数值TTL的大小</p>
+<p>-n直接使用IP地址而非主机名称</p>
+<p>-p设置UDP传输合同的通讯端口</p>
+<p>-r忽视普通的routingtable,直接将数据包送到远端主机上</p>
+<p>-s设置本地主机送出数据包的IP地址</p>
+<p>-t设置检查数据包的TOS数值</p>
+<p>-v详尽显示指令的执行过程</p>
+<p>-w设置等待远端主机回报的时间</p>
+<p>-x开启或关掉数据包的正确性检验</p>
+<p>linux系统中traceroute命令实例</p>
+<p>实例1：traceroute用法简单，最常用的用法</p>
+<p>命令：traceroute</p>
+<p>说明：</p>
+<p>记录按序列号从1开始，每位记录就是一跳，每跳表示一个网段，我们看见每行有三个时间，单位是ms,虽然就是-q的默认参数。侦测数据包向每位网段发送三个数据包后，网段响应后返回的时间倘若您用traceroute-q4,表示向每位网段发送4个数据包</p>
+<p>有时我们traceroute一台主机时，会听到有一些行是以星号表示的。出现此类情况，可能是防火墙封掉了ICMP的返回信息，所以我们得不到哪些相关的数据包返回数据。</p>
+<p>有时我们在某一网段处延时比较长，有可能是某台网段比较阻塞，也可能是化学设备本身的缘由，其实假如某台DNS出现问题时，不能解析主机名、域名时，也会有延时长的现象您可以加-n参数来防止DNS解析，以IP格式输出数据。</p>
+<p>假如在局域网中的不同网关之间，我们可以通过traceroute来排查问题所在，是主机的问题还是网段的问题。假如我们通过远程来访问某台服务器碰到问题时，我们用到traceroute追踪数据包所经过的网段，递交IDC服务商，也有助于解决问题但目前看来国外解决这样的问题是比较困难的，就是我们发觉问题所在，IDC服务商也不可能帮助我们解决。</p>
+<p>实例2：跳数设置</p>
+<p>命令：</p>
+<p>traceroute-m10</p>
+<p>实例3：只显示IP地址，不查主机名DNS</p>
+<p>命令：traceroute-n</p>
+<p>实例4：侦测包使用的基本UDP端口设置6888</p>
+<p>命令：traceroute-p6888</p>
+<p>实例5：把侦测包的个数设置为4个</p>
+<p>命令：traceroute-q4</p>
+<p>实例6：绕开正常的路由表，直接发送到网路相连的主机</p>
+<p>命令：traceroute-r</p>
+<p>实例7：把对外发侦测包的等待响应时间设置为3秒</p>
+<p>命令：traceroute-w3</p>
+<p>补充：linux系统中traceroute的工作原理</p>
+<p>traceroute程序的设计是借助ICMP及IPheader的TTL(timetolive)栏位(field)。首先，traceroute送出一个TTL是1的IPdatagram(每次送的的是3个40字节的包，包括源地址，目的地址和包发出的时间标签)到目的地，当路径上的第一个路由器(router)收到这个datagram时，它将TTL降低1，此时，TTL变为0了，所以该路径会将次datagram扔掉，并送回一个【ICMPtimeexceeded】消息，traceroute收到这个消息后，便晓得这个路由器存在于这个路径上，接着traceroute再送出另一个TTL为2的datagram，发觉第二个路由器，之后仍然重复执行这些***作，直至某个datagram到达目的地。</p>
+<p>在traceroute送出UDPdatagram到目的地时，它所选择送达的portnumber是一个通常应用程序都不会用的号码，所以当此UDPdatagram抵达目的地后该主机会送回一个ICMPportunreachable的消息，而当traceroute收到这个消息时，便晓得目的地早已抵达 <strong>linux tracert命令详解</strong>，所以traceroute在server端也就没有所谓的daemon程式。</p>
+<p>traceroute通过估算ICMPTTL到期消息设备的IP地址并做域名解析。每次，traceroute都复印出一系列数据，包括所经过的路由设备的域名及IP地址 <strong>linux tracert命令详解</strong>，三个包每次来回所花时间。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

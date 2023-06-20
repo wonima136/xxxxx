@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>( （氪肝整理) Linux学习笔记之查命令绝对路径</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="( （氪肝整理) Linux学习笔记之查命令绝对路径" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683835765506_0.jpg" />
+  <meta name="twitter:description"content="( （氪肝整理) Linux学习笔记之查命令绝对路径">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="( （氪肝整理) Linux学习笔记之查命令绝对路径" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683835765506_0.jpg" />
+  <meta property="og:description"content="( （氪肝整理) Linux学习笔记之查命令绝对路径" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1683835765506_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="( （氪肝整理) Linux学习笔记之查命令绝对路径" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/kgzllxxbjzcm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="( （氪肝整理) Linux学习笔记之查命令绝对路径" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">( （氪肝整理) Linux学习笔记之查命令绝对路径</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>在下方公众号回复“001”<strong>linux下压缩文件命令</strong> linux公社，即可获取氪肝整理的154页Linux学习笔记。</p>
+<p>查命令绝对路径：</p>
+<p>which用于查找并显示给定命令的绝对路径,环境变量中PATH参数也可以被查下来。</p>
+<pre tabindex="0"><code>[root@localhost ~]# which bash
+/usr/bin/bash
+
+[root@localhost ~]# which ls
+alias ls=&#39;ls --color=auto&#39;
+    /usr/bin/ls
+</code></pre><p>找寻特定文件：</p>
+<p>whereis命令拿来定位指令的二补码程序、源代码文件和man指南页等相关文件的路径,该命令只能用于程序名的搜索</p>
+<pre tabindex="0"><code>[root@localhost ~]# whereis --help
+
+语法格式：[ whereis [选项] 文件名 ]
+
+        -b              #只找二进制文件
+        -m              #只找man文档
+        -s              #只找源代码
+</code></pre><p>使用whereis-b命令找二补码文件，与帮助指南。</p>
+<pre tabindex="0"><code>[root@localhost ~]# whereis -b ifconfig
+ifconfig: /usr/sbin/ifconfig
+
+[root@localhost ~]# whereis -m ifconfig
+ifconfig: /usr/share/man/man8/ifconfig.8.gz
+</code></pre><p>缓存查找文件：</p>
+<p>locate搜索一个数据库/var/lib/mlocatedb,这个数据库中富含本地所有文件信息,Linux系统手动创建这个数据库,但是每晚手动更新一次,所以使用locate命令查不到最新变动过的文件,为了防止这些情况,可以在使用locate之前,先使用updatedb命令,自动更新数据库,updatedb命令会依照/etc/updatedb.conf来更新文件.</p>
+<pre tabindex="0"><code>[root@localhost ~]# yum install -y mlocate
+[root@localhost ~]# locate --help
+
+语法格式：[ locate [选项] 文件名 ]
+
+        -d 目录        #指定数据库所在的目录
+        -i             #忽略大小写差异
+        -r             #后面接正则表达式
+</code></pre><p>使用locate命令查询一个文件.</p>
+<pre tabindex="0"><code>[root@localhost ~]# updatedb
+[root@localhost ~]# locate /etc/passwd
+/etc/passwd
+/etc/passwd-
+</code></pre><p>遍历文件查找:</p>
+<p>find命令可以说是最重要的查找命令了linux中文乱码，该命令参数较多。</p>
+<pre tabindex="0"><code>[root@localhost ~]# find --help
+
+语法格式：[ find [目录] [属性] 文件名 ]
+
+        -name         #按文件名查找
+        -size         #根据大小查找
+        -user         #根据属主查找
+        -perm         #根据权限查找
+        -type         #根据类型查找
+        -time         #按时间查找
+        -inum         #根据i节点查询
+        -exec         #查找后执行命令
+</code></pre><p>-name按文件名查找：</p>
+<p>常用查询键值</p>
+<pre tabindex="0"><code>*     #匹配任意一个或多个字符
+？     #匹配任意一个字符
+[]     #指定范围,外侧加引号
+</code></pre><p>查找/var/目录下,以.log结尾的文件.</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /var/ -name &#34;*.log&#34;
+/var/log/tuned/tuned.log
+/var/log/audit/audit.log
+/var/log/anaconda/X.log
+/var/log/anaconda/program.log
+....省略....
+</code></pre><p>查找/root/目录下,以[1-3之间],结尾是.txt的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# ls
+1.txt  2.txt  3.txt  Catalog  File
+
+[root@localhost ~]# find /root/ -name &#34;[1-3].txt&#34;
+/root/1.txt
+/root/2.txt
+/root/3.txt
+</code></pre><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1683835765506_0.jpg" alt="linux下压缩文件命令_linux压缩命令 区别_linux下压缩命令"></p>
+<p>查找/etc/目录下,开头是6个任意字符的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /etc/ -name &#34;??????&#34;
+/etc/grub.d
+/etc/grub.d/README
+/etc/shells
+/etc/init.d
+....省略....
+</code></pre><p>-size按照大小查找</p>
+<pre tabindex="0"><code>单位是 block 数据块  一块是512字节
+1M -&gt; 1024k -&gt; 2048 块  (1块是0.5k 也就是512字节)
+100M -&gt; 102400k -&gt; 204800块
+</code></pre><p>查找/etc/目录下,大于10k的文件</p>
+<pre tabindex="0"><code>root@localhost ~]# find /etc/ -size -10k
+/etc/crypttab
+/etc/.pwd.lock
+/etc/environment
+....省略....
+</code></pre><p>查找/etc/目录下,小于1M的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /etc/ -size +1M   #查询大于1M的文件
+/etc/udev/hwdb.bin
+/etc/selinux/targeted/active/policy.kern
+/etc/selinux/targeted/contexts/files/file_contexts.bin
+/etc/selinux/targeted/policy/policy.31
+....省略....
+
+#注意：+-号如果没有,是精确到这么大,通常都会带上+或-号表示一个范围.
+</code></pre><p>-user按照属主与权限查找</p>
+<p>在/root目录中查找属于wang用户的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /root/ -user wang
+/root/1.txt
+/root/2.txt
+/root/3.txt
+#注意：系统中要存在该用户,否则会报错误.
+</code></pre><p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1683835765506_1.png" alt="linux下压缩文件命令_linux下压缩命令_linux压缩命令 区别"></p>
+<p>查找/boot/目录中权限是644的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /boot/ -perm 0644
+/boot/grub2/device.map
+/boot/grub2/i386-pc/gcry_rmd160.mod
+/boot/grub2/i386-pc/acpi.mod
+/boot/grub2/i386-pc/gcry_rsa.mod
+....省略....
+</code></pre><p>-type依据类型查找</p>
+<pre tabindex="0"><code>(-type f 二进制文件（普通文件) 
+-type l 软链接文件
+-type d 目录
+</code></pre><p>查找/usr/bin/目录下,类型是二补码文件.</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /usr/bin/ -type f
+/usr/bin/cp
+/usr/bin/gzip
+/usr/bin/alias
+/usr/bin/csplit
+/usr/bin/bash
+....省略....
+</code></pre><p>-time按时间查找</p>
+<pre tabindex="0"><code>按天数   ctime  atime  mtime
+按分钟   cmin   amin     mmin
+
+  c  change   #表示属性被修改过：所有者、所属组、权限
+  a  access   #被访问过(被查看过)
+  m  modify   #表示内容被修改过
+</code></pre><p>查找/etc/目录下,在120分钟以内,内容被更改过的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /etc/ -mmin -120
+/etc/
+/etc/resolv.conf
+/etc/group-
+/etc/gshadow-
+/etc/group
+/etc/gshadow
+....省略....
+</code></pre><p>查找/etc/目录下,在7天之前,属性被更改过的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /etc/ -ctime +7
+/etc/resolv.conf
+/etc/group-
+/etc/gshadow-
+....省略....
+</code></pre><p>-inum按照i节点查询</p>
+<p>有一些文件的硬链接数目好多，有相同的i节点 <strong>linux下压缩文件命令</strong>，查找其中一个文件的i节点号，一次性删掉。</p>
+<pre tabindex="0"><code>[root@localhost ~]# find ./ -inum 1024 -exec rm{} ;   #删除相同I节点的数据
+</code></pre><p>-andor逻辑联接符</p>
+<pre tabindex="0"><code>(-a    （and 逻辑与) 
+-o    （or  逻辑或)
+</code></pre><p>在/etc/目录下,查找小于1k,但是大于10k的文件</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /etc/ -size +1k -a -size -10k
+/etc/
+/etc/grub.d/00_header
+/etc/grub.d/20_ppc_terminfo
+/etc/grub.d/00_tuned
+/etc/rc.d/init.d/README
+/etc/rc.d/init.d/netconsole
+/etc/rc.d/init.d/network
+/etc/pam.d
+....省略....
+</code></pre><p>-exec命令执行联接符</p>
+<pre tabindex="0"><code>[查询格式] find  ...  -exec 命令 {}  ;
+
+{}        #表示find查询的结果集
+         #是转义符,不使用命令别名,直接使用命令本身
+;         #分号是表示语句的结束.
+
+#注意：固定格式,只能这样写.注意中间的空格.
+(（公众号：网络工程师阿龙) -----------------------------------------------------------------
+说明： 转义符的作用是什么？
+
+在linux中有一个别名机制，如rm删除文件，执行的却是rm -i(用which rm 可以查看命令别名)，
+使用rm删除文件前会提示，就是因为rm -i这个参数。如果想使用命令原意，可以在加转义，
+如：rm test.txt   则不会提示，直接删除
+</code></pre><p>查找/var/log/目录下名子以.log结尾的文件,找到后执行ls-l显示详尽信息.</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1683835765506_2.png" alt="linux压缩命令 区别_linux下压缩命令_linux下压缩文件命令"></p>
+<pre tabindex="0"><code>[root@localhost ~]# find /var/log/ *.log -exec ls -l {} ;
+total 1176
+drwxr-xr-x. 2 root   root      204 Sep 18 09:12 anaconda
+drwx------. 2 root   root       23 Sep 18 09:12 audit
+-rw-------. 1 root   root    53001 Sep 19 00:57 boot.log
+-rw-------. 1 root   utmp      384 Sep 18 09:22 btmp
+drwxr-xr-x. 2 chrony chrony      6 Apr 12 13:37 chrony
+-rw-------. 1 root   root     3523 Sep 19 01:01 cron
+-rw-r--r--  1 root   root   119414 Sep 19 00:57 dmesg
+-rw-r--r--  1 root   root   119599 Sep 18 23:35 dmesg.old
+-rw-r--r--. 1 root   root     1320 Sep 19 00:23 firewalld
+-rw-r--r--. 1 root   root      193 Sep 18 09:05 grubby_prune_debug
+....
+</code></pre><p>查找/etc/目录下名子以”init*”开头的文件,找到后,只列举文件,过滤掉目录,并执行ls-l显示详尽信息.</p>
+<pre tabindex="0"><code>[root@localhost ~]# find /etc/ -name &#34;init*&#34; -a -type f -exec ls -l {} ;
+
+-rw-r--r--. 1 root root 511 Apr 11 01:09 /etc/inittab
+-rw-r--r--. 1 root root 798 Apr 11 01:09 /etc/sysconfig/init
+-rwxr-xr-x. 1 root root 5419 Jan  2  2018 /etc/sysconfig/network-scripts/init.ipv6-global
+-rw-r--r--. 1 root root 30 Apr 11 14:12 /etc/selinux/targeted/contexts/initrc_context
+</code></pre><p>查找/tmp/下,的yum.log文件,找到后直接删掉.</p>
+<pre tabindex="0"><code>[root@localhost tmp]# find /tmp/ -name yum.log -exec rm {} ;
+[root@localhost tmp]#
+</code></pre><p>查找根下,找关于lyshark用户的所有文件,找到后直接删掉.</p>
+<pre tabindex="0"><code>[root@localhost ~]# find / -user lyshark -exec rm -r {} ;
+
+find: ‘/proc/1465/task/1465/fd/6’: No such file or directory
+find: ‘/proc/1465/task/1465/fdinfo/6’: No such file or directory
+find: ‘/proc/1465/fd/5’: No such file or directory
+find: ‘/proc/1465/fdinfo/5’: No such file or directory
+find: ‘/root/Catalog’: No such file or directory
+find: ‘/home/lyshark’: No such file or directory
+#rm -r 连带目录一起删除.报错原因：-exec 不适合大量传输,速率慢导致.
+</code></pre><p>在根下,查找lyshark用户的文件,找到后删掉,删掉前会提示是否删掉.</p>
+<pre tabindex="0"><code>[root@localhost ~]# find / -user lyshark -ok rm -r {} ;
+find: ‘/proc/1777/task/1777/fd/6’: No such file or directory
+find: ‘/proc/1777/task/1777/fdinfo/6’: No such file or directory
+
+ ? y
+# -ok的使用和-exec是一样的,区别是-ok,执行时会提示你是否进行下一步操作.
+</code></pre><pre tabindex="0"><code></code></pre><p>近日课程上新：</p>
+<p>MySQL的SQL句子解析|初遇shell|手动化运维神器Ansible基础|Docker入门|容器云浅谈|企业级虚拟化技术KVM入门|IP解读及配置|路由和日志管理|Dockery入门|MySQL数据类型和表约束</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

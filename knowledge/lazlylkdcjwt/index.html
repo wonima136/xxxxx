@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Librosa-4安装Librosa依赖库的常见问题及解决方案</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Librosa-4安装Librosa依赖库的常见问题及解决方案" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_0.png" />
+  <meta name="twitter:description"content="Librosa-4安装Librosa依赖库的常见问题及解决方案">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Librosa-4安装Librosa依赖库的常见问题及解决方案" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_0.png" />
+  <meta property="og:description"content="Librosa-4安装Librosa依赖库的常见问题及解决方案" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Librosa-4安装Librosa依赖库的常见问题及解决方案" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lazlylkdcjwt/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Librosa-4安装Librosa依赖库的常见问题及解决方案" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Librosa-4安装Librosa依赖库的常见问题及解决方案</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>1简介</p>
+<p>FCN-4是一个应用于音频手动标明的全前馈神经网路。使用该网路完成音频标明任务时，首先须要使用python的音频处理工具包Librosa提取音频的时频特点，针对mp3格式的音频文件，Librosa读取音频文件的工作依赖音频处理前端ffmpeg完成，因而要求使用该网路进行mp3音频手动标明任务的环境具备Librosa依赖库和ffmpeg。</p>
+<p>以下对Librosa库和FFmpeg工具在安装配置过程中的常见问题进行说明。</p>
+<p>2安装Librosa依赖库的常见问题2.1Librosa库的安装</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_0.png" alt="linux解压压缩tar包命令_linux压缩命令zip命令_linux下载压缩包命令"></p>
+<pre tabindex="0"><code>    pip install librosa
+</code></pre><p>安装结果中出现红框中的提示内容，说明librosa依赖库安装成功。</p>
+<p>2.2调用librosa包的过程中可能出现的错误</p>
+<p>安装好librosa依赖库后，仍可能存在环境中缺乏其他相关依赖的问题linux入门，以下给出可能存在的问题及其解决方案</p>
+<p>2.2.1没有bz2模块</p>
+<p>报错“Nomodualnamed‘_bz2’”。如下所示</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_1.png" alt="linux下载压缩包命令_linux解压压缩tar包命令_linux压缩命令zip命令"></p>
+<p>出现这个错误的缘由是因为运行程序所使用的python版本中没有安装_bz2库所致。</p>
+<p>一般是因为运行程序使用的是python3.7，然而bz2这个库是安装到了python3.6的路径下，所以找不到。</p>
+<p>将python3.6上面的bz2库拷贝到python3.7下边。</p>
+<p>操作步骤：</p>
+<p>1.找到python3.6路径下的_bz2库文件，即“_bz2.cpython-36m-x86_64-linux-gnu.so”</p>
+<pre tabindex="0"><code>ll /usr/lib/python3.6/lib-dynload/
+</code></pre><p>2.切换到python3.7对应路径，将该文件复制到该目录下</p>
+<pre tabindex="0"><code>cd /usr/local/python3.7.5/lib/python3.7/lib-dynload/
+cp /usr/lib/python3.6/lib-dynload/_bz2.cpython-36m-x86_64-linux-gnu.so ./
+</code></pre><p>3.更改文件名称，将”-36m”更改为”-37m”</p>
+<pre tabindex="0"><code>mv _bz2.cpython-36m-x86_64-linux-gnu.so _bz2.cpython-37m-x86_64-linux-gnu.so
+(chmod +x _bz2.cpython-37m-x86_64-linux-gnu.so    # （可选) 增加该文件的可执行权限
+</code></pre><p>如今运行程序所使用的是python3.7的目录下早已有了bz库文件</p>
+<p>说明：</p>
+<p>该问题有多种解决方案，只要保证所使用的python版本相关路径下存在_bz2库即可。比如可以从网上下载“_bz2.cpython-37m-x86_64-linux-gnu.so”文件，或从任意其他存在该文件的环境中复制到目标环境的相关路径下即可。</p>
+<p>2.2.2没有_lzma模块</p>
+<p>报错“Nomodulenamed‘_lzma’”。如下所示</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_2.png" alt="linux压缩命令zip命令_linux解压压缩tar包命令_linux下载压缩包命令"></p>
+<p>请参考上一步骤“2.2.1没有bz2模块”解决,保证所使用的python版本相关路径下存在lzma库即可。</p>
+<p>2.2.3找不到sndfile库</p>
+<p>命令行执行以下命令安装sndfile库</p>
+<pre tabindex="0"><code>apt-get install libsndfile1
+</code></pre><p>3安装FFmpeg工具的常见问题</p>
+<p>Librosa依赖库安装配置完成后，在读取音频文件的时侯可能会触发“audioread.exceptions.NoBackendError”，如下所示。</p>
+<p>audioread.exceptions.NoBackendError</p>
+<p>这个问题主要是因为“librosa”音频处理库难以直接读取“mp3”格式的音频数据，须要调用“ffmpeg”后端读取音频文件所致。</p>
+<p>具体缘由可分为以下两点</p>
+<p>接出来将给出ffmpeg工具的完整安装配置过程，可依据环境中已有的配置情况选择性的完成以下步骤。</p>
+<p>3.1安装ffmpeg</p>
+<p>3.1.1安装wget(可选)</p>
+<p>(ubuntu环境下须要使用wget工具下载ffmpeg的源码安装包，因此首先须要下载安装wget工具（注：也可以在其他环境中下载ffmpeg的源码安装包，并将其上传到目标环境中即可) 。</p>
+<pre tabindex="0"><code>apt-get install -y wget
+</code></pre><p>3.1.2安装ffmpeg</p>
+<p>1.下载并解压安装包</p>
+<p>命令行执行以下命令 <strong>linux下载压缩包命令</strong>，下载ffmpeg的源码安装包</p>
+<pre tabindex="0"><code>cd /usr/local/
+wget https://johnvansickle.com/ffmpeg/release-source/ffmpeg-4.1.tar.xz
+</code></pre><p>可能存在难以通过认证检测的情况下载失败，此时按照提示，命令行中加入取消认证检测的选项即可，即执行以下命令</p>
+<pre tabindex="0"><code>wget --no-check-certificate https://johnvansickle.com/ffmpeg/release-source/ffmpeg-4.1.tar.xz
+</code></pre><p>(下载完成后，当前目录（/usr/local/) 下应当存在“ffmpeg-4.1.tar.xz”这个压缩包</p>
+<p>执行以下命令解压安装包</p>
+<pre tabindex="0"><code>tar -xvf ffmpeg-4.1.tar.xz
+</code></pre><p>(解压完成后，当前目录（/usr/local/) 下将存在“ffmpeg-4.1”文件夹</p>
+<p>2.执行安装配置文件。</p>
+<p>(在当前路径（/usr/local/) 下创建“ffmpeg”文件夹，作为ffmpeg工具的安装路径。</p>
+<pre tabindex="0"><code>mkdir ffmpeg
+</code></pre><p>步入源码包，“config”程序，完成ffmpeg的安装配置。</p>
+<pre tabindex="0"><code>cd ffmpeg-4.1
+./configure --enable-shared --prefix=/usr/local/ffmpeg  # --prefix选项指出ffmpeg的安装路径
+</code></pre><p>出现以下结果说明配置程序早已执行成功。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_3.png" alt="linux下载压缩包命令_linux压缩命令zip命令_linux解压压缩tar包命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_4.png" alt="linux解压压缩tar包命令_linux下载压缩包命令_linux压缩命令zip命令"></p>
+<p>注：执行config程序时，可能会报“nasm/yasmnotfounortooold.Use…”的错，此时须要先安装yams，之后再重新执行配置程序</p>
+<p>安装yasm的命令：</p>
+<pre tabindex="0"><code>apt-get install yasm
+</code></pre><p>3.执行编译&amp;安装指令</p>
+<p>执行以下命令，完成ffmpeg程序的编译和安装</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/06/1685736958329_5.png" alt="linux解压压缩tar包命令_linux下载压缩包命令_linux压缩命令zip命令"></p>
+<p>安装完成后，在配置手指出的安装路径(–prefix=/usr/local/ffmpeg)下存在以下内容，则说明ffmpeg安装成功。</p>
+<p>3.2配置环境变量</p>
+<p>1.更改环境变量</p>
+<p>将ffmpeg的绝对路径添加到PATH环境变量中，以让系统能找到ffmpeg的安装路径。</p>
+<pre tabindex="0"><code>vim ~/.bashrc  # 打开系统环境变量配置文件
+</code></pre><p>在文件中添以下内容。</p>
+<pre tabindex="0"><code>export PATH=&#34;/usr/local/ffmpeg/bin:${PATH}&#34;
+export LD_LIBRARY_PATH=&#34;/usr/local/ffmpeg/lib:{LD_LIBRARY_PATH}&#34;
+</code></pre><p>2.未能打开共享库文件</p>
+<p>命令行使用“ffmpeg-h”或“/usr/local/ffmpeg/binffmpeg-h”命令检查ffmpeg安装情况时，出现以下内容。</p>
+<p>“errorwhileloadingsharedlibraries:libavdevice.so.58:cannotopensharedobjectfileordirectory”</p>
+<p>这是因为系统找不到ffmpeg的共享库所致。</p>
+<p>在“/etc/ld.so.conf.d/”路径下创建文件“ffmpeg.conf”文件adobe air linux，在该文件中写入“/usr/local/ffmpeg/lib”</p>
+<pre tabindex="0"><code>vim /etc/ld.so.conf.d/ffmpeg.conf   # 编辑文件，添加内容“/usr/local/ffmpeg/lib”后保存退出
+cat /etc/ld.so.conf.d/ffmpeg.conf   # 查看ffmpeg.conf中的内容
+ldonfig        # 执行ldconfig命令，使/etc/ld.so.conf.d/目录下新加入的配置信息生效
+</code></pre><p>3.测试是否配置成功</p>
+<p>命令行输入“whichffmpeg”或“ffmpeg-h”，出现以下内容，说明ffmpeg早已完全安装配置成功。</p>
+<p>3.3更改库文件中的前端调用指令</p>
+<p>若完成以上配置后，仍报错“audioread.exceptions.NoBackendError”，考虑以下解决方法。</p>
+<p>找到“ffdec.py”所在的位置，打开并编辑该文件，对第33行的内容做如下更改。</p>
+<p>将COMMAND=(‘ffmpeg’,‘avconv’)改为COMMAND=(’/usr/local/ffmpeg/bin/ffmpeg’,‘avconv’)</p>
+<p>附言</p>
+<p>说明：</p>
+<p>依据不同环境的已有配置不同，可能遇见的问题会有所不同。即，以上问题可能不会都碰到 <strong>linux下载压缩包命令</strong>，也可能会碰到以上没有列举的问题，若碰到以上未提到的问题，可依照报错信息在搜索引擎中查找解决方案。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

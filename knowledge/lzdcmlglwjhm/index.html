@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux中的chmod命令管理文件和目录的所有权决定</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux中的chmod命令管理文件和目录的所有权决定" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684872387391_0.jpg" />
+  <meta name="twitter:description"content="Linux中的chmod命令管理文件和目录的所有权决定">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux中的chmod命令管理文件和目录的所有权决定" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684872387391_0.jpg" />
+  <meta property="og:description"content="Linux中的chmod命令管理文件和目录的所有权决定" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/05/1684872387391_0.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux中的chmod命令管理文件和目录的所有权决定" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lzdcmlglwjhm/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux中的chmod命令管理文件和目录的所有权决定" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux中的chmod命令管理文件和目录的所有权决定</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1684872387391_0.jpg" alt="红帽子linux更改修改主机名命令_linux 更改文件夹权限_linux更改权限命令"></p>
+<p>来自：Linux迷</p>
+<p>Linux中的Chmod命令用于修改或分配文件和目录的权限。在Linux/Unix系统中，文件和目录的可访问性是由文件所有权和权限决定的。在上一篇文章中 <strong>linux更改权限命令</strong>，我们了解了怎样使用chown命令管理文件和目录的所有权。在本教程中，我们将介绍chmod命令。</p>
+<p>chmod命令(changemode的简写)用于管理文件和目录权限，并确定谁可以访问它们。如今让我们深入了解文件和目录权限的本质，以及怎样更改它们。</p>
+<p>Linux权限</p>
+<p>为了更好地理解chmod命令是怎样工作的，我们该慎重地研究Linux文件权限模型。</p>
+<p>(在Linux中，我们具有3种类型的文件权限：读（r) ，写（w）和执行（x）权限。这种权限确定什么用户可以读取，写入或执行文件。您可以使用文本或八补码（数字）表示法来分配这种权限，我们将在本教程前面讨论。</p>
+<p>(文件和目录可以属于文件（u) ，组（g）或其他（o）的所有者</p>
+<p>(使用ls-l命令以长格式的方式查看当前目录下所有可见文件的详尽属性。该-l标志列举文件的权限。权限分为三组：用户（user) 组（group）和其他（others）。</p>
+<p>为了更好地理解文件权限，我们将列举目录的内容，如下所示：</p>
+<pre tabindex="0"><code>linuxmi@linuxmi:~/www.linuxmi.com$ ls -l
+</code></pre><p>(从上端开始，个字符/符号表示文件类型。一个连字符（-) ，表示该文件是一个普通文件。符号d表示它是目录。符号l表示它是符号链接。</p>
+<p>(其余的9个字符分成3个三元组，每位三元组带有三个符号r（read) ，w（write）和x（execute）。如前所述，部份指向所有者权限，第二部份指示组权限，后一部份指定其他用户对该文件或目录具有的权限。</p>
+<p>从输出中，我们可以看见我们有4个文件和2个目录。</p>
+<p>让我们查看下个文件</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/05/1684872387391_1.png" alt="红帽子linux更改修改主机名命令_linux 更改文件夹权限_linux更改权限命令"></p>
+<pre tabindex="0"><code>-rw-rw-r-- 1 linuxmi linuxmi 1087 10月 3 20:23 linuxmi.com.cpp
+</code></pre><p>对于个文件，-rw-rw-r–权限表示该文件的所有者具有读取和写入权限，该组还具有读取和写入权限，而其他用户仅具有读取权限。</p>
+<p>再瞧瞧目录的权限：</p>
+<pre tabindex="0"><code>drwxrwxr-x 3 linuxmi linuxmi 4096 10月 12 13:31 Linux迷
+</code></pre><p>(我们可以看见目录和组的所有者拥有所有权限（读取，写入和执行) ，而其他用户仅具有读取和执行权限。</p>
+<p>在三重连字符符号-表示没有权限已被授予该文件，小组或其他用户的所有者。</p>
+<p>使用chmod命令设置文件和目录权限</p>
+<p>在查看了文件权限以及怎样查看它们以后，我们不再关注怎么更改那些权限。</p>
+<p>(Linux中的chmod命令用于使用文本（符号) 或数字（八补码）表示法修改文件和目录权限。它采用以下句型：</p>
+<p>$chmod[选项]模式文件名</p>
+<p>只有root用户或具有sudo特权的普通用户能够修改文件或目录权限。您可以在命令句型中传递多个文件或目录，并用空格分隔。</p>
+<p>如今让我们深入研究并查看chmod命令的不同示例。</p>
+<p>(示例1) 使用数字符号分配权限</p>
+<p>使用数字式样/符号设置权限时，请使用以下句型：</p>
+<pre tabindex="0"><code>$ sudo chmod [选项]数字值文件名
+</code></pre><p>数值可以为3或4个数字。而且，在大多数情况下，使用3个数字。读取，写入和执行权限采用以下值：</p>
+<p>权限值的总和，即在三个段中的每一个中的读取，写入和执行，都占给定文件或目录的完整权限。</p>
+<p>这是哪些意思？</p>
+<p>假定所有者具有读取，写入和执行权限，该组具有读取和执行权限，而其他用户仅具有读取权限，可以将其细分如下：</p>
+<pre tabindex="0"><code>u：rwx = 7
+g：rx = 5
+o：r– = 4
+</code></pre><p>因而，我们得到的值为754，作为给定文件的文件权限的数值。</p>
+<p>要将读取，写入和执行权限分配给所有者，而仅将读取权限分配给组和其他用户，请运行以下命令：</p>
+<pre tabindex="0"><code>$ chmod 744 www.linuxmi.com.txt
+</code></pre><p>要将所有权限分配给文件的所有者，请对该组读取和执行权限，而对其他用户则完全没有权限，请执行：</p>
+<pre tabindex="0"><code>$ chmod 750 www.linuxmi.com.txt
+</code></pre><p>要将所有权限分配给文件的所有者，请对该组具有读写权限，其他用户请运行以下命令：</p>
+<pre tabindex="0"><code>$ chmod 755 linuxmi.txt
+</code></pre><p>(示例2) 递归分配目录权限</p>
+<p>为目录分配权限时，请使用-R标志以递归方法为其目录和子文件夹分配权限。诸如：</p>
+<p>$chmod755-R目录名</p>
+<pre tabindex="0"><code>$ chmod 755 -R /home/linuxmi/linux
+</code></pre><p>(示例3) 使用文本表示法指定权限</p>
+<p>(分配权限的另一种方式是使用文本表示法。在此方式中，chmod命令采用标志或符号，这种标志或符号代表句型中的所有者，组，其他或所有用户（u，g和o) 。</p>
+<p>该方式不像先前的方式那样简单明了，应注意防止分配错误的权限。</p>
+<p>这是句型的样子</p>
+<pre tabindex="0"><code>$ chmod [选项] [ugoa] [– + =] [r，w，x]文件
+</code></pre><p>让我们分解一下。</p>
+<p>组参数[ugoa]指定权限将修改的用户类别</p>
+<p>假如省略了这个集合，这么默认选项是a选项。</p>
+<p>第二组选项–操作员选项[–+=]–确定是要添加权限还是要从用户类别中删掉权限。选项删掉</p>
+<p>(示例4) 为文件分配读取权限</p>
+<p>$chmodo=r文件名</p>
+<p>里面的命令仅将用符号“o”表示的其他用户分配给该文件的读取权限，并删掉原本分配给’others’段的权限。取得具有以下权限的linuxmi.txt</p>
+<pre tabindex="0"><code>linuxmi@linuxmi:~/www.linuxmi.com$ ls -l linuxmi.txt
+-rwxrwxr-x 1 linuxmi linuxmi 1087 10月 3 20:23 linuxmi.txt
+</code></pre><p>分配“others(o)”段的读权限，请仅运行</p>
+<pre tabindex="0"><code>linuxmi@linuxmi:~/www.linuxmi.com$ sudo chmod o=r linuxmi.txt
+[sudo] linuxmi 的密码：
+linuxmi@linuxmi:~/www.linuxmi.com$ ls -l linuxmi.txt
+-rwxrwxr-- 1 linuxmi linuxmi 1087 10月 3 20:23 linuxmi.txt
+</code></pre><p>从输出中，我们可以见到已为“others”段分配了读取权限，而同时又丧失了执行权限。这意味着=运算符将分配新的权限，而同时会删掉曾经的权限。</p>
+<p>(示例5) 向文件和组所有者分配执行权限</p>
+<pre tabindex="0"><code>linuxmi@linuxmi:~/www.linuxmi.com$ sudo chmod ug+x linuxmi.txt
+linuxmi@linuxmi:~/www.linuxmi.com$ ls -l linuxmi.txt
+-rwxrwxr-- 1 linuxmi linuxmi 1087 10月 3 20:23 linuxmi.txt
+</code></pre><p>里面的命令将执行权限添加到文件的所有者和组。使用我们的文件，它将弄成：</p>
+<p>(示例6) 为文件，组和其他分配不同的权限</p>
+<p>sudochmodu=rwx,g=rw,o=rfilename</p>
+<p>里面的命令将所有权限分配给文件的所有者，将读写权限分配给组linux标准教程，仅将读取权限授予其他用户。</p>
+<p>注意：假如在=运算符以后未指定任何权限，则将删掉该用户段中的所有权限。</p>
+<p>(示例7) 删掉其他用户的所有权限</p>
+<p>$sudochmodo=filename</p>
+<p>sudochmodo=linuxmi.txt</p>
+<p>$sudochmodo-rwxlinuxmi.txt</p>
+<p>里面的命令从“其他”用户段中删掉指定文件的所有权限。</p>
+<p>该命令与以下命令具有相同的作用：</p>
+<p>$sudochmodo-rwxfilename</p>
+<pre tabindex="0"><code>linuxmi@linuxmi:~/www.linuxmi.com$ sudo chmod o= linuxmi.txt
+linuxmi@linuxmi:~/www.linuxmi.com$ ls -l linuxmi.txt
+-rwxrw---- 1 linuxmi linuxmi 1087 10月 3 20:23 linuxmi.txt
+linuxmi@linuxmi:~/www.linuxmi.com$ sudo chmod o-rwx linuxmi.txt
+linuxmi@linuxmi:~/www.linuxmi.com$ ls -l linuxmi.txt
+-rwxrw---- 1 linuxmi linuxmi 1087 10月 3 20:23 linuxmi.txt
+</code></pre><p>(示例8) 使用模板文件分配权限</p>
+<p>分配文件权限的另一种方便方式是使用参考文件。在此方式中，您使用&ndash;reference=选项将文件的权限设置为与另一个参考文件的权限相同。使用以下句型</p>
+<pre tabindex="0"><code>$ sudo chmod –reference=ref_file filename
+</code></pre><p>比如，要将linuxmi.txt的文件权限设置为与的权限相同，请运行以下命令：</p>
+<pre tabindex="0"><code>$ sudo chmod --reference=www.linuxmi.com.py linuxmi.txt
+</code></pre><p>模板文件是，将linuxmi.txt修改为模板文件相同的权限。</p>
+<p>(示例9) 仅将执行权限分配给目录</p>
+<p>假定我们有一个包含文件和子目录的目录linux解压命令，但是我们希望仅对目录分配执行权限，而不接触文件。因而，这可以通过使用以下chmod命令来实现 <strong>linux更改权限命令</strong>，</p>
+<pre tabindex="0"><code>$ chmod a+X *
+</code></pre><p>倘若您早已注意到，我们早已使用小写的X作为执行权限，以上命令将在当前工作目录的所有目录上设置执行权限。</p>
+<p>总结</p>
+<p>这个话题暂时到此结束。我们查看了chmod命令，并了解了可以使用该命令修改文件权限的各类示例。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

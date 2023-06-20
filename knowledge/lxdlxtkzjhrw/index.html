@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>Linux下的linux系统控制计划任务的命令:crontab命令</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="Linux下的linux系统控制计划任务的命令:crontab命令" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1679177049972_1.jpg" />
+  <meta name="twitter:description"content="Linux下的linux系统控制计划任务的命令:crontab命令">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="Linux下的linux系统控制计划任务的命令:crontab命令" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1679177049972_1.jpg" />
+  <meta property="og:description"content="Linux下的linux系统控制计划任务的命令:crontab命令" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/03/1679177049972_1.jpg" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="Linux下的linux系统控制计划任务的命令:crontab命令" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/lxdlxtkzjhrw/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="Linux下的linux系统控制计划任务的命令:crontab命令" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">Linux下的linux系统控制计划任务的命令:crontab命令</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>linux系统则是由cron(crond)这个系统服务来控制的。Linux系统里面本来就有特别多的计划性工作，因而这个系统服务是默认启动的。另外,因为使用者自己也可以设置计划任务，所以，Linux系统也提供了使用者控制计划任务的命令:crontab命令。</p>
+<p>一、crond简介</p>
+<p>crond是linux下拿来周期性的执行某种任务或等待处理个别风波的一个守护进程，与windows下的计划任务类似，当安装完成操作系统后，默认会安装此服务工具，而且会手动启动crond进程，crond进程每分钟会定期检测是否有要执行的任务，假如有要执行的任务，则手动执行该任务。</p>
+<p>Linux下的任务调度分为两类，系统任务调度和用户任务调度。</p>
+<p>系统任务调度：系统周期性所要执行的工作，例如写缓存数据到硬碟、日志清除等。在/etc目录下有一个crontab文件，这个就是系统任务调度的配置文件。</p>
+<p>/etc/crontab文件包括下边几行：</p>
+<p>cat/etc/crontab</p>
+<p>SHELL=/bin/bash</p>
+<p>PATH=/sbin:/bin:/usr/sbin:/usr/bin</p>
+<p>MAILTO=HOME=/</p>
+<p>#run-parts</p>
+<p>51****rootrun-parts/etc/cron.hourly</p>
+<p>247***rootrun-parts/etc/cron.daily</p>
+<p>224**0rootrun-parts/etc/cron.weekly</p>
+<p>4241**rootrun-parts/etc/cron.monthly</p>
+<p>前四行是拿来配置crond任务运行的环境变量linux命令tar，第一行SHELL变量指定了系统要使用那个shell，这儿是bash，第二行PATH变量指定了系统执行命令的路径，第三行MAILTO变量指定了crond的任务执行信息将通过电子短信发送给root用户，假如MAILTO变量的值为空，则表示不发送任务执行信息给用户，第四行的HOME变量指定了在执行命令或则脚本时使用的主目录。第六至九行表示的涵义将在下个小节详尽述说。这儿不在多说。</p>
+<p>用户任务调度：用户定期要执行的工作，例如用户数据备份、定时电邮提醒等。用户可以使用crontab工具来订制自己的计划任务。所有用户定义的crontab文件都被保存在/var/spool/cron目录中。其文件名与用户名一致。</p>
+<p>使用者权限文件：</p>
+<p>文件：</p>
+<p>/etc/cron.deny</p>
+<p>说明：</p>
+<p>该文件中所列用户不容许使用crontab命令</p>
+<p>文件：</p>
+<p>/etc/cron.allow</p>
+<p>说明：</p>
+<p>该文件中所列用户准许使用crontab命令</p>
+<p>文件：</p>
+<p>/var/spool/cron/</p>
+<p>说明：</p>
+<p>所有用户crontab文件储存的目录,以用户名命名</p>
+<p>crontab文件的涵义：</p>
+<p>用户所构建的crontab文件中 <strong>linux定时任务命令</strong>，每一行都代表一项任务，每行的每位数组代表一项设置，它的格式共分为六个数组，前五段是时间设定段，第六段是要执行的命令段，格式如下：</p>
+<p>minutehourdaymonthweekcommand</p>
+<p>其中：</p>
+<p>minute：表示分钟，可以是从0到59之间的任何整数。</p>
+<p>hour：表示小时，可以是从0到23之间的任何整数。</p>
+<p>day：表示日期，可以是从1到31之间的任何整数。</p>
+<p>month：表示月份，可以是从1到12之间的任何整数。</p>
+<p>week：表示礼拜几，可以是从0到7之间的任何整数，这儿的0或7代表礼拜日。</p>
+<p>command：要执行的命令，可以是系统命令，也可以是自己编撰的脚本文件。</p>
+<p>在以上各个数组中，还可以使用以下特殊字符：</p>
+<p>(星号（*) ：代表所有可能的值，比如month数组若果是星号，则表示在满足其它数组的阻碍条件后每月都执行该命令操作。</p>
+<p>(冒号（,) ：可以用冒号隔开的值指定一个列表范围，比如，“1,2,5,7,8,9”</p>
+<p>(中杠（-) ：可以用整数之间的中杠表示一个整数范围，比如“2-6”表示“2,3,4,5,6”</p>
+<p>(正斜线（/) ：可以用正斜线指定时间的间隔频度，比如“0-23/2”表示每两小时执行一次。同时正斜线可以和星号一起使用，比如*/10，假如用在minute数组，表示每十分钟执行一次。</p>
+<p>二、crond服务</p>
+<p>安装crontab：</p>
+<p>yuminstallcrontabs</p>
+<p>服务操作说明：</p>
+<p>/sbin/servicecrondstart//启动服务</p>
+<p>/sbin/servicecrondstop//关掉服务</p>
+<p>/sbin/servicecrondrestart//重启服务</p>
+<p>/sbin/servicecrondreload//重新载入配置</p>
+<p>/sbin/servicecrondstatus//启动服务</p>
+<p>查看crontab服务是否已设置为开机启动，执行命令：</p>
+<p>ntsysv</p>
+<p>加入开机手动启动：</p>
+<p>chkconfig–level35crondon</p>
+<p>三、crontab命令解读</p>
+<p>1．命令格式：</p>
+<p>crontab[-uuser]file</p>
+<p>crontab[-uuser][-e|-l|-r]</p>
+<p>2．命令功能：</p>
+<p>通过crontab命令，我们可以在固定的间隔时间执行指定的系统指令或shellscript脚本。时间间隔的单位可以是分钟、小时、日、月、周及以上的任意组合。这个命令特别设合周期性的日志剖析或数据备份等工作。</p>
+<p>3．命令参数：</p>
+<p>-uuser：拿来设定某个用户的crontab服务，比如，“-uixdba”表示设定ixdba用户的crontab服务，此参数通常有root用户来运行。</p>
+<p>(file：file是命令文件的名子,表示将file做为crontab的任务列表文件并载入crontab。假如在命令行中没有指定这个文件，crontab命令将接受标准输入（鼠标) 上键入的命令，并将它们载入crontab。</p>
+<p>-e：编辑某个用户的crontab文件内容。假如不指定用户，则表示编辑当前用户的crontab文件。</p>
+<p>-l：显示某个用户的crontab文件内容，倘若不指定用户 <strong>linux定时任务命令</strong>，则表示显示当前用户的crontab文件内容。</p>
+<p>-r：从/var/spool/cron目录中删掉某个用户的crontab文件，假若不指定用户，则默认删掉当前用户的crontab文件。</p>
+<p>-i：在删掉用户的crontab文件时给确认提示。</p>
+<p>4．常用方式：</p>
+<p>1).创建一个新的crontab文件</p>
+<p>在考虑向cron进程递交一个crontab文件之前，首先要做的一件事情就是设置环境变量EDITOR。cron进程按照它来确定使用那个编辑器编辑crontab文件。99%的UNIX和LINUX用户都使用vi，假如你也是这样，这么你就编辑$HOME目录下的.profile文件，在其中加入这样一行：</p>
+<p>EDITOR=vi;exportEDITOR</p>
+<p>之后保存并退出。不妨创建一个名为cron的文件，其中是用户名，比如，davecron。在该文件中加入如下的内容。</p>
+<p>#putyourowninitialshere)echothedatetotheconsoleevery</p>
+<p>#15minutesbetween6pmand6am</p>
+<p>0,15,30,4518-06***/bin/echo‘date’&gt;/dev/console</p>
+<p>保存并退出。确信后面5个域用空格分隔。</p>
+<p>在前面的事例中，系统将每隔15分钟向控制台输出一次当前时间。若果系统崩溃或挂起，从最后所显示的时间就可以一眼看出系统是哪些时间停止工作的。在有些系统中，用tty1来表示控制台，可以按照实际情况对里面的事例进行相应的更改。为了递交你刚才创建的crontab文件，可以把这个新创建的文件作为cron命令的参数：</p>
+<p>$crontabdavecron</p>
+<p>如今该文件早已递交给cron进程，它将每隔15分钟运行一次。</p>
+<p>同时，新创建文件的一个副本早已被置于/var/spool/cron目录中，文件名就是用户名(即dave)。</p>
+<p>2).列举crontab文件</p>
+<p>为了列举crontab文件，可以用：</p>
+<p>$crontab-l</p>
+<p>0,15,30,45,18-06***/bin/echo<code>date</code>&gt;dev/tty1</p>
+<p>你将会看见和前面类似的内容。可以使用这些方式在$HOME目录中对crontab文件做一备份：</p>
+<p>$crontab-l&gt;$HOME/mycron</p>
+<p>这样，一旦不留神删掉了crontab文件，可以用上一节所述说的方式迅速恢复。</p>
+<p>3).编辑crontab文件</p>
+<p>假如希望添加、删除或编辑crontab文件中的条目，而EDITOR环境变量又设置为vi，这么就可以用vi来编辑crontab文件，相应的命令为：</p>
+<p>$crontab-e</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1679177049972_1.jpg" alt="linux中at命令重启命令_linux定时任务命令_linux命令中的head命令"></p>
+<p>可以像使用vi编辑其他任何文件那样更改crontab文件并退出。假如更改了个别条目或添加了新的条目，这么在保存该文件时，cron会对其进行必要的完整性检测。倘若其中的某个域出现了超出容许范围的值，它会提示你。</p>
+<p>我们在编辑crontab文件时，没准会加入新的条目。诸如，加入下边的一条：</p>
+<p>#DT:deletecorefiles,at3.30amon1,7,14,21,26,26daysofeachmonth</p>
+<p>3031,7,14,21,26**/bin/find-name“core’-execrm{};</p>
+<p>如今保存并退出。最好在crontab文件的每一个条目之上加入一条注释，这样就可以晓得它的功能、运行时间，更为重要的是，晓得这是哪位用户的作业。</p>
+<p>如今让我们使用上面讲过的crontab-l命令列举它的全部信息：</p>
+<p>$crontab-l</p>
+<p>#crondaveinstalledonTueMay413:07:431999)</p>
+<p>#DT:echthedatetotheconsoleevery30minites</p>
+<p>0,15,30,4518-06***/bin/echo<code>date</code>&gt;/dev/tty1</p>
+<p>#DT:deletecorefiles,at3.30amon1,7,14,21,26,26daysofeachmonth</p>
+<p>3031,7,14,21,26**/bin/find-name“core’-execrm{};</p>
+<p>4).删掉crontab文件</p>
+<p>要删掉crontab文件，可以用：</p>
+<p>$crontab-r</p>
+<p>5).恢复遗失的crontab文件</p>
+<p>若果不留神删掉了crontab文件，假定你在自己的$HOME目录下还有一个备份，这么可以将其拷贝到/var/spool/cron/，其中是用户名。若果因为权限问题未能完成拷贝，可以用：</p>
+<p>$crontab</p>
+<p>其中，是你在$HOME目录中副本的文件名。</p>
+<p>(我建议你在自己的$HOME目录中保存一个该文件的副本。我就有过类似的经历，有数次删掉了crontab文件（由于r键紧挨在e键的左侧) 。这就是为何有些系统文档建议不要直接编辑crontab文件，而是编辑该文件的一个副本，之后重新递交新的文件。</p>
+<p>有些crontab的变体有些古怪，所以在使用crontab命令时要分外当心。假如遗漏了任何选项，crontab可能会打开一个空文件，或则看上去像是个空文件。这时敲delete键退出，不要按，否则你将遗失crontab文件。</p>
+<p>5．使用实例</p>
+<p>实例1：每1分钟执行一次command</p>
+<p>命令：</p>
+<p>*****command</p>
+<p>实例2：每小时的第3和第15分钟执行</p>
+<p>命令：</p>
+<p>3,15****command</p>
+<p>实例3：在下午8点到11点的第3和第15分钟执行</p>
+<p>命令：</p>
+<p>3,158-11***command</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/03/1679177049972_2.png" alt="linux中at命令重启命令_linux定时任务命令_linux命令中的head命令"></p>
+<p>实例4：每隔七天的早上8点到11点的第3和第15分钟执行</p>
+<p>命令：</p>
+<p>3,158-11*/2**command</p>
+<p>实例5：每位礼拜一的早上8点到11点的第3和第15分钟执行</p>
+<p>命令：</p>
+<p>3,158-11**1command</p>
+<p>实例6：晚上的21:30重启smb</p>
+<p>命令：</p>
+<p>3021***/etc/init.d/smbrestart</p>
+<p>实例7：每月1、10、22日的4:45重启smb</p>
+<p>命令：</p>
+<p>4541,10,22**/etc/init.d/smbrestart</p>
+<p>实例8：每周六、周日的1:10重启smb</p>
+<p>命令：</p>
+<p>101**6,0/etc/init.d/smbrestart</p>
+<p>实例9：每晚18:00至23:00之间每隔30分钟重启smb</p>
+<p>命令：</p>
+<p>0,3018-23***/etc/init.d/smbrestart</p>
+<p>实例10：每礼拜六的下午11:00pm重启smb</p>
+<p>命令：</p>
+<p>023**6/etc/init.d/smbrestart</p>
+<p>实例11：每一小时重启smb</p>
+<p>命令：</p>
+<p><strong>/1</strong>*/etc/init.d/smbrestart</p>
+<p>实例12：早上11点到晚上7点之间，每隔一小时重启smb</p>
+<p>命令：</p>
+<p><em>23-7/1</em>**/etc/init.d/smbrestart</p>
+<p>实例13：每月的4号与每周一到周五的11点重启smb</p>
+<p>命令：</p>
+<p>0114*mon-wed/etc/init.d/smbrestart</p>
+<p>实例14：十月一号的4点重启smb</p>
+<p>命令：</p>
+<p>041jan*/etc/init.d/smbrestart</p>
+<p>实例15：每小时执行/etc/cron.hourly目录内的脚本</p>
+<p>命令：</p>
+<p>01****rootrun-parts/etc/cron.hourly</p>
+<p>说明：</p>
+<p>run-parts这个参数了，若果除去这个参数的话，前面就可以写要运行的某个脚本名，而不是目录名了</p>
+<p>四、使用注意事项</p>
+<p>注意环境变量问题</p>
+<p>有时我们创建了一个crontab，而且这个任务却难以手动执行，而自动执行这个任务却没有问题，这些情况通常是因为在crontab文件中没有配置环境变量导致的。</p>
+<p>在crontab文件中定义多个调度任务时，须要非常注意的一个问题就是环境变量的设置，由于我们自动执行某个任务时，是在当前shell环境下进行的，程序其实能找到环境变量，而系统手动执行任务调度时，是不会加载任何环境变量的，为此，就须要在crontab文件手指定任务运行所需的所有环境变量，这样，系统执行任务调度时就没有问题了。</p>
+<p>不要假设cron晓得所须要的特殊环境，它似乎并不晓得。所以你要保证在shelll脚本中提供所有必要的路径和环境变量，不仅一些手动设置的全局变量。所以注意如下3点：</p>
+<p>(1) 脚本中涉及文件路径时写全局路径；</p>
+<p>(2) 脚本执行要用到java或其他环境变量时，通过source命令引入环境变量，如：</p>
+<p>catstart_cbp.sh</p>
+<p>#!/bin/sh</p>
+<p>source/etc/profile</p>
+<p>exportRUN_CONF=/home/d139/conf/platform/cbp/cbp_jboss.conf</p>
+<p>/usr/local/jboss-4.0.5/bin/run.sh-cmev&amp;</p>
+<p>(3) 当自动执行脚本OK，然而crontab死活不执行时。这时必须大胆怀疑是环境变量惹的祸linux 删除文件，并可以尝试在crontab中直接引入环境变量解决问题。如：</p>
+<p>0****./etc/profile;/bin/sh/var/www/java/audit_no_count/bin/restart_audit.sh</p>
+<p>注意清除系统用户的电邮日志</p>
+<p>每条任务调度执行完毕，系统就会将任务输出信息通过电子电邮的方式发送给当前系统用户，这样日积月累，日志信息会特别大，可能会影响系统的正常运行，因而，将每条任务进行重定向处理十分重要。</p>
+<p>比如，可以在crontab文件中设置如下方式，忽视日志输出：</p>
+<p>0*/3***/usr/local/apache2/apachectlrestart&gt;/dev/null2&gt;&amp;1</p>
+<p>“/dev/null2&gt;&amp;1”表示先将标准输出重定向到/dev/null，之后将标准错误重定向到标准输出，因为标准输出早已重定向到了/dev/null，因而标准错误也会重定向到/dev/null，这样日志输出问题就解决了。</p>
+<p>系统级任务调度与用户级任务调度</p>
+<p>(系统级任务调度主要完成系统的一些维护操作，用户级任务调度主要完成用户自定义的一些任务，可以将用户级任务调度放在系统级任务调度来完成（不建议如此做) ，并且反过来却不行，root用户的任务调度操作可以通过“crontab–uroot–e”来设置，也可以将调度任务直接写入/etc/crontab文件，须要注意的是，假如要定义一个定时重启系统的任务，就必须将任务放在/etc/crontab文件，虽然在root用户下创建一个定时重启系统的任务也是无效的。</p>
+<p>其他注意事项</p>
+<p>新创建的cronjob，不会马上执行，起码要过2分钟才执行。假如重启cron则马上执行。</p>
+<p>当crontab忽然失效时，可以尝试/etc/init.d/crondrestart解决问题。或则查看日志看某个job有没有执行/报错tail-f/var/log/cron。</p>
+<p>(千万别乱运行crontab-r。它从Crontab目录（/var/spool/cron) 中删掉用户的Crontab文件。删掉了该用户的所有crontab都没了。</p>
+<p>在crontab中%是有特殊涵义的，表示换行的意思。假如要用的话必须进行通配符%，如常常用的date‘+%Y%m%d’在crontab里是不会执行的，应当换成date‘+%Y%m%d’。</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+

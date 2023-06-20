@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" /> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width" /> 
+  <meta name="format-detection" content="telephone=no" /> 
+  <title>目录1.概念2.为啥要分区3.磁盘的结构</title> 
+  <meta name="robots" content="max-image-preview:large" /> 
+  <meta name="description" content="目录1.概念2.为啥要分区3.磁盘的结构" /> 
+  <meta name="keywords" content="" /> 
+  <meta name="thumbnail" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_0.png" />
+  <meta name="twitter:description"content="目录1.概念2.为啥要分区3.磁盘的结构">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="">
+  <meta name="twitter:title" content="目录1.概念2.为啥要分区3.磁盘的结构" />
+  <meta name="twitter:image:src" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_0.png" />
+  <meta property="og:description"content="目录1.概念2.为啥要分区3.磁盘的结构" />
+  <meta property="og:keywords" content="" />
+  <meta property="og:image" content="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_0.png" />
+  <meta property="og:version" content="Hugo 0.113.0">
+  <meta property="og:title" content="目录1.概念2.为啥要分区3.磁盘的结构" />
+  <meta property="og:url" content="https://wonima136.github.io/linux-cool/knowledge/mlgnwsyfqcpd/" />
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Linux" />
+  <meta property="og:locale" content="en" />
+  <meta property="og:article:published_time" content=" 2023-06-18 16:22" />
+  <link rel="stylesheet" id="wp-block-library-css" href="/css/style.min.css" type="text/css" media="all" />
+  <link rel="stylesheet" id="htgb-style-css-css" href="/css/blocks.style.build.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/classic-themes.min.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="classic-theme-styles-css" href="/css/inline.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="shortcodes-css-css" href="/css/shortcodes.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-style-css" href="/css/style.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="theme-font-css" href="/css/css.css" type="text/css" media="all" /> 
+  <link rel="stylesheet" id="font-awesome-css" href="/css/font-awesome.min.css" type="text/css" media="all" /> 
+  <script type="text/javascript" src="/js/jquery.min.js" id="jquery-core-js"></script> 
+  <script type="text/javascript" src="/js/jquery-migrate.min.js" id="jquery-migrate-js"></script> 
+  <style type="text/css" id="wp-custom-css">
+		p {line-height: 200%}
+		.entry-content p { text-indent: 2em
+ </style> 
+ </head> 
+ 
+ <body class="home blog wp-embed-responsive"> 
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-dark-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0.49803921568627" />
+      <fefuncg type="table" tablevalues="0 0.49803921568627" />
+      <fefuncb type="table" tablevalues="0 0.49803921568627" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-grayscale">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.54901960784314 0.98823529411765" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.71764705882353 0.25490196078431" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-red">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 1" />
+      <fefuncg type="table" tablevalues="0 0.27843137254902" />
+      <fefuncb type="table" tablevalues="0.5921568627451 0.27843137254902" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-midnight">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0 0" />
+      <fefuncg type="table" tablevalues="0 0.64705882352941" />
+      <fefuncb type="table" tablevalues="0 1" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-magenta-yellow">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.78039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.94901960784314" />
+      <fefuncb type="table" tablevalues="0.35294117647059 0.47058823529412" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-purple-green">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.65098039215686 0.40392156862745" />
+      <fefuncg type="table" tablevalues="0 1" />
+      <fefuncb type="table" tablevalues="0.44705882352941 0.4" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+   <defs>
+    <filter id="wp-duotone-blue-orange">
+     <fecolormatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
+     <fecomponenttransfer color-interpolation-filters="sRGB">
+      <fefuncr type="table" tablevalues="0.098039215686275 1" />
+      <fefuncg type="table" tablevalues="0 0.66274509803922" />
+      <fefuncb type="table" tablevalues="0.84705882352941 0.41960784313725" />
+      <fefunca type="table" tablevalues="1 1" />
+     </fecomponenttransfer>
+     <fecomposite in2="SourceGraphic" operator="in" />
+    </filter>
+   </defs>
+  </svg> 
+   
+  <div id="site-container" class="clearfix"> 
+    
+   <header id="site-header" class="clearfix" role="banner"> 
+    <div class="ht-container"> 
+      
+     <div id="logo"> 
+      <h1> <a title="目录1.概念2.为啥要分区3.磁盘的结构" href="https://wonima136.github.io/linux-cool/">Linux</a> </h1> 
+     </div> 
+     <br /> 
+     <p> </p> 
+      
+    </div> 
+   </header> 
+    
+
+
+
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="get" id="searchform" class="clearfix" action="/search/">
+        <input type="text" onfocus="if (this.value == '请输入一个命令或相关功能') {this.value = '';}" onblur="if (this.value == '')  {this.value = '请输入一个命令或相关功能';}" value="请输入一个命令或相关功能" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>查询</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>
+        
+        <div id="primary" class="sidebar-right clearfix">
+            
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">目录1.概念2.为啥要分区3.磁盘的结构</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="https://wonima136.github.io/linux-cool/">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							<p>(目录1.概念2.为何要分区3.c盘的结构4.c盘的分类4.1IDE硬碟4.2SCSI硬碟4.3SATA硬碟4.4固态硬碟5.c盘分区命名规则6.c盘分区类型及原理6.1MBR（MasterBootRecord) 分区格式6.2GPT（GUIDPartitionTable）分区格式7.c盘分区实操7.1给虚拟机添加一块c盘7.2MBR形式分区实操7.2GPT分区实操（小于2T的c盘分区方式，大于也能用）8.c盘的低格、手动挂载、自动挂载、卸载8.1文件系统的类型8.2低格、手动挂载、自动挂载、卸载实操9.两块c盘空间合二为一，并挂载到同一目录下实现扩容10.c盘的查看命令10.1df指令10.2du指令1.概念</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_0.png" alt="在这里插入图片描述"></p>
+<p>图1.1分区的概念</p>
+<p>如果你有个大木盆要装东西，假如木盆没有界定层，所有东西全部倒入上面，尽管可以装，并且对大木盆的使用就合不合理，导致零乱无章，找寻东西时侯也历时，甚至还有不同物品之间不能储存在一起而引起危险，那更好的做法自然是给大木盆画一下不同的区域，分成不同的层，每位层放不同的东西，即安全，找寻上去也便捷；</p>
+<p>(计算机的c盘（也叫硬碟) 也是这么，为了分辨储存内容的不同，以及快速定位轮询文件，也须要采取分区的方式；</p>
+<p>2.为何要分区</p>
+<p>不论c盘的分区还是数据库表的分区以及其它的分区，核心思想和分区的目的基本都一致，可以概括以下两点缘由；</p>
+<p>数据的安全性隔离：由于每位分区是独立分开的，所以当你须要再现低格或数据重新填充分区A时linux操作系统怎么样，分区B并不会受影响，这就是为什么你Windows重装系统的话，通常只是C盘重新载入新系统数据，而其他的D，E，F盘并不会受影响；</p>
+<p>系统的效率考虑：推动数据轮询的效率，当你只有一块分区时，找数据文件a你得重头找到尾部，而且当你分区了，操作系统会记录文件的绝对路径，你就可以直接从某个分区下去找，大大提高了速率和效率；</p>
+<p>3.c盘的结构</p>
+<p>图3.1c盘的整个组成</p>
+<p>(如图3.1，c盘的主要组成有：主轴（含承轴及电机) ，c盘盘（可能有多个盘），盘片，盘片臂等；主轴（含承轴及电机）负责让c盘盘转上去，盘片负责读取数据，盘片臂负责将盘片接触到c盘盘，当不读取数据时负责将盘片停在盘片停泊区；</p>
+<p>c盘盘结构比较特殊，拿其中一块下来讲解，如图3.2；c盘盘主要有：扇区，簇，扇面，磁道组成；通常的c盘设计是盘片顺着扇区由内圈顺秒针仍然读取到外圈；将每位同心圆切割成一个个小小块，称为磁道,是c盘最小的储存单位！，同心圆的磁道一起组成扇面，而第一个扇面又变得重要些，它记录了整个c盘的重要信息；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_1.png" alt="磁盘不格式化合并分区_linux 格式化分区命令_linux格式化磁盘分区命令"></p>
+<p>(3.2c盘盘组成示意图  刚才说到，通常的c盘不止一块c盘盘，常常有多个，结构如图3.3；为了推动读写速率，也都会有多个磁道（读写头) ，盘片臂；同时多个c盘盘的同一个扇区称为磁柱；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_2.png" alt="在这里插入图片描述"></p>
+<p>3.3多块c盘盘组成示意图4.c盘的分类4.1IDE硬碟</p>
+<p>(目前（20210516) 基本早已淘汰,做个大约了解，IDE即IntegratedDriveElectronics，它的原意是指把控制器与盘体集成在一起的硬碟驱动器，IDE是表示硬碟的传输插口。我们常说的IDE插口，也叫ATA（AdvancedTechnologyAttachment）、PATA插口，如今PC机使用的硬碟大多数都是IDE兼容的，只需用一根线缆将它们与显卡或插口卡连上去就可以了。</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_3.png" alt="在这里插入图片描述"></p>
+<p>图4.1IDE硬碟4.2SCSI硬碟</p>
+<p>SCSI硬碟即采用SCSI插口的硬碟。它因为性能好、稳定性高，因而在服务器上得到广泛应用。同时其价钱也不菲，正因它的价钱高昂，所以在普通PC上甚少看见它的踪迹。SCSI硬碟使用50针插口;</p>
+<p>图4.2SCSI硬碟4.3SATA硬碟</p>
+<p>SATA(SerialATA)口的硬碟又叫并口硬碟，SerialATA采用串行联接形式，串行ATA总线使用嵌入式时钟讯号，具备了更强的纠错能力，与往年相比其最大的区别在于能对传输指令(不仅仅是数据)进行检测，假如发觉错误会手动矫治，这在很大程度上增强了数据传输的可靠性。串行插口还具有结构简单、支持热拔插的优点</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_4.png" alt="在这里插入图片描述"></p>
+<p>图4.3SATA硬碟4.4固态硬碟</p>
+<p>固态硬碟(SolidStateDisk)，通常称之为SSD硬碟 <strong>linux格式化磁盘分区命令</strong>，固态硬碟是用固态电子储存芯片阵列而制成的硬碟，由控制单元和储存单元(FLASH芯片、DRAM芯片)组成。其主要特征是没有传统硬碟的机械结构，读写速率十分快；虽然，严格上来说固态硬碟不能算c盘，由于他靠的储存技术是显存和闪存，但是并没有传统c盘的组成结构，并且因为你们都叫习惯了，就采用了统一的命名；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_5.png" alt="linux格式化磁盘分区命令_磁盘不格式化合并分区_linux 格式化分区命令"></p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_6.png" alt="在这里插入图片描述"></p>
+<p>图4.4固态硬碟5.c盘分区命名规则</p>
+<p>(因为c盘驱动的不同，c盘可以分为IDEc盘和SCSI硬碟，IDE硬碟基本已过时（对Linux服务器而言) ，而之前提到的SATA、USB、SAS等硬碟的插口都是SCSI硬碟，所以这种都总称为SCSI硬碟，是目前Linux服务器的主流 <strong>linux格式化磁盘分区命令</strong>，在Linux系统中c盘设备文件的命名规则为：</p>
+<p>主设备号+次设备号+c盘分区号</p>
+<p>而Linux万物皆文件的个性，硬碟自然是映射再/dev/目录下，IDE硬碟为/dev/hdx~,SCSI硬碟为/dev/sdx~;</p>
+<p>(IDE硬碟hdx~：hd表明为设备类型，这儿指IDE硬碟，x为盘号，值可以为a（基本盘) ，b（基本从属盘），c（辅助主盘），d（辅助从属盘）；~代表分区，前四个分区1-4表示，她们是主分区或则扩充分区，从5开始就是逻辑分区；诸如：第一块盘hda，第二块盘hdb…第一块盘的第一个分区hda1，第二个分区hda2…SCSI硬碟sdx~：sd表明为设备类型，这儿指SCSI硬碟，x为盘号，值可以为a（基本盘），b（基本从属盘），c（辅助主盘），d（辅助从属盘）；~代表分区，前四个分区1-4表示，她们是主分区或则扩充分区，从5开始就是逻辑分区；诸如：第一块盘sda，第二块盘sdb…第一块盘的第一个分区sda1，第二个分区sda2…</p>
+<p>考虑到常用性，以下内容就以SCSI硬碟为主来讲；</p>
+<p>刚才提到的x,那系统是如何辨识sda,sdb,sdc即c盘1，c盘2，c盘3的呢？如在你的PC上，有两个SATAc盘个一个USBc盘，而这两个SATAc盘分别置于SATA1和SATA5插孔上，USBc盘则在USB插口上，那这三块c盘的次序是哪些呢？</p>
+<p>虽然，c盘的次序是靠探测到的次序来标示的；</p>
+<p>(SATA1插孔上的为：/dev/sdaSATA2插孔上的为：/dev/sdbUSB（开机完成能够被系统捕捉到) ：/dev/sdc6.c盘分区类型及原理6.1MBR（MasterBootRecord）分区格式</p>
+<p>(初期c盘第一个磁道（521bytes) 上面包含重要的信息MBR（MasterBootRecord），其中446bytes，安装开机管理程序的地方；剩下的64bytes记录硬碟分区的数据，即分区表，大约示意图如图6.1；</p>
+<p>图6.1MBR分区的示意图</p>
+<p>以下的四个分区我们并不能分辨是主分区还是扩充分区，两种都有可能；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_7.jpg" alt="linux格式化磁盘分区命令_磁盘不格式化合并分区_linux 格式化分区命令"></p>
+<p>P1：/dev/sda1P2：/dev/sda2P3：/dev/sda3P4：/dev/sda4</p>
+<p>既然第一个磁道的分区表只能记录四个分区的数据，那自然就想到用额外的磁道来记录分区信息，这就是扩充分区的来历，如图6.2，分区情况应当为；</p>
+<p>图6.2MBR分区扩充分区示意图</p>
+<p>(以上的分区情况为如下，为什么缺乏了/dev/sda3、/dev/sda4呢，缘由就是上面四个号都是预留给主分区和逻辑分区的；P1：/dev/sda1(主分区)P2：/dev/sda2（扩充分区) P3：/dev/sda5（逻辑分区）P4：/dev/sda6（逻辑分区）P5：/dev/sda7（逻辑分区）P6：/dev/sda8（逻辑分区）P7：/dev/sda9（逻辑分区）</p>
+<p>主分区、扩展分区、逻辑分区的总结内容如下；</p>
+<p>主分区primary)P</p>
+<p>1)系统中必需要存在的分区,系统盘选择主分区安装</p>
+<p>2)数字编号只能是1-4.sda1、sda2、sda3、sda4</p>
+<p>3)主分区最多四个,最少一个。</p>
+<p>4)能被单独低格</p>
+<p>扩充分区(extend)E</p>
+<p>1)相当于一个独立的小c盘。独立的分区表,不能独立存在。</p>
+<p>2)有独立的分区表。</p>
+<p>3)不能独立存在,即不能直接储存数据</p>
+<p>4)必须在扩充分区上构建逻辑分区能够储存数据</p>
+<p>5)占用主分区的编号(主分区+扩充分区)之和最多4个</p>
+<p>6)不能被低格</p>
+<p>逻辑分区(1ogic)L</p>
+<p>1)数字编号只能是从5开始</p>
+<p>2)储存于扩充分区之上</p>
+<p>3)储存任意普通数据</p>
+<p>4)能被单独低格</p>
+<p>5)两个独立的逻辑分区可以支持合并成一个新的逻辑分区</p>
+<p>c盘分区方法</p>
+<p>1)1~4个主分区</p>
+<p>2)扩充分区至多能有一个，且2≤扩展分区+主分区≤4</p>
+<p>学习以上内容后，谈谈分区策略，举例如下；</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_8.png" alt="linux 格式化分区命令_磁盘不格式化合并分区_linux格式化磁盘分区命令"></p>
+<p>博主有一块硬碟，假如我想要得到6个分区，用MBR分区格式该如何分配；</p>
+<p>(首先主分区，扩充分区只能有4个，不够呀，那就须要用到扩充分区，可以分配为，P+P+P+E（E内包含3个逻辑分区L) 即，P+P+P+E(L+L+L)；其实也可以P+E(L+L+L+L+L),可以按照个人看法来实现即可</p>
+<p>MBR分区的原理清晰后，其不足的地方也曝露的无疑，由于分区表的容量16bytes有限，一直存在以下不足；</p>
+<p>操作系统未能抓取2.2T以上的c盘容量,个人PC可能目前来说够，而且服务器早已未能满足了；MBR仅有一块分区表，难以实现高可用，一旦被毁坏，很难再搜救恢复；MBR显存放的开机管理程序也只有446bytes，也是未能容纳更多的开机程序代码的；</p>
+<p>你的不努力或则局限，自然就有新星的出现，于是GPT就出现了；</p>
+<p>(6.2GPT（GUIDPartitionTable) 分区格式</p>
+<p>(GPT将c盘界定为一块块的逻辑区块地址（LogicalBlockAddress，简称LBA) 来处理，每位LBA预设计为512bytes，即一个磁道的大小；同时改进MBR之用一块磁道来标示分区表的恶果，GPT使用了前后各34个LBA来标示分区表信息（最后的34各区可以理解为备份，达到高可用），如图6.3；</p>
+<p>LBA的标示是从0开始的，LBA0-34共35块，这儿分别论述下其含意；</p>
+<p>LBA0:包含两部份，一部份是类似MBR的446bytes,储存开机管理程序，第二部份则是储存一个特殊的标记，标示该c盘为GPT格式，而看不懂GPT分区的程序则难以操作该c盘，起到保护作用，放心，目前基本的管理程序都能辨识GPT格式，所以该LBA块实际上与分区信息并无直接关联，这就是为什么不算入34LBA的缘由；LBA1:GPT的表头，记录分区本身的位置与大小，同时记录分区在备份中最后34个LBA中的位置linux系统怎么样，便捷恢复；LBA2-34:共32块LBA，每块LBA记录4笔分区表，共支持4*23=128笔分区；而每位LBA默认为512bytes，则每笔记录用到512/4=128bytes,每笔记录掏出64bytes来记录开始、结束的磁道号码，因而对一个单一分区槽而言，支持的最大容量为264∗512bytes=263∗1Kbytes=233TB=8ZB2^{64}*512bytes=2^{63}*1Kbytes=2^{33}TB=8ZB264∗512bytes=263∗1Kbytes=233TB=8ZB</p>
+<p>注：</p>
+<p>1ZB=230TB1ZB=2^{30}TB1ZB=230TB</p>
+<p><img src="https://www.linuxcool.com/wp-content/uploads/2023/02/1676584890638_9.png" alt="在这里插入图片描述"></p>
+<p>6.3GPT分区示意图</p>
+<p>因而基本上GPT填补了MBR的不足，而且GPT只是分区格式方式不同哈，以SCSI硬碟为例，c盘的命名规则并没有大改；一直是第一块盘sda，第二块盘sdb…第一块盘的第一个分区sda1，第二个分区sda2等，并且GPR去不仅扩充分区的概念，直接分区为主分区和逻辑分区；</p>
+
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                
+
+                
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/nydlmldqcxyj/" rel="bookmark">鸟爷的Linux命令大全：程序员教你掌握各种奥妙！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/mssjypcxhdhz/" rel="bookmark">魔兽世界：硬盘出现坏道后怎么办？</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxglwjzwlysj/" rel="bookmark">高效管理文件，掌握Linux压缩解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxwjglxhlcjw/" rel="bookmark">高效文件管理，学会Linux创建文件夹指令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/gxqdafwqlxbh/" rel="bookmark">高效启动Apache服务器：Linux下必会的命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/fyahdgjamljx/" rel="bookmark">防御ARP黑洞攻击：arp命令解析</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ljdffwqgscyc/" rel="bookmark">连接到FTP服务器格式：从远程主机向本地主机接收文件</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yczmmlrhljxr/" rel="bookmark">远程桌面命令如何连接向日葵远程控制电脑的屏幕？方法</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycfwqdsygswn/" rel="bookmark">远程服务器的使用格式为：-name的自动登录</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/ycsmlnsxdcky/" rel="bookmark">远程screen命令能实现多窗口远程控制的开源服务程序</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/jrvdmlxkyxyx/" rel="bookmark">进入vi的命令新开一行一行</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxygydydpdzm/" rel="bookmark">运行一个预定义的perl“stats”的子目录脚本</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yxlwjbbgsyml/" rel="bookmark">运行Linux文件必备：8个实用命令详解</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/yylmlqspcwlw/" rel="bookmark">运用Linux命令轻松排查网络问题，快速有效解决！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/srwzfwymzsrn/" rel="bookmark">输入网站访问域名再输入你的网站域名安装完毕</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjcktxntlc/" rel="bookmark">轻松解决串口通信难题，Linux串口测试命令助你一臂之力！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjtcqwtlzd/" rel="bookmark">轻松解决Tomcat重启问题：Linux中的Tomcat重启命令</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsjjlxtjywtz/" rel="bookmark">轻松解决Linux下tgz解压问题，掌握解压命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsglfwqzwtml/" rel="bookmark">轻松管理服务器，掌握telnet linux命令！</a> </li>
+							
+							<li class="clearfix format-standard"> <a href="https://wonima136.github.io/linux-cool/knowledge/qsgdlazzwiml/" rel="bookmark">轻松搞定Linux安装，掌握install命令！</a> </li>
+							
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+   <footer id="site-footer" class="clearfix" role="contentinfo"> 
+    <div class="ht-container"> 
+     <style>
+          .flink-class a {
+              line-height: 20px;
+          }
+      </style> 
+     <div class="flink-class" style="max-width: 550px;float: left;margin-top: 30px;margin-left: 30px;">
+      <strong>友情链接：</strong> 
+	  
+      <a href="https://www.linuxpack.net" target="_blank" rel="noopener">Linux软件</a> | 
+	  
+      <a href="https://www.linuxjiaocheng.com" target="_blank" rel="noopener">Linux教程</a> | 
+	  
+      <a href="https://www.bestcentos.com" target="_blank" rel="noopener">CentOS系统</a> | 
+	  
+     </div> 
+	 
+	 
+	 <ul>
+
+
+	 
+	 
+
+	 
+     <small id="copyright">
+
+	 <p style="text-align: center;"><a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">粤ICP备0000000号</a></p>
+
+	 <p style="text-align: center;"><strong>真正好用的Linux命令在线查询手册</strong><a id="dididomian1" style="padding: 0px; margin: 0px; font-family: 'Microsoft yahei', PingFangSC-Regular; color: #ff1122; font-size: 15px; position: relative;" data-tips="关键词已经复制成功，请到您的网站添加吧(#^.^#)" data-clipboard-action="copy" data-clipboard-target="#dididomian1"></a></p>
+	 </small> 
+    </div> 
+   </footer> 
+  </div> 
+  
+  <script src="/js/search.js"></script>
+  <script type="text/javascript" src="/js/ht-glossary-frontend.js" id="htgb-custom-js-js"></script> 
+  <script type="text/javascript" src="/js/script.min.js" id="ht_toc-script-js-js"></script> 
+  <script type="text/javascript" src="/js/shortcodes.js" id="shortcodes-js-js"></script> 
+  <script type="text/javascript" src="/js/functions.js" id="st_theme_custom-js"></script> 
+  <script type="text/javascript" src="/js/livesearch.js" id="st_live_search-js"></script>   
+  
+</body>
+
+</html>
+
+
