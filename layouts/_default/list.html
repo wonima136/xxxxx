@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{{ partial "partials/header.html" . }}
+{{ partial "partials/search.html" . }}
+
+
+<!-- #primary -->
+<div id="primary" class="clearfix sidebar-right">
+    <!-- .ht-container -->
+    <div class="ht-container">
+
+        <!-- #content -->
+        <section id="content" role="main">
+
+
+            <!-- #page-header -->
+            <header id="page-header">
+                <h1 class="page-title">Category: <span>{{ .Title }}</span></h1>
+                <div id="breadcrumbs">
+                    <a href="{{ .Site.BaseURL }}">
+                        <icon class="fa fa-home">
+                            </i>
+                    </a><span class="sep">/</span><a href="{{ .Permalink }}">{{ .Title }}</a> <span class="sep">/</span> </div>
+            </header>
+
+            <!-- /#page-header -->
+
+            <!-- #sub-cats -->
+            <!-- #/sub-cats -->
+
+
+
+            {{ $pages := where .Site.RegularPages "Section" "==" .Section }}
+            {{ range first 10 (sort $pages ".Date" "desc") }}
+
+            <article class="clearfix post type-post status-publish format-standard hentry category-file">
+                <h2 class="entry-title"><a rel="bookmark" href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                <div class="entry-content"><p>{{ .Summary | plainify | truncate 150 | safeHTML }}</p></div>
+                <a href="{{ .Permalink }}" class="readmore" title="{{ .Title }}">Read More<span> &rarr;</span></a>
+            </article>
+            {{ end }}
+			
+			
+            <div class="page-navigation clearfix">
+{{ partial "pagination.html" . }}
+            </div>
+        </section>
+        <aside id="sidebar" role="complementary">
+            <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                <h4 class="widget-title"><span>最热命令</span></h4>
+                <ul class="clearfix">
+                    {{ $pages := .Site.RegularPages }}
+                    {{ range first 20 $pages.ByDate.Reverse }}
+                    <li class="clearfix format-standard"> <a href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a> </li>
+					{{ end }}
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+</div>
+{{ partial "partials/footar.html" . }}
+</body>
+
+</html>

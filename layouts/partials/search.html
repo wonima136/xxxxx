@@ -1,0 +1,23 @@
+<!-- #live-search -->
+{{ with .Site.Params.search }}
+<div id="live-search">
+  <div class="ht-container">
+    <div id="search-wrap">
+      <form role="search" method="{{ .method }}" id="searchform" class="clearfix" action="{{ .url }}">
+        <input type="text" onfocus="if (this.value == '{{ .placeholder }}') {this.value = '';}" onblur="if (this.value == '')  {this.value = '{{ .placeholder }}';}" value="{{ .placeholder }}" name="s" id="s" autocapitalize="off" autocorrect="off" autocomplete="off" />
+        <i class="live-search-loading fa fa-spinner fa-spin"></i>
+        <button type="submit" id="searchsubmit"><i class="fa fa-search"></i><span>{{ .button_text }}</span></button>
+      </form>
+    </div>
+  </div>
+</div>
+{{ end }}
+<script>
+  $(function () {
+    $('#search-form').submit(function (event) {
+      event.preventDefault();
+      var query = $('#search-box').val();
+      search(query);
+    });
+  });
+</script>

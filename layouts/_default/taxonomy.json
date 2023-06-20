@@ -1,0 +1,14 @@
+{
+  "title": "{{ .Title }}",
+  "description": "{{ .Description }}",
+  "taxonomy": "{{ .Kind }}",
+  "terms": [
+    {{- range $index, $element := .Pages -}}
+      {
+        "name": "{{ $element.Title }}",
+        "count": {{ $element.Pages | len }},
+        "url": "{{ $element.Permalink }}"
+      }{{ if lt $index (sub (len $.Pages) 1) }},{{ end }}
+    {{- end -}}
+  ]
+}

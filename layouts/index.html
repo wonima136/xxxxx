@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{{ partial "partials/header.html" . }}
+{{ partial "partials/search.html" . }}
+<div id="primary" class="sidebar-right clearfix">
+    <!-- .ht-container -->
+    <div class="ht-container">
+        <!-- #content -->
+        <section id="content" role="main">
+            <div id="homepage-categories" class="clearfix">
+                <div class="row">
+                    <div class="column col-half 0">
+					{{ $category := index .Site.Params.categories 0 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "file" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="column col-half 1">
+					{{ $category := index .Site.Params.categories 1 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "document" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column col-half 2">
+					{{ $category := index .Site.Params.categories 2 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "system" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="column col-half 3">
+					{{ $category := index .Site.Params.categories 3 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "disk" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column col-half 4">
+					{{ $category := index .Site.Params.categories 4 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "transfer" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="column col-half 5">
+					{{ $category := index .Site.Params.categories 5 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "network" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column col-half 6">
+					{{ $category := index .Site.Params.categories 6 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "device" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="column col-half 7">
+					{{ $category := index .Site.Params.categories 7 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "backup" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column col-half 8">
+					{{ $category := index .Site.Params.categories 8 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "other" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="column col-half 9">
+					{{ $category := index .Site.Params.categories 9 }}
+                        <h3><a href="{{ $category.url }}" title="{{ $category.name }}">{{ $category.name }}</a></h3>
+                        <ul class="category-posts">
+                            {{ $pages := where .Site.RegularPages "Section" "==" "knowledge" }}
+                            {{ range first 10 (sort $pages ".Date" "desc") }}
+                            <li class="format-standard"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- #content -->
+        <!-- #sidebar -->
+        <aside id="sidebar" role="complementary">
+            <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                <h4 class="widget-title"><span>最热命令</span></h4>
+                <ul class="clearfix">
+                    {{ $pages := .Site.RegularPages }}
+                    {{ range first 20 $pages.ByDate.Reverse }}
+                    <li class="clearfix format-standard"> <a href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a> </li>
+					{{ end }}
+                </ul>
+            </div>
+        </aside>
+    </div>
+</div>
+{{ partial "partials/footar.html" . }}
+</body>
+
+</html>

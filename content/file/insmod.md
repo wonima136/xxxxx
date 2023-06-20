@@ -1,0 +1,40 @@
+---
+
+
+
+title: "insmod命令 – 载入模块"
+description: "insmod命令 – 载入模块"
+keywords: "insmod命令 – 载入模块"
+date: "2023-06-18T16:22:52+08:00"
+defaultContentLanguage: "zh"
+author: "Linux"
+twitterSite: ""
+thumbnail: ""
+categories:
+  - Linux
+type: article
+githubURL: "https://www.github.com/"
+ShowToc: true
+TocOpen: true
+
+
+
+---
+
+insmod命令用于将给定的模块加载到内核中。
+
+Linux有许多功能是通过模块的方式，在需要时才载入kernel。如此可使kernel较为精简，进而提高效率，以及保有较大的弹性。这类可载入的模块，通常是设备驱动程序。
+
+**语法格式：** insmod [参数]
+
+**常用参数：**
+
+-f 不检查目前kernel版本与模块编译时的kernel版本是否一致，强制将模块载入-k 将模块设置为自动卸除-m 输出模块的载入信息-o 指定模块的名称，可使用模块文件的文件名-p 测试模块是否能正确地载入kernel-s 将所有信息记录在系统记录文件中-v 执行时显示详细的信息-x 不要汇出模块的外部符号-X 汇出模块所有的外部符号，此为预设置
+
+**参考实例**
+
+加载RAID1阵列级别模块，如下所示：
+
+```
+[root@linuxcool ~]# insmod /lib/modules/2.6.
+```

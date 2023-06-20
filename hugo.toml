@@ -1,0 +1,83 @@
+baseURL = 'https://wonima136.github.io/linux-cool/'
+languageCode = 'zh'
+title = 'Linux'
+min = "0.113.0" # Hugo 版本号
+[params]
+  description = "网站首页的描述"
+  keywords = "网站首页的关键词"
+
+[author]
+name = "啊秀"
+
+[params.search]
+method = "get"
+url = "/search/"
+placeholder = "请输入一个命令或相关功能"
+button_text = "查询"
+
+[markup.goldmark.renderer]
+unsafe = true
+
+minify = false
+
+[outputFormats.HTML]
+  notAlternative = true
+  isHTML = true
+  noUgly = true
+
+[outputs]
+home = ["HTML", "JSON"]
+section = ["HTML", "JSON"]
+taxonomy = ["HTML", "JSON"]
+
+[paginator]
+	paginate = 5
+	permalink = "/page/{{.Paginator.PageNumber}}/"
+
+[params.related_posts]
+count = 3
+heading = "Related Articles"
+
+[[params.categories]]
+  name = "1：文件管理"
+  url = "/linux-cool/file/"
+
+[[params.categories]]
+  name = "2：文档编辑"
+  url = "/linux-cool/document/"
+
+[[params.categories]]
+  name = "3：系统管理"
+  url = "/linux-cool/system/"
+
+[[params.categories]]
+  name = "4：磁盘管理"
+  url = "/linux-cool/disk/"
+
+[[params.categories]]
+  name = "5：文件传输"
+  url = "/linux-cool/transfer/"
+
+[[params.categories]]
+  name = "6：网络通讯"
+  url = "/linux-cool/network/"
+
+[[params.categories]]
+  name = "7：设备管理"
+  url = "/linux-cool/device/"
+
+[[params.categories]]
+  name = "8：备份压缩"
+  url = "/linux-cool/backup/"
+
+[[params.categories]]
+  name = "9：其他命令"
+  url = "/linux-cool/other/"
+
+[[params.categories]]
+  name = "扩展：知识干货"
+  url = "/linux-cool/knowledge/"
+
+
+[params.beian]
+  beian = "粤ICP备0000000号"

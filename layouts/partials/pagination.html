@@ -1,0 +1,26 @@
+{{ $paginator := .Paginator }}
+{{ $offsetLinks := 2 }}
+{{ $maxLinks := (add (mul $offsetLinks 2) 1) }}
+{{ $lowerLimit := (add $offsetLinks 1) }}
+{{ $upperLimit := (sub $paginator.TotalPages $offsetLinks) }}
+{{ if gt $paginator.TotalPages 1 }}
+  <ul class="pagination">
+  {{ if $paginator.HasPrev }}
+  <a href="{{ $paginator.Prev.URL }}" class="pag-link">«</a>
+    {{ end }}
+	{{ range $paginator.Pagers }}{{ $.Scratch.Set "pageNumFlag" false }}{{ if gt $paginator.TotalPages $maxLinks }}{{ if le $paginator.PageNumber $lowerLimit }}{{ if le .PageNumber $maxLinks }}{{ $.Scratch.Set "pageNumFlag" true }}{{ end }}{{ else if ge $paginator.PageNumber $upperLimit }}{{ if gt .PageNumber (sub $paginator.TotalPages $maxLinks) }}{{ $.Scratch.Set "pageNumFlag" true }}
+	{{ end }}
+	{{ else }}{{ if and ( ge .PageNumber (sub $paginator.PageNumber $offsetLinks) ) ( le .PageNumber (add $paginator.PageNumber $offsetLinks) ) }}{{ $.Scratch.Set "pageNumFlag" true }}
+	{{ end }}
+	{{ end }}
+	{{ else }}{{ $.Scratch.Set "pageNumFlag" true }}
+	{{ end }}
+	{{ if eq ($.Scratch.Get "pageNumFlag") true }}
+	<a class="pag-item{{ if eq . $paginator }} pag-current{{ end }}" href="{{ .URL }}" class="pag-link">{{ .PageNumber }}</a>
+	{{ end }}
+	{{ end }}
+	{{ if $paginator.HasNext }}
+	<a class="pag-item pag-next" href="{{ $paginator.Next.URL }}" class="pag-link">»</a>
+    {{ end }}
+  </ul>
+{{ end }}

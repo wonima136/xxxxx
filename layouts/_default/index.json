@@ -1,0 +1,15 @@
+{
+  "title": "My Site",
+  "posts": [
+    {{- range .Site.RegularPages -}}
+      {{- if eq .Type "post" -}}
+        {
+          "title": "{{ .Title }}",
+          "url": "{{ .Permalink }}",
+          "summary": "{{ .Summary }}"
+        }{{ if not (last $.Site.RegularPages .) }}{{end}}
+        {{if not (last (where .Site.RegularPages "Type" "post") .)}},{{end}}
+      {{- end -}}
+    {{- end -}}
+  ]
+}

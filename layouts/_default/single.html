@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{{ partial "partials/header.html" . }}
+{{ partial "partials/search.html" . }}
+        <!-- #primary -->
+        <div id="primary" class="sidebar-right clearfix">
+            <!-- .ht-container -->
+            <div class="ht-container">
+
+                <section id="content" role="main">
+
+                    <header id="page-header" class="clearfix">
+                        <h1 class="page-title">{{ .Params.title }}</h1>
+                     
+                        <div class="center" style="margin-top: 0px;">
+                            <div id="breadcrumbs">
+                                <a href="{{ .Site.BaseURL }}">
+                                    <icon class="fa fa-home"></icon>
+                                </a><span class="sep">/</span>真正好用的Linux命令在线查询手册<span class="sep">/</span>
+                              
+                            </div>
+                    </header>
+
+
+                        <div class="entry-content">
+							{{ .Content }}
+							
+
+                        </div>
+
+                    </article>
+
+                    <section id="entry-author" class="clearfix">
+                        <div class="wp-block-image">
+                            <figure class="aligncenter is-resized"><img src="/imgs/author.png" alt="Author" class="wp-image-32" width="300" height="35" /></figure>
+                        </div>
+                        <p style="text-align:center"><strong>这篇优质的内容由TA贡献而来</strong></p>
+                        <p style="text-align:center">Linux</p>
+                        <p style="text-align:center"> 《Linux就该这么学》书籍作者，RHCA认证架构师，教育学（计算机专业硕士）。</p>
+                    </section>
+                </section>
+                <!-- #content -->
+
+                <!-- #sidebar -->
+                <aside id="sidebar" role="complementary">
+                    <div id="st_popular_articles_widget-2" class="widget st_popular_articles_widget clearfix">
+                        <h4 class="widget-title"><span>最热命令</span></h4>
+						 <ul class="clearfix">
+							{{ $pages := .Site.RegularPages }}
+							{{ range first 20 $pages.ByDate.Reverse }}
+							<li class="clearfix format-standard"> <a href="{{ .Permalink }}" rel="bookmark">{{ .Title }}</a> </li>
+							{{ end }}
+						</ul>
+
+                    </div>
+                </aside>
+                </div>
+            </div>
+{{ partial "partials/footar.html" . }}
+</body>
+
+</html>
+
+
